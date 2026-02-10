@@ -23,7 +23,7 @@
     });
   }
 
-  // Reveal on scroll
+  // Reveal on scroll with enhanced animations
   const revealables = document.querySelectorAll('.section, .hero, .footer');
   revealables.forEach(el => el.classList.add('reveal'));
 
@@ -31,13 +31,27 @@
   if(!prefersReduced && 'IntersectionObserver' in window){
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('is-visible');
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          // Trigger staggered animations for children
+          const children = entry.target.querySelectorAll('.tile, .card, .tool-card, .resource-card, .achievement-item, .dev-card, .insight, .gallery-item');
+          children.forEach((child, index) => {
+            child.style.opacity = '0';
+            child.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              child.style.transition = 'opacity .6s cubic-bezier(.25,.46,.45,.94), transform .6s cubic-bezier(.25,.46,.45,.94)';
+              child.style.opacity = '1';
+              child.style.transform = 'translateY(0)';
+            }, index * 100);
+          });
+        }
       });
     }, {threshold: 0.12});
     revealables.forEach(el => io.observe(el));
   } else {
     revealables.forEach(el => el.classList.add('is-visible'));
   }
+
 
   // Contact form: open mail client with prefilled content
   const form = document.getElementById('contactForm');

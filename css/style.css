@@ -74,13 +74,24 @@ a.link:hover{text-decoration-color:var(--accent2)}
 .mobile-nav{
   border-top:1px solid var(--line);
   padding:12px 20px 18px;
-  display:grid; gap:10px;
+  display:none; gap:10px;
+}
+.mobile-nav:not([hidden]){
+  display:grid;
 }
 .mobile-nav a{padding:10px 12px; border-radius:12px; background:rgba(255,255,255,.03); color:var(--text); font-weight:600}
 .mobile-nav a.muted{color:var(--muted)}
 
 .hero{padding:64px 0 24px}
 .hero-grid{display:grid; grid-template-columns: 1.4fr .9fr; gap:26px; align-items:start}
+
+.profile-image-container{margin-bottom:18px; animation:fadeInUp .8s ease-out .2s both}
+
+.profile-image{width:100%; height:auto; border-radius:50%; border:3px solid var(--line); box-shadow:0 20px 60px rgba(124,92,255,.25), 0 0 40px rgba(0,212,255,.15); transition:transform .6s ease, box-shadow .6s ease; display:block}
+
+.profile-image:hover{transform:scale(1.05) translateY(-8px); box-shadow:0 30px 80px rgba(124,92,255,.35), 0 0 60px rgba(0,212,255,.25)}
+
+@keyframes fadeInUp{from{opacity:0; transform:translateY(30px)}to{opacity:1; transform:translateY(0)}}
 .eyebrow{color:var(--muted); font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:12px; margin:0 0 12px}
 .hero h1{font-size: clamp(34px, 4.2vw, 56px); line-height:1.05; margin:0 0 14px; letter-spacing:-.04em}
 .accent{
@@ -210,16 +221,147 @@ input:focus, textarea:focus{border-color: rgba(0,212,255,.35); box-shadow: 0 0 0
 .footer a{color:var(--muted); font-weight:650; font-size:14px}
 .footer a:hover{color:var(--text)}
 
+.tools-intro{margin-bottom:24px; color:rgba(233,238,246,.88); font-size:16px}
+
+.video-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; margin-bottom:32px}
+
+.tool-card{border:1px solid var(--line); background:rgba(255,255,255,.02); border-radius: var(--radius); overflow:hidden; transition:transform .15s ease, border-color .15s ease; display:flex; flex-direction:column}
+
+.tool-card:hover{transform:translateY(-2px); border-color:rgba(233,238,246,.2); background:rgba(255,255,255,.035)}
+
+.card-content{padding:16px; flex:1; display:flex; flex-direction:column}
+
+.card-content h3{margin:0 0 8px; font-size:16px; letter-spacing:-.02em}
+
+.card-content p{margin:0 0 12px; color:rgba(233,238,246,.88); font-size:14px; flex:1}
+
+.btn-small{display:inline-block; padding:8px 12px; font-size:13px; border-radius:10px; border:1px solid rgba(124,92,255,.5); background:rgba(124,92,255,.12); color:var(--text); font-weight:600; transition:all .15s ease}
+
+.btn-small:hover{background:rgba(124,92,255,.2); border-color:rgba(0,212,255,.5)}
+
+.tools-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+
+.resource-card{border:1px solid var(--line); background:rgba(255,255,255,.02); border-radius: var(--radius); padding:16px; transition:transform .15s ease, border-color .15s ease}
+
+.resource-card:hover{transform:translateY(-2px); border-color:rgba(233,238,246,.2); background:rgba(255,255,255,.035)}
+
+.resource-card h4{margin:0 0 8px; font-size:15px; letter-spacing:-.02em}
+
+.resource-card p{margin:0; color:rgba(233,238,246,.88); font-size:14px}
+
+.skills-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+.skill-category{border:1px solid var(--line); background:rgba(255,255,255,.02); border-radius: var(--radius); padding:16px}
+.skill-category h4{margin:0 0 12px; letter-spacing:-.02em; font-size:15px}
+.skill-list{list-style:none; padding:0; margin:0; display:grid; gap:8px}
+.skill-list li{color:rgba(233,238,246,.88); font-size:14px; padding-left:20px; position:relative}
+.skill-list li::before{content:"→"; position:absolute; left:0; color:var(--accent2)}
+
+/* ACHIEVEMENTS SECTION */
+.achievements-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+
+.achievement-item{border:1px solid var(--line); background:rgba(255,255,255,.02); border-radius: var(--radius); padding:20px; text-align:center; transition:transform .15s ease, border-color .15s ease}
+
+.achievement-item:hover{transform:translateY(-2px); border-color:rgba(233,238,246,.2); background:rgba(255,255,255,.035)}
+
+.achievement-stat{margin:0 0 8px; font-size:28px; font-weight:800; background:linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:-.02em}
+
+.achievement-desc{margin:0; color:rgba(233,238,246,.88); font-size:14px; line-height:1.6}
+
+/* PROFESSIONAL DEVELOPMENT SECTION */
+.dev-grid{display:grid; grid-template-columns: repeat(2, 1fr); gap:18px}
+
+.dev-card{border:1px solid var(--line); background:rgba(255,255,255,.02); border-radius: var(--radius); padding:18px; transition:transform .15s ease, border-color .15s ease}
+
+.dev-card:hover{transform:translateY(-2px); border-color:rgba(233,238,246,.2); background:rgba(255,255,255,.035)}
+
+.dev-card h4{margin:0 0 6px; font-size:16px; letter-spacing:-.02em; color:var(--text)}
+
+.dev-meta{margin:0 0 8px; font-size:13px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.06em}
+
+.dev-card p{margin:0 0 6px; color:rgba(233,238,246,.88); font-size:14px}
+
+.dev-card p:last-child{margin:0}
+
+/* CONFERENCE GALLERY SECTION */
+.conference-intro{margin-bottom:32px}
+
+.conference-intro h3{margin:0 0 8px; font-size:20px; letter-spacing:-.02em; color:var(--text)}
+
+.conference-intro p{margin:0; color:rgba(233,238,246,.88); font-size:15px; max-width:85ch; line-height:1.6}
+
+.gallery-grid{display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; margin-bottom:32px}
+
+.gallery-item{margin:0; padding:0; border:1px solid var(--line); border-radius: var(--radius); overflow:hidden; background:rgba(255,255,255,.02); transition:transform .3s cubic-bezier(.25,.46,.45,.94), border-color .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s ease}
+
+.gallery-item img{width:100%; height:auto; display:block; aspect-ratio: 3/4; object-fit:cover; transition:transform .3s cubic-bezier(.25,.46,.45,.94)}
+
+.gallery-item:hover{transform:translateY(-6px); border-color:rgba(233,238,246,.2); box-shadow:0 20px 50px rgba(124,92,255,.15), 0 0 40px rgba(0,212,255,.1)}
+
+.gallery-item:hover img{transform:scale(1.05)}
+
+@media (max-width: 980px){
+  .video-grid{grid-template-columns: repeat(2, 1fr)}
+  .tools-grid{grid-template-columns: repeat(2, 1fr)}
+  .skills-grid{grid-template-columns: repeat(2, 1fr)}
+  .achievements-grid{grid-template-columns: repeat(2, 1fr)}
+  .dev-grid{grid-template-columns: 1fr}
+  .gallery-grid{grid-template-columns: repeat(3, 1fr)}
+}
+
+@media (max-width: 640px){
+  .video-grid{grid-template-columns: 1fr}
+  .tools-grid{grid-template-columns: 1fr}
+  .skills-grid{grid-template-columns: 1fr}
+  .achievements-grid{grid-template-columns: 1fr}
+  .dev-grid{grid-template-columns: 1fr}
+  .gallery-grid{grid-template-columns: repeat(2, 1fr); gap:12px}
+}
+
+
 .muted{color:var(--muted)}
 .mono{font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
 .small{font-size:13px}
 
-/* Motion */
+/* Motion & Animations */
 @media (prefers-reduced-motion: no-preference){
-  .btn, .tile{will-change: transform}
-  .reveal{opacity:0; transform: translateY(10px); transition: opacity .45s ease, transform .45s ease}
+  .btn, .tile, .card, .section{will-change: transform}
+
+  /* Staggered reveal animations */
+  .reveal{opacity:0; transform: translateY(20px); transition: opacity .6s cubic-bezier(.25,.46,.45,.94), transform .6s cubic-bezier(.25,.46,.45,.94)}
   .reveal.is-visible{opacity:1; transform: translateY(0)}
+
+  /* Stagger effect for children */
+  .reveal.is-visible .tile:nth-child(1){animation:staggerFadeIn .6s ease-out}
+  .reveal.is-visible .tile:nth-child(2){animation:staggerFadeIn .6s ease-out .1s both}
+  .reveal.is-visible .tile:nth-child(3){animation:staggerFadeIn .6s ease-out .2s both}
+  .reveal.is-visible .tile:nth-child(4){animation:staggerFadeIn .6s ease-out .3s both}
+  .reveal.is-visible .tile:nth-child(5){animation:staggerFadeIn .6s ease-out .4s both}
+  .reveal.is-visible .tile:nth-child(6){animation:staggerFadeIn .6s ease-out .5s both}
+
+  .reveal.is-visible .card:nth-child(1){animation:staggerFadeIn .6s ease-out}
+  .reveal.is-visible .card:nth-child(2){animation:staggerFadeIn .6s ease-out .1s both}
+  .reveal.is-visible .card:nth-child(3){animation:staggerFadeIn .6s ease-out .2s both}
+  .reveal.is-visible .card:nth-child(4){animation:staggerFadeIn .6s ease-out .3s both}
+
+  /* Hero elements animation */
+  .hero h1{opacity:0; animation:fadeInUp .8s ease-out .2s both}
+  .hero .lead{opacity:0; animation:fadeInUp .8s ease-out .4s both}
+  .hero .cta-row{opacity:0; animation:fadeInUp .8s ease-out .6s both}
+  .hero .micro-proof{opacity:0; animation:fadeInUp .8s ease-out .8s both}
+
+  /* Button hover animations */
+  .btn{position:relative; overflow:hidden}
+  .btn::before{content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:rgba(255,255,255,.1); transition:left .3s ease}
+  .btn:hover::before{left:100%}
+
+  /* Card hover lift effect */
+  .tile, .card, .tool-card, .resource-card, .achievement-item, .dev-card, .insight{transition:all .3s cubic-bezier(.25,.46,.45,.94)}
+
+  /* Parallax on scroll for hero */
+  .hero{position:relative}
 }
+
+@keyframes staggerFadeIn{from{opacity:0; transform:translateY(20px)}to{opacity:1; transform:translateY(0)}}
 
 /* Responsive */
 @media (max-width: 980px){
