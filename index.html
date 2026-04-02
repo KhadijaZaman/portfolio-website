@@ -708,10 +708,55 @@
       will-change: transform;
     }
 
+    /* ═══════════════════════════════
+       SECTION 3D CANVASES
+    ═══════════════════════════════ */
+    .sec-3d {
+      position: relative; overflow: hidden;
+    }
+    .sec-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+      display: block;
+    }
+    .sec-bg-orb {
+      position: absolute; pointer-events: none; z-index: 0;
+    }
+    .sec-orb-1 {
+      top: -20%; right: -10%;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 65%);
+    }
+    .sec-orb-2 {
+      bottom: -15%; left: -15%;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 65%);
+    }
+    .sec-orb-3 {
+      top: -25%; left: -5%;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 65%);
+    }
+    @keyframes orb-float-1 { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-32px); } }
+    @keyframes orb-float-2 { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-28px); } }
+    @keyframes orb-float-3 { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-24px); } }
+    .sec-orb-1 { animation: orb-float-1 15s ease-in-out infinite; }
+    .sec-orb-2 { animation: orb-float-2 18s ease-in-out infinite; }
+    .sec-orb-3 { animation: orb-float-3 16s ease-in-out infinite; }
+
+    /* Parallax and 3D scroll transforms */
+    .parallax-element {
+      transform-origin: center center;
+    }
+    .card-3d {
+      perspective: 1000px;
+    }
+
     /* Respect reduced-motion preference */
     @media (prefers-reduced-motion: reduce) {
-      #hero-3d { display: none; }
-      .hero-orb-1, .hero-orb-2 { animation: none; }
+      #hero-3d, .sec-canvas { display: none; }
+      .hero-orb-1, .hero-orb-2, .sec-bg-orb { animation: none; }
       .exp-card, .case-card, .tool-card, .stat-chip {
         transform: none !important;
         transition: border-color 0.25s, box-shadow 0.25s !important;
@@ -938,8 +983,10 @@
 
 
 <!-- ══════════════ EXPERTISE ══════════════ -->
-<section id="expertise" aria-label="Expertise">
-  <div class="wrap">
+<section id="expertise" aria-label="Expertise" class="sec-3d">
+  <canvas id="exp-3d" aria-hidden="true" class="sec-canvas"></canvas>
+  <div class="sec-bg-orb sec-orb-1" aria-hidden="true"></div>
+  <div class="wrap" style="position: relative; z-index: 1;">
     <div class="sec-tag reveal">What I Do</div>
     <h2 class="sec-h2 reveal d1">Four disciplines. One integrated system.</h2>
     <p class="sec-lead reveal d2">SEO, AI search visibility, content strategy, and marketing automation. Most teams hire separately for each. I run them as one compounding system where every discipline accelerates the others.</p>
@@ -971,8 +1018,10 @@
 
 
 <!-- ══════════════ CASE STUDIES ══════════════ -->
-<section id="work" class="cases-sec" aria-label="Case Studies">
-  <div class="wrap">
+<section id="work" class="cases-sec sec-3d" aria-label="Case Studies">
+  <canvas id="cases-3d" aria-hidden="true" class="sec-canvas"></canvas>
+  <div class="sec-bg-orb sec-orb-2" aria-hidden="true"></div>
+  <div class="wrap" style="position: relative; z-index: 1;">
     <div class="sec-tag reveal">Case Studies</div>
     <h2 class="sec-h2 reveal d1">The work, not the pitch</h2>
     <p class="sec-lead reveal d2">Four projects across SEO management, AI search, content, and automation, each with a clear problem, a clear approach, and numbers that hold up.</p>
@@ -1035,8 +1084,10 @@
 
 
 <!-- ══════════════ TOOLS ══════════════ -->
-<section id="tools" aria-label="Proprietary Tools">
-  <div class="wrap">
+<section id="tools" class="sec-3d" aria-label="Proprietary Tools">
+  <canvas id="tools-3d" aria-hidden="true" class="sec-canvas"></canvas>
+  <div class="sec-bg-orb sec-orb-3" aria-hidden="true"></div>
+  <div class="wrap" style="position: relative; z-index: 1;">
     <div class="sec-tag reveal">Proprietary Tools</div>
     <h2 class="sec-h2 reveal d1" style="max-width:620px">Tools I built to bridge search science and AI retrieval</h2>
     <p class="sec-lead reveal d2">Three instruments grounded in Google patent research, used by 1,647 practitioners worldwide, acquired entirely through organic search. Each one fills a real gap between what content teams produce and what AI systems actually cite.</p>
@@ -1482,6 +1533,178 @@
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobileMenu();
   });
+
+  /* ── Section 3D Canvas Animations ── */
+  function createSectionCanvas(canvasId, sectionId, colors, shapes) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    const section = document.getElementById(sectionId);
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width = section.offsetWidth;
+      canvas.height = section.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const rX = (v,a) => { const c=Math.cos(a),s=Math.sin(a); return [v[0],v[1]*c-v[2]*s,v[1]*s+v[2]*c]; };
+    const rY = (v,a) => { const c=Math.cos(a),s=Math.sin(a); return [v[0]*c+v[2]*s,v[1],-v[0]*s+v[2]*c]; };
+    const rZ = (v,a) => { const c=Math.cos(a),s=Math.sin(a); return [v[0]*c-v[1]*s,v[0]*s+v[1]*c,v[2]]; };
+    const proj = (v,fov,cx,cy) => { const z=v[2]+fov; const s=fov/Math.max(z,1); return [cx+v[0]*s, cy+v[1]*s]; };
+
+    function icosa(r) {
+      const t=(1+Math.sqrt(5))/2;
+      const raw=[[-1,t,0],[1,t,0],[-1,-t,0],[1,-t,0],[0,-1,t],[0,1,t],[0,-1,-t],[0,1,-t],[t,0,-1],[t,0,1],[-t,0,-1],[-t,0,1]];
+      const verts=raw.map(v=>{const l=Math.hypot(...v);return v.map(x=>x/l*r);});
+      const edges=[[0,1],[0,5],[0,7],[0,10],[0,11],[1,5],[1,7],[1,8],[1,9],[2,3],[2,4],[2,6],[2,10],[2,11],[3,4],[3,6],[3,8],[3,9],[4,5],[4,9],[4,11],[5,9],[5,11],[6,7],[6,8],[6,10],[7,8],[7,10],[8,9],[10,11]];
+      return {verts,edges};
+    }
+
+    const sceneShapes = shapes.map(s => ({...s, rx:0, ry:0, rz:0}));
+    const pts = Array.from({length:100}, ()=>[Math.random(), Math.random(), Math.random()*1.2+0.4]);
+
+    let rafId;
+    function tick() {
+      rafId = requestAnimationFrame(tick);
+      const W = canvas.width, H = canvas.height;
+      ctx.clearRect(0,0,W,H);
+
+      pts.forEach(p => {
+        ctx.globalAlpha = 0.12 + p[2]*0.08;
+        ctx.fillStyle = colors[0];
+        ctx.shadowColor = colors[0];
+        ctx.shadowBlur = 2;
+        ctx.beginPath();
+        ctx.arc(p[0]*W, p[1]*H, p[2]*0.4, 0, Math.PI*2);
+        ctx.fill();
+      });
+      ctx.shadowBlur = 0;
+
+      sceneShapes.forEach((s,i) => {
+        s.rx += s.spd[0];
+        s.ry += s.spd[1];
+        s.rz += s.spd[2];
+
+        const cx = W*0.5 + s.nx*W;
+        const cy = H*0.5 + s.ny*H;
+
+        const pv = s.geo.verts.map(v => {
+          v = rX(v, s.rx);
+          v = rY(v, s.ry);
+          v = rZ(v, s.rz);
+          return proj(v, 550, cx, cy);
+        });
+
+        ctx.strokeStyle = s.col;
+        ctx.globalAlpha = s.al;
+        ctx.lineWidth = 1.3;
+        ctx.shadowColor = s.col;
+        ctx.shadowBlur = 8;
+
+        s.geo.edges.forEach(([a,b]) => {
+          ctx.beginPath();
+          ctx.moveTo(pv[a][0], pv[a][1]);
+          ctx.lineTo(pv[b][0], pv[b][1]);
+          ctx.stroke();
+        });
+        ctx.shadowBlur = 0;
+      });
+
+      ctx.globalAlpha = 1;
+    }
+
+    const obs = new IntersectionObserver(en => {
+      if (en[0].isIntersecting) { if (!rafId) tick(); }
+      else { cancelAnimationFrame(rafId); rafId = null; }
+    });
+    obs.observe(section);
+    tick();
+  }
+
+  /* Initialize section canvases */
+  createSectionCanvas('exp-3d', 'expertise', ['#818CF8', '#A78BFA'], [
+    {geo:icosa(85), col:'#818CF8', al:0.45, nx:0.35, ny:-0.15, spd:[0.002,0.004,0.001]},
+    {geo:icosa(65), col:'#A78BFA', al:0.40, nx:-0.30, ny:0.20, spd:[-0.003,0.003,0.004]},
+    {geo:icosa(50), col:'#C084FC', al:0.35, nx:0.15, ny:0.35, spd:[0.003,-0.002,0.003]}
+  ]);
+
+  createSectionCanvas('cases-3d', 'work', ['#6366F1', '#818CF8'], [
+    {geo:icosa(95), col:'#6366F1', al:0.48, nx:0.25, ny:-0.20, spd:[0.0025,0.0045,0.0015]},
+    {geo:icosa(70), col:'#818CF8', al:0.42, nx:-0.35, ny:0.15, spd:[-0.0035,0.0035,0.0045]},
+    {geo:icosa(55), col:'#A78BFA', al:0.38, nx:0.20, ny:0.30, spd:[0.0028,-0.0025,0.0035]}
+  ]);
+
+  createSectionCanvas('tools-3d', 'tools', ['#F59E0B', '#FBBF24'], [
+    {geo:icosa(80), col:'#F59E0B', al:0.46, nx:0.30, ny:-0.18, spd:[0.0024,0.0042,0.0012]},
+    {geo:icosa(60), col:'#FBBF24', al:0.41, nx:-0.28, ny:0.22, spd:[-0.0032,0.0038,0.0042]},
+    {geo:icosa(48), col:'#FCD34D', al:0.36, nx:0.18, ny:0.32, spd:[0.0030,-0.0028,0.0032]}
+  ]);
+
+  /* ── Parallax Scrolling ── */
+  function initParallax() {
+    const parallaxElements = document.querySelectorAll('[data-parallax]');
+    if (parallaxElements.length === 0) return;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      parallaxElements.forEach(el => {
+        const speed = parseFloat(el.dataset.parallax) || 0.5;
+        el.style.transform = `translateY(${scrollY * speed}px)`;
+      });
+    }, { passive: true });
+  }
+  initParallax();
+
+  /* ── Scroll-triggered 3D Card Transforms ── */
+  function initScrollCards() {
+    const cards = document.querySelectorAll('.exp-card, .case-card, .tool-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          let raf;
+
+          document.addEventListener('scroll', () => {
+            if (raf) cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+              const rect = card.getBoundingClientRect();
+              const centerY = rect.top + rect.height / 2;
+              const viewportCenter = window.innerHeight / 2;
+              const distance = centerY - viewportCenter;
+              const angle = (distance / viewportCenter) * 8;
+
+              card.style.transform = `perspective(1000px) rotateX(${angle}deg) translateZ(4px)`;
+              card.style.transition = 'transform 0.1s ease-out';
+            });
+          });
+
+          observer.unobserve(card);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    cards.forEach(card => observer.observe(card));
+  }
+  initScrollCards();
+
+  /* ── Enhanced Orb Parallax ── */
+  function initOrbParallax() {
+    const orbs = document.querySelectorAll('.sec-bg-orb');
+    if (orbs.length === 0) return;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      orbs.forEach((orb, i) => {
+        const speed = 0.3 + (i * 0.1);
+        orb.style.transform = `translateY(${scrollY * speed}px)`;
+      });
+    }, { passive: true });
+  }
+  initOrbParallax();
 </script>
 </body>
 </html>
