@@ -870,20 +870,10 @@
 
   <div class="hero-grid">
     <!-- LEFT -->
-   <div class="avail-badge reveal">
-  <span class="avail-dot"></span>
-  Selectively available · Remote and hybrid worldwide
-</div>
-
-<h1 class="reveal d1">
-  Ranked on Google.<br>Cited by AI.<br>
-  <span class="grad-text">Scaled by automation.</span>
-</h1>
-
-<p class="hero-sub reveal d2">
-  I make brands visible across Google, ChatGPT, Gemini, and Perplexity, then automate execution so teams scale without scaling headcount.
-</p>
-=======
+    <div>
+      <div class="avail-badge reveal">
+        <span class="avail-dot"></span>
+        Selectively available · Remote and hybrid worldwide
       </div>
 
       <h1 class="reveal d1">
@@ -909,37 +899,7 @@
           <div class="stat-chip-lbl">SEO professionals using tools I built</div>
         </div>
       </div>
-      <div class="hero-btns reveal d4">
-        <a href="#work" class="btn-primary">See My Work →</a>
-        <a href="#contact" class="btn-ghost">Let's Talk</a>
-      </div>
-main
-      </div>
-    </div>
 
-      <h1 class="reveal d1">
-        Ranked on Google.<br>Cited by AI.<br>
-        <span class="grad-text">Scaled by automation.</span>
-      </h1>
-
-      <p class="hero-sub reveal d2">
-        I make brands visible across Google, ChatGPT, Gemini, and Perplexity, then automate execution so teams scale without scaling headcount.
-      </p>
-
-      <div class="hero-stats reveal d3">
-        <div class="stat-chip">
-          <div class="stat-chip-val">22×</div>
-          <div class="stat-chip-lbl">LLM referral traffic growth, GSC verified</div>
-        </div>
-        <div class="stat-chip">
-          <div class="stat-chip-val">+217%</div>
-          <div class="stat-chip-lbl">GSC clicks, 12 months</div>
-        </div>
-        <div class="stat-chip">
-          <div class="stat-chip-val">1,647</div>
-          <div class="stat-chip-lbl">SEO professionals using tools I built</div>
-        </div>
-      </div>
       <div class="hero-btns reveal d4">
         <a href="#work" class="btn-primary">See My Work →</a>
         <a href="#contact" class="btn-ghost">Let's Talk</a>
@@ -1596,14 +1556,6 @@ main
     const rY = (v,a) => { const c=Math.cos(a),s=Math.sin(a); return [v[0]*c+v[2]*s,v[1],-v[0]*s+v[2]*c]; };
     const rZ = (v,a) => { const c=Math.cos(a),s=Math.sin(a); return [v[0]*c-v[1]*s,v[0]*s+v[1]*c,v[2]]; };
     const proj = (v,fov,cx,cy) => { const z=v[2]+fov; const s=fov/Math.max(z,1); return [cx+v[0]*s, cy+v[1]*s]; };
-
-    function icosa(r) {
-      const t=(1+Math.sqrt(5))/2;
-      const raw=[[-1,t,0],[1,t,0],[-1,-t,0],[1,-t,0],[0,-1,t],[0,1,t],[0,-1,-t],[0,1,-t],[t,0,-1],[t,0,1],[-t,0,-1],[-t,0,1]];
-      const verts=raw.map(v=>{const l=Math.hypot(...v);return v.map(x=>x/l*r);});
-      const edges=[[0,1],[0,5],[0,7],[0,10],[0,11],[1,5],[1,7],[1,8],[1,9],[2,3],[2,4],[2,6],[2,10],[2,11],[3,4],[3,6],[3,8],[3,9],[4,5],[4,9],[4,11],[5,9],[5,11],[6,7],[6,8],[6,10],[7,8],[7,10],[8,9],[10,11]];
-      return {verts,edges};
-    }
 
     const sceneShapes = shapes.map(s => ({...s, rx:0, ry:0, rz:0}));
     const pts = Array.from({length:100}, ()=>[Math.random(), Math.random(), Math.random()*1.2+0.4]);
