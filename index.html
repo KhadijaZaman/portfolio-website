@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Khadija Zaman · Marketing Manager · SEO · AI Search · Content Strategy</title>
   <meta name="description" content="Marketing Manager specialising in SaaS SEO, AI search visibility (GEO/AEO), content strategy, and marketing automation. 22× LLM traffic growth. Based in Karachi, available globally.">
@@ -62,7 +64,7 @@
     /* ═══════════════════════════════
        SCROLL ANIMATIONS
     ═══════════════════════════════ */
-    .reveal {
+    .js .reveal {
       opacity: 0;
       transform: translateY(28px);
       transition: opacity 0.65s ease, transform 0.65s ease;
@@ -1343,6 +1345,8 @@
 
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+  setTimeout(() => { document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in')); }, 1500);
+
   /* ── Nav background on scroll ── */
   window.addEventListener('scroll', () => {
     document.querySelector('nav').style.background =
@@ -1355,7 +1359,9 @@
 
     const canvas = document.getElementById('hero-3d');
     const hero   = document.querySelector('.hero');
+    if (!canvas || !hero) return;
     const ctx    = canvas.getContext('2d');
+    if (!ctx) return;
 
     function resize() {
       canvas.width  = hero.offsetWidth;
