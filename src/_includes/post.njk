@@ -1,0 +1,47 @@
+---
+layout: base.njk
+ogType: article
+---
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description,
+  "datePublished": (date | isoDate),
+  "author": { "@type": "Person", "name": "Khadija Zaman", "url": site.url + "/" },
+  "publisher": { "@type": "Person", "name": "Khadija Zaman" },
+  "mainEntityOfPage": site.url + page.url,
+  "image": site.url + "/web-app-manifest-512x512.png"
+} | dump | safe }}</script>
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": site.url + "/blog/" },
+    { "@type": "ListItem", "position": 3, "name": title, "item": site.url + page.url }
+  ]
+} | dump | safe }}</script>
+
+<header class="page-hero">
+  <div class="page-hero-orb" aria-hidden="true"></div>
+  <div class="wrap" style="max-width:760px;">
+    <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a> <span>/</span> {{ title }}</nav>
+    <div class="post-meta reveal"><span class="post-cat">{{ category }}</span><span class="post-date">{{ date | readableDate }} · {{ readTime }} read · by Khadija Zaman</span></div>
+    <h1 class="reveal d1">{{ title }}</h1>
+  </div>
+</header>
+
+<article aria-label="Article">
+  <div class="wrap">
+    <div class="prose">
+      {% if starter %}
+      <div class="draft-note">
+        <span aria-hidden="true">✎</span>
+        <div><strong>Starter draft.</strong> This is a seeded post to show the article template. Swap in your own analysis, data, and examples before publishing.</div>
+      </div>
+      {% endif %}
+      {{ content | safe }}
+    </div>
+  </div>
+</article>

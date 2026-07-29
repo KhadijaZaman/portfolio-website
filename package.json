@@ -1,0 +1,14 @@
+{
+  "name": "khadijazaman.com",
+  "version": "1.0.0",
+  "description": "Personal-brand website for Khadija Zaman — SEO, AI search (GEO/AEO), content strategy, and marketing automation.",
+  "private": true,
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "dev": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

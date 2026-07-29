@@ -1,0 +1,10 @@
+# dependencies
+node_modules/
+
+# build output (Netlify regenerates this on deploy)
+_site/
+
+# os / editor
+.DS_Store
+*.log
+npm-debug.log*

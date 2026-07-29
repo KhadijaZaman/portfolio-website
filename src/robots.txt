@@ -1,0 +1,8 @@
+# robots.txt for khadijazaman.com
+# Open to search crawlers and AI answer-engine crawlers alike.
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://khadijazaman.com/sitemap.xml
