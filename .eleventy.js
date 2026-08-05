@@ -9,7 +9,7 @@ module.exports = function (eleventyConfig) {
 
   // Static pages & assets — copied through untouched.
   [
-    "index.html", "about", "tools", "contact",
+    "index.html", "about", "work", "tools", "contact",
     "css", "js", "admin", "static",
     "robots.txt", "site.webmanifest",
     "favicon.ico", "favicon.svg", "favicon-96x96.png",

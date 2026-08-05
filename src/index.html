@@ -56,14 +56,14 @@
   <style>
     /* home-specific hero styling */
     .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 6% 80px; position: relative; overflow: hidden; }
-    .hero-orb-1 { position: absolute; top: -25%; right: -15%; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(99,102,241,0.10) 0%, transparent 65%); pointer-events: none; animation: float-slow 10s ease-in-out infinite; }
+    .hero-orb-1 { position: absolute; top: -25%; right: -15%; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,0.10) 0%, transparent 65%); pointer-events: none; animation: float-slow 10s ease-in-out infinite; }
     .hero-orb-2 { position: absolute; bottom: -20%; left: -10%; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 65%); pointer-events: none; animation: float-med 13s ease-in-out infinite; }
     @keyframes float-slow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} }
     @keyframes float-med { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
     #hero-3d { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; display: block; }
     .hero-grid { max-width: 1240px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 460px; gap: 1.5rem; align-items: center; position: relative; z-index: 1; }
-    .avail-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.25); border-radius: 100px; padding: 0.35rem 1rem; font-size: 0.78rem; font-weight: 500; color: #A5B4FC; margin-bottom: 1.25rem; }
-    .avail-dot { width: 7px; height: 7px; background: #818CF8; border-radius: 50%; animation: blink 2s ease-in-out infinite; }
+    .avail-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.25); border-radius: 100px; padding: 0.35rem 1rem; font-size: 0.78rem; font-weight: 500; color: #93C5FD; margin-bottom: 1.25rem; }
+    .avail-dot { width: 7px; height: 7px; background: #60A5FA; border-radius: 50%; animation: blink 2s ease-in-out infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
     .hero h1 { font-family: var(--ff-display); font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
     .hero-sub { font-size: 1.05rem; color: var(--text-2); line-height: 1.75; max-width: 540px; margin-bottom: 1.75rem; }
@@ -76,7 +76,7 @@
     .hero-right { display: flex; justify-content: center; align-items: center; }
     .hero-photo-wrap { position: relative; }
     .hero-photo-wrap::before { content: ''; position: absolute; inset: -16px; border-radius: 50%; background: var(--grad-main); opacity: 0.45; filter: blur(28px); z-index: 0; }
-    .hero-photo { display: block; width: 420px; height: 420px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid rgba(99,102,241,0.4); box-shadow: 0 0 0 8px rgba(99,102,241,0.06), 0 24px 64px rgba(0,0,0,0.5); position: relative; z-index: 1; }
+    .hero-photo { display: block; width: 420px; height: 420px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid rgba(59,130,246,0.4); box-shadow: 0 0 0 8px rgba(59,130,246,0.06), 0 24px 64px rgba(0,0,0,0.5); position: relative; z-index: 1; }
     .sec-orb-1, .sec-orb-2, .sec-orb-3 { animation: float-slow 15s ease-in-out infinite; }
     @media (max-width: 1024px) { .hero-grid { grid-template-columns: 1fr; } .hero-right { margin-top: 2.5rem; } .hero-photo { width: 240px; height: 240px; } }
     @media (max-width: 768px) { .hero { padding: 88px 5% 60px; } .hero h1 { font-size: 2.1rem; } .hero-right { display: none; } }
@@ -91,7 +91,7 @@
   <a href="/" class="nav-logo">Khadija Zaman</a>
   <ul class="nav-links">
     <li><a href="/about/">About</a></li>
-    <li><a href="/#work">Work</a></li>
+    <li><a href="/work/">Work</a></li>
     <li><a href="/blog/">Blog</a></li>
     <li><a href="/tools/">Tools</a></li>
     <li><a href="/contact/" class="nav-cta">Work Together →</a></li>
@@ -102,7 +102,7 @@
 </nav>
 <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
   <a href="/about/">About</a>
-  <a href="/#work">Work</a>
+  <a href="/work/">Work</a>
   <a href="/blog/">Blog</a>
   <a href="/tools/">Tools</a>
   <a href="/contact/" class="mob-cta">Work Together →</a>
@@ -134,7 +134,7 @@
         <div class="stat-chip"><div class="stat-chip-val">1,647</div><div class="stat-chip-lbl">SEO professionals using tools I built</div></div>
       </div>
       <div class="hero-btns reveal d4">
-        <a href="/#work" class="btn-primary">See My Work →</a>
+        <a href="/work/" class="btn-primary">See My Work →</a>
         <a href="/blog/" class="btn-ghost">Read the Blog</a>
       </div>
     </div>
@@ -145,6 +145,21 @@
     </div>
   </div>
 </section>
+
+<!-- ══════════════ MARQUEE TICKER ══════════════ -->
+<div class="marquee" aria-label="Areas of specialism">
+  <div class="marquee-track" id="marquee-track">
+    <span class="marquee-item">Semantic SEO</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Generative Engine Optimization</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Answer Engine Optimization</span><span class="marquee-dot"></span>
+    <span class="marquee-item">LLM Visibility</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Query Fan-Out</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Entity SEO</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Content Strategy</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Technical SEO</span><span class="marquee-dot"></span>
+    <span class="marquee-item">Marketing Automation</span><span class="marquee-dot"></span>
+  </div>
+</div>
 
 <!-- ══════════════ IMPACT BAR ══════════════ -->
 <div class="impact-bar" aria-label="Impact at a glance">
@@ -176,43 +191,37 @@
   </div>
 </section>
 
-<!-- ══════════════ CASE STUDIES ══════════════ -->
-<section id="work" class="cases-sec sec-3d" aria-label="Case Studies" style="background: var(--bg-1);">
+<!-- ══════════════ FEATURED WORK TEASER ══════════════ -->
+<section id="work" class="cases-sec sec-3d" aria-label="Selected Work" style="background: var(--bg-1);">
   <canvas id="cases-3d" aria-hidden="true" class="sec-canvas"></canvas>
   <div class="sec-bg-orb sec-orb-2" aria-hidden="true"></div>
   <div class="wrap" style="position: relative; z-index: 1;">
-    <div class="sec-tag reveal">Case Studies</div>
+    <div class="sec-tag reveal">Selected Work</div>
     <h2 class="sec-h2 reveal d1">The work, not the pitch</h2>
-    <p class="sec-lead reveal d2">Four projects across SEO management, AI search, content, and automation, each with a clear problem, a clear approach, and numbers that hold up.</p>
+    <p class="sec-lead reveal d2">Five projects across AEO/LLM visibility, SEO management, content strategy, and product launches — each with a clear problem, a clear approach, and numbers that hold up. Here's the headline one.</p>
     <div class="cases-grid">
-      <div class="case-card reveal">
-        <div class="case-card-top-bar bar-blue"></div>
-        <div class="case-pill pill-blue">AI SEO / GEO / AEO</div>
-        <div class="case-nums"><div><div class="cn-val">22×</div><div class="cn-lbl">LLM Traffic Growth</div></div><div><div class="cn-val">680K→3.78M</div><div class="cn-lbl">Impressions</div></div><div><div class="cn-val">28.9→17.3</div><div class="cn-lbl">Avg. Position</div></div></div>
-        <h3>22× LLM Traffic: Getting a SaaS Brand Cited Inside AI Answers</h3>
-        <p>Wellows had Google traffic but near-zero presence inside AI-generated answers, where buyers increasingly start their research. I applied GEO and AEO frameworks: built an entity model from Google patent research, restructured content for retrieval-readiness, and embedded structured data signals that LLMs treat as authoritative.</p>
-      </div>
-      <div class="case-card reveal d1">
+      <div class="case-card featured reveal">
         <div class="case-card-top-bar bar-green"></div>
-        <div class="case-pill pill-green">Brand Authority</div>
-        <div class="case-nums"><div><div class="cn-val green">1,647</div><div class="cn-lbl">Active Tool Users</div></div><div><div class="cn-val green">5.1%</div><div class="cn-lbl">Organic CTR</div></div><div><div class="cn-val green">100%</div><div class="cn-lbl">Organic Acquisition</div></div></div>
-        <h3>1,647 Users, Zero Paid: Building Authority Signals in AI Search</h3>
-        <p>No tool bridged Google's patent-level search science and AI-retrieval content strategy, so I built three. The Query Fan-Out Generator (829 users, 5.1% CTR), LLM Query Builder (149 users), and AI Humanizer (669 users, 60–72% engagement) created the entity signal LLMs treat as a credibility marker for the brand.</p>
+        <div class="case-pill pill-green">AEO / LLM Visibility · Featured</div>
+        <div class="case-meta">Wellows · July 2025 – Feb 2026 · Source: GA4 / Looker Studio / GSC</div>
+        <div class="case-nums">
+          <div><div class="cn-val green">9×</div><div class="cn-lbl">LLM Growth</div></div>
+          <div><div class="cn-val green">62.9→27.8</div><div class="cn-lbl">Avg. SERP Position</div></div>
+          <div><div class="cn-val green">45s→6+ min</div><div class="cn-lbl">Session Duration</div></div>
+          <div><div class="cn-val green">~1.9M</div><div class="cn-lbl">GSC Impressions</div></div>
+          <div><div class="cn-val green">$0</div><div class="cn-lbl">Paid Spend</div></div>
+        </div>
+        <h3>9× LLM Growth and #1–#2 Tool Rankings — Built Entirely on AEO, $0 Paid</h3>
+        <p>Wellows started with near-zero LLM visibility and no citation footprint. I built measurable AI-search presence from scratch — zero paid spend.</p>
+        <ul class="case-approach">
+          <li><b>AEO framework.</b> Koray Tuğberk's logic + Google's query fan-out patent for LLM retrieval.</li>
+          <li><b>Citation experiments.</b> Grounded vs. non-grounded tests tracking explicit and implicit AI visibility.</li>
+          <li><b>Tool- &amp; community-led.</b> Three AI tools as LLM entry points; AEO across Reddit, Quora, G2; n8n + GA4 reporting.</li>
+        </ul>
       </div>
-      <div class="case-card reveal d1">
-        <div class="case-card-top-bar bar-blue"></div>
-        <div class="case-pill pill-blue">Content Strategy</div>
-        <div class="case-nums"><div><div class="cn-val">8K→25K</div><div class="cn-lbl">Monthly Sessions</div></div><div><div class="cn-val">+213%</div><div class="cn-lbl">Organic Growth</div></div><div><div class="cn-val">6 mo</div><div class="cn-lbl">Time to Result</div></div></div>
-        <h3>8K to 25K Sessions: Topic Cluster Architecture for Affiliate SEO</h3>
-        <p>Sessions had plateaued at 8,000/month despite regular publishing, a sign of topical fragmentation, not content volume. I rebuilt the architecture: topic clusters mapped to intent, pillars around high-commercial queries, and deliberate internal linking that passed authority systematically. No technical overhaul needed.</p>
-      </div>
-      <div class="case-card reveal d2">
-        <div class="case-card-top-bar bar-green"></div>
-        <div class="case-pill pill-green">Product Launch</div>
-        <div class="case-nums"><div><div class="cn-val green">#1</div><div class="cn-lbl">All About AI · U.S. Rating</div></div><div><div class="cn-val green">447</div><div class="cn-lbl">Launch-Month Users</div></div><div><div class="cn-val green">110</div><div class="cn-lbl">Credit Card Signups</div></div></div>
-        <h3>KIVA Launch: #1 on All About AI, 447 Users, 110 Paying Signups</h3>
-        <p>KIVA needed market presence in a crowded AI tools space, zero paid budget. I led the full GTM: positioning, launch content, SEO-driven distribution, and influencer partnerships. KIVA was rated #1 in the U.S. on All About AI. 447 users onboarded, 110 credit card signups, all organic.</p>
-      </div>
+    </div>
+    <div class="work-teaser-foot reveal d1">
+      <a href="/work/" class="btn-primary">See all five case studies →</a>
     </div>
   </div>
 </section>
@@ -273,7 +282,7 @@
     </div>
     <div class="footer-cols">
       <div class="footer-col"><h5>Site</h5><a href="/about/">About</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/">Contact</a></div>
-      <div class="footer-col"><h5>Work</h5><a href="/#expertise">Expertise</a><a href="/#work">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
+      <div class="footer-col"><h5>Work</h5><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
       <div class="footer-col"><h5>Connect</h5><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:khadijarafiqzaman@gmail.com">Email</a></div>
     </div>
   </div>
@@ -304,12 +313,12 @@
     function resize(){canvas.width=hero.offsetWidth;canvas.height=hero.offsetHeight;} resize();
     window.addEventListener('resize', resize);
     var shapes=[
-      {geo:icosa(115),col:'#818CF8',al:0.52,nx:0.30,ny:-0.15,rx:0,ry:0,rz:0,spd:[0.003,0.005,0.001]},
-      {geo:octa(90),col:'#A78BFA',al:0.48,nx:-0.30,ny:0.10,rx:0,ry:0,rz:0,spd:[-0.004,0.003,0.005]},
-      {geo:tetra(82),col:'#A78BFA',al:0.50,nx:0.14,ny:0.38,rx:0,ry:0,rz:0,spd:[0.005,-0.003,0.004]},
-      {geo:icosa(62),col:'#C084FC',al:0.42,nx:-0.14,ny:-0.32,rx:0,ry:0,rz:0,spd:[-0.003,0.006,-0.003]},
-      {geo:cube(68),col:'#818CF8',al:0.40,nx:-0.38,ny:0.22,rx:0,ry:0,rz:0,spd:[0.004,0.003,-0.005]},
-      {geo:tetra(48),col:'#FBBF24',al:0.40,nx:-0.44,ny:-0.18,rx:0,ry:0,rz:0,spd:[0.004,-0.005,0.003]}
+      {geo:icosa(115),col:'#60A5FA',al:0.52,nx:0.30,ny:-0.15,rx:0,ry:0,rz:0,spd:[0.003,0.005,0.001]},
+      {geo:octa(90),col:'#38BDF8',al:0.48,nx:-0.30,ny:0.10,rx:0,ry:0,rz:0,spd:[-0.004,0.003,0.005]},
+      {geo:tetra(82),col:'#38BDF8',al:0.50,nx:0.14,ny:0.38,rx:0,ry:0,rz:0,spd:[0.005,-0.003,0.004]},
+      {geo:icosa(62),col:'#38BDF8',al:0.42,nx:-0.14,ny:-0.32,rx:0,ry:0,rz:0,spd:[-0.003,0.006,-0.003]},
+      {geo:cube(68),col:'#60A5FA',al:0.40,nx:-0.38,ny:0.22,rx:0,ry:0,rz:0,spd:[0.004,0.003,-0.005]},
+      {geo:tetra(48),col:'#38BDF8',al:0.40,nx:-0.44,ny:-0.18,rx:0,ry:0,rz:0,spd:[0.004,-0.005,0.003]}
     ];
     shapes.forEach(function(s){s.bnx=s.nx;s.bny=s.ny;});
     var pts=Array.from({length:120},function(){return [Math.random(),Math.random(),Math.random()*1.4+0.4];});
@@ -318,7 +327,7 @@
     var FOV=650, rafId;
     function tick(){
       rafId=requestAnimationFrame(tick); var W=canvas.width,H=canvas.height; ctx.clearRect(0,0,W,H);
-      pts.forEach(function(p){ctx.globalAlpha=0.16+p[2]*0.10;ctx.fillStyle='#818CF8';ctx.shadowColor='#818CF8';ctx.shadowBlur=3;ctx.beginPath();ctx.arc(p[0]*W,p[1]*H,p[2]*0.55,0,Math.PI*2);ctx.fill();});
+      pts.forEach(function(p){ctx.globalAlpha=0.16+p[2]*0.10;ctx.fillStyle='#60A5FA';ctx.shadowColor='#60A5FA';ctx.shadowBlur=3;ctx.beginPath();ctx.arc(p[0]*W,p[1]*H,p[2]*0.55,0,Math.PI*2);ctx.fill();});
       ctx.shadowBlur=0;
       shapes.forEach(function(s,i){
         s.rx+=s.spd[0];s.ry+=s.spd[1];s.rz+=s.spd[2];
@@ -362,19 +371,19 @@
     obs.observe(section); tick();
   }
   sectionCanvas('exp-3d','expertise',[
-    {geo:icosa(85),col:'#818CF8',al:0.45,nx:0.35,ny:-0.15,spd:[0.002,0.004,0.001]},
-    {geo:icosa(65),col:'#A78BFA',al:0.40,nx:-0.30,ny:0.20,spd:[-0.003,0.003,0.004]},
-    {geo:icosa(50),col:'#C084FC',al:0.35,nx:0.15,ny:0.35,spd:[0.003,-0.002,0.003]}
+    {geo:icosa(85),col:'#60A5FA',al:0.45,nx:0.35,ny:-0.15,spd:[0.002,0.004,0.001]},
+    {geo:icosa(65),col:'#38BDF8',al:0.40,nx:-0.30,ny:0.20,spd:[-0.003,0.003,0.004]},
+    {geo:icosa(50),col:'#38BDF8',al:0.35,nx:0.15,ny:0.35,spd:[0.003,-0.002,0.003]}
   ]);
   sectionCanvas('cases-3d','work',[
-    {geo:icosa(95),col:'#6366F1',al:0.48,nx:0.25,ny:-0.20,spd:[0.0025,0.0045,0.0015]},
-    {geo:icosa(70),col:'#818CF8',al:0.42,nx:-0.35,ny:0.15,spd:[-0.0035,0.0035,0.0045]},
-    {geo:icosa(55),col:'#A78BFA',al:0.38,nx:0.20,ny:0.30,spd:[0.0028,-0.0025,0.0035]}
+    {geo:icosa(95),col:'#3B82F6',al:0.48,nx:0.25,ny:-0.20,spd:[0.0025,0.0045,0.0015]},
+    {geo:icosa(70),col:'#60A5FA',al:0.42,nx:-0.35,ny:0.15,spd:[-0.0035,0.0035,0.0045]},
+    {geo:icosa(55),col:'#38BDF8',al:0.38,nx:0.20,ny:0.30,spd:[0.0028,-0.0025,0.0035]}
   ]);
   sectionCanvas('tools-3d','tools',[
-    {geo:icosa(80),col:'#A78BFA',al:0.46,nx:0.30,ny:-0.18,spd:[0.0024,0.0042,0.0012]},
-    {geo:icosa(60),col:'#C084FC',al:0.41,nx:-0.28,ny:0.22,spd:[-0.0032,0.0038,0.0042]},
-    {geo:icosa(48),col:'#818CF8',al:0.36,nx:0.18,ny:0.32,spd:[0.0030,-0.0028,0.0032]}
+    {geo:icosa(80),col:'#38BDF8',al:0.46,nx:0.30,ny:-0.18,spd:[0.0024,0.0042,0.0012]},
+    {geo:icosa(60),col:'#38BDF8',al:0.41,nx:-0.28,ny:0.22,spd:[-0.0032,0.0038,0.0042]},
+    {geo:icosa(48),col:'#60A5FA',al:0.36,nx:0.18,ny:0.32,spd:[0.0030,-0.0028,0.0032]}
   ]);
 })();
 </script>
