@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEO Citeability Checker · Free Tool — Khadija Zaman</title>
+  <meta name="description" content="Free tool: paste your content and score how ready it is to be cited by ChatGPT, Gemini, and Perplexity — with specific, actionable fixes for AI search visibility.">
+  <link rel="canonical" href="https://khadijazaman.com/tools/citeability-checker/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AEO Citeability Checker · Free Tool">
+  <meta property="og:description" content="Score how citeable your content is by AI answer engines, and get specific fixes.">
+  <meta property="og:url" content="https://khadijazaman.com/tools/citeability-checker/">
+  <meta property="og:image" content="https://khadijazaman.com/web-app-manifest-512x512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "WebApplication", "name": "AEO Citeability Checker", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "url": "https://khadijazaman.com/tools/citeability-checker/", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@type": "Person", "name": "Khadija Zaman", "url": "https://khadijazaman.com/" } }
+  </script>
+</head>
+<body>
+<a class="skip-nav" href="#main-content">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-logo">Khadija Zaman</a>
+  <ul class="nav-links">
+    <li><a href="/about/">About</a></li><li><a href="/work/">Work</a></li><li><a href="/blog/">Blog</a></li><li><a href="/tools/" class="active">Tools</a></li><li><a href="/contact/" class="nav-cta">Work Together →</a></li>
+  </ul>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+  <a href="/about/">About</a><a href="/work/">Work</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/" class="mob-cta">Work Together →</a>
+</div>
+
+<main id="main-content">
+<header class="page-hero">
+  <div class="page-hero-orb" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a> <span>/</span> Citeability Checker</nav>
+    <h1 class="reveal d1">AEO Citeability Checker</h1>
+    <p class="lead reveal d2">Ranking in Google no longer guarantees you're cited in an AI answer. Paste a section of your content and I'll score how retrieval-ready it is for ChatGPT, Gemini, and Perplexity — and tell you exactly what to fix.</p>
+  </div>
+</header>
+
+<section aria-label="Citeability Checker">
+  <div class="wrap" style="max-width: 820px;">
+    <div class="tool-panel reveal">
+      <div class="tool-row">
+        <label class="tool-label" for="cc-input">Paste your content (a section or a full page)</label>
+        <textarea class="tool-textarea" id="cc-input" placeholder="Paste the text you want AI answer engines to cite…"></textarea>
+        <div class="tool-hint"><span class="tool-count" id="cc-count">0 words</span> · Runs entirely in your browser — nothing is uploaded.</div>
+      </div>
+      <div class="tool-actions">
+        <button class="btn-primary" type="button" id="cc-run">Check citeability →</button>
+        <button class="btn-ghost" type="button" id="cc-sample">Load an example</button>
+      </div>
+
+      <div class="tool-output" id="cc-output" hidden>
+        <div class="score-wrap">
+          <div class="score-ring" id="cc-ring"><span class="score-num" id="cc-score">0</span></div>
+          <div class="score-verdict"><h3 id="cc-verdict">—</h3><p id="cc-verdict-sub">—</p></div>
+        </div>
+        <ul class="check-list" id="cc-checks"></ul>
+      </div>
+    </div>
+
+    <p style="margin-top:1.75rem; font-size:0.88rem; color:var(--text-2); line-height:1.7;">Want a full AEO audit and a plan to get cited across AI answers? <a href="/contact/" style="color:#93C5FD; text-decoration:none; font-weight:600;">Work with me →</a></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-in">
+    <div class="footer-brand"><a href="/" class="nav-logo">Khadija Zaman</a><p>Marketing Manager — SEO, AI search visibility (GEO/AEO), content strategy, and marketing automation. Karachi, Pakistan · working worldwide.</p></div>
+    <div class="footer-cols">
+      <div class="footer-col"><h5>Site</h5><a href="/about/">About</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/">Contact</a></div>
+      <div class="footer-col"><h5>Work</h5><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
+      <div class="footer-col"><h5>Connect</h5><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a><a href="mailto:khadijarafiqzaman@gmail.com">Email</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Khadija Zaman · Marketing Manager · Karachi, Pakistan</div><div class="footer-copy">Built to be ranked by search engines and cited by answer engines.</div></div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var input = $('cc-input');
+
+  var SAMPLE = "Answer Engine Optimization (AEO) is the practice of structuring content so AI systems can extract and cite it directly. It differs from traditional SEO in one key way: instead of optimizing only to rank, you optimize to be quoted.\n\nHow does AEO work?\nAI answer engines retrieve passages, not pages. They favor content that states a clear definition up front, answers the question directly, and is easy to extract.\n\nWhat should you do first?\n- Lead each section with a one-sentence answer.\n- Use question-style headings that match how people ask.\n- Add structured data so machines can parse entities.\n\nIn 2025, brands that restructured for retrieval saw citation rates rise measurably, while pages built only for keywords stalled.";
+
+  function words(t) { return (t.trim().match(/\S+/g) || []).length; }
+  input.addEventListener('input', function () { $('cc-count').textContent = words(input.value) + ' words'; });
+  $('cc-sample').addEventListener('click', function () { input.value = SAMPLE; $('cc-count').textContent = words(SAMPLE) + ' words'; input.focus(); });
+
+  var FLUFF = ['in today\'s', 'fast-paced', 'ever-evolving', 'cutting-edge', 'leverage', 'game-changer', 'seamless', 'robust', 'unlock', 'delve', 'landscape', 'realm', 'tapestry', 'navigating', 'holistic', 'synergy', 'paradigm', 'world of', 'when it comes to', 'the power of'];
+
+  function analyze(t) {
+    var text = t.trim();
+    var wc = words(text);
+    var sentences = text.split(/[.!?]+\s/).filter(function (s) { return s.trim().length > 0; });
+    var lines = text.split(/\n/).map(function (l) { return l.trim(); }).filter(Boolean);
+    var checks = [];
+
+    // 1. Direct answer up front
+    var first = (sentences[0] || '').trim();
+    var firstWords = words(first);
+    var defP = /\b(is|are|means|refers to|is a|is the)\b/i.test(first);
+    if (firstWords > 0 && firstWords <= 30 && defP) checks.push(['pass', 'Direct answer up front', 'Your opening sentence gives a crisp, extractable answer — exactly what answer engines quote.', 22]);
+    else if (defP) checks.push(['warn', 'Answer up front is a bit long', 'You define the topic early, but tighten the first sentence to under ~25 words so it lifts cleanly into an AI answer.', 12]);
+    else checks.push(['fail', 'No clear answer up front', 'Open each section with a one-sentence definition or direct answer (e.g. “X is …”). AI engines extract the top, not the middle.', 0]);
+
+    // 2. Question-style structure
+    var qLines = lines.filter(function (l) { return /\?$/.test(l) || /^(how|what|why|when|where|who|which|can|should|is|are|do|does)\b/i.test(l) && l.length < 90; }).length;
+    if (qLines >= 2) checks.push(['pass', 'Question-style structure', 'You mirror how people actually ask — great for People Also Ask and AI follow-ups.', 16]);
+    else if (qLines === 1) checks.push(['warn', 'Add more question headings', 'One question-style heading found. Add a few more that match real queries to widen your retrieval surface.', 8]);
+    else checks.push(['fail', 'No question-style headings', 'Break the content into question-shaped headings (“How does X work?”). It maps content to the queries AI expands.', 0]);
+
+    // 3. Scannable structure (lists)
+    var listLines = lines.filter(function (l) { return /^([-*•]|\d+[.)])\s+/.test(l); }).length;
+    if (listLines >= 3) checks.push(['pass', 'Scannable, extractable format', 'Lists and short blocks are easy for models to lift as structured answers.', 14]);
+    else if (listLines >= 1) checks.push(['warn', 'Add more structured blocks', 'A little list structure helps. Convert dense paragraphs into steps or bullets where you can.', 7]);
+    else checks.push(['fail', 'Dense, hard to extract', 'Add at least one list or step sequence. Walls of text rarely get pulled into an AI answer.', 0]);
+
+    // 4. Specificity (numbers, entities)
+    var nums = (text.match(/\b\d[\d,.]*\b/g) || []).length;
+    var propers = (text.match(/(?!^)\b[A-Z][a-zA-Z]{2,}\b/g) || []).length;
+    if (nums >= 2 && propers >= 3) checks.push(['pass', 'Specific and entity-rich', 'Concrete numbers and named entities are the credibility signals AI systems reward.', 18]);
+    else if (nums >= 1 || propers >= 2) checks.push(['warn', 'Add more specifics', 'Some specificity present. Add concrete numbers, dates, and named entities to strengthen citeability.', 9]);
+    else checks.push(['fail', 'Too generic', 'Add real numbers, dates, and named tools/brands. Vague content is not quote-worthy.', 0]);
+
+    // 5. Sentence length / readability
+    var avgLen = sentences.length ? wc / sentences.length : 0;
+    if (avgLen > 0 && avgLen <= 22) checks.push(['pass', 'Clear, quotable sentences', 'Average sentence length is tight — easy to extract as a standalone answer.', 12]);
+    else if (avgLen <= 30) checks.push(['warn', 'Sentences run long', 'Average sentence is a bit long (' + Math.round(avgLen) + ' words). Aim for ~15–22 so lines can stand alone.', 6]);
+    else checks.push(['fail', 'Sentences too long', 'Average ' + Math.round(avgLen) + ' words/sentence. Long sentences don\'t lift cleanly into answers — split them.', 0]);
+
+    // 6. Fluff / filler
+    var low = text.toLowerCase();
+    var hits = FLUFF.filter(function (f) { return low.indexOf(f) !== -1; });
+    if (hits.length === 0) checks.push(['pass', 'No AI-filler clichés', 'Clean of the padding phrases models (and readers) discount.', 10]);
+    else if (hits.length <= 2) checks.push(['warn', 'A little filler', 'Found: “' + hits.join('”, “') + '”. Trim these — they add words, not information.', 5]);
+    else checks.push(['fail', 'Heavy on filler', 'Found ' + hits.length + ' filler phrases (e.g. “' + hits.slice(0,3).join('”, “') + '”). Cut them; specificity beats padding.', 0]);
+
+    // 7. Length
+    if (wc >= 120) checks.push(['pass', 'Enough depth to cite', wc + ' words — enough substance for a model to find a quotable passage.', 8]);
+    else checks.push(['warn', 'A bit thin', 'Only ' + wc + ' words. Add depth so there\'s a strong passage worth citing.', 3]);
+
+    var score = checks.reduce(function (s, c) { return s + c[3]; }, 0);
+    score = Math.max(0, Math.min(100, score));
+    return { score: score, checks: checks };
+  }
+
+  function verdict(s) {
+    if (s >= 80) return ['Highly citeable', 'This reads like content an AI answer engine would quote. Keep this structure as your template.'];
+    if (s >= 60) return ['Citeable, with gaps', 'You\'re most of the way there. Fix the warnings below to move from “ranked” to “cited.”'];
+    if (s >= 40) return ['Needs restructuring', 'The ideas may be good, but the structure isn\'t retrieval-ready. Work through the fails first.'];
+    return ['Not yet citeable', 'Rebuild around direct answers, question headings, and specifics before expecting AI citations.'];
+  }
+
+  function run() {
+    var t = input.value;
+    if (words(t) < 15) { alert('Paste at least a couple of sentences to analyze.'); return; }
+    var r = analyze(t);
+    $('cc-output').hidden = false;
+    $('cc-ring').style.setProperty('--p', r.score);
+    $('cc-score').textContent = r.score;
+    var v = verdict(r.score);
+    $('cc-verdict').textContent = v[0];
+    $('cc-verdict-sub').textContent = v[1];
+    var ul = $('cc-checks'); ul.innerHTML = '';
+    r.checks.forEach(function (c) {
+      var li = document.createElement('li');
+      li.className = 'check-item ' + c[0];
+      var mark = c[0] === 'pass' ? '✓' : c[0] === 'warn' ? '!' : '✕';
+      li.innerHTML = '<span class="check-mark">' + mark + '</span><div class="check-body"><strong>' + c[1] + '</strong><span>' + c[2] + '</span></div>';
+      ul.appendChild(li);
+    });
+    $('cc-output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  $('cc-run').addEventListener('click', run);
+})();
+</script>
+</body>
+</html>

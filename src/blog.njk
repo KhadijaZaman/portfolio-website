@@ -40,15 +40,35 @@ permalink: /blog/index.html
     </div>
     {% endif %}
 
-    <div class="post-grid">
+    <!-- Filter + search (progressively enhanced; all posts still render without JS) -->
+    <div class="blog-filter reveal" id="blog-filter">
+      <div class="blog-search">
+        <input type="search" id="blog-search" placeholder="Search posts…" aria-label="Search posts" autocomplete="off">
+      </div>
+      <div class="chip-row" id="chip-row" role="tablist" aria-label="Filter by category">
+        <button class="chip active" type="button" data-cat="all">All</button>
+        {% for c in collections.categories %}
+        <button class="chip" type="button" data-cat="{{ c.title }}">{{ c.title }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="post-grid" id="post-grid">
     {% for post in collections.posts %}
-      <a class="post-card reveal{% if loop.index0 % 2 == 1 %} d1{% endif %}" href="{{ post.url }}">
+      <a class="post-card reveal{% if loop.index0 % 2 == 1 %} d1{% endif %}" href="{{ post.url }}"
+         data-cat="{{ post.data.category }}"
+         data-text="{{ (post.data.title + ' ' + post.data.description + ' ' + post.data.category) | lower }}">
         <div class="post-meta"><span class="post-cat">{{ post.data.category }}</span><span class="post-date">{{ post.data.date | readableDate }} · {{ post.data.readTime }}</span></div>
         <h3>{{ post.data.title }}</h3>
         <p>{{ post.data.description }}</p>
         <span class="post-more">Read the post →</span>
       </a>
     {% endfor %}
+    </div>
+    <p class="blog-empty" id="blog-empty" hidden>No posts match that search. <button type="button" class="blog-clear" id="blog-clear">Clear filters</button></p>
+
+    <div class="blog-foot">
+      <a href="/feed.xml" class="blog-rss">Subscribe via RSS</a>
     </div>
   </div>
 </section>

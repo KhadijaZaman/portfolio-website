@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SERP Snippet Preview · Free Title &amp; Meta Tool — Khadija Zaman</title>
+  <meta name="description" content="Free tool: preview how your title tag and meta description render in Google, with live pixel-width and truncation warnings. Write snippets that don't get cut off.">
+  <link rel="canonical" href="https://khadijazaman.com/tools/serp-preview/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SERP Snippet Preview · Free Tool">
+  <meta property="og:description" content="Preview your Google title + meta description with pixel-width and truncation warnings.">
+  <meta property="og:url" content="https://khadijazaman.com/tools/serp-preview/">
+  <meta property="og:image" content="https://khadijazaman.com/web-app-manifest-512x512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "WebApplication", "name": "SERP Snippet Preview", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "url": "https://khadijazaman.com/tools/serp-preview/", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@type": "Person", "name": "Khadija Zaman", "url": "https://khadijazaman.com/" } }
+  </script>
+</head>
+<body>
+<a class="skip-nav" href="#main-content">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-logo">Khadija Zaman</a>
+  <ul class="nav-links">
+    <li><a href="/about/">About</a></li><li><a href="/work/">Work</a></li><li><a href="/blog/">Blog</a></li><li><a href="/tools/" class="active">Tools</a></li><li><a href="/contact/" class="nav-cta">Work Together →</a></li>
+  </ul>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+  <a href="/about/">About</a><a href="/work/">Work</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/" class="mob-cta">Work Together →</a>
+</div>
+
+<main id="main-content">
+<header class="page-hero">
+  <div class="page-hero-orb" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a> <span>/</span> SERP Preview</nav>
+    <h1 class="reveal d1">SERP Snippet Preview</h1>
+    <p class="lead reveal d2">Google truncates by pixels, not characters. Type your title and meta description below and see exactly how the result renders — with live warnings before it gets cut off in the wild.</p>
+  </div>
+</header>
+
+<section aria-label="SERP Preview">
+  <div class="wrap" style="max-width: 820px;">
+    <div class="tool-panel reveal">
+      <div class="tool-row">
+        <label class="tool-label" for="sp-title">Title tag</label>
+        <input class="tool-input" id="sp-title" type="text" placeholder="Your page title" value="AEO vs SEO: How to Get Cited by AI Search in 2026">
+        <div class="tool-hint"><span class="tool-count" id="sp-title-c">—</span></div>
+      </div>
+      <div class="tool-row">
+        <label class="tool-label" for="sp-url">URL</label>
+        <input class="tool-input" id="sp-url" type="text" placeholder="https://example.com/page" value="https://khadijazaman.com/blog/get-cited-by-ai-search/">
+      </div>
+      <div class="tool-row">
+        <label class="tool-label" for="sp-desc">Meta description</label>
+        <textarea class="tool-textarea" id="sp-desc" style="min-height:90px;" placeholder="Your meta description">Ranking #1 in Google no longer guarantees you show up in an AI answer. A practical checklist for making your pages retrieval-ready and worth citing.</textarea>
+        <div class="tool-hint"><span class="tool-count" id="sp-desc-c">—</span></div>
+      </div>
+
+      <div class="tool-row" style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+        <span class="tool-label" style="margin:0;">Preview</span>
+        <div class="seg-toggle" id="sp-device"><button type="button" class="active" data-dev="desktop">Desktop</button><button type="button" data-dev="mobile">Mobile</button></div>
+      </div>
+      <div class="tool-output" style="margin-top:0.75rem;">
+        <div class="serp" id="sp-serp">
+          <div class="serp-url" id="sp-serp-url"></div>
+          <div class="serp-title" id="sp-serp-title"></div>
+          <div class="serp-desc" id="sp-serp-desc"></div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:1.75rem; font-size:0.88rem; color:var(--text-2); line-height:1.7;">Rewriting titles and metas across a whole site? That's the kind of at-scale SEO I automate. <a href="/contact/" style="color:#93C5FD; text-decoration:none; font-weight:600;">Let's talk →</a></p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-in">
+    <div class="footer-brand"><a href="/" class="nav-logo">Khadija Zaman</a><p>Marketing Manager — SEO, AI search visibility (GEO/AEO), content strategy, and marketing automation. Karachi, Pakistan · working worldwide.</p></div>
+    <div class="footer-cols">
+      <div class="footer-col"><h5>Site</h5><a href="/about/">About</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/">Contact</a></div>
+      <div class="footer-col"><h5>Work</h5><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
+      <div class="footer-col"><h5>Connect</h5><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a><a href="mailto:khadijarafiqzaman@gmail.com">Email</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Khadija Zaman · Marketing Manager · Karachi, Pakistan</div><div class="footer-copy">Built to be ranked by search engines and cited by answer engines.</div></div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var titleIn = $('sp-title'), urlIn = $('sp-url'), descIn = $('sp-desc');
+  var device = 'desktop';
+  // Pixel limits (approx Google): title ~600px desktop / ~920px is 2 desc lines; mobile title fits fewer px.
+  var LIMITS = { desktop: { title: 600, desc: 990 }, mobile: { title: 460, desc: 840 } };
+  var cnv = document.createElement('canvas'); var ctx = cnv.getContext('2d');
+
+  function px(text, font) { ctx.font = font; return Math.round(ctx.measureText(text).width); }
+  function truncate(text, font, max) {
+    if (px(text, font) <= max) return { text: text, cut: false };
+    var t = text;
+    while (t.length > 1 && px(t + '…', font) > max) t = t.slice(0, -1);
+    return { text: t.replace(/\s+\S*$/, '') + ' …', cut: true };
+  }
+
+  function fmtUrl(u) {
+    try {
+      var url = new URL(u.indexOf('http') === 0 ? u : 'https://' + u);
+      var parts = url.pathname.split('/').filter(Boolean);
+      var crumb = parts.length ? ' › ' + parts.join(' › ') : '';
+      return '<span>' + url.hostname.replace(/^www\./, '') + '</span><span class="path">' + crumb + '</span>';
+    } catch (e) { return u; }
+  }
+
+  function count(el, len, warnAt, badAt, unitPx) {
+    var cls = len > badAt ? 'bad' : len > warnAt ? 'warn' : '';
+    el.className = 'tool-count' + (cls ? ' ' + cls : '');
+    el.textContent = len + (unitPx ? 'px' : ' chars');
+  }
+
+  function render() {
+    var L = LIMITS[device];
+    var titleFont = (device === 'mobile' ? '18px' : '20px') + ' arial, sans-serif';
+    var descFont = '14px arial, sans-serif';
+    var t = titleIn.value || 'Your page title';
+    var d = descIn.value || 'Your meta description will preview here.';
+    var tp = px(t, titleFont), dp = px(d, descFont);
+
+    var tt = truncate(t, titleFont, L.title);
+    var dd = truncate(d, descFont, L.desc);
+    $('sp-serp-url').innerHTML = fmtUrl(urlIn.value || 'https://example.com/page');
+    $('sp-serp-title').textContent = tt.text;
+    $('sp-serp-desc').textContent = dd.text;
+
+    count($('sp-title-c'), tp, L.title - 80, L.title, true);
+    $('sp-title-c').textContent = tp + 'px' + (tt.cut ? ' · will be truncated' : ' · fits');
+    count($('sp-desc-c'), dp, L.desc - 120, L.desc, true);
+    $('sp-desc-c').textContent = dp + 'px' + (dd.cut ? ' · will be truncated' : ' · fits');
+  }
+
+  [titleIn, urlIn, descIn].forEach(function (el) { el.addEventListener('input', render); });
+  $('sp-device').querySelectorAll('button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      $('sp-device').querySelectorAll('button').forEach(function (x) { x.classList.remove('active'); });
+      b.classList.add('active'); device = b.getAttribute('data-dev'); render();
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
