@@ -87,6 +87,8 @@
   <div class="contact-inner wrap">
     <div class="cform reveal d1">
       <form id="contact-form">
+        <!-- Honeypot: hidden from humans, catches bots (Web3Forms filters it) -->
+        <label class="hp-field" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
         <div class="cform-row">
           <div class="fg"><label for="f-name">Your Name</label><input id="f-name" type="text" name="name" placeholder="Jane Smith" required></div>
           <div class="fg"><label for="f-email">Work Email</label><input id="f-email" type="email" name="email" placeholder="jane@company.com" required></div>

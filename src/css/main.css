@@ -406,6 +406,10 @@ section { padding: 108px 6%; }
 .btn-submit { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: #fff; padding: 0.875rem 2.25rem; border-radius: var(--r-sm); font-weight: 700; font-size: 0.92rem; border: none; cursor: pointer; font-family: var(--ff-body); box-shadow: 0 0 32px rgba(59,130,246,0.45); transition: transform 0.2s, box-shadow 0.2s; }
 .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 0 48px rgba(59,130,246,0.65); }
 .form-note { font-size: 0.75rem; color: var(--text-3); }
+.form-status { margin-top: 1.1rem; text-align: center; font-size: 0.85rem; line-height: 1.5; min-height: 1.2em; }
+.form-status.ok  { color: #6EE7B7; }
+.form-status.err { color: #FCA5A5; }
+.hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; width: 0; overflow: hidden; }
 .contact-links { display: flex; justify-content: center; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
 .contact-link { display: flex; align-items: center; gap: 0.5rem; color: var(--text-2); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
 .contact-link:hover { color: var(--text-1); }
