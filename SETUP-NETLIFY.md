@@ -19,21 +19,33 @@ Make sure this branch is pushed to your `KhadijaZaman/portfolio-website` repo. (
    - **Publish directory:** `_site`
 4. Click **Deploy**. In ~1 minute you'll get a live `something.netlify.app` URL. Confirm the site and `/blog/` look right.
 
-## 3. Turn on the CMS login (Netlify Identity + Git Gateway)
+## 3. Turn on the CMS login (GitHub OAuth via Netlify)
 
-The `/admin` editor needs a login provider. Decap is already wired to `git-gateway`, so:
+The `/admin` editor is **Sveltia CMS**, wired to the GitHub backend — you log in
+with your GitHub account, no Netlify Identity needed. GitHub needs one OAuth app,
+and Netlify hosts the OAuth handshake for you:
 
-1. In your site's Netlify dashboard: **Integrations / Identity → Enable Identity.**
-   *(On newer Netlify UIs this may appear under "Add-ons" or you may need to enable the "Identity" beta — it's still available.)*
-2. Under **Identity → Registration**, set it to **Invite only** (so only you can log in).
-3. Under **Identity → Services → Git Gateway**, click **Enable Git Gateway.** This is what lets the CMS commit to GitHub on your behalf.
-4. Under **Identity → Invite users**, invite your own email. Accept the emailed invite and set a password.
+1. **Create a GitHub OAuth app.** GitHub → **Settings → Developer settings →
+   OAuth Apps → New OAuth App**:
+   - **Homepage URL:** `https://khadijazaman.com` (or your `.netlify.app` URL)
+   - **Authorization callback URL:** `https://api.netlify.com/auth/done`
+   - Click **Register**, then **Generate a new client secret**. Copy the
+     **Client ID** and **Client secret**.
+2. **Give Netlify the OAuth app.** Netlify dashboard → **Site configuration →
+   Access & security → OAuth → Install provider → GitHub**, and paste the
+   Client ID + secret from step 1.
+3. That's it — Netlify now brokers the GitHub login for `/admin/`. (Sveltia
+   uses this same Netlify OAuth flow that Decap/Netlify CMS use.)
 
 ## 4. Log in and publish
 
 1. Go to `https://<your-site>/admin/` (or `https://khadijazaman.com/admin/` once the domain is live).
-2. Log in with the Identity account you just created.
+2. Click **Sign in with GitHub** and authorize.
 3. **New Blog post → fill in the fields → Publish.** It commits to `main`; Netlify rebuilds; the post is live in about a minute, and the blog index + sitemap update themselves.
+
+> Editing locally? Run `npx @sveltia/cms-proxy-server` in the repo, then open
+> `http://localhost:8080/admin/` — Sveltia reads/writes your working tree directly
+> (this is what `local_backend: true` in `config.yml` enables).
 
 ## 5. Point your domain
 
@@ -45,7 +57,7 @@ The `/admin` editor needs a login provider. Decap is already wired to `git-gatew
 
 ## Notes & alternatives
 
-- **Cloudflare Pages instead of Netlify?** Same build settings (`npm run build` → `_site`), but the CMS login needs a small GitHub OAuth worker instead of Identity/Git Gateway. Ask and I'll switch `src/admin/config.yml` to the GitHub backend and add the worker.
+- **Cloudflare Pages / Vercel instead of Netlify?** Same build settings (`npm run build` → `_site`). Sveltia's GitHub backend still works — either keep using Netlify's OAuth endpoint (step 3 above) even while hosting elsewhere, or deploy a tiny GitHub OAuth worker. Ask and I'll wire it up.
 - **Prefer reviewing posts before they go live?** In `src/admin/config.yml`, change `publish_mode: simple` to `publish_mode: editorial_workflow` — the CMS then opens a pull request per post instead of committing straight to `main`.
 - **Editor images** upload to `src/static/uploads/` and serve from `/static/uploads/`.
 - **No build step locally?** You don't need one to edit content — the CMS handles it. For dev, `npm install` then `npm run serve`.

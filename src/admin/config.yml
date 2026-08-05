@@ -1,9 +1,15 @@
-# Decap CMS configuration for khadijazaman.com
-# Editor lives at https://khadijazaman.com/admin/ — log in with Netlify Identity.
+# Sveltia CMS configuration for khadijazaman.com
+# Editor lives at https://khadijazaman.com/admin/ — log in with GitHub.
+# Sveltia is a drop-in, Decap/Netlify-CMS-compatible editor (same config format).
 
 backend:
-  name: git-gateway
+  name: github
+  repo: KhadijaZaman/portfolio-website   # owner/repo the CMS commits to
   branch: main
+
+# Lets you run the CMS locally against your working tree:
+#   npx @sveltia/cms-proxy-server   (then open http://localhost:8080/admin/)
+local_backend: true
 
 # Where images uploaded from the editor are stored and served from.
 media_folder: "src/static/uploads"
