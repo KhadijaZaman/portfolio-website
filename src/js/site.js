@@ -252,4 +252,97 @@
       });
     });
   }
+
+  /* ── Hide any GSC-dashboard figure whose image is missing (graceful) ── */
+  document.querySelectorAll('.case-shot img').forEach(function (img) {
+    img.addEventListener('error', function () {
+      var fig = img.closest('.case-shot');
+      if (fig) { fig.style.display = 'none'; }
+    });
+  });
+
+  /* ── Lightbox: click any screenshot to read it full-size ── */
+  (function () {
+    var lb    = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightbox-img');
+    if (!lb || !lbImg) return;
+    function open(src, alt) {
+      lbImg.src = src; lbImg.alt = alt || '';
+      lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true');
+      lbImg.src = ''; document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.proof-shot, .case-shot a').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var href = a.getAttribute('href');
+        if (!href) return;
+        e.preventDefault();
+        var im = a.querySelector('img');
+        open(href, im ? im.alt : '');
+      });
+    });
+    lb.addEventListener('click', function (e) { if (e.target !== lbImg) close(); });
+    var btn = document.getElementById('lightbox-close');
+    if (btn) btn.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lb.classList.contains('open')) close();
+    });
+  })();
+
+  /* ── Recognition carousel (autoplay + arrows + dots) ── */
+  (function () {
+    var ptrack = document.getElementById('proof-track');
+    var car    = document.getElementById('proof-carousel');
+    var dotsW  = document.getElementById('pc-dots');
+    var prev   = document.getElementById('pc-prev');
+    var next   = document.getElementById('pc-next');
+    if (!ptrack || !car) return;
+    var slides = Array.prototype.slice.call(ptrack.querySelectorAll('.proof-shot'));
+    if (!slides.length) return;
+
+    function gap()  { var g = getComputedStyle(ptrack); return parseFloat(g.columnGap || g.gap || 24) || 24; }
+    function step() { return slides[0].getBoundingClientRect().width + gap(); }
+    function maxScroll() { return ptrack.scrollWidth - ptrack.clientWidth - 2; }
+
+    slides.forEach(function (_, i) {
+      var d = document.createElement('button');
+      d.className = 'pc-dot'; d.type = 'button';
+      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.addEventListener('click', function () { ptrack.scrollTo({ left: i * step(), behavior: 'smooth' }); restart(); });
+      dotsW.appendChild(d);
+    });
+    var dots = Array.prototype.slice.call(dotsW.children);
+
+    function update() {
+      var i = Math.round(ptrack.scrollLeft / step());
+      dots.forEach(function (d, k) { d.classList.toggle('active', k === i); });
+      if (prev) prev.disabled = ptrack.scrollLeft <= 2;
+      if (next) next.disabled = ptrack.scrollLeft >= maxScroll();
+    }
+    ptrack.addEventListener('scroll', function () { window.requestAnimationFrame(update); }, { passive: true });
+    if (prev) prev.addEventListener('click', function () { ptrack.scrollBy({ left: -step(), behavior: 'smooth' }); restart(); });
+    if (next) next.addEventListener('click', function () { ptrack.scrollBy({ left:  step(), behavior: 'smooth' }); restart(); });
+
+    var timer = null;
+    function advance() {
+      if (ptrack.scrollLeft >= maxScroll()) ptrack.scrollTo({ left: 0, behavior: 'smooth' });
+      else ptrack.scrollBy({ left: step(), behavior: 'smooth' });
+    }
+    function start() { if (REDUCE) return; stop(); timer = setInterval(advance, 4000); }
+    function stop()  { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', start);
+    car.addEventListener('focusin', stop);
+    car.addEventListener('focusout', start);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { es[0].isIntersecting ? start() : stop(); }).observe(car);
+    } else { start(); }
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
 })();

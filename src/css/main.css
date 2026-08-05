@@ -6,13 +6,14 @@
 
 /* ── DESIGN TOKENS ── */
 :root {
-  --bg-0:         #050709;
-  --bg-1:         #0C1018;
-  --bg-card:      #111827;
-  --bg-card-h:    #151F2E;
+  --bg-0:         #060B12;
+  --bg-1:         #0A1019;
+  --bg-card:      #0F1722;
+  --bg-card-h:    #142233;
   --accent:       #3B82F6;
   --accent-2:     #38BDF8;
-  --accent-3:     #60A5FA;
+  --accent-3:     #93C5FD;
+  --on-accent:    #FFFFFF;
   --accent-glow:  rgba(59,130,246,0.18);
   --text-1:       #F1F5F9;
   --text-2:       #94A3B8;
@@ -550,3 +551,73 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
   .scroll-progress { display: none; }
   html { scroll-behavior: auto; }
 }
+
+/* ── DARK TEXT ON THE LIGHT TEAL ACCENT (contrast) ── */
+.btn-primary, .btn-submit, .nav-cta, .mobile-menu .mob-cta, .newsletter-form button { color: var(--on-accent) !important; }
+
+/* ── GSC DASHBOARD BLOCK (inside featured case) ── */
+.case-growth { margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }
+.case-growth-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: #93C5FD; font-weight: 700; margin-bottom: 1rem; }
+.case-growth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.case-shot { margin: 0; border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden; background: var(--bg-card); transition: border-color 0.25s, transform 0.25s; }
+.case-shot:hover { border-color: var(--border-a); transform: translateY(-3px); }
+.case-shot a { display: block; cursor: zoom-in; text-decoration: none; color: var(--text-3); }
+.case-shot img { display: block; width: 100%; height: auto; }
+.case-shot figcaption { font-size: 0.75rem; color: var(--text-3); padding: 0.7rem 0.95rem; line-height: 1.55; }
+@media (max-width: 768px) { .case-growth-grid { grid-template-columns: 1fr; } }
+
+/* ── RECOGNITION CAROUSEL ── */
+.proof-carousel { position: relative; }
+.proof-track {
+  display: flex; gap: 1.5rem; overflow-x: auto;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  -ms-overflow-style: none; scrollbar-width: none;
+  padding: 0.25rem; outline: none;
+}
+.proof-track::-webkit-scrollbar { display: none; }
+.proof-track > .proof-shot { flex: 0 0 calc(50% - 0.75rem); scroll-snap-align: start; }
+@media (max-width: 768px) { .proof-track > .proof-shot { flex: 0 0 100%; } }
+.pc-arrow {
+  position: absolute; top: 38%; transform: translateY(-50%); z-index: 5;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: rgba(15,23,34,0.88); border: 1px solid var(--border-a);
+  color: #fff; font-size: 1.7rem; line-height: 1; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, transform 0.2s, opacity 0.2s;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.pc-arrow:hover { background: var(--accent); color: var(--on-accent); transform: translateY(-50%) scale(1.08); }
+.pc-arrow:disabled { opacity: 0.3; cursor: default; }
+.pc-prev { left: -8px; } .pc-next { right: -8px; }
+@media (max-width: 600px) { .pc-arrow { display: none; } }
+.pc-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; }
+.pc-dot { width: 8px; height: 8px; border-radius: 50%; padding: 0; border: none; background: var(--border-a); cursor: pointer; transition: background 0.25s, width 0.25s; }
+.pc-dot.active { background: var(--accent); width: 22px; border-radius: 100px; }
+
+/* Proof shots become zoomable tiles */
+.proof-shot { position: relative; cursor: zoom-in; }
+.proof-shot::after {
+  content: '⤢ Click to enlarge';
+  position: absolute; bottom: 0.5rem; right: 0.5rem;
+  font-size: 0.68rem; font-weight: 600; color: #fff;
+  background: rgba(5,7,9,0.78); border: 1px solid var(--border-a);
+  padding: 0.25rem 0.6rem; border-radius: 100px;
+  opacity: 0; transition: opacity 0.2s; pointer-events: none;
+}
+.proof-shot:hover::after { opacity: 1; }
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 500; display: none;
+  align-items: center; justify-content: center;
+  background: rgba(5,7,9,0.93); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  padding: 4vmin; cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 96%; max-height: 92vh; width: auto; height: auto;
+  border-radius: 10px; border: 1px solid var(--border-a);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.65); cursor: default;
+}
+.lightbox-close { position: absolute; top: 16px; right: 22px; font-size: 2.2rem; line-height: 1; color: #fff; background: none; border: none; cursor: pointer; opacity: 0.85; }
+.lightbox-close:hover { opacity: 1; }
