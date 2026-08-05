@@ -52,6 +52,12 @@
 
 <a class="skip-nav" href="#main-content">Skip to main content</a>
 
+<!-- Lightbox overlay (click any screenshot to read full-size) -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <nav aria-label="Main navigation">
   <a href="/" class="nav-logo">Khadija Zaman</a>
   <ul class="nav-links">
@@ -103,6 +109,19 @@
           <li><b>Citation experiments.</b> Grounded vs. non-grounded tests tracking explicit and implicit AI visibility.</li>
           <li><b>Tool- &amp; community-led.</b> Three AI tools as LLM entry points; AEO across Reddit, Quora, G2; n8n + GA4 reporting.</li>
         </ul>
+        <div class="case-growth">
+          <div class="case-growth-label">Traffic Growth · GSC-verified</div>
+          <div class="case-growth-grid">
+            <figure class="case-shot">
+              <a href="/static/uploads/gsctrafficgrowth.png" target="_blank" rel="noopener"><img src="/static/uploads/gsctrafficgrowth.png" alt="Google Search Console: 7.27K clicks and 3.78M impressions over the last 3 months, average position improving from 28.9 to 17.3" loading="lazy"></a>
+              <figcaption>7.27K clicks · 3.78M impressions · avg. position 28.9 → 17.3 (last 3 months vs. previous)</figcaption>
+            </figure>
+            <figure class="case-shot">
+              <a href="/static/uploads/gscyearoveryear.jpg" target="_blank" rel="noopener"><img src="/static/uploads/gscyearoveryear.jpg" alt="Google Search Console year over year: clicks 10.7K to 23.6K and impressions 275K to 928K, 2025 vs 2024" loading="lazy"></a>
+              <figcaption>Year over year: 10.7K → 23.6K clicks · 275K → 928K impressions (2025 vs. 2024)</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
 
       <!-- Case: GEO/AEO Wellows -->
@@ -168,36 +187,36 @@
     <h2 class="sec-h2 reveal d1">What the numbers looked like when they landed</h2>
     <p class="sec-lead reveal d2">Rankings reclaimed, tools launched, links earned, and traffic moved — straight from GSC, Ahrefs, and the team channel.</p>
 
-    <div class="proof-grid">
-      <a class="proof-shot reveal" href="/static/uploads/recognition/ranking-query-fan-out.png" target="_blank" rel="noopener">
-        <img src="/static/uploads/recognition/ranking-query-fan-out.png" alt="Wellows ranking #1 for ‘query fan-out generator’, surpassing competitors" loading="lazy">
-      </a>
-      <a class="proof-shot reveal d1" href="/static/uploads/recognition/llm-query-builder-launch.png" target="_blank" rel="noopener">
-        <img src="/static/uploads/recognition/llm-query-builder-launch.png" alt="LLM Query Builder by Wellows pre-launch dashboard" loading="lazy">
-      </a>
-      <a class="proof-shot reveal d2" href="/static/uploads/recognition/traffic-growth.png" target="_blank" rel="noopener">
-        <img src="/static/uploads/recognition/traffic-growth.png" alt="Organic traffic growth from 15,623 to 21,569" loading="lazy">
-      </a>
-      <a class="proof-shot reveal" href="/static/uploads/recognition/dr-83-backlink.png" target="_blank" rel="noopener">
-        <img src="/static/uploads/recognition/dr-83-backlink.png" alt="DR 83 natural backlink earned" loading="lazy">
-      </a>
-      <a class="proof-shot reveal d1" href="/static/uploads/recognition/gsc-regex-workflow.png" target="_blank" rel="noopener">
-        <img src="/static/uploads/recognition/gsc-regex-workflow.png" alt="GSC custom regex workflow for optimizing landing pages against real search queries" loading="lazy">
-      </a>
-      <a class="proof-shot reveal d2" href="/static/uploads/recognition/allaboutai-authority-link-1.png" target="_blank" rel="noopener">
-        <img src="/static/uploads/recognition/allaboutai-authority-link-1.png" alt="High-authority link placement from allaboutai.com" loading="lazy">
-      </a>
-      <a class="proof-shot reveal" href="/static/uploads/recognition/allaboutai-authority-link-2.png" target="_blank" rel="noopener">
-        <img src="/static/uploads/recognition/allaboutai-authority-link-2.png" alt="High-authority link placement from allaboutai.com" loading="lazy">
-      </a>
-      <a class="proof-shot reveal d1" href="/static/uploads/recognition/allaboutai-authority-link-3.png" target="_blank" rel="noopener">
-        <img src="/static/uploads/recognition/allaboutai-authority-link-3.png" alt="High-authority link placement from allaboutai.com" loading="lazy">
-      </a>
-    </div>
-
-    <div class="draft-note reveal" style="max-width:none;margin-top:2.5rem;">
-      <span aria-hidden="true">✎</span>
-      <div><strong>Add your screenshots.</strong> Drop the recognition images into <code>src/static/uploads/recognition/</code> using the filenames above (or upload them through <code>/admin</code>). Any tile without an image hides itself automatically, so the grid never shows a broken image.</div>
+    <div class="proof-carousel reveal d1" id="proof-carousel">
+      <button class="pc-arrow pc-prev" id="pc-prev" type="button" aria-label="Previous wins">‹</button>
+      <div class="proof-track" id="proof-track" tabindex="0" aria-label="Recognition screenshots, scrollable">
+        <a class="proof-shot" href="/static/uploads/recognition/ranking-query-fan-out.png" target="_blank" rel="noopener">
+          <img src="/static/uploads/recognition/ranking-query-fan-out.png" alt="Wellows ranking #1 for ‘query fan-out generator’, surpassing competitors" loading="lazy">
+        </a>
+        <a class="proof-shot" href="/static/uploads/recognition/llm-query-builder-launch.png" target="_blank" rel="noopener">
+          <img src="/static/uploads/recognition/llm-query-builder-launch.png" alt="LLM Query Builder by Wellows pre-launch dashboard" loading="lazy">
+        </a>
+        <a class="proof-shot" href="/static/uploads/recognition/traffic-growth.png" target="_blank" rel="noopener">
+          <img src="/static/uploads/recognition/traffic-growth.png" alt="Organic traffic growth from 15,623 to 21,569" loading="lazy">
+        </a>
+        <a class="proof-shot" href="/static/uploads/recognition/dr-83-backlink.png" target="_blank" rel="noopener">
+          <img src="/static/uploads/recognition/dr-83-backlink.png" alt="DR 83 natural backlink earned" loading="lazy">
+        </a>
+        <a class="proof-shot" href="/static/uploads/recognition/gsc-regex-workflow.png" target="_blank" rel="noopener">
+          <img src="/static/uploads/recognition/gsc-regex-workflow.png" alt="GSC custom regex workflow for optimizing landing pages against real search queries" loading="lazy">
+        </a>
+        <a class="proof-shot" href="/static/uploads/recognition/allaboutai-authority-link-1.png" target="_blank" rel="noopener">
+          <img src="/static/uploads/recognition/allaboutai-authority-link-1.png" alt="High-authority link placement from allaboutai.com" loading="lazy">
+        </a>
+        <a class="proof-shot" href="/static/uploads/recognition/allaboutai-authority-link-2.png" target="_blank" rel="noopener">
+          <img src="/static/uploads/recognition/allaboutai-authority-link-2.png" alt="High-authority link placement from allaboutai.com" loading="lazy">
+        </a>
+        <a class="proof-shot" href="/static/uploads/recognition/allaboutai-authority-link-3.png" target="_blank" rel="noopener">
+          <img src="/static/uploads/recognition/allaboutai-authority-link-3.png" alt="High-authority link placement from allaboutai.com" loading="lazy">
+        </a>
+      </div>
+      <button class="pc-arrow pc-next" id="pc-next" type="button" aria-label="Next wins">›</button>
+      <div class="pc-dots" id="pc-dots" aria-hidden="true"></div>
     </div>
   </div>
 </section>
