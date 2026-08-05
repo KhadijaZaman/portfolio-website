@@ -10,10 +10,10 @@
      leave blank and the site still works (forms fall back to email,
      analytics simply doesn't load).
   ═══════════════════════════════════════════════════════════ */
-  var WEB3FORMS_KEY   = '';   // free access key from https://web3forms.com
+  var WEB3FORMS_KEY   = '0ca2b384-dbcd-4977-a41a-5f2d1a6c2abb';   // free access key from https://web3forms.com
   var GA_MEASUREMENT_ID = ''; // e.g. 'G-XXXXXXXXXX' from Google Analytics 4
 
-  var CONTACT_EMAIL = 'khadijarafiqzaman@gmail.com';
+  var CONTACT_EMAIL = 'hello@khadijazaman.com';
 
   /* ── Google Analytics 4 (loads on every page, only if an ID is set) ── */
   if (/^G-\w+$/.test(GA_MEASUREMENT_ID)) {
