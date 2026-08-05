@@ -11,7 +11,7 @@
      analytics simply doesn't load).
   ═══════════════════════════════════════════════════════════ */
   var WEB3FORMS_KEY   = '0ca2b384-dbcd-4977-a41a-5f2d1a6c2abb';   // free access key from https://web3forms.com
-  var GA_MEASUREMENT_ID = ''; // e.g. 'G-XXXXXXXXXX' from Google Analytics 4
+  var GA_MEASUREMENT_ID = 'G-9TD8PYD30L'; // e.g. 'G-XXXXXXXXXX' from Google Analytics 4
 
   var CONTACT_EMAIL = 'hello@khadijazaman.com';
 
