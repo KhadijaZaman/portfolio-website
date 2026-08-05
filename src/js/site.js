@@ -5,6 +5,52 @@
 (function () {
   'use strict';
 
+  /* ═══════════════════════════════════════════════════════════
+     CONFIG — fill these two in, then redeploy. Both are optional:
+     leave blank and the site still works (forms fall back to email,
+     analytics simply doesn't load).
+  ═══════════════════════════════════════════════════════════ */
+  var WEB3FORMS_KEY   = '';   // free access key from https://web3forms.com
+  var GA_MEASUREMENT_ID = ''; // e.g. 'G-XXXXXXXXXX' from Google Analytics 4
+
+  var CONTACT_EMAIL = 'khadijarafiqzaman@gmail.com';
+
+  /* ── Google Analytics 4 (loads on every page, only if an ID is set) ── */
+  if (/^G-\w+$/.test(GA_MEASUREMENT_ID)) {
+    var ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+    document.head.appendChild(ga);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID);
+  }
+
+  /* Show a small status line under a form. */
+  function setStatus(form, message, ok) {
+    var el = form.querySelector('.form-status');
+    if (!el) {
+      el = document.createElement('div');
+      el.className = 'form-status';
+      el.setAttribute('role', 'status');
+      el.setAttribute('aria-live', 'polite');
+      form.appendChild(el);
+    }
+    el.textContent = message;
+    el.className = 'form-status' + (ok === true ? ' ok' : ok === false ? ' err' : '');
+  }
+
+  /* POST a form to Web3Forms. Returns a promise. */
+  function submitWeb3Forms(form, extra) {
+    var data = new FormData(form);
+    data.append('access_key', WEB3FORMS_KEY);
+    Object.keys(extra || {}).forEach(function (k) { data.append(k, extra[k]); });
+    return fetch('https://api.web3forms.com/submit', {
+      method: 'POST', headers: { 'Accept': 'application/json' }, body: data
+    }).then(function (r) { return r.json(); });
+  }
+
   /* ── Scroll-reveal ── */
   var reveals = document.querySelectorAll('.reveal');
   if (reveals.length) {
@@ -52,40 +98,88 @@
     });
   }
 
-  /* ── Contact form → mailto ── */
+  /* ── Contact form → Web3Forms (falls back to mailto if no key) ── */
   var contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
       var f = e.target;
-      var name   = (f.name    && f.name.value    || '').trim();
-      var email  = (f.email   && f.email.value   || '').trim();
-      var intent = (f.intent  && f.intent.value  || '');
-      var msg    = (f.message && f.message.value || '').trim();
-      var subject = encodeURIComponent('Website enquiry' + (intent ? ': ' + intent : ''));
-      var body = encodeURIComponent(
-        'Name: '  + name  + '\n' +
-        'Email: ' + email + '\n' +
-        (intent ? 'Looking for: ' + intent + '\n' : '') +
-        (msg ? '\n' + msg + '\n' : '')
-      );
-      window.location.href = 'mailto:khadijarafiqzaman@gmail.com?subject=' + subject + '&body=' + body;
+      var intent = (f.intent && f.intent.value) || '';
+
+      if (!WEB3FORMS_KEY) {
+        e.preventDefault();
+        var name  = (f.name  && f.name.value  || '').trim();
+        var email = (f.email && f.email.value || '').trim();
+        var msg   = (f.message && f.message.value || '').trim();
+        var subject = encodeURIComponent('Website enquiry' + (intent ? ': ' + intent : ''));
+        var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n' +
+          (intent ? 'Looking for: ' + intent + '\n' : '') + (msg ? '\n' + msg + '\n' : ''));
+        window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
+        var mb = f.querySelector('.btn-submit');
+        if (mb) { var mt = mb.textContent; mb.textContent = 'Opening your email client…'; setTimeout(function () { mb.textContent = mt; }, 3000); }
+        return;
+      }
+
+      e.preventDefault();
       var btn = f.querySelector('.btn-submit');
-      if (btn) { var t = btn.textContent; btn.textContent = 'Opening your email client…'; setTimeout(function () { btn.textContent = t; }, 3000); }
+      var orig = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+      setStatus(f, '', null);
+
+      submitWeb3Forms(f, {
+        subject: 'New enquiry from khadijazaman.com' + (intent ? ' — ' + intent : ''),
+        from_name: 'khadijazaman.com'
+      }).then(function (json) {
+        if (json && json.success) {
+          f.reset();
+          if (btn) btn.textContent = 'Sent ✓';
+          setStatus(f, 'Thanks — your message is in. I respond within 24–48 hours.', true);
+          if (window.gtag) window.gtag('event', 'generate_lead', { form: 'contact' });
+          setTimeout(function () { if (btn) { btn.textContent = orig; btn.disabled = false; } }, 4000);
+        } else { throw new Error((json && json.message) || 'Submission failed'); }
+      }).catch(function () {
+        if (btn) { btn.textContent = orig; btn.disabled = false; }
+        setStatus(f, 'Something went wrong. Please email ' + CONTACT_EMAIL + ' directly.', false);
+      });
     });
   }
 
-  /* ── Newsletter form (placeholder → mailto until an ESP is wired) ── */
+  /* ── Newsletter form → Web3Forms (falls back to mailto if no key) ── */
   var newsForm = document.getElementById('newsletter-form');
   if (newsForm) {
     newsForm.addEventListener('submit', function (e) {
-      e.preventDefault();
       var email = (newsForm.querySelector('input[type="email"]') || {}).value || '';
-      window.location.href = 'mailto:khadijarafiqzaman@gmail.com?subject=' +
-        encodeURIComponent('Newsletter subscribe') +
-        '&body=' + encodeURIComponent('Please add me to the newsletter: ' + email);
+
+      if (!WEB3FORMS_KEY) {
+        e.preventDefault();
+        window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' +
+          encodeURIComponent('Newsletter subscribe') +
+          '&body=' + encodeURIComponent('Please add me to the newsletter: ' + email);
+        var nb = newsForm.querySelector('button');
+        if (nb) { nb.textContent = 'Opening email…'; }
+        return;
+      }
+
+      e.preventDefault();
       var btn = newsForm.querySelector('button');
-      if (btn) { btn.textContent = 'Opening email…'; }
+      var orig = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
+      setStatus(newsForm, '', null);
+
+      submitWeb3Forms(newsForm, {
+        subject: 'Newsletter subscribe — khadijazaman.com',
+        from_name: 'khadijazaman.com newsletter'
+      }).then(function (json) {
+        if (json && json.success) {
+          newsForm.reset();
+          if (btn) btn.textContent = 'Subscribed ✓';
+          setStatus(newsForm, "You're on the list. Thanks for subscribing.", true);
+          if (window.gtag) window.gtag('event', 'sign_up', { form: 'newsletter' });
+          setTimeout(function () { if (btn) { btn.textContent = orig; btn.disabled = false; } }, 4000);
+        } else { throw new Error((json && json.message) || 'Submission failed'); }
+      }).catch(function () {
+        if (btn) { btn.textContent = orig; btn.disabled = false; }
+        setStatus(newsForm, 'Something went wrong — please try again.', false);
+      });
     });
   }
 

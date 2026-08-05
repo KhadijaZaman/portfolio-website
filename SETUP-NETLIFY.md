@@ -55,7 +55,32 @@ and Netlify hosts the OAuth handshake for you:
 
 ---
 
+## Turn on the contact form + analytics
+
+Both are one-line toggles at the top of `src/js/site.js`:
+
+```js
+var WEB3FORMS_KEY     = '';   // paste your free key from https://web3forms.com
+var GA_MEASUREMENT_ID = '';   // paste your GA4 ID, e.g. 'G-XXXXXXXXXX'
+```
+
+- **Contact + newsletter forms:** with no key they open the visitor's email app
+  (works, but clunky). Paste a free **Web3Forms** access key and both forms
+  submit inline with success/error states and a spam honeypot — messages arrive
+  in your inbox, no backend to run.
+- **Analytics:** paste a **Google Analytics 4** Measurement ID and GA loads on
+  every page (home, about, work, tools, blog, contact). Leave it blank and no
+  analytics loads. Prefer privacy-first? Swap the GA snippet for Plausible — ask
+  and I'll wire it.
+
+Commit the change and redeploy; it applies site-wide.
+
 ## Notes & alternatives
+
+- **Hosting somewhere other than Netlify (Cloudflare Pages / Vercel)?** The CMS
+  login needs an OAuth broker. `oauth-worker/` contains a ready-to-deploy
+  Cloudflare Worker + instructions — deploy it and point `base_url` in
+  `src/admin/config.yml` at it.
 
 - **Cloudflare Pages / Vercel instead of Netlify?** Same build settings (`npm run build` → `_site`). Sveltia's GitHub backend still works — either keep using Netlify's OAuth endpoint (step 3 above) even while hosting elsewhere, or deploy a tiny GitHub OAuth worker. Ask and I'll wire it up.
 - **Prefer reviewing posts before they go live?** In `src/admin/config.yml`, change `publish_mode: simple` to `publish_mode: editorial_workflow` — the CMS then opens a pull request per post instead of committing straight to `main`.
