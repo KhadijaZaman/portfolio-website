@@ -89,6 +89,54 @@
     });
   }
 
+  var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── Scroll progress bar (injected once, works on every page) ── */
+  if (!REDUCE) {
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    var barTicking = false;
+    var updateBar = function () {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      var p = max > 0 ? h.scrollTop / max : 0;
+      bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+      barTicking = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (!barTicking) { barTicking = true; requestAnimationFrame(updateBar); }
+    }, { passive: true });
+    updateBar();
+  }
+
+  /* ── Seamless marquee (duplicate track content for a -50% loop) ── */
+  var track = document.getElementById('marquee-track');
+  if (track) { track.innerHTML += track.innerHTML; }
+
+  /* ── Magnetic buttons ── */
+  if (!REDUCE && window.matchMedia('(pointer: fine)').matches) {
+    var STRENGTH = 0.28;
+    document.querySelectorAll('.btn-primary, .btn-ghost, .btn-submit, .nav-cta').forEach(function (btn) {
+      btn.addEventListener('mousemove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width / 2) * STRENGTH;
+        var y = (e.clientY - r.top - r.height / 2) * STRENGTH;
+        btn.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function () { btn.style.transform = ''; });
+    });
+  }
+
+  /* ── Hide any recognition tile whose screenshot is missing (graceful) ── */
+  document.querySelectorAll('.proof-shot img').forEach(function (img) {
+    img.addEventListener('error', function () {
+      var tile = img.closest('.proof-shot');
+      if (tile) { tile.style.display = 'none'; }
+    });
+  });
+
   /* ── 3D card tilt (hover) ── */
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.querySelectorAll('.exp-card, .case-card, .tool-card, .post-card, .stat-chip').forEach(function (card) {
