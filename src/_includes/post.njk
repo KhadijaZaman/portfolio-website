@@ -33,7 +33,12 @@ ogType: article
 </header>
 
 <article aria-label="Article">
-  <div class="wrap">
+  <div class="wrap post-layout">
+    <aside class="toc" id="toc" aria-label="Table of contents">
+      <div class="toc-title">In this article</div>
+      <ul id="toc-list"></ul>
+    </aside>
+
     <div class="prose">
       {% if starter %}
       <div class="draft-note">
@@ -42,6 +47,39 @@ ogType: article
       </div>
       {% endif %}
       {{ content | safe }}
+
+      <!-- Author bio -->
+      <div class="author-box">
+        <img class="author-avatar" src="https://cdn.builder.io/api/v1/image/assets%2F6712fcfd62e34922a6872f22e2c0f5c7%2Fa469fddeacc34c939bf9655839f510d0?format=webp&width=200&height=200" alt="Khadija Zaman" width="72" height="72" loading="lazy">
+        <div class="author-meta">
+          <div class="author-name">Khadija Zaman</div>
+          <p>SEO &amp; GEO/AEO specialist and Marketing Manager at Wellows — I get brands ranked on Google and cited by ChatGPT, Gemini, and Perplexity, then automate the execution.</p>
+          <div class="author-links">
+            <a href="/about/">More about me →</a>
+            <a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="{{ site.github }}" target="_blank" rel="noopener">GitHub</a>
+            <a href="/contact/">Work together</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Read next -->
+  {% set nextPosts = collections.posts | relatedByCategory(page.url, category) | limit(2) %}
+  {% if nextPosts.length %}
+  <div class="wrap read-next">
+    <h2 class="read-next-title">Read next</h2>
+    <div class="post-grid">
+      {% for post in nextPosts %}
+      <a class="post-card" href="{{ post.url }}">
+        <div class="post-meta"><span class="post-cat">{{ post.data.category }}</span><span class="post-date">{{ post.data.date | readableDate }} · {{ post.data.readTime }}</span></div>
+        <h3>{{ post.data.title }}</h3>
+        <p>{{ post.data.description }}</p>
+        <span class="post-more">Read the post →</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
 </article>

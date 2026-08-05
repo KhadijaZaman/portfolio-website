@@ -40,7 +40,7 @@
     "jobTitle": "Marketing Manager",
     "worksFor": { "@type": "Organization", "name": "Wellows" },
     "address": { "@type": "PostalAddress", "addressLocality": "Karachi", "addressCountry": "PK" },
-    "sameAs": ["https://www.linkedin.com/in/khadija-zaman-2628751b1/"],
+    "sameAs": ["https://www.linkedin.com/in/khadija-zaman-2628751b1/", "https://github.com/KhadijaZaman"],
     "knowsAbout": ["Search Engine Optimization", "Generative Engine Optimization", "Answer Engine Optimization", "Content Strategy", "Marketing Automation", "Semantic SEO"]
   }
   </script>
@@ -85,6 +85,12 @@
 <body>
 
 <a class="skip-nav" href="#main-content">Skip to main content</a>
+
+<!-- Lightbox overlay (click any screenshot to read full-size) -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <!-- ══════════════ NAV ══════════════ -->
 <nav aria-label="Main navigation">
@@ -218,6 +224,19 @@
           <li><b>Citation experiments.</b> Grounded vs. non-grounded tests tracking explicit and implicit AI visibility.</li>
           <li><b>Tool- &amp; community-led.</b> Three AI tools as LLM entry points; AEO across Reddit, Quora, G2; n8n + GA4 reporting.</li>
         </ul>
+        <div class="case-growth">
+          <div class="case-growth-label">Traffic Growth · GSC-verified</div>
+          <div class="case-growth-grid">
+            <figure class="case-shot">
+              <a href="/static/uploads/gsctrafficgrowth.png" target="_blank" rel="noopener"><img src="/static/uploads/gsctrafficgrowth.png" alt="Google Search Console: 7.27K clicks and 3.78M impressions over the last 3 months, average position improving from 28.9 to 17.3" loading="lazy"></a>
+              <figcaption>7.27K clicks · 3.78M impressions · avg. position 28.9 → 17.3 (last 3 months vs. previous)</figcaption>
+            </figure>
+            <figure class="case-shot">
+              <a href="/static/uploads/gscyearoveryear.jpg" target="_blank" rel="noopener"><img src="/static/uploads/gscyearoveryear.jpg" alt="Google Search Console year over year: clicks 10.7K to 23.6K and impressions 275K to 928K, 2025 vs 2024" loading="lazy"></a>
+              <figcaption>Year over year: 10.7K → 23.6K clicks · 275K → 928K impressions (2025 vs. 2024)</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </div>
     <div class="work-teaser-foot reveal d1">
@@ -239,6 +258,27 @@
       <div class="tool-card reveal d1"><div class="tool-badge">AI Search · 149 Users</div><h3>LLM Query Builder</h3><p>Constructs optimized query structures for LLM-based SEO research and entity mapping. Built for practitioners who need to work with AI retrieval systematically, not ad hoc.</p><a href="/tools/" class="tool-link">Explore the tools →</a></div>
       <div class="tool-card reveal d2"><div class="tool-badge">669 Users · 60–72% Engagement</div><h3>AI Humanizer</h3><p>Transforms AI-generated drafts into content that reads naturally, holds topical depth, and aligns with how LLMs evaluate quality signals. Users work with it, not through it.</p><a href="/tools/" class="tool-link">Explore the tools →</a></div>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════ LATEST FROM THE BLOG ══════════════ -->
+<section aria-label="Latest from the blog" style="background: var(--bg-1);">
+  <div class="wrap">
+    <div class="sec-tag reveal">From the Blog</div>
+    <h2 class="sec-h2 reveal d1">Field notes on SEO &amp; AI search</h2>
+    <p class="sec-lead reveal d2">Practical breakdowns on ranking in Google, getting cited by ChatGPT, Gemini, and Perplexity, and the automations that make it repeatable.</p>
+    <!-- Auto-updating: shows the 3 newest posts from src/posts/ automatically. -->
+    <div class="post-grid">
+      {% for post in collections.posts | limit(3) %}
+      <a class="post-card reveal{% if loop.index0 == 1 %} d1{% elif loop.index0 == 2 %} d2{% endif %}" href="{{ post.url }}">
+        <div class="post-meta"><span class="post-cat">{{ post.data.category }}</span><span class="post-date">{{ post.data.date | readableDate }} · {{ post.data.readTime }}</span></div>
+        <h3>{{ post.data.title }}</h3>
+        <p>{{ post.data.description }}</p>
+        <span class="post-more">Read the post →</span>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="latest-foot reveal d1"><a href="/blog/" class="btn-ghost">See all posts →</a></div>
   </div>
 </section>
 
@@ -283,7 +323,7 @@
     <div class="footer-cols">
       <div class="footer-col"><h5>Site</h5><a href="/about/">About</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/">Contact</a></div>
       <div class="footer-col"><h5>Work</h5><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
-      <div class="footer-col"><h5>Connect</h5><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="mailto:khadijarafiqzaman@gmail.com">Email</a></div>
+      <div class="footer-col"><h5>Connect</h5><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a><a href="mailto:khadijarafiqzaman@gmail.com">Email</a></div>
     </div>
   </div>
   <div class="footer-bottom">
@@ -293,6 +333,7 @@
 </footer>
 
 <script src="/js/site.js" defer></script>
+{% raw %}
 <script>
 /* ── Home-only 3D canvas scenes (self-contained, no CDN) ── */
 (function () {
@@ -387,5 +428,6 @@
   ]);
 })();
 </script>
+{% endraw %}
 </body>
 </html>
