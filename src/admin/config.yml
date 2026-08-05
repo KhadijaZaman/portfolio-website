@@ -6,6 +6,8 @@ backend:
   name: github
   repo: KhadijaZaman/portfolio-website   # owner/repo the CMS commits to
   branch: main
+  base_url: https://khadijazaman-cms-auth.khadijazaman.workers.dev
+  auth_endpoint: /auth
 
 # Lets you run the CMS locally against your working tree:
 #   npx @sveltia/cms-proxy-server   (then open http://localhost:8080/admin/)
