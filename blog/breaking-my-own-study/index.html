@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Tried to Break My Own AI Study. 2 Findings Failed.</title>
+  <meta name="description" content="How I rebuilt my cross-engine AI citation study from scratch, ran it against a permutation null, and retracted two headline findings that didn&#39;t hold up.">
+  <link rel="canonical" href="https://khadijazaman.com/blog/breaking-my-own-study/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Khadija Zaman">
+  <meta property="og:title" content="I Built a Test Designed to Break My Own Study. Two Findings Didn&#39;t Survive.">
+  <meta property="og:description" content="How I rebuilt my cross-engine AI citation study from scratch, ran it against a permutation null, and retracted two headline findings that didn&#39;t hold up.">
+  <meta property="og:url" content="https://khadijazaman.com/blog/breaking-my-own-study/">
+  <meta property="og:image" content="https://khadijazaman.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://khadijazaman.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Khadija Zaman — Blog" href="/feed.xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap"></noscript>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<a class="skip-nav" href="#main-content">Skip to main content</a>
+
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-logo">Khadija Zaman</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/about/">About</a></li>
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/contact/" class="nav-cta">Work Together →</a></li>
+  </ul>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+</nav>
+
+<main id="main-content">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"I Built a Test Designed to Break My Own Study. Two Findings Didn't Survive.","description":"How I rebuilt my cross-engine AI citation study from scratch, ran it against a permutation null, and retracted two headline findings that didn't hold up.","datePublished":"2026-08-03","author":{"@type":"Person","name":"Khadija Zaman","url":"https://khadijazaman.com/"},"publisher":{"@type":"Person","name":"Khadija Zaman"},"mainEntityOfPage":"https://khadijazaman.com/blog/breaking-my-own-study/","image":"https://khadijazaman.com/web-app-manifest-512x512.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://khadijazaman.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://khadijazaman.com/blog/"},{"@type":"ListItem","position":3,"name":"I Built a Test Designed to Break My Own Study. Two Findings Didn't Survive.","item":"https://khadijazaman.com/blog/breaking-my-own-study/"}]}</script>
+
+<header class="page-hero">
+  <div class="page-hero-orb" aria-hidden="true"></div>
+  <div class="wrap" style="max-width:760px;">
+    <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a> <span>/</span> I Built a Test Designed to Break My Own Study. Two Findings Didn&#39;t Survive.</nav>
+    <div class="post-meta reveal"><span class="post-cat">AI Search</span><span class="post-date">3 Aug 2026 · 9 min read · by Khadija Zaman</span></div>
+    <h1 class="reveal d1">I Built a Test Designed to Break My Own Study. Two Findings Didn&#39;t Survive.</h1>
+  </div>
+</header>
+
+<article aria-label="Article">
+  <div class="wrap post-layout">
+    <aside class="toc" id="toc" aria-label="Table of contents">
+      <div class="toc-title">In this article</div>
+      <ul id="toc-list"></ul>
+    </aside>
+
+    <div class="prose">
+      
+      <p><strong>Case study — Cross-engine AI citation research, January to June 2026</strong></p>
+<p>The study this is about: <a href="https://wellows.com/blog/ai-citation-overlap-study/">Cross-engine AI citation overlap study</a>, published on the Wellows blog.</p>
+<p>The study went live on 29 July 2026. By 3 August I had rewritten it twelve times, retracted two of its headline findings, corrected a false claim about where the data came from, and published all of it on the same page as the original numbers.</p>
+<p>This is the record of how that happened and what the process was.</p>
+<h2>The starting point</h2>
+<p>The study measured how often five AI engines cite the same source when answering the same question. ChatGPT, Gemini, Perplexity, Google AI Overviews and Google AI Mode, six months of data, drawn from Wellows' internal citation dataset.</p>
+<p>The raw pool was 22,749,707 citations across 1,146,483 questions and 441,946 websites. After dropping blank-domain rows and keeping only questions all five engines answered, the analysis base came to 531,889 questions, 13,037,251 citations, 280,245 websites and 8,729,964 engine-pair comparisons.</p>
+<p>The headline: 79.61% of cited websites appeared on one engine only. The full distribution ran 79.61 / 14.47 / 4.36 / 1.25 / 0.31 across one to five engines.</p>
+<p>Two other findings sat underneath it. Brands co-occurred across engines 4.5 times more often than pages did, so brand looked like the durable layer. And the two Google surfaces agreed 3.4 times more than cross-company pairs, so shared infrastructure looked like the driver.</p>
+<p>Both of those are now retracted. The 79.6% still stands.</p>
+<h2>Why verification became the project</h2>
+<p>Kevin Indig published a similar analysis in his Growth Memo on 18 May 2026 and landed at 91% single-engine across three engines. Ahrefs put AI Overviews and AI Mode URL overlap at 13.7%. SE Ranking put it at 10.7%. My equivalent figure was 24.5%, roughly double both of them.</p>
+<p>That gap is what started the verification work. If my number is the outlier, either everyone else is measuring something narrower or I am measuring something wrong, and I could not tell which without rebuilding the method from scratch.</p>
+<p>The rebuild took three weeks. It found problems I was not looking for.</p>
+<h2>The framework: six passes, in order</h2>
+<p>Each pass asks a different question. None of them substitutes for another, which is the part I got wrong for the first two weeks.</p>
+<p><img src="/static/uploads/fig-2-six-pass-framework.png" alt="Six verification passes in sequence, with what each one caught. Passes 1, 2, 3, 5 and 6 caught errors. Pass 4 confirmed a finding held."></p>
+<p><strong>Pass 1. Pin the definitions.</strong> Before running anything, write down every filter, every normalisation, every base. What counts as a website. Which rows get dropped and in what order. Whether a figure sits on the all-five base or the pair-specific base.</p>
+<p>I skipped this initially and paid for it. Weeks of back-and-forth came from verifying numbers against guessed definitions. The fix, which is now a standing rule: when a number will not reproduce, enumerate every candidate definition in one query rather than testing one per round.</p>
+<p><strong>Pass 2. Reproduce.</strong> Rebuild every published figure from the raw tables and check it comes back.</p>
+<p>The base chain reproduced exactly. So did all ten engine-pair figures, the per-engine uniqueness shares, the four directional figures and the robustness ladder. The monthly series did not. Published was 8.58 / 8.35 / 8.74 / 10.14 / 11.13 / 11.25, a 31% rise. The correct series is 8.487 / 8.344 / 9.034 / 10.382 / 11.015 / 11.251, a 32.57% rise at 0.553 percentage points per month.</p>
+<p>The same pass found something worse. The post said every question was collected in the United States. The data says 84.06% United States across 27 markets, led by Australia, the UK and the Philippines. Adding a US filter reproduced no published figure, which proved the original analysis had never applied one.</p>
+<p><strong>Pass 3. Attack it.</strong> Build a null model and see whether the finding survives contact with it.</p>
+<p>This is the pass most research in my field skips, and it is where both retractions came from. Detail below.</p>
+<p><strong>Pass 4. Run it backwards.</strong> The title claim was that 89% of what ChatGPT cites, Perplexity never touches. Directional claims have a mirror image, and if the mirror looks very different, the claim is an artefact of which engine you put first.</p>
+<p>Forward, Perplexity 89.13%. Reverse, 90.07%. Every one of the four pairs came in within 1.4 points, and three of four reverses came out higher than their forward. The asymmetry is fully explained by list length: mean distinct websites per answer runs Perplexity 4.68, AI Overviews 4.47, ChatGPT 4.15, AI Mode 3.97, Gemini 3.77. The shared numerator is identical in both directions, so the engine with the longer list always shows the higher missed-by figure.</p>
+<p>The title held. I only know that because I ran it.</p>
+<p><strong>Pass 5. Read it as a reader.</strong> Not as a checker. Straight through, start to finish, asking whether the argument holds rather than whether the arithmetic does.</p>
+<p>Three weeks of numeric passes had missed a flat self-contradiction sitting in a bolded sentence. The thesis line said the engines are not choosing differently, they are choosing from different slices of the web. The paragraph directly above it reported a chance-adjusted spread of 10.5x to 19.7x across pairs, which means they demonstrably do choose differently. Both were mine. Neither pass could see the other's problem.</p>
+<p><strong>Pass 6. Read it as a copy editor.</strong> Grammar, tense, spelling, date format, serial commas.</p>
+<p>Lowest stakes, and still worth doing. It caught a sentence with number disagreement in the intro, a clause that did not parse off &quot;reported that&quot;, and one American date format on a page that used British form everywhere else.</p>
+<h2>The permutation test, in detail</h2>
+<p>The method: pair engine A's source list for a question with engine B's list for a <em>different, randomly chosen</em> question. Hold list lengths and item popularity fixed. Whatever agreement survives that is the agreement you would get from two engines drawing independently from the same pool of plausible sources. Real agreement minus chance agreement is what the finding is actually worth.</p>
+<p>One implementation trap cost me a full cycle. Shuffling with <code>FARM_FINGERPRINT(query_id)</code> is deterministic across providers, so the permutation join silently reproduces the observed join and chance comes out equal to observed. The key has to be <code>FARM_FINGERPRINT(CONCAT(query_id,'|',seed))</code>, partitioned by pair.</p>
+<p>Three independent seeds agreed to the third or fourth decimal (1.6134, 1.6074, 1.6191). At this sample size permutation variance is negligible.</p>
+<p><strong>What it did to finding one.</strong> Raw agreement ran page 6.76%, website 10.85%, brand 30.3%, so brand looked 4.5x better than page. Against chance the same three run 0.16%, 1.00% and 1.79%. That makes page agreement 42x chance, brand 17x and website 11x.</p>
+<p>The ladder reverses. Most of the brand advantage was a candidate-pool artefact, because an answer has a handful of plausible brands and a very large number of plausible pages. Brand is still the easier layer to hold across engines in absolute terms. It is not the stronger signal.</p>
+<p><img src="/static/uploads/fig-1-ladder-reversal.png" alt="Raw agreement ranks Brand above Website above Page. Against a permutation null the order reverses to Page at 42x chance, Brand 17x, Website 11x."></p>
+<p><strong>What it did to finding two.</strong> The two Google Search surfaces agreed 24.5% against 7.3% for cross-company pairs, a 3.4x premium that looked like clean evidence for shared infrastructure. Chance-adjusted, the tiers land at 15.2x, 15.6x and 14.3x. The premium collapses to 1.06x, and the ordering breaks entirely: Gemini paired with either Search surface (15.6x) outscores the two Search surfaces paired with each other (15.2x). The two highest chance-adjusted pairs in the whole set are both cross-company, Gemini and Perplexity at 19.7x and ChatGPT and Perplexity at 19.1x.</p>
+<p>I got the first version of this wrong too. The figures I published at 11:46 on 30 July (15.9 / 15.0 / 14.2) divided observed values computed on the all-five base by chance values computed on the pair base. Same table, two different denominators. Corrected to 15.2 / 15.6 / 14.3 the same afternoon, and the method section now states that chance baselines are computed on the same base as the figure sitting beside them.</p>
+<h2>What died, what survived</h2>
+<table>
+<thead>
+<tr>
+<th>Finding</th>
+<th>Raw</th>
+<th>Against chance</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>79.6% single-engine</td>
+<td>79.61%</td>
+<td>not baselined</td>
+<td>Held. Survived stricter matching (85.1% and 93.2% under looser tidying) and a 3.3-point monthly band</td>
+</tr>
+<tr>
+<td>89% ChatGPT gap</td>
+<td>89.13%</td>
+<td>not baselined</td>
+<td>Held. Reverse direction 90.07%, within 1.4 points on all four pairs</td>
+</tr>
+<tr>
+<td>Brand travels 4.5x better than pages</td>
+<td>30.3% vs 6.8%</td>
+<td>17x vs 42x</td>
+<td>Did not survive. Ladder reverses</td>
+</tr>
+<tr>
+<td>Google surfaces agree 3.4x more</td>
+<td>24.5% vs 7.3%</td>
+<td>1.06x, ordering breaks</td>
+<td>Did not survive</td>
+</tr>
+<tr>
+<td>Convergence, 33% in six months</td>
+<td>8.49% to 11.25%</td>
+<td>never run</td>
+<td>Untested. Now flagged in-post as the least-tested finding</td>
+</tr>
+</tbody>
+</table>
+<h2>Three ways a number fails to reproduce</h2>
+<p>I started out reporting every non-reproducing figure as &quot;could not confirm&quot;. That is imprecise enough to be useless, because the three causes need different responses.</p>
+<p><strong>Unfinished work.</strong> I stopped looking too early. The published top-of-range category figure of 15.5% looked unconfirmable until I noticed I had been reading 50 rows sorted ascending and had never looked at the top of the distribution. Backup and recovery runs 15.66%. That was never a tooling limit. It was me.</p>
+<p><strong>Underdetermined definition.</strong> Several defensible conventions give genuinely different answers and nothing in the data adjudicates between them. Brand-level agreement comes out 54.96%, 30.57% or 25.11% depending only on which pairs you keep. The 54.96% turned out to be almost exactly the 54.6% figure in an earlier draft that had been retracted as an error. It was not an error. It was a different convention nobody had written down.</p>
+<p><strong>Tooling limit.</strong> The query will not complete. Unnesting brand mentions across five providers on a 37 GB table times out through the connector, so settling 30.30 against 30.57 needs a materialised intermediate table rather than another attempt at the same query.</p>
+<p>There is a fourth thing that looks like a failure and isn't: a unit mismatch. I raised one topic running at 27.19% as contradicting a published category range that tops out at 15.5%. Topics pool into categories. A narrow topic averages down. The post's own method paragraph already covered it, and I burned a cycle on an alarm that was never real.</p>
+<h2>What it cost, and what is still open</h2>
+<p>Twelve full-body rewrites over five days. An internal review rubric scored the piece before the second pass at 82 factual, 68 research, 62 logic, 70 conceptual, 88 content, 66 SEO, 64 CRO. After: 93, 79, 84, 86, 90, 70, 74. Research quality stayed capped near 79 until the chance baseline existed, which is the honest reading of what a study is worth before anyone attacks it.</p>
+<p>Still open, and stated as open on the published page rather than papered over: the permutation draws its comparison question from anywhere in the set, so a same-category null would put every multiple lower. The convergence finding has never been baselined at all. No overlap coefficient has been run alongside Jaccard. And a 0.27-point gap between my brand figure and the original pipeline's is diagnosed but not resolved.</p>
+<h2>The rule I took from it</h2>
+<p>A finding is worth what it is worth against a null model, and you do not know that number until you build the null model and run it against your own work.</p>
+<p>Two of mine did not survive. The page stayed up, the retractions went on it, and the study is more defensible now than when every number in it was still standing.</p>
+<hr>
+<p><em>The full study, including the corrections described here, is published at <a href="https://wellows.com/blog/ai-citation-overlap-study/">wellows.com/blog/ai-citation-overlap-study</a>.</em></p>
+
+
+      <!-- Author bio -->
+      <div class="author-box">
+        <img class="author-avatar" src="https://cdn.builder.io/api/v1/image/assets%2F6712fcfd62e34922a6872f22e2c0f5c7%2Fa469fddeacc34c939bf9655839f510d0?format=webp&width=200&height=200" alt="Khadija Zaman" width="72" height="72" loading="lazy">
+        <div class="author-meta">
+          <div class="author-name">Khadija Zaman</div>
+          <p>SEO &amp; GEO/AEO specialist and Marketing Manager at Wellows — I get brands ranked on Google and cited by ChatGPT, Gemini, and Perplexity, then automate the execution.</p>
+          <div class="author-links">
+            <a href="/about/">More about me →</a>
+            <a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a>
+            <a href="/contact/">Work together</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Read next -->
+  
+  
+  <div class="wrap read-next">
+    <h2 class="read-next-title">Read next</h2>
+    <div class="post-grid">
+      
+      <a class="post-card" href="/blog/geo-aeo-vs-seo/">
+        <div class="post-meta"><span class="post-cat">AI Search</span><span class="post-date">18 Jun 2026 · 5 min</span></div>
+        <h3>SEO vs AEO vs GEO: What Each One Actually Means, and How to Sequence Them</h3>
+        <p>SEO, AEO, and GEO are layers, not rivals. A working definition of each, where they genuinely diverge, and the order to build them so the work compounds.</p>
+        <span class="post-more">Read the post →</span>
+      </a>
+      
+      <a class="post-card" href="/blog/topic-cluster-architecture/">
+        <div class="post-meta"><span class="post-cat">Content Strategy</span><span class="post-date">14 Jul 2026 · 5 min</span></div>
+        <h3>Topic Cluster Architecture That Actually Scales Organic Traffic</h3>
+        <p>Publishing more rarely fixes a plateau — fragmented architecture does. How to structure pillars, clusters, and internal links so authority concentrates.</p>
+        <span class="post-more">Read the post →</span>
+      </a>
+      
+    </div>
+  </div>
+  
+</article>
+
+</main>
+
+<section class="newsletter" aria-label="Newsletter">
+  <div class="newsletter-glow" aria-hidden="true"></div>
+  <div class="newsletter-inner">
+    <div class="sec-tag reveal" style="justify-content:center;">The Newsletter</div>
+    <h2 class="reveal d1">New posts, straight to your inbox</h2>
+    <p class="reveal d2">Practical notes on SEO and AI search, delivered when each post goes live. No fluff, no sales pitch.</p>
+    <form class="newsletter-form reveal d2" id="newsletter-form">
+      <input type="email" name="email" placeholder="you@company.com" aria-label="Email address" required>
+      <button type="submit">Subscribe →</button>
+    </form>
+    <div class="newsletter-note reveal d3">Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-in">
+    <div class="footer-brand"><a href="/" class="nav-logo">Khadija Zaman</a><p>Marketing Manager — SEO, AI search visibility (GEO/AEO), content strategy, and marketing automation. Karachi, Pakistan · working worldwide.</p></div>
+    <div class="footer-cols">
+      <div class="footer-col"><h5>Site</h5><a href="/about/">About</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/">Contact</a></div>
+      <div class="footer-col"><h5>Work</h5><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
+      <div class="footer-col"><h5>Connect</h5><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a><a href="mailto:hello@khadijazaman.com">Email</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Khadija Zaman · Marketing Manager · Karachi, Pakistan</div>
+    <div class="footer-copy">Built to be ranked by search engines and cited by answer engines.</div>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>
