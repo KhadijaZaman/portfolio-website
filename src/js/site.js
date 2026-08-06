@@ -74,13 +74,16 @@
     }, { passive: true });
   }
 
-  /* ── Mobile nav toggle ── */
-  var navToggle  = document.getElementById('nav-toggle');
-  var mobileMenu = document.getElementById('mobile-menu');
-  if (navToggle && mobileMenu) {
+  /* ── Nav toggle ──
+     Targets whatever #nav-toggle's aria-controls points to: the single
+     #nav-links list (collapsed nav) or a legacy #mobile-menu panel. */
+  var navToggle = document.getElementById('nav-toggle');
+  var navTarget = navToggle && document.getElementById(navToggle.getAttribute('aria-controls'));
+  if (navToggle && navTarget) {
     var closeMenu = function () {
       navToggle.setAttribute('aria-expanded', 'false');
-      mobileMenu.classList.remove('open');
+      navToggle.setAttribute('aria-label', 'Open navigation');
+      navTarget.classList.remove('open');
       document.body.style.overflow = '';
     };
     navToggle.addEventListener('click', function () {
@@ -88,13 +91,14 @@
       if (isOpen) { closeMenu(); }
       else {
         navToggle.setAttribute('aria-expanded', 'true');
-        mobileMenu.classList.add('open');
+        navToggle.setAttribute('aria-label', 'Close navigation');
+        navTarget.classList.add('open');
         document.body.style.overflow = 'hidden';
       }
     });
-    mobileMenu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+    navTarget.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+      if (e.key === 'Escape' && navTarget.classList.contains('open')) closeMenu();
     });
   }
 

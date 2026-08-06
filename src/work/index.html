@@ -14,7 +14,10 @@
   <meta property="og:title" content="Work &amp; Case Studies · SEO &amp; AI Search Results — Khadija Zaman">
   <meta property="og:description" content="The work, not the pitch: AEO/LLM visibility, SEO management, content strategy, and launches with numbers that hold up.">
   <meta property="og:url" content="https://khadijazaman.com/work/">
-  <meta property="og:image" content="https://khadijazaman.com/web-app-manifest-512x512.png">
+  <meta property="og:image" content="https://khadijazaman.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:image" content="https://khadijazaman.com/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -24,7 +27,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap"></noscript>
   <link rel="stylesheet" href="/css/main.css">
 
   <script type="application/ld+json">
@@ -60,18 +64,15 @@
 
 <nav aria-label="Main navigation">
   <a href="/" class="nav-logo">Khadija Zaman</a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="/about/">About</a></li>
     <li><a href="/work/" class="active">Work</a></li>
     <li><a href="/blog/">Blog</a></li>
     <li><a href="/tools/">Tools</a></li>
     <li><a href="/contact/" class="nav-cta">Work Together →</a></li>
   </ul>
-  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
-  <a href="/about/">About</a><a href="/work/">Work</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/" class="mob-cta">Work Together →</a>
-</div>
 
 <main id="main-content">
 
@@ -88,6 +89,7 @@
 <section class="sec-3d" aria-label="Case Studies" style="background: var(--bg-1);">
   <div class="sec-bg-orb sec-orb-2" aria-hidden="true"></div>
   <div class="wrap" style="position: relative; z-index: 1;">
+    <h2 class="sr-only">Case studies</h2>
     <div class="cases-grid">
 
       <!-- Featured: AEO / LLM Visibility -->
@@ -96,13 +98,13 @@
         <div class="case-pill pill-green">AEO / LLM Visibility · Featured</div>
         <div class="case-meta">Wellows · July 2025 – Feb 2026 · Source: GA4 / Looker Studio / GSC</div>
         <div class="case-nums">
-          <div><div class="cn-val green">9×</div><div class="cn-lbl">LLM Growth</div></div>
-          <div><div class="cn-val green">62.9→27.8</div><div class="cn-lbl">Avg. SERP Position</div></div>
+          <div><div class="cn-val green">9×</div><div class="cn-lbl">LLM Visibility</div></div>
+          <div><div class="cn-val green">28.9→17.3</div><div class="cn-lbl">Avg. SERP Position</div></div>
           <div><div class="cn-val green">45s→6+ min</div><div class="cn-lbl">Session Duration</div></div>
-          <div><div class="cn-val green">~1.9M</div><div class="cn-lbl">GSC Impressions</div></div>
+          <div><div class="cn-val green">3.78M</div><div class="cn-lbl">GSC Impressions</div></div>
           <div><div class="cn-val green">$0</div><div class="cn-lbl">Paid Spend</div></div>
         </div>
-        <h3>9× LLM Growth and #1–#2 Tool Rankings — Built Entirely on AEO, $0 Paid</h3>
+        <h3>9× LLM Visibility and #1–#2 Tool Rankings — Built Entirely on AEO, $0 Paid</h3>
         <p>Wellows started with near-zero LLM visibility and no citation footprint. I built measurable AI-search presence from scratch — zero paid spend.</p>
         <ul class="case-approach">
           <li><b>AEO framework.</b> Koray Tuğberk's logic + Google's query fan-out patent for LLM retrieval.</li>
@@ -110,15 +112,15 @@
           <li><b>Tool- &amp; community-led.</b> Three AI tools as LLM entry points; AEO across Reddit, Quora, G2; n8n + GA4 reporting.</li>
         </ul>
         <div class="case-growth">
-          <div class="case-growth-label">Traffic Growth · GSC-verified</div>
+          <div class="case-growth-label">Search growth · GSC-verified (Wellows + AllAboutAI author pages)</div>
           <div class="case-growth-grid">
             <figure class="case-shot">
-              <a href="/static/uploads/gsctrafficgrowth.png" target="_blank" rel="noopener"><img src="/static/uploads/gsctrafficgrowth.png" alt="Google Search Console: 7.27K clicks and 3.78M impressions over the last 3 months, average position improving from 28.9 to 17.3" loading="lazy"></a>
-              <figcaption>7.27K clicks · 3.78M impressions · avg. position 28.9 → 17.3 (last 3 months vs. previous)</figcaption>
+              <a href="/static/uploads/gsctrafficgrowth.png" target="_blank" rel="noopener"><img src="/static/uploads/gsctrafficgrowth.png" alt="Wellows Google Search Console: 7.27K clicks and 3.78M impressions over the last 3 months, average position improving from 28.9 to 17.3" loading="lazy"></a>
+              <figcaption>Wellows — 7.27K clicks · 3.78M impressions · avg. position 28.9 → 17.3 (last 3 months vs. previous)</figcaption>
             </figure>
             <figure class="case-shot">
-              <a href="/static/uploads/gscyearoveryear.jpg" target="_blank" rel="noopener"><img src="/static/uploads/gscyearoveryear.jpg" alt="Google Search Console year over year: clicks 10.7K to 23.6K and impressions 275K to 928K, 2025 vs 2024" loading="lazy"></a>
-              <figcaption>Year over year: 10.7K → 23.6K clicks · 275K → 928K impressions (2025 vs. 2024)</figcaption>
+              <a href="/static/uploads/gscyearoveryear.jpg" target="_blank" rel="noopener"><img src="/static/uploads/gscyearoveryear.jpg" alt="AllAboutAI author Google Search Console year over year: clicks 10.7K to 23.6K and impressions 275K to 928K, 2025 vs 2024" loading="lazy"></a>
+              <figcaption>AllAboutAI author pages — year over year: 10.7K → 23.6K clicks · 275K → 928K impressions (2025 vs. 2024)</figcaption>
             </figure>
           </div>
         </div>

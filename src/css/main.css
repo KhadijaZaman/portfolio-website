@@ -10,7 +10,7 @@
   --bg-1:         #0A1019;
   --bg-card:      #0F1722;
   --bg-card-h:    #142233;
-  --accent:       #3B82F6;
+  --accent:       #2563EB;
   --accent-2:     #38BDF8;
   --accent-3:     #93C5FD;
   --on-accent:    #FFFFFF;
@@ -53,6 +53,8 @@ a { color: inherit; }
   transition: top 0.2s;
 }
 .skip-nav:focus { top: 1rem; }
+/* Visually-hidden (screen-reader only) — used for structural headings that shouldn't alter the visual design. */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
 /* ── SCROLL ANIMATIONS ── */
 .js .reveal {
@@ -373,7 +375,7 @@ section { padding: 108px 6%; }
   border: 1px solid rgba(59,130,246,0.2); border-radius: var(--r-lg); padding: 1.75rem 2rem;
   display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;
 }
-.stack-feature h4 { font-family: var(--ff-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-1); }
+.stack-feature h3 { font-family: var(--ff-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-1); }
 .stack-feature p { font-size: 0.85rem; color: var(--text-2); line-height: 1.72; margin-bottom: 1rem; }
 .feat-tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
@@ -428,13 +430,13 @@ section { padding: 108px 6%; }
 .about-bio p { color: var(--text-2); line-height: 1.85; margin-bottom: 1.4rem; font-size: 1.05rem; }
 .about-bio p:last-child { margin-bottom: 0; }
 .industry-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 2rem; }
-.ind-badge { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); color: var(--accent); font-size: 0.72rem; font-weight: 700; padding: 0.38rem 0.9rem; border-radius: var(--r-sm); text-transform: uppercase; letter-spacing: 0.07em; }
+.ind-badge { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); color: #60A5FA; font-size: 0.72rem; font-weight: 700; padding: 0.38rem 0.9rem; border-radius: var(--r-sm); text-transform: uppercase; letter-spacing: 0.07em; }
 .career-timeline { display: flex; flex-direction: column; gap: 0; }
 .career-item { display: flex; gap: 1.35rem; padding-bottom: 2.25rem; position: relative; }
 .career-item:not(:last-child)::before { content: ''; position: absolute; left: 19px; top: 22px; bottom: 0; width: 1px; background: var(--border); }
 .career-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 6px; position: relative; z-index: 1; box-shadow: 0 0 0 3px rgba(59,130,246,0.2); }
 .career-body { flex: 1; }
-.career-year { font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.25rem; }
+.career-year { font-size: 0.7rem; font-weight: 700; color: #60A5FA; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.25rem; }
 .career-role { font-size: 1rem; font-weight: 700; color: var(--text-1); line-height: 1.3; }
 .career-company { font-size: 0.84rem; color: var(--text-3); margin-bottom: 0.45rem; }
 .career-desc { font-size: 0.84rem; color: var(--text-2); line-height: 1.72; }
@@ -458,11 +460,8 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-.mobile-menu { display: none; position: fixed; top: 64px; inset-inline: 0; bottom: 0; z-index: 150; background: var(--bg-1); border-top: 1px solid var(--border); flex-direction: column; align-items: center; justify-content: center; gap: 2.25rem; }
-.mobile-menu.open { display: flex; }
-.mobile-menu a { color: var(--text-2); text-decoration: none; font-family: var(--ff-display); font-size: 1.4rem; font-weight: 700; transition: color 0.2s; }
-.mobile-menu a:hover, .mobile-menu a:focus { color: var(--text-1); outline: none; }
-.mobile-menu .mob-cta { background: var(--accent); color: #fff !important; padding: 0.75rem 2rem; border-radius: var(--r-sm); box-shadow: 0 0 24px rgba(59,130,246,0.4); }
+/* (Old .mobile-menu panel removed — every page now uses the single #nav-links
+   list, which opens as the mobile panel via .nav-links.open.) */
 
 /* ── SECTION 3D CANVAS SUPPORT ── */
 .sec-3d { position: relative; overflow: hidden; }
@@ -483,6 +482,10 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 @media (max-width: 768px) {
   .nav-toggle { display: flex; }
   .nav-links { display: none; }
+  /* Single nav list opens as the full-screen mobile panel (mirrors old .mobile-menu). */
+  .nav-links.open { display: flex; position: fixed; top: 64px; inset-inline: 0; bottom: 0; z-index: 150; background: var(--bg-1); border-top: 1px solid var(--border); flex-direction: column; align-items: center; justify-content: center; gap: 2.25rem; }
+  .nav-links.open a { font-family: var(--ff-display); font-size: 1.4rem; font-weight: 700; }
+  .nav-links.open .nav-cta { padding: 0.75rem 2rem; box-shadow: 0 0 24px rgba(59,130,246,0.4); }
   section { padding: 64px 5%; }
   .page-hero { padding: 116px 5% 52px; }
   .impact-bar { padding: 2rem 5%; }
@@ -561,7 +564,7 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 }
 
 /* ── DARK TEXT ON THE LIGHT TEAL ACCENT (contrast) ── */
-.btn-primary, .btn-submit, .nav-cta, .mobile-menu .mob-cta, .newsletter-form button { color: var(--on-accent) !important; }
+.btn-primary, .btn-submit, .nav-cta, .newsletter-form button { color: var(--on-accent) !important; }
 
 /* ── GSC DASHBOARD BLOCK (inside featured case) ── */
 .case-growth { margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--border); }

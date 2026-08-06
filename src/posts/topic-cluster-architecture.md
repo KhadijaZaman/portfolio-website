@@ -1,8 +1,9 @@
 ---
 title: "Topic Cluster Architecture That Actually Scales Organic Traffic"
+metaTitle: "Topic Cluster Architecture That Scales Organic Traffic"
 date: 2026-07-14
 category: "Content Strategy"
-description: "Publishing more rarely fixes a plateau — fragmented architecture does. How to structure pillars, clusters, and internal links so authority concentrates instead of scattering across competing pages."
+description: "Publishing more rarely fixes a plateau — fragmented architecture does. How to structure pillars, clusters, and internal links so authority concentrates."
 readTime: "5 min"
 starter: false
 ---

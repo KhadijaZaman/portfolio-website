@@ -11,7 +11,7 @@ module.exports = function (eleventyConfig) {
   [
     "about", "work", "tools", "contact",
     "css", "js", "admin", "static",
-    "robots.txt", "site.webmanifest",
+    "robots.txt", ".htaccess", "og-image.png", "site.webmanifest",
     "favicon.ico", "favicon.svg", "favicon-96x96.png",
     "apple-touch-icon.png",
     "web-app-manifest-192x192.png", "web-app-manifest-512x512.png"

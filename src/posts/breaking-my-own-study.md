@@ -1,8 +1,9 @@
 ---
 title: "I Built a Test Designed to Break My Own Study. Two Findings Didn't Survive."
+metaTitle: "I Tried to Break My Own AI Study. 2 Findings Failed."
 date: 2026-08-03
 category: "AI Search"
-description: "How I rebuilt my own cross-engine AI citation study from scratch, ran it against a permutation null, and retracted two headline findings — the six-pass verification process, in full."
+description: "How I rebuilt my cross-engine AI citation study from scratch, ran it against a permutation null, and retracted two headline findings that didn't hold up."
 readTime: "9 min"
 starter: false
 ---

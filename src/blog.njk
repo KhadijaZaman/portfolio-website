@@ -31,6 +31,7 @@ permalink: /blog/index.html
 
 <section aria-label="Articles">
   <div class="wrap">
+    <h2 class="sr-only">Articles</h2>
     {% set hasStarter = false %}
     {% for post in collections.posts %}{% if post.data.starter %}{% set hasStarter = true %}{% endif %}{% endfor %}
     {% if hasStarter %}
