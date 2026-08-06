@@ -1,8 +1,9 @@
 ---
 title: "How to Get Your Brand Cited by ChatGPT, Gemini and Perplexity"
+metaTitle: "How to Get Cited by ChatGPT, Gemini & Perplexity"
 date: 2026-06-30
 category: "GEO / AEO"
-description: "Ranking #1 in Google no longer guarantees you show up in an AI answer — the two systems judge content differently. A practical checklist for making your pages retrieval-ready and worth citing."
+description: "Ranking #1 in Google no longer guarantees you appear in an AI answer — the systems judge content differently. A checklist to make pages retrieval-ready."
 readTime: "5 min"
 starter: false
 ---

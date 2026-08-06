@@ -9,6 +9,8 @@
 <body>
   <!-- Sveltia CMS — a modern, drop-in replacement for Decap/Netlify CMS.
        Reads the same config.yml. Logs in with GitHub (no Netlify Identity). -->
-  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+  <!-- Pinned to a specific version so a hijack of the "latest" tag can't auto-serve
+       arbitrary JS into the admin session. Bump this deliberately to update. -->
+  <script src="https://unpkg.com/@sveltia/cms@0.180.1/dist/sveltia-cms.js" type="module"></script>
 </body>
 </html>

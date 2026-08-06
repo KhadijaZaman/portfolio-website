@@ -3,6 +3,7 @@
 
 User-agent: *
 Allow: /
+Disallow: /admin/
 
 # Explicitly welcome AI answer-engine and training crawlers.
 User-agent: GPTBot
