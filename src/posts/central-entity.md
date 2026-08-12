@@ -11,7 +11,7 @@ layer: "core"
 starter: false
 ---
 
-In August 2026 I had to choose one entity for the whole Wellows content network, the thing every page would connect back to. Our brand name was an option. So was “AI citations”, the unit our platform measures. I picked neither and went with the category: AI visibility.
+In August 2026 I had to choose one entity for a software company’s whole content network, the thing every page would connect back to. The brand name was an option. So was “AI citations”, the unit the product measures. I picked neither and went with the category: AI visibility.
 
 Google has a patent application that asks a smaller version of that question about a single web page. It’s called “Identifying Topical Entities” (US 2015/0278366 A1), and it walks through how a system could work out which of the many things a page mentions is the thing the page is really about. Following its method step by step is the clearest way I’ve found to explain what a central entity does, and where it’s easy to read more into the patent than the text supports.
 
@@ -110,7 +110,7 @@ Patents get paraphrased a lot, and paraphrases drift. These five readings are ea
 
 ## From one page to a whole site: where the central entity comes in
 
-The patent stops at the page. Koray Tuğberk GÜBÜR’s topical map framework, which I was trained in and use for Wellows, works across a whole site. It names five components every topical map needs: source context (what the site focuses on and how it makes money), the central entity, the central search intent, a core section, and an outer section.
+The patent stops at the page. Koray Tuğberk GÜBÜR’s topical map framework, which I was trained in and use in my own work, works across a whole site. It names five components every topical map needs: source context (what the site focuses on and how it makes money), the central entity, the central search intent, a core section, and an outer section.
 
 In his framework the central entity appears across every piece of content in the network, and his course says it should show up everywhere on the site so the main topic is hard to miss. The root document is the page every related page links to, and it links back to all of them. Its H1 states the topic plainly, and its brief covers the main aspects of the entire map.
 
@@ -123,33 +123,33 @@ Nothing in the patent mentions topical maps, and nothing in Koray’s framework 
 | Centrality score | A number that ranks a page’s central entities | Not part of the framework |
 | Root | Not used | The page every related page links to, covering the central entity broadly |
 
-<figure><img src="/static/uploads/page-topic-vs-site-central-entity.webp" alt="Left, one page titled Buy the Baby Gym here with baby gym as its topical entity. Right, one site with AI visibility as the central entity linked to AI visibility tools, AI citation optimization, AI mention tracking, and entity SEO strategy." width="1000" height="700" loading="lazy"><figcaption>The patent works on a single page. A topical map puts one central entity at the root of a whole site, which for Wellows is AI visibility.</figcaption></figure>
+<figure><img src="/static/uploads/page-topic-vs-site-central-entity.webp" alt="Left, one page titled Buy the Baby Gym here with baby gym as its topical entity. Right, one site with AI visibility as the central entity linked to AI visibility tools, AI citation optimization, AI mention tracking, and entity SEO strategy." width="1000" height="700" loading="lazy"><figcaption>The patent works on a single page. A topical map puts one central entity at the root of a whole site. In this example, AI visibility.</figcaption></figure>
 
-## How I apply this at Wellows
+## How I apply this to a topical map
 
 ### Picking the center
 
 Back to the choice from the top of this post. Here’s how the three candidates hold up against the patent’s logic.
 
-Our brand name is the narrowest option. I’d expect the arrow to run from Wellows to AI visibility rather than back, because pages that mention us tend to discuss AI visibility, while most pages about AI visibility never mention us. A network centered on the brand would mostly speak to people who already know it.
+The brand name is the narrowest option. I’d expect the arrow to run from the brand to AI visibility rather than back, because pages that mention the brand tend to discuss AI visibility, while most pages about AI visibility never mention the brand. A network centered on the brand would mostly speak to people who already know it.
 
 “AI citations” is specific, and it connects to a lot. It’s also one attribute of AI visibility, sitting next to AI mentions and brand sentiment, rather than the thing those attributes describe.
 
-AI visibility sits between the two. All 30 keywords in the topical map I built for Wellows hang off it, from generative engine optimization and AI search optimization to AI mention tracking and entity SEO strategy.
+AI visibility sits between the two. Every keyword in the topical map hangs off it, from generative engine optimization and AI search optimization to AI mention tracking and entity SEO strategy.
 
-The phrase didn’t come from a keyword tool. Until June 2026 we positioned Wellows as an AI SEO agent. The switch to “AI visibility platform” came after a booked demo where the prospect described what they wanted in terms of visibility, and that keyword had no meaningful search volume. A demo call isn’t a query log, but it’s the same kind of evidence the patent leans on: the words people use when they come looking for you.
+The phrase didn’t come from a keyword tool. It came from the way prospects described what they wanted on sales calls, and at the time it had no meaningful search volume. A sales call isn’t a query log, but it’s the same kind of evidence the patent leans on: the words people use when they come looking for you.
 
 ### Filtering the map before writing anything
 
-The map started as 30 keywords: generative engine optimization, AI search optimization, AI visibility tools, tracking, score, audit and monitoring, AI brand visibility, AI citation optimization, AI mention tracking, AI reputation management, entity SEO strategy, and similar terms. Before planning a single post, I filtered it against a sitemap export of wellows.com with 421 pages, each carrying GSC, GA4, Bing, and citation columns. Keywords the site already covered came off the list. For the rest, the filter surfaced the existing or nearest page so an internal link could go in.
+The map started as a keyword list: generative engine optimization, AI search optimization, AI visibility tools, tracking, score, audit and monitoring, AI brand visibility, AI citation optimization, AI mention tracking, AI reputation management, entity SEO strategy, and similar terms. Before planning a single post, I filtered it against a full sitemap export of the site, with Search Console, GA4, Bing, and AI citation columns on every URL. Keywords the site already covered came off the list. For the rest, the filter surfaced the existing or nearest page so an internal link could go in.
 
-Koray’s decision rule backs this up: when a topic is a deeper attribute of something a page already covers, expand that page instead of opening a new one. The output was a five-tab workbook and a weekly content calendar that runs from 24 August to 16 November 2026.
+Koray’s decision rule backs this up: when a topic is a deeper attribute of something a page already covers, expand that page instead of opening a new one. The output was a workbook and a weekly content calendar for the following quarter.
 
 ### Linking back to the root
 
-Koray’s rule for a root page is easy to state: every related page links to it, it links back to them, and its H1 says plainly what the network is about. On our blog, the /blog/geo/ hub is the pattern I point to, and it’s the model I used when planning a research hub at /blog/insights/.
+Koray’s rule for a root page is easy to state: every related page links to it, it links back to them, and its H1 says plainly what the network is about. A category hub that every post in the category links to, and that links back to each of them, is the pattern I point to.
 
-The links come from two places. I run internal linking passes that add contextual links from blog posts to feature and comparison pages, and I built an internal linking app that pulls GSC, GA4, Bing, and WordPress data into one place, so link decisions start from data.
+The links come from two places. I run internal linking passes that add contextual links from blog posts to feature and comparison pages, and I built an internal linking tool that pulls Search Console, GA4, Bing, and CMS data into one place, so link decisions start from data.
 
 ### Checking that the signals agree
 
