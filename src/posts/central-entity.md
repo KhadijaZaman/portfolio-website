@@ -41,7 +41,7 @@ The patent’s example pair is “michael jordan” and “basketball”. The st
 
 Edges also have a direction, and it matters later. A page that mentions Omri Casspi, an NBA player, almost always mentions the NBA. A page about the NBA rarely mentions Omri Casspi. So the arrow runs from “Omri Casspi” to “NBA”, from the specific entity to the broader one it implies. (¶0030)
 
-<figure><img src="/static/uploads/entity-graph-two-rules.webp" alt="Two entity graph rules from the patent: entities that share pages more often than chance get an edge, and the arrow points from the specific entity, Omri Casspi, to the broader one, NBA." width="1000" height="700"><figcaption>Two rules build the entity graph: entities that share pages more often than chance get linked, and arrows point from the specific entity to the broader one.</figcaption></figure>
+<figure><img src="/static/uploads/entity-graph-two-rules.webp" alt="Two rules from the patent: entities that share pages more often than chance get an edge, and arrows point from the specific entity to the broader one." width="1000" height="700"><figcaption>Two rules build the entity graph: entities that share pages more often than chance get linked, and arrows point from the specific entity to the broader one.</figcaption></figure>
 
 One practical consequence, in my reading: repeating two entities side by side across your own site does little to an edge that’s calculated over an entire index. What you control is which entities appear on a page, and where they appear.
 
@@ -51,7 +51,7 @@ Now take a single page. The system collects every entity it can tie to it, from 
 
 Then the cutting starts. Entities with no edges to the page’s other entities go first. Entities with no outgoing arrows go next. The way I read that second rule, none of the entity’s usual companions are on the page, so it looks like a passing mention. Whatever survives counts as a central entity. In the patent’s worked example, a graph of 15 entities narrows to the 12 found on the page, then to 8 central entities once one loner and three entities with no outgoing arrows are removed. (¶0031, ¶0032)
 
-<figure><img src="/static/uploads/topical-entities-pruning-15-12-8.webp" alt="Three stages of pruning from the patent’s worked example: 15 entities in the graph, 12 found on the page, 8 central entities after one loner and three entities with no outgoing arrows are cut." width="1000" height="700" loading="lazy"><figcaption>In the patent’s worked example, 15 entities become 12 on the page, then 8 central entities once one loner and three entities with no outgoing arrows are cut.</figcaption></figure>
+<figure><img src="/static/uploads/topical-entities-pruning-15-12-8.webp" alt="Pruning in the patent’s example: 15 entities in the graph, 12 on the page, 8 central entities after the loner and no-outgoing-arrow entities are cut." width="1000" height="700" loading="lazy"><figcaption>In the patent’s worked example, 15 entities become 12 on the page, then 8 central entities once one loner and three entities with no outgoing arrows are cut.</figcaption></figure>
 
 The patent lists a few optional cuts on top of those. An entity that’s a substring of another can be dropped, like “Jordan” when “Michael Jordan” is already there. Entities whose edges are all weak can be dropped. A whole cluster of connected entities can be dropped if none of them appear in the title, the URL, the metadata, or the search queries that led people to the page. And when one entity’s search results are a subset of another entity’s results, the narrower one can go. (¶0033 to ¶0035)
 
@@ -68,7 +68,7 @@ Four signals then move that number. (¶0038 to ¶0041)
 - If the entity appears in search queries that brought people to the page, its score goes up, and it goes up further when the entity shows up in those queries often.
 - Entities in the title, URL, or metadata get a boost.
 
-<figure><img src="/static/uploads/centrality-score-signals.webp" alt="Centrality score signals: outgoing link weight as the base, with page frequency, title and URL placement, and query data pushing the score up and web-wide frequency pulling it down." width="1000" height="700" loading="lazy"><figcaption>A centrality score starts from outgoing link weight. Page frequency, title and URL placement, and query data push it up, while being common everywhere pulls it down.</figcaption></figure>
+<figure><img src="/static/uploads/centrality-score-signals.webp" alt="Centrality score signals: outgoing link weight as the base. Page frequency, title and URL, and query data raise it. Web-wide frequency lowers it." width="1000" height="700" loading="lazy"><figcaption>A centrality score starts from outgoing link weight. Page frequency, title and URL placement, and query data push it up, while being common everywhere pulls it down.</figcaption></figure>
 
 There’s a floor as well. If no entity scores above a threshold, the system can decide to show no related content for that page at all. (¶0085)
 
@@ -84,7 +84,7 @@ In one version the patent describes, the checks run in this order.
 
 If none of that works, the page has no topical entity. (¶0055) The claims at the end of the document, which set out what Google asked to protect, build on this search-results test. None of them mention a centrality score.
 
-<figure><img src="/static/uploads/topical-entity-search-test.webp" alt="Flowchart of the topical entity test: query logs first, then whether the page ranks for each entity’s query, then the shopping, map, or answer box shortcut tied to the title and URL, with centrality only as an alternative tie-breaker." width="1000" height="700" loading="lazy"><figcaption>The topical entity is confirmed through query data, rankings, or a special-results shortcut tied to the title and URL. Centrality only shows up as an alternative tie-breaker.</figcaption></figure>
+<figure><img src="/static/uploads/topical-entity-search-test.webp" alt="Flowchart of the topical entity test: query logs, then whether the page ranks for the entity, then a shopping or answer box shortcut." width="1000" height="700" loading="lazy"><figcaption>The topical entity is confirmed through query data, rankings, or a special-results shortcut tied to the title and URL. Centrality only shows up as an alternative tie-breaker.</figcaption></figure>
 
 A page doesn’t get to declare its topical entity, then. It gets confirmed when the title and URL, the page’s rankings, and the queries people typed all point at the same entity.
 
@@ -94,7 +94,7 @@ One more mechanism matters for brands, since plenty of brand names are ordinary 
 
 To catch this, the system runs the entity as a query and scores the top results by how many other entities they share with the page. If fewer than a threshold share of those results are related (the example threshold is half), the entity counts as ambiguous. The fixes are practical: drop the entity, append another entity from the page (the patent’s version is “Moscow Id.”), pick an unambiguous query suggestion, or borrow a phrase from queries that already bring people to the page. (¶0064 to ¶0070)
 
-This is the part of the patent closest to what I’m working on now. I’m setting up a study on how often AI answers get a brand’s name, products, or prices wrong, and which source caused each error. There are no results to share yet.
+This is the part of the patent closest to what I’m working on now. I’m setting up a study on how often AI answers get a brand’s name, products, or prices wrong, and which source caused each error. There are no results to share yet, and when there are, they’ll go through the same checks I used to [break my own citation study](/blog/breaking-my-own-study/).
 
 ## Five shorthand readings, checked against the text
 
@@ -114,7 +114,7 @@ The patent stops at the page. Koray Tuğberk GÜBÜR’s topical map framework, 
 
 In his framework the central entity appears across every piece of content in the network, and his course says it should show up everywhere on the site so the main topic is hard to miss. The root document is the page every related page links to, and it links back to all of them. Its H1 states the topic plainly, and its brief covers the main aspects of the entire map.
 
-Nothing in the patent mentions topical maps, and nothing in Koray’s framework depends on this patent. I read them side by side because they share a principle: one center, entities that genuinely connect to it, and whatever doesn’t connect trimmed away. That link is my practitioner lens, not a documented Google process.
+Nothing in the patent mentions topical maps, and nothing in Koray’s framework depends on this patent. I read them side by side because they share a principle: one center, entities that genuinely connect to it, and whatever doesn’t connect trimmed away. That link is my practitioner lens, not a documented Google process. This site runs on the same idea, and I publish its own [topical map](/topical-map/), central entity included, with the gaps still to fill.
 
 | Term | In the patent (one page) | In a topical map (whole site) |
 | --- | --- | --- |
@@ -123,7 +123,7 @@ Nothing in the patent mentions topical maps, and nothing in Koray’s framework 
 | Centrality score | A number that ranks a page’s central entities | Not part of the framework |
 | Root | Not used | The page every related page links to, covering the central entity broadly |
 
-<figure><img src="/static/uploads/page-topic-vs-site-central-entity.webp" alt="Left, one page titled Buy the Baby Gym here with baby gym as its topical entity. Right, one site with AI visibility as the central entity linked to AI visibility tools, AI citation optimization, AI mention tracking, and entity SEO strategy." width="1000" height="700" loading="lazy"><figcaption>The patent works on a single page. A topical map puts one central entity at the root of a whole site. In this example, AI visibility.</figcaption></figure>
+<figure><img src="/static/uploads/page-topic-vs-site-central-entity.webp" alt="Left, a page titled Buy the Baby Gym here with baby gym as its topical entity. Right, a site with AI visibility as its central entity." width="1000" height="700" loading="lazy"><figcaption>The patent works on a single page. A topical map puts one central entity at the root of a whole site. In this example, AI visibility.</figcaption></figure>
 
 ## How I apply this to a topical map
 
@@ -147,7 +147,7 @@ Koray’s decision rule backs this up: when a topic is a deeper attribute of som
 
 ### Linking back to the root
 
-Koray’s rule for a root page is easy to state: every related page links to it, it links back to them, and its H1 says plainly what the network is about. A category hub that every post in the category links to, and that links back to each of them, is the pattern I point to.
+Koray’s rule for a root page is easy to state: every related page links to it, it links back to them, and its H1 says plainly what the network is about. A category hub that every post in the category links to, and that links back to each of them, is the pattern I point to. I set out how to build that structure in [topic cluster architecture that scales organic traffic](/blog/topic-cluster-architecture/).
 
 The links come from two places. I run internal linking passes that add contextual links from blog posts to feature and comparison pages, and I built an internal linking tool that pulls Search Console, GA4, Bing, and CMS data into one place, so link decisions start from data.
 
@@ -159,7 +159,7 @@ Google Search Console is the closest thing a site owner has to the patent’s qu
 
 ### What I don’t know yet
 
-None of this tells me how ChatGPT, Perplexity, or AI Overviews decide what a page is about. The patent predates all three. Whether topical authority matters for LLM visibility is still an open question, and I’m folding it into that study on wrong brand details in AI answers.
+None of this tells me how ChatGPT, Perplexity, or AI Overviews decide what a page is about. The patent predates all three, and it sits on the SEO layer of the [SEO, AEO, and GEO sequence](/blog/geo-aeo-vs-seo/) rather than the generative one. What I’ve found so far about getting a brand named in those answers is in [how to get cited by ChatGPT, Gemini and Perplexity](/blog/get-cited-by-ai-search/). Whether topical authority matters for LLM visibility is still an open question, and I’m folding it into that study on wrong brand details in AI answers.
 
 ## Questions worth answering before you cite this patent
 
