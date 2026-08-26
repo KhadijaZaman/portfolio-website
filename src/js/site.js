@@ -14,7 +14,7 @@
   // Cloudflare Web Analytics beacon token — Cloudflare dashboard → Web Analytics →
   // your site → Manage site → copy the token out of the snippet. Cookieless, so no
   // consent banner is required. Leave blank and no analytics loads at all.
-  var CF_BEACON_TOKEN = '';
+  var CF_BEACON_TOKEN = 'e01825a501d64fcc909ec840a045dd67';
 
   var CONTACT_EMAIL = 'hello@khadijazaman.com';
 
@@ -24,7 +24,7 @@
      banner. Conversions are not tracked here — see the note in LAUNCH-GUIDE.md. */
   if (CF_BEACON_TOKEN && CF_BEACON_TOKEN.length >= 16) {
     var cf = document.createElement('script');
-    cf.defer = true;
+    cf.type = 'module';
     cf.src = 'https://static.cloudflareinsights.com/beacon.min.js';
     cf.setAttribute('data-cf-beacon', JSON.stringify({ token: CF_BEACON_TOKEN }));
     document.head.appendChild(cf);
