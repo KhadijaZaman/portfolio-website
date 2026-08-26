@@ -111,9 +111,12 @@
 
       if (!WEB3FORMS_KEY) {
         e.preventDefault();
-        var name  = (f.name  && f.name.value  || '').trim();
-        var email = (f.email && f.email.value || '').trim();
-        var msg   = (f.message && f.message.value || '').trim();
+        // NB: f.name is HTMLFormElement.name (the form's own attribute), not the
+        // input named "name" — read fields off f.elements so the lookup is by control.
+        var el    = f.elements;
+        var name  = ((el.name    || {}).value || '').trim();
+        var email = ((el.email   || {}).value || '').trim();
+        var msg   = ((el.message || {}).value || '').trim();
         var subject = encodeURIComponent('Website enquiry' + (intent ? ': ' + intent : ''));
         var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n' +
           (intent ? 'Looking for: ' + intent + '\n' : '') + (msg ? '\n' + msg + '\n' : ''));
@@ -355,39 +358,25 @@
     update();
   })();
 
-  /* ── Blog: build the table of contents from the article's H2s ── */
+  /* ── Blog: scroll-spy over the table of contents ──
+     The TOC itself and the h2 ids are rendered at build time (see .eleventy.js
+     and _includes/post.njk), so this only highlights the section in view. */
   (function () {
     var prose   = document.querySelector('.prose');
-    var toc     = document.getElementById('toc');
     var tocList = document.getElementById('toc-list');
-    if (!prose || !toc || !tocList) return;
-    var heads = Array.prototype.slice.call(prose.querySelectorAll('h2'));
-    if (heads.length < 2) { toc.style.display = 'none'; return; }
+    if (!prose || !tocList || !('IntersectionObserver' in window)) return;
+    var links = Array.prototype.slice.call(tocList.querySelectorAll('a'));
+    var heads = Array.prototype.slice.call(prose.querySelectorAll('h2[id]'));
+    if (!links.length || !heads.length) return;
 
-    var links = [];
-    heads.forEach(function (h, i) {
-      if (!h.id) {
-        h.id = 'section-' + (i + 1) + '-' + h.textContent.toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
-      }
-      var li = document.createElement('li');
-      var a  = document.createElement('a');
-      a.href = '#' + h.id; a.textContent = h.textContent;
-      li.appendChild(a); tocList.appendChild(li);
-      links.push(a);
-    });
-
-    // Scroll-spy: highlight the section currently in view.
-    if ('IntersectionObserver' in window) {
-      var spy = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) {
-            links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id); });
-          }
-        });
-      }, { rootMargin: '-20% 0px -70% 0px' });
-      heads.forEach(function (h) { spy.observe(h); });
-    }
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    heads.forEach(function (h) { spy.observe(h); });
   })();
 
   /* ── Live form validation (contact + newsletter) ── */

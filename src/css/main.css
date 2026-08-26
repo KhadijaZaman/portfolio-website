@@ -703,6 +703,9 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 .toc a:hover { color: var(--text-1); }
 .toc a.active { color: #93C5FD; border-left-color: var(--accent); }
 .post-layout .prose { margin: 0; }
+/* A post with fewer than two h2s renders no TOC — drop the sidebar column
+   so the prose does not land in the 220px track. */
+.post-layout--no-toc { grid-template-columns: minmax(0, 720px); }
 @media (max-width: 900px) {
   .post-layout { grid-template-columns: 1fr; gap: 1.5rem; }
   .toc { position: static; top: auto; border: 1px solid var(--border); border-radius: var(--r-md); padding: 1rem 1.25rem; background: var(--bg-card); }
