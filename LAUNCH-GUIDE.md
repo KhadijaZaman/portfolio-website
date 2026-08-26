@@ -1,215 +1,157 @@
-# Launch guide — khadijazaman.com
+# Operations guide — khadijazaman.com
 
-Everything from "I have the patch file" to "the site is live on my domain with a
-working blog." Follow the phases in order. Commands are for macOS/Linux Terminal
-(on Windows use Git Bash, which comes with Git).
+How the live site is built, deployed and updated. Commands are for macOS/Linux
+Terminal; on Windows use Git Bash or PowerShell.
 
-Time: ~45–60 minutes, most of it waiting on DNS.
-
----
-
-## Phase 0 — Install the tools (one time)
-
-You need three things on your computer:
-
-1. **Git** — check with `git --version`. If missing: https://git-scm.com/downloads
-2. **Node.js 20+** — check with `node --version`. If missing: https://nodejs.org (LTS).
-3. **A GitHub account** you can push to (you already own `KhadijaZaman/portfolio-website`).
+> This file used to be a pre-launch walkthrough (apply a patch → deploy to Netlify
+> → point DNS). The site is live, so it now documents running it instead.
 
 ---
 
-## Phase 1 — Get the new code onto GitHub
+## How it deploys
 
-The new work (multi-page site, blue palette, CMS, forms, analytics, blog posts)
-was delivered as a patch file: **`khadija-multipage-work.patch`**. You apply it
-once to your `main` branch.
+There is no build step you run by hand and no Netlify involved.
 
-1. **Clone your repo** (skip if you already have it locally):
-   ```bash
-   git clone https://github.com/KhadijaZaman/portfolio-website.git
-   cd portfolio-website
-   ```
-   If you already have it: `cd portfolio-website && git checkout main && git pull`
-
-2. **Put the patch file in this folder** (move the downloaded
-   `khadija-multipage-work.patch` into the `portfolio-website` folder).
-
-3. **Apply it** — this replays the 5 commits onto `main`:
-   ```bash
-   git am < khadija-multipage-work.patch
-   ```
-   You should see "Applying: …" lines with no errors.
-   *(If it complains, run `git am --abort` and tell me — I'll send a rebased patch.)*
-
-4. **Preview locally before pushing** (optional but smart):
-   ```bash
-   npm install
-   npm run serve
-   ```
-   Open http://localhost:8080 — click through Home, Work, About, Tools, Blog,
-   Contact. Press `Ctrl+C` to stop when done.
-
-5. **Push to GitHub:**
-   ```bash
-   git push origin main
-   ```
-   Your repo now has the full site. ✅
-
-> Prefer a review step instead of pushing straight to `main`? Do
-> `git checkout -b launch` before step 3, push that branch, open a Pull Request
-> on GitHub, and merge it when happy. Netlify (next phase) builds `main`.
-
----
-
-## Phase 2 — Deploy to Netlify (get a live URL)
-
-1. Go to **https://www.netlify.com** and **sign up with GitHub** (free).
-2. **Add new site → Import an existing project → Deploy with GitHub.**
-3. Authorize Netlify, then pick **`portfolio-website`**.
-4. Netlify auto-reads `netlify.toml`, so the fields are already correct:
-   - **Build command:** `npm run build`
-   - **Publish directory:** `_site`
-5. Click **Deploy**. Wait ~1 minute → you get a URL like
-   `https://random-name-123.netlify.app`. Open it and confirm the site and
-   `/blog/` look right.
-
-*(Every future `git push` to `main` now auto-rebuilds and redeploys.)*
-
----
-
-## Phase 3 — Turn on the contact form + analytics
-
-Both are two lines at the very top of **`src/js/site.js`**:
-```js
-var WEB3FORMS_KEY     = '';   // ← paste key here
-var GA_MEASUREMENT_ID = '';   // ← paste GA4 ID here
+```
+push to main
+  → .github/workflows/deploy.yml  (GitHub Actions)
+  → npm ci && npx @11ty/eleventy
+  → force-push _site/ to the `deploy` branch
+  → Hostinger serves the `deploy` branch
 ```
 
-### 3a. Contact + newsletter forms (Web3Forms — free, no backend)
-1. Go to **https://web3forms.com**, enter the email where you want enquiries to
-   land, and copy the **Access Key** they email/show you.
-2. Paste it: `var WEB3FORMS_KEY = 'your-key-here';`
-3. Save.
+So the live site always serves built HTML, never source. `src/.htaccess` ships with
+the build and supplies compression, cache headers and the security headers
+(HSTS, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`).
 
-### 3b. Analytics (Google Analytics 4)
-1. Go to **https://analytics.google.com** → Admin → **Create property** for
-   khadijazaman.com → add a **Web** data stream.
-2. Copy the **Measurement ID** (looks like `G-XXXXXXXXXX`).
-3. Paste it: `var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';`
-4. Save.
-
-### 3c. Ship it
-```bash
-git add src/js/site.js
-git commit -m "Configure Web3Forms key and GA4 analytics"
-git push origin main
-```
-Netlify redeploys in ~1 min. Test the contact form on the live site — you should
-get an email, and GA4 **Realtime** should show your visit.
+A push to `main` is all it takes. Watch the run under the repo's **Actions** tab.
 
 ---
 
-## Phase 4 — Turn on the CMS login (so you can write posts at /admin/)
+## Publishing a blog post
 
-The editor is **Sveltia CMS**, which logs in with GitHub. You need one GitHub
-OAuth app, brokered by Netlify.
+**From the browser (no code):**
 
-1. **Create the OAuth app:** GitHub → your avatar → **Settings → Developer
-   settings → OAuth Apps → New OAuth App**:
-   - **Application name:** `khadijazaman.com CMS`
-   - **Homepage URL:** your live URL (the `.netlify.app` one, or the domain once set)
-   - **Authorization callback URL:** `https://api.netlify.com/auth/done`
-   - Click **Register application**, then **Generate a new client secret**.
-   - Copy the **Client ID** and **Client secret**.
-2. **Give them to Netlify:** Netlify dashboard → your site → **Site
-   configuration → Access & security → OAuth → Install provider → GitHub** →
-   paste the Client ID + secret → save.
-3. **Log in:** go to `https://<your-site>/admin/`, click **Sign in with GitHub**,
-   authorize. You're in the editor.
-
-*(Hosting on Cloudflare/Vercel instead of Netlify later? Use the worker in
-`oauth-worker/` — its README has the steps.)*
-
----
-
-## Phase 5 — Point your domain (khadijazaman.com)
-
-1. Netlify dashboard → **Domain management → Add a domain →** type
-   `khadijazaman.com` → verify.
-2. Netlify shows you DNS records. Two ways to finish:
-   - **Easiest:** at your domain registrar, change the **nameservers** to the
-     ones Netlify gives you (they then manage DNS + SSL).
-   - **Or** keep your registrar's DNS and add the **A / CNAME records** Netlify
-     shows.
-3. Wait for DNS to propagate (minutes to a few hours). Netlify auto-provisions
-   **HTTPS** once it resolves. Done — the site is live at your domain.
-
-4. **Update the OAuth Homepage URL** (Phase 4, step 1) to
-   `https://khadijazaman.com` once the domain is live.
-
----
-
-## Phase 6 — Content polish (anytime)
-
-- **Add your recognition screenshots:** drop the images into
-  `src/static/uploads/recognition/` using the filenames referenced on the Work
-  page (e.g. `traffic-growth.png`), commit, push. Missing tiles hide
-  themselves, so add as many or as few as you have.
-- **Replace the hero/about photo** if you want a different one (currently a
-  Builder.io-hosted image referenced in `src/index.html` and `src/about/`).
-- **Check the footer/contact details** (email, phone, LinkedIn) across pages.
-
----
-
-## How you'll add blog posts from now on
-
-**The easy way (no code):**
-1. Go to `khadijazaman.com/admin/` and sign in with GitHub.
+1. Go to `https://khadijazaman.com/admin/` and sign in with GitHub.
 2. **Blog posts → New Blog post.**
-3. Fill Title, Publish date, Category, Short description, Read time, Body.
-4. **Publish.** It commits to GitHub → Netlify rebuilds → the post is live at
-   `/blog/<slug>/` in ~1 minute, and the blog index + `sitemap.xml` update
-   themselves.
+3. Fill in Title, Publish date, Category, Short description, Read time, Body.
+4. **Publish.** It commits to `main`, Actions rebuilds, and the post is live at
+   `/blog/<slug>/` in about a minute. The blog index, category pages,
+   `sitemap.xml`, `feed.xml` and `llms.txt` all regenerate themselves.
 
-**The code way (if you're already in the repo):** add a file
-`src/posts/my-post.md` with this top block, then commit + push:
+The editor is **Sveltia CMS** (a drop-in Decap/Netlify-CMS-compatible editor),
+configured in `src/admin/config.yml`. Login is brokered by the Cloudflare Worker
+in `oauth-worker/` — see that folder's README.
+
+**From the repo:** add `src/posts/my-post.md` with this front matter, then commit
+and push:
+
 ```markdown
 ---
 title: "Your Post Title"
+metaTitle: "Shorter Title For Search & Social"   # optional
 date: 2026-08-05
-category: "SEO"
+category: "SEO"          # AI Search | GEO / AEO | SEO | Content Strategy | Automation
 description: "One sentence for the card and the SEO meta description."
 readTime: "6 min"
-starter: false
+starter: false           # true shows the amber 'starter draft' banner
 ---
 
 Your article in **Markdown**…
 ```
 
----
-
-## Quick troubleshooting
-
-- **`git am` fails / conflicts** → `git am --abort`, then ask me for a fresh patch.
-- **Netlify build fails** → open the deploy log; usually a Node version issue —
-  `netlify.toml` pins Node 20, which is correct.
-- **Contact form does nothing / opens email app** → `WEB3FORMS_KEY` is still
-  blank or wrong. Re-check Phase 3a and that you pushed.
-- **`/admin/` won't log in** → the GitHub OAuth callback must be exactly
-  `https://api.netlify.com/auth/done`, and the provider must be installed in
-  Netlify (Phase 4).
-- **Images/CSS look unstyled locally** → make sure you opened the site through
-  `npm run serve` (http://localhost:8080), not by double-clicking the HTML file.
+Every `##` heading automatically gets an `id` at build time and appears in the
+article's table of contents — you don't need to add anchors yourself.
 
 ---
 
-## The 6-line version
+## Local development
 
 ```bash
-git clone https://github.com/KhadijaZaman/portfolio-website.git
-cd portfolio-website
-git am < khadija-multipage-work.patch
-git push origin main
-# → Netlify: import repo, deploy
-# → paste WEB3FORMS_KEY + GA4 ID in src/js/site.js, push; set up /admin OAuth; point domain
+npm install        # once
+npm run serve      # live-reload dev server at http://localhost:8080
+npm run build      # one-off production build into _site/
 ```
+
+Always view the site through `npm run serve`, not by opening the HTML files
+directly — the absolute `/css/…` paths won't resolve from `file://`.
+
+---
+
+## Configuration
+
+Two values sit at the top of **`src/js/site.js`**:
+
+```js
+var WEB3FORMS_KEY   = '…';   // contact + newsletter delivery (web3forms.com)
+var CF_BEACON_TOKEN = '';    // Cloudflare Web Analytics beacon token
+```
+
+Either can be blanked: with no Web3Forms key the forms fall back to opening the
+visitor's email client, and with no beacon token no analytics loads at all.
+
+### Analytics
+
+The site uses **Cloudflare Web Analytics**, not Google Analytics. It sets no cookies
+and stores no per-visitor identifier, so no consent banner is required.
+
+To switch it on: Cloudflare dashboard → **Web Analytics** → **Add a site** →
+`khadijazaman.com` → copy the token out of the snippet it shows → paste it into
+`CF_BEACON_TOKEN` in `src/js/site.js` → commit and push. You do **not** need to move
+DNS to Cloudflare for this.
+
+**What it gives you:** pageviews, top pages, referrers, countries, devices, browsers,
+and Core Web Vitals from real visitors.
+
+**What it does not:** custom conversion events. That is deliberate — the tracking that
+would need is exactly what requires a consent banner. Form conversions are already
+covered elsewhere:
+
+| Question | Where to look |
+|---|---|
+| How many people visited, from where | Cloudflare Web Analytics |
+| What queries the site ranks for, impressions, clicks, CTR | Google Search Console |
+| Who filled in the contact or newsletter form | Your inbox + the Web3Forms dashboard — every submission is emailed |
+
+Between the three you keep full coverage, for free, with no banner.
+
+Site-wide values (URL, contact email, social links) live in `src/_data/site.js`.
+
+---
+
+## Adding images
+
+- **From the CMS:** the editor uploads into `src/static/uploads/`.
+- **From the repo:** drop files into `src/static/uploads/` (or
+  `src/static/uploads/recognition/` for Work-page screenshots), commit and push.
+
+⚠️ **Check that every referenced image exists before pushing.** `src/js/site.js`
+hides any `.proof-shot`, `.case-shot` or article image that fails to load, so a
+missing file disappears silently instead of showing a broken icon — a proof
+screenshot can vanish with nothing to signal it. This check catches it:
+
+```bash
+grep -rho 'src="/static/uploads/[^"]*"\|href="/static/uploads/[^"]*"' src/ \
+  --include=*.html --include=*.njk --include=*.md \
+  | sed -e 's/.*="//' -e 's/"$//' | sort -u \
+  | while read -r u; do [ -f "src${u}" ] || echo "MISSING $u"; done
+```
+
+---
+
+## Troubleshooting
+
+- **Build fails in Actions** → open the failing run under the **Actions** tab. The
+  workflow pins Node 20; most failures are a syntax error in a template or a bad
+  front-matter date.
+- **A push didn't reach the live site** → check the Actions run succeeded *and*
+  that the `deploy` branch got a new commit. Hostinger serves `deploy`, not `main`.
+- **Contact form opens the email app instead of sending** → `WEB3FORMS_KEY` is
+  blank or wrong in `src/js/site.js`.
+- **`/admin/` won't log in** → the GitHub OAuth app's callback URL must match the
+  Cloudflare Worker's `/callback`, and `base_url` in `src/admin/config.yml` must
+  point at the worker. See `oauth-worker/README.md`.
+- **An image isn't showing** → it's probably missing rather than broken. Run the
+  check above.
+- **Styles look wrong locally** → you opened the file directly instead of using
+  `npm run serve`.

@@ -32,12 +32,19 @@ ogType: article
   </div>
 </header>
 
+{% set toc = content | tocFromHtml %}
 <article aria-label="Article">
-  <div class="wrap post-layout">
+  <div class="wrap post-layout{% if toc.length < 2 %} post-layout--no-toc{% endif %}">
+    {%- if toc.length > 1 %}
     <aside class="toc" id="toc" aria-label="Table of contents">
       <div class="toc-title">In this article</div>
-      <ul id="toc-list"></ul>
+      <ul id="toc-list">
+        {%- for h in toc %}
+        <li><a href="#{{ h.id }}">{{ h.text }}</a></li>
+        {%- endfor %}
+      </ul>
     </aside>
+    {%- endif %}
 
     <div class="prose">
       {% if starter %}
@@ -50,7 +57,7 @@ ogType: article
 
       <!-- Author bio -->
       <div class="author-box">
-        <img class="author-avatar" src="https://cdn.builder.io/api/v1/image/assets%2F6712fcfd62e34922a6872f22e2c0f5c7%2Fa469fddeacc34c939bf9655839f510d0?format=webp&width=200&height=200" alt="Khadija Zaman" width="72" height="72" loading="lazy">
+        <img class="author-avatar" src="/static/img/khadija-avatar.webp" alt="Khadija Zaman" width="72" height="72" loading="lazy">
         <div class="author-meta">
           <div class="author-name">Khadija Zaman</div>
           <p>SEO &amp; GEO/AEO specialist and Marketing Manager at Wellows — I get brands ranked on Google and cited by ChatGPT, Gemini, and Perplexity, then automate the execution.</p>
