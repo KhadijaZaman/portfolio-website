@@ -605,6 +605,28 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 .press-shot figcaption { font-size: 0.72rem; color: var(--text-3); padding: 0.65rem 0.9rem; line-height: 1.5; }
 @media (max-width: 900px) { .press-card { grid-template-columns: 1fr; padding: 1.5rem; } }
 
+/* Origin story under the press card — mirrored so the two blocks alternate. */
+.press-origin {
+  display: grid; grid-template-columns: 1fr 1.05fr; gap: 2rem; align-items: center;
+  margin-top: 1.25rem; padding: 2rem;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-xl);
+}
+.press-origin .press-shot { background: var(--bg-0); }
+.press-stats { list-style: none; margin: 0 0 1.1rem; padding: 0; display: grid; gap: 0.55rem; }
+.press-stats li {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  border-left: 2px solid var(--border-a); padding-left: 0.85rem;
+}
+.press-stats strong {
+  font-family: var(--ff-display); font-size: 1.1rem; font-weight: 800; letter-spacing: -0.01em;
+  background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.press-stats span { font-size: 0.8rem; color: var(--text-3); }
+@media (max-width: 900px) {
+  .press-origin { grid-template-columns: 1fr; padding: 1.5rem; }
+  .press-origin figure { order: 2; }
+}
+
 /* ── FEATURED WORK TEASER (home) ── */
 .work-teaser-foot { display: flex; justify-content: center; margin-top: 2.5rem; }
 
