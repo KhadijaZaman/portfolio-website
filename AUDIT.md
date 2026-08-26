@@ -263,7 +263,7 @@ Round 1 missed that two other docs were stale in the same way:
 
 ## P8 — third-party dependencies (found in round 2)
 
-### 20. Every photo of Khadija is hosted on a third-party CDN — **OPEN**
+### 20. Every photo of Khadija was hosted on a third-party CDN — **FIXED**
 
 `cdn.builder.io` serves all three portraits — a leftover from a Builder.io page builder:
 
@@ -280,24 +280,21 @@ it is a third-party request on every page view, which is a privacy surface you d
 The `preconnect` hints (`src/index.njk:33`, `src/about/index.html:30`) reduce the latency cost
 but not the dependency.
 
-**Not fixed here:** `cdn.builder.io` is blocked by this environment's egress proxy, so the
-images could not be downloaded. Deliberately left as-is rather than repointing the markup at
-files that don't exist yet — that is exactly what produced the silent broken image in finding 3.
+**Fixed.** The three images are now served from `src/static/img/` as WebP:
 
-To fix it locally:
+| File | Size | Used by |
+|---|---|---|
+| `khadija-hero.webp` | 840×840, 36KB | Homepage hero (LCP) |
+| `khadija-about.webp` | 680×680, 27KB | About page |
+| `khadija-avatar.webp` | 200×200, 4KB | Author box on every post |
 
-```bash
-# from the repo root
-mkdir -p src/static/img
-BASE="https://cdn.builder.io/api/v1/image/assets%2F6712fcfd62e34922a6872f22e2c0f5c7%2Fa469fddeacc34c939bf9655839f510d0"
-curl -o src/static/img/khadija-hero.webp   "$BASE?format=webp&width=840"
-curl -o src/static/img/khadija-about.webp  "$BASE?format=webp&width=680"
-curl -o src/static/img/khadija-avatar.webp "$BASE?format=webp&width=200&height=200"
-```
+The two `preconnect` hints to `cdn.builder.io` were removed with them — they pointed at a host
+the site no longer contacts. No `.eleventy.js` change was needed: `src/static` was already in
+the passthrough list. The hero already carried `fetchpriority="high"` and no `loading="lazy"`,
+which is correct for an LCP image.
 
-Then swap the three `src` attributes to `/static/img/…`, drop the two `preconnect` hints, add
-`src/static/img` to the passthrough list in `.eleventy.js`, and re-run the missing-image check.
-Give the hero `fetchpriority="high"` and no `loading="lazy"`, since it's the LCP element.
+Nothing on the site now loads an image from a third-party host. The one remaining external
+script is Sveltia CMS on `/admin/`, below.
 
 `src/admin/index.html:14` also loads Sveltia CMS from `unpkg.com`, but pinned to `0.180.1`.
 That is the normal install method and the pin makes it acceptable — noted, no action.
