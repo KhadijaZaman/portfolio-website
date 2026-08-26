@@ -83,13 +83,37 @@ directly — the absolute `/css/…` paths won't resolve from `file://`.
 Two values sit at the top of **`src/js/site.js`**:
 
 ```js
-var WEB3FORMS_KEY     = '…';   // contact + newsletter delivery (web3forms.com)
-var GA_MEASUREMENT_ID = '…';   // Google Analytics 4
+var WEB3FORMS_KEY   = '…';   // contact + newsletter delivery (web3forms.com)
+var CF_BEACON_TOKEN = '';    // Cloudflare Web Analytics beacon token
 ```
 
-Both are already set. Either can be blanked: with no Web3Forms key the forms fall
-back to opening the visitor's email client, and with no GA4 ID analytics simply
-doesn't load.
+Either can be blanked: with no Web3Forms key the forms fall back to opening the
+visitor's email client, and with no beacon token no analytics loads at all.
+
+### Analytics
+
+The site uses **Cloudflare Web Analytics**, not Google Analytics. It sets no cookies
+and stores no per-visitor identifier, so no consent banner is required.
+
+To switch it on: Cloudflare dashboard → **Web Analytics** → **Add a site** →
+`khadijazaman.com` → copy the token out of the snippet it shows → paste it into
+`CF_BEACON_TOKEN` in `src/js/site.js` → commit and push. You do **not** need to move
+DNS to Cloudflare for this.
+
+**What it gives you:** pageviews, top pages, referrers, countries, devices, browsers,
+and Core Web Vitals from real visitors.
+
+**What it does not:** custom conversion events. That is deliberate — the tracking that
+would need is exactly what requires a consent banner. Form conversions are already
+covered elsewhere:
+
+| Question | Where to look |
+|---|---|
+| How many people visited, from where | Cloudflare Web Analytics |
+| What queries the site ranks for, impressions, clicks, CTR | Google Search Console |
+| Who filled in the contact or newsletter form | Your inbox + the Web3Forms dashboard — every submission is emailed |
+
+Between the three you keep full coverage, for free, with no banner.
 
 Site-wide values (URL, contact email, social links) live in `src/_data/site.js`.
 

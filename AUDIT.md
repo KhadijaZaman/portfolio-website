@@ -199,12 +199,20 @@ which is exactly when the fallback matters. The three reads now go through `f.el
 
 ## P5 — privacy & abuse (both your call)
 
-### 14. GA4 loads with no consent gate — **OPEN**
+### 14. GA4 loaded with no consent gate — **FIXED**
 
-`src/js/site.js` fires `gtag('config', …)` on every page load, before any consent. The site
-states it reaches UK/US/EU audiences; for UK/EU visitors that is a GDPR/PECR exposure. Whether
-to add a consent banner (or switch to a cookieless analytics tool) is a product decision, not
-something to change unilaterally — flagging it, not fixing it.
+`src/js/site.js` fired `gtag('config', …)` on every page load, before any consent — a GDPR/PECR
+exposure for the UK/EU audience the site says it reaches, and an awkward look for a site
+selling technical rigour.
+
+Resolved by removing GA4 entirely and replacing it with **Cloudflare Web Analytics**, which is
+free, sets no cookies, and stores no per-visitor identifier — so no consent banner is needed
+rather than one being added. The beacon only loads when `CF_BEACON_TOKEN` is set.
+
+The two GA4 conversion events (`generate_lead`, `sign_up`) were dropped with it; Cloudflare
+Web Analytics is pageview-only by design. Form conversions were always visible in the
+Web3Forms inbox and dashboard, so nothing was actually lost. `LAUNCH-GUIDE.md` documents the
+split: Cloudflare for traffic, Search Console for search, Web3Forms for conversions.
 
 ### 15. Newsletter form had no bot protection — **FIXED (round 2, and corrected)**
 

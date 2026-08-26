@@ -11,20 +11,23 @@
      analytics simply doesn't load).
   ═══════════════════════════════════════════════════════════ */
   var WEB3FORMS_KEY   = '0ca2b384-dbcd-4977-a41a-5f2d1a6c2abb';   // free access key from https://web3forms.com
-  var GA_MEASUREMENT_ID = 'G-9TD8PYD30L'; // e.g. 'G-XXXXXXXXXX' from Google Analytics 4
+  // Cloudflare Web Analytics beacon token — Cloudflare dashboard → Web Analytics →
+  // your site → Manage site → copy the token out of the snippet. Cookieless, so no
+  // consent banner is required. Leave blank and no analytics loads at all.
+  var CF_BEACON_TOKEN = '';
 
   var CONTACT_EMAIL = 'hello@khadijazaman.com';
 
-  /* ── Google Analytics 4 (loads on every page, only if an ID is set) ── */
-  if (/^G-\w+$/.test(GA_MEASUREMENT_ID)) {
-    var ga = document.createElement('script');
-    ga.async = true;
-    ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
-    document.head.appendChild(ga);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { window.dataLayer.push(arguments); };
-    window.gtag('js', new Date());
-    window.gtag('config', GA_MEASUREMENT_ID);
+  /* ── Cloudflare Web Analytics (loads on every page, only if a token is set) ──
+     Pageviews, referrers, countries, devices and Core Web Vitals. Sets no
+     cookies and stores no per-visitor identifiers, so it needs no consent
+     banner. Conversions are not tracked here — see the note in LAUNCH-GUIDE.md. */
+  if (CF_BEACON_TOKEN && CF_BEACON_TOKEN.length >= 16) {
+    var cf = document.createElement('script');
+    cf.defer = true;
+    cf.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    cf.setAttribute('data-cf-beacon', JSON.stringify({ token: CF_BEACON_TOKEN }));
+    document.head.appendChild(cf);
   }
 
   /* Show a small status line under a form. */
@@ -140,7 +143,6 @@
           f.reset();
           if (btn) btn.textContent = 'Sent ✓';
           setStatus(f, 'Thanks — your message is in. I respond within 24–48 hours.', true);
-          if (window.gtag) window.gtag('event', 'generate_lead', { form: 'contact' });
           setTimeout(function () { if (btn) { btn.textContent = orig; btn.disabled = false; } }, 4000);
         } else { throw new Error((json && json.message) || 'Submission failed'); }
       }).catch(function () {
@@ -180,7 +182,6 @@
           newsForm.reset();
           if (btn) btn.textContent = 'Subscribed ✓';
           setStatus(newsForm, "You're on the list. Thanks for subscribing.", true);
-          if (window.gtag) window.gtag('event', 'sign_up', { form: 'newsletter' });
           setTimeout(function () { if (btn) { btn.textContent = orig; btn.disabled = false; } }, 4000);
         } else { throw new Error((json && json.message) || 'Submission failed'); }
       }).catch(function () {
