@@ -78,8 +78,8 @@ Commit and push — the blog index and sitemap update on the next build.
 
 ## Hosting & deployment
 
-The site is hosted on **Hostinger** and deployed by GitHub Actions — there is no Netlify
-involvement despite what `SETUP-NETLIFY.md` still describes (that file is obsolete).
+The site is hosted on **Hostinger** and deployed by GitHub Actions — no Netlify involved.
+See **[LAUNCH-GUIDE.md](./LAUNCH-GUIDE.md)** for the day-to-day operations guide.
 
 ```
 push to main  →  .github/workflows/deploy.yml  →  npx @11ty/eleventy

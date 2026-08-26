@@ -16,8 +16,11 @@ That means the following were **not** checked and are not claimed either way:
 - Whether the deployed HTML on Hostinger actually matches this source.
 - Whether the live `/admin/` CMS login works end to end.
 
-Findings are ranked P1 (highest) to P6. Each is marked **FIXED** (applied in this pass) or
-**OPEN** (documented, left to decide).
+Findings are ranked P1 (highest) to P7. Each is marked **FIXED** or **OPEN** (documented, left
+to decide).
+
+**Round 2 (same date)** closed findings 10, 13, 15 and 17, corrected two findings I had got
+wrong, and added finding 20. See "Corrections" and "What changed" at the end.
 
 ---
 
@@ -150,13 +153,26 @@ Every other page carries breadcrumb schema; the four free tool pages did not. Ad
 four. (They already had correct `WebApplication` + `Offer` + `Person` schema — an earlier note
 claiming otherwise was wrong.)
 
-### 10. Blog TOC anchors are generated client-side — **OPEN**
+### 10. Blog TOC anchors were generated client-side — **FIXED (round 2)**
 
-`src/js/site.js` assigns `h2` ids in the browser. Section anchors therefore do not exist for
-crawlers that do not execute JS, and deep links into an article's sections are not in the
-served HTML. Generating them at build time (a markdown-it anchor plugin in `.eleventy.js`)
-would make them crawlable. For a site whose thesis is retrieval-readiness, this is the gap
-most worth closing next.
+`src/js/site.js` assigned `h2` ids in the browser, so section anchors existed in **no** served
+HTML — invisible to crawlers that don't run JS, and impossible to deep-link. On a site whose
+thesis is retrieval-readiness, this was the most valuable gap on the list.
+
+Both halves now happen at build time, with **no new dependency**:
+
+- `.eleventy.js` uses `amendLibrary("md", …)` to push a markdown-it core rule that stamps a
+  slug on every article `h2`, deduping repeats per document.
+- A `tocFromHtml` filter extracts the `{id, text}` pairs from the rendered post, and
+  `src/_includes/post.njk` prints the table of contents as real `<li><a href="#…">` markup.
+
+`src/js/site.js` keeps only the scroll-spy `IntersectionObserver`. The slug helper is now
+shared with the `slugify` filter and the category collection, so an anchor and its heading
+cannot drift apart.
+
+`src/css/main.css` gained a `.post-layout--no-toc` modifier: `.post-layout` is a
+`220px minmax(0,720px)` grid, so a post with fewer than two `h2`s (none today) would have
+dropped its prose into the sidebar track.
 
 ### 11. One shared OG image for all 22 pages — **OPEN**
 
@@ -172,13 +188,12 @@ priority.
 The recognition carousel guarded `ptrack` and `car` but then called `dotsW.appendChild`
 unguarded. Added `dotsW` to the guard.
 
-### 13. Contact-form `mailto:` fallback is broken — **OPEN**
+### 13. Contact-form `mailto:` fallback was broken — **FIXED (round 2)**
 
-In the `!WEB3FORMS_KEY` branch of `src/js/site.js`, `f.name` resolves to
+In the `!WEB3FORMS_KEY` branch of `src/js/site.js`, `f.name` resolved to
 `HTMLFormElement.name` (the form's own attribute), **not** the input named `name`, so
-`f.name.value` is `undefined`. Dead code today because the key is set — live the moment the key
-is ever cleared, which is exactly when you would be relying on the fallback. Fix:
-`f.elements.name.value`.
+`f.name.value` was `undefined`. Dead code while the key is set — live the moment it is cleared,
+which is exactly when the fallback matters. The three reads now go through `f.elements`.
 
 ---
 
@@ -191,12 +206,19 @@ states it reaches UK/US/EU audiences; for UK/EU visitors that is a GDPR/PECR exp
 to add a consent banner (or switch to a cookieless analytics tool) is a product decision, not
 something to change unilaterally — flagging it, not fixing it.
 
-### 15. Web3Forms endpoint has no bot protection — **OPEN**
+### 15. Newsletter form had no bot protection — **FIXED (round 2, and corrected)**
 
-The access key in `src/js/site.js` is public by design, but neither form carries a honeypot or
-Web3Forms' `botcheck` field, so the endpoint can be driven straight into
-`hello@khadijazaman.com`. Adding `<input type="checkbox" name="botcheck" class="hidden"
-style="display:none;">` to both forms is a one-line mitigation.
+**This finding was originally wrong.** I wrote that "neither form carries a honeypot". The
+contact form already had one — `src/contact/index.html:92`, a `botcheck` checkbox hidden by
+`.hp-field` (`src/css/main.css:447`). I had grepped `src/js/site.js` for the Web3Forms wiring
+and never grepped the markup for `botcheck` before writing the finding.
+
+The real gap was the **newsletter** form, which had no honeypot in any of its three copies
+(`src/_includes/base.njk`, `src/index.njk`, `src/tools/index.html`). All three now carry the
+same markup and the same `.hp-field` class — no new CSS. `submitWeb3Forms` already posts the
+whole `FormData`, so no JS change was needed.
+
+That the same one-line fix had to be applied in three files is finding 18 in miniature.
 
 ---
 
@@ -219,11 +241,66 @@ Corrected throughout:
 The repo layout section was also missing `work/`, the four tool pages, `blog-category.njk`,
 `feed.njk`, `llms.njk`, `_data/buildDate.js`, `.htaccess`, `oauth-worker/` and the workflow.
 
-### 17. `SETUP-NETLIFY.md` is obsolete — **OPEN**
+### 17. Obsolete deployment docs — **FIXED (round 2, and wider than first reported)**
 
-It documents a Netlify + Identity + Git Gateway setup that is not how this site deploys or
-authenticates. The README now says so explicitly, but the file itself should be deleted or
-replaced with a Hostinger/Actions equivalent. Deleting a doc is your call.
+`SETUP-NETLIFY.md` documented a Netlify + Identity + Git Gateway setup that is not how this
+site deploys or authenticates, and referenced a long-gone branch. **Deleted.**
+
+Round 1 missed that two other docs were stale in the same way:
+
+- **`LAUNCH-GUIDE.md`** was worse than the README had been — an entire "Phase 2 — Deploy to
+  Netlify" section, `netlify.toml` field instructions, a Netlify-brokered OAuth walkthrough
+  with an `api.netlify.com` callback, Netlify DNS/SSL steps, and Netlify build-log
+  troubleshooting. The whole document was a pre-launch narrative ("apply this patch to get the
+  site onto GitHub") for a site that has been live for months. Rewritten as an operations
+  guide: the real Actions → `deploy` branch → Hostinger flow, publishing, local dev,
+  configuration, and troubleshooting — including the missing-image check from finding 3.
+- **`oauth-worker/README.md`** described itself as *optional*, told the reader that "on Netlify
+  you don't need this worker", and pointed at the now-deleted `SETUP-NETLIFY.md`. That worker
+  is what actually brokers CMS login today. Corrected.
+
+---
+
+## P8 — third-party dependencies (found in round 2)
+
+### 20. Every photo of Khadija is hosted on a third-party CDN — **OPEN**
+
+`cdn.builder.io` serves all three portraits — a leftover from a Builder.io page builder:
+
+| Where | File:line |
+|---|---|
+| Homepage hero portrait — almost certainly the **LCP element** | `src/index.njk:163` |
+| About page photo | `src/about/index.html:114` |
+| Author avatar on **every** blog post | `src/_includes/post.njk:53` |
+
+Three separate problems. The site's entire visual identity depends on an asset URL you don't
+own or control — if that Builder.io space is deleted or the asset id rotates, every photo of
+you disappears from the site at once. The homepage LCP image sits on a third-party origin. And
+it is a third-party request on every page view, which is a privacy surface you don't control.
+The `preconnect` hints (`src/index.njk:33`, `src/about/index.html:30`) reduce the latency cost
+but not the dependency.
+
+**Not fixed here:** `cdn.builder.io` is blocked by this environment's egress proxy, so the
+images could not be downloaded. Deliberately left as-is rather than repointing the markup at
+files that don't exist yet — that is exactly what produced the silent broken image in finding 3.
+
+To fix it locally:
+
+```bash
+# from the repo root
+mkdir -p src/static/img
+BASE="https://cdn.builder.io/api/v1/image/assets%2F6712fcfd62e34922a6872f22e2c0f5c7%2Fa469fddeacc34c939bf9655839f510d0"
+curl -o src/static/img/khadija-hero.webp   "$BASE?format=webp&width=840"
+curl -o src/static/img/khadija-about.webp  "$BASE?format=webp&width=680"
+curl -o src/static/img/khadija-avatar.webp "$BASE?format=webp&width=200&height=200"
+```
+
+Then swap the three `src` attributes to `/static/img/…`, drop the two `preconnect` hints, add
+`src/static/img` to the passthrough list in `.eleventy.js`, and re-run the missing-image check.
+Give the hero `fetchpriority="high"` and no `loading="lazy"`, since it's the LCP element.
+
+`src/admin/index.html:14` also loads Sveltia CMS from `unpkg.com`, but pinned to `0.180.1`.
+That is the normal install method and the pin makes it acceptable — noted, no action.
 
 ---
 
@@ -254,7 +331,7 @@ supply the year to any templated page. Rolls into finding 18.
 
 ---
 
-## What changed in this pass
+## What changed — round 1
 
 | File | Change |
 |---|---|
@@ -269,9 +346,37 @@ supply the year to any templated page. Rolls into finding 18.
 | `src/llms.njk` | New `## Recognition` section citing Search Engine Land and AllAboutAI |
 | `README.md` | Corrected CMS, host, deploy flow, repo layout, contact email, content status |
 
-Not touched: the copy, the claims, the numbers, the static-page structure.
+## What changed — round 2
 
----
+| File | Change |
+|---|---|
+| `.eleventy.js` | Build-time `h2` ids via `amendLibrary`; `tocFromHtml` filter; shared `slug` helper |
+| `src/_includes/post.njk` | Table of contents rendered at build time |
+| `src/js/site.js` | `mailto` fallback reads via `f.elements`; TOC block reduced to scroll-spy |
+| `src/_includes/base.njk`, `src/index.njk`, `src/tools/index.html` | Newsletter honeypot |
+| `src/css/main.css` | `.post-layout--no-toc` modifier |
+| `LAUNCH-GUIDE.md` | Rewritten as an operations guide for the live site |
+| `SETUP-NETLIFY.md` | Deleted |
+| `oauth-worker/README.md` | No longer describes itself as optional or points at the deleted file |
+| `AUDIT.md` | Corrections, finding 20, status flips |
+
+## Corrections to this audit
+
+Four findings were wrong as first written and are corrected in place above. Recording them
+because an audit that quietly edits its own mistakes is worth less than one that shows them:
+
+1. **Tool pages already had `WebApplication` schema** (finding 9) — I'd truncated a grep and
+   concluded they had no JSON-LD at all. Only `BreadcrumbList` was actually missing.
+2. **The lightbox did bind to case-study figures** — the `<a>` is nested inside the `<figure>`,
+   which a `grep` for the class alone didn't show. No bug; no change made.
+3. **The contact form already had a honeypot** (finding 15) — only the newsletter form lacked one.
+4. **Obsolete deployment docs were wider than reported** (finding 17) — `LAUNCH-GUIDE.md` and
+   `oauth-worker/README.md` were stale in the same way as `SETUP-NETLIFY.md`.
+
+Findings 1, 2, 3 and 5 were each verified by opening the file or the image directly, and
+finding 3 by checking every upload reference against the filesystem.
+
+Still deliberately untouched: the copy, the claims, the numbers, and the static-page structure.
 
 ## Verifying this yourself
 

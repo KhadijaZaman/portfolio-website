@@ -1,10 +1,11 @@
-# CMS GitHub OAuth worker (optional)
+# CMS GitHub OAuth worker
 
-The `/admin/` editor (Sveltia CMS) logs in with GitHub. On **Netlify** you don't
-need this worker — you can register a GitHub OAuth app in Netlify's dashboard
-(see the repo's `SETUP-NETLIFY.md`). Use this worker instead when you host the
-site on **Cloudflare Pages, Vercel, GitHub Pages, or anywhere without Netlify's
-OAuth broker**.
+The `/admin/` editor (Sveltia CMS) logs in with GitHub, and **this worker is what
+brokers that login** for khadijazaman.com. The site is served by Hostinger, which
+has no OAuth broker of its own, so the worker is required — not optional.
+
+`src/admin/config.yml` points at it via `base_url`; if you redeploy the worker to
+a different subdomain, update that value to match.
 
 It's a tiny Cloudflare Worker that runs the GitHub OAuth handshake and hands the
 token back to the CMS popup.
