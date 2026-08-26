@@ -622,6 +622,11 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
   background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .press-stats span { font-size: 0.8rem; color: var(--text-3); }
+.press-scope {
+  font-size: 0.76rem; line-height: 1.6; color: var(--text-3);
+  border-top: 1px solid var(--border); padding-top: 0.8rem; margin: 0 0 1.1rem;
+}
+.press-scope strong { color: var(--text-2); font-weight: 600; }
 @media (max-width: 900px) {
   .press-origin { grid-template-columns: 1fr; padding: 1.5rem; }
   .press-origin figure { order: 2; }
