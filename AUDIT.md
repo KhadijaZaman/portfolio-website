@@ -69,11 +69,23 @@ was not there, with nothing to signal it.
 > is good for visitors and bad for you — a proof screenshot can disappear without a trace. Run
 > the check in "Verifying this yourself" below after any image change.
 
-### 4. "Request access" tools have no destination — **OPEN**
+### 4. "Request access" tools had no destination — **FIXED**
 
 The three proprietary tools carry the site's strongest proof claims (1,647 users, 829 active,
-5.1% CTR) and every CTA lands on `/contact/`. Either wire the real URLs or reframe the CTA
-copy — as it stands the strongest claim on the site is the one a visitor can least verify.
+5.1% CTR) and every CTA landed on `/contact/` — the strongest claim on the site was the one a
+visitor could least verify.
+
+Resolved by removing the dead CTA rather than wiring a URL: the three cards are now proof
+cards, stating what each tool is and what it has done, with no invitation to click through to
+somewhere that doesn't exist. `.tool-card p` already carries `flex: 1`, which existed to push
+the link to the card's foot, so nothing collapsed when it went.
+
+The `.tool-link` CSS rule stays — the homepage tools strip still uses it for "Explore the
+tools →", which points at `/tools/` and is a real destination.
+
+Follow-up, not blocked on anything here: Loom demo videos are planned for these cards, and the
+Query Fan-Out Generator is publicly usable on Wellows (Search Engine Land walks readers through
+it). Either would give the cards a genuine destination again.
 
 ---
 

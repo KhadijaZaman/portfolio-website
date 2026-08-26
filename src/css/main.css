@@ -777,7 +777,6 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
   transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 .free-tool-card:hover { transform: translateY(-4px); box-shadow: 0 28px 56px rgba(0,0,0,0.4); border-color: var(--accent); }
-.free-tool-ic { font-size: 1.6rem; margin-bottom: 0.9rem; }
 .free-tool-card h3 { font-family: var(--ff-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.55rem; }
 .free-tool-card p { font-size: 0.86rem; color: var(--text-2); line-height: 1.65; margin-bottom: 1rem; flex: 1; }
 .free-tool-cta { font-weight: 700; font-size: 0.85rem; color: #93C5FD; }
