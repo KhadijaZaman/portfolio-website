@@ -2,7 +2,7 @@
 
 Personal-brand website for **Khadija Zaman** — Marketing Manager specialising in **SEO, AI search visibility (GEO/AEO), content strategy, and marketing automation**.
 
-Content-first, multi-page site (modelled on nicklafferty.com): a homepage gateway, an about page, a **CMS-driven blog**, a tools hub, a contact page, and a crawlable XML sitemap. Built with a lightweight static-site generator so **new blog posts are written in a visual editor — no code**.
+Content-first, multi-page site: a homepage gateway, an about page, a work/case-studies page, a **CMS-driven blog**, a tools hub (with four free in-browser tools), a contact page, and a crawlable XML sitemap. Built with a lightweight static-site generator so **new blog posts are written in a visual editor — no code**.
 
 ---
 
@@ -10,35 +10,42 @@ Content-first, multi-page site (modelled on nicklafferty.com): a homepage gatewa
 
 - **Static hand-built pages** — Home, About, Tools, Contact live as plain HTML in `src/` and are copied through the build untouched. They rarely change.
 - **Generated blog** — each post is a Markdown file in `src/posts/`. [Eleventy](https://www.11ty.dev/) renders it through the shared layout into `/blog/<slug>/`, and **regenerates the blog index and `sitemap.xml` automatically**.
-- **Visual CMS** — [Decap CMS](https://decapcms.org/) at `/admin/` lets you write and publish posts from a browser. Publishing commits to GitHub, which triggers a Netlify rebuild.
+- **Visual CMS** — [Sveltia CMS](https://github.com/sveltia/sveltia-cms) at `/admin/` lets you write and publish posts from a browser. It logs in with GitHub through the Cloudflare Worker in `oauth-worker/`, and publishing commits straight to `main`.
 
 ```
-Write in /admin  →  commit to GitHub  →  Netlify rebuilds  →  live in ~1 min
+Write in /admin  →  commit to main  →  GitHub Actions builds  →  Hostinger serves  →  live in ~1 min
 ```
 
 ## Repo layout
 
 ```
 src/
-  index.html            Home            (static, passthrough)
-  about/  tools/  contact/              (static, passthrough)
+  index.njk             Home            (rendered, but self-contained HTML)
+  about/  work/  tools/  contact/       (static, passthrough)
+  tools/<slug>/         Four free in-browser tools (static, passthrough)
   posts/*.md            Blog posts      (Markdown → generated HTML)
   blog.njk              Blog index      (generated from posts)
+  blog-category.njk     /blog/category/<slug>/ pages
   sitemap.njk           sitemap.xml     (generated from posts)
+  feed.njk              feed.xml        (RSS)
+  llms.njk              llms.txt        (llmstxt.org summary for AI crawlers)
   _includes/
     base.njk            Shared shell: head, nav, newsletter, footer
     post.njk            Article layout (+ BlogPosting/Breadcrumb JSON-LD)
   _data/site.js         Site-wide values (url, email, socials)
-  admin/                Decap CMS (index.html + config.yml)
+  _data/buildDate.js    Build timestamp (used for sitemap lastmod)
+  admin/                Sveltia CMS (index.html + config.yml)
   css/main.css          Design system (shared by every page)
-  js/site.js            Shared behaviour (nav, reveal, forms)
+  js/site.js            Shared behaviour (nav, reveal, forms, tools UI)
   static/uploads/       Images uploaded from the CMS
+  .htaccess             Apache/LiteSpeed config for Hostinger (caching, security headers)
 .eleventy.js            Build config
-netlify.toml            Netlify build settings
+.github/workflows/deploy.yml  Builds on push to main, publishes _site/ to the deploy branch
+oauth-worker/           Cloudflare Worker backing the CMS GitHub login
 package.json            Eleventy dependency + scripts
 ```
 
-The output builds to `_site/` (git-ignored; Netlify generates it).
+The output builds to `_site/` (git-ignored; GitHub Actions generates it and force-pushes it to the `deploy` branch, which Hostinger serves).
 
 ## Local development
 
@@ -69,20 +76,35 @@ Your article body in Markdown…
 
 Commit and push — the blog index and sitemap update on the next build.
 
-## Hosting & first-time setup
+## Hosting & deployment
 
-See **[SETUP-NETLIFY.md](./SETUP-NETLIFY.md)** for the one-time steps: connect the repo to Netlify, turn on Identity + Git Gateway (the CMS login), invite yourself, and point the domain.
+The site is hosted on **Hostinger** and deployed by GitHub Actions — there is no Netlify
+involvement despite what `SETUP-NETLIFY.md` still describes (that file is obsolete).
+
+```
+push to main  →  .github/workflows/deploy.yml  →  npx @11ty/eleventy
+              →  force-push _site/ to the `deploy` branch  →  Hostinger serves it
+```
+
+So the live site always serves built HTML, never source. `src/.htaccess` ships with the build
+and supplies compression, cache headers, and the security headers (HSTS, `X-Frame-Options`,
+`Referrer-Policy`, `Permissions-Policy`).
+
+CMS login goes through the Cloudflare Worker in `oauth-worker/`, configured in
+`src/admin/config.yml` via `base_url`.
 
 ## SEO / AEO
 
 - Per-page `<title>`, meta description, canonical, Open Graph + Twitter meta.
-- JSON-LD on every page: `Person` + `WebSite` (home), `AboutPage`, `Blog` / `BlogPosting`, `ContactPage`, `BreadcrumbList`.
+- JSON-LD on every page: `Person` + `WebSite` (home), `AboutPage`, `CollectionPage` (work), `Blog` / `BlogPosting`, `ContactPage`, `WebApplication` (each free tool), `BreadcrumbList`.
 - `robots.txt` + generated `sitemap.xml`, open to search and AI answer-engine crawlers.
+- Generated `llms.txt` ([llmstxt.org](https://llmstxt.org/)) summarising the site for AI answer engines.
+- Generated `feed.xml` (RSS).
 
 ## Content status
 
-The three seeded posts carry a **"starter draft" banner** — replace them with your own writing (or unset `starter`). The newsletter form and the tools' "Request access" buttons are placeholders (mailto / contact) until an email provider and public tool URLs are wired in.
+All four published posts are real (`starter: false`); the `starter` flag remains available for drafts. The contact and newsletter forms post to **Web3Forms** (key in `src/js/site.js`), falling back to `mailto:` if the key is cleared. The three proprietary tools' "Request access" buttons still point at `/contact/` until those tools have public URLs.
 
 ## Links
 - LinkedIn: https://www.linkedin.com/in/khadija-zaman-2628751b1/
-- Email: khadijarafiqzaman@gmail.com
+- Email: hello@khadijazaman.com
