@@ -308,7 +308,7 @@
     var dotsW  = document.getElementById('pc-dots');
     var prev   = document.getElementById('pc-prev');
     var next   = document.getElementById('pc-next');
-    if (!ptrack || !car) return;
+    if (!ptrack || !car || !dotsW) return;
     var slides = Array.prototype.slice.call(ptrack.querySelectorAll('.proof-shot'));
     if (!slides.length) return;
 
