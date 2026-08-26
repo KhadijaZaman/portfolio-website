@@ -1,7 +1,7 @@
 # dependencies
 node_modules/
 
-# build output (Netlify regenerates this on deploy)
+# build output (GitHub Actions regenerates this and publishes it to the deploy branch)
 _site/
 
 # os / editor

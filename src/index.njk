@@ -30,7 +30,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.builder.io">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap"></noscript>
   <link rel="stylesheet" href="/css/main.css">
@@ -82,6 +81,10 @@
     .stat-chip:hover { border-color: var(--border-a); }
     .stat-chip-val { font-family: var(--ff-display); font-size: 1.65rem; font-weight: 800; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
     .stat-chip-lbl { font-size: 0.68rem; color: var(--text-3); margin-top: 0.35rem; line-height: 1.4; }
+    .hero-press { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem; font-size: 0.83rem; color: var(--text-2); line-height: 1.6; }
+    .hero-press-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--text-3); }
+    .hero-press a { color: var(--accent-3); font-weight: 600; text-decoration: none; }
+    .hero-press a:hover { text-decoration: underline; }
     .hero-right { display: flex; justify-content: center; align-items: center; }
     .hero-photo-wrap { position: relative; }
     .hero-photo-wrap::before { content: ''; position: absolute; inset: -16px; border-radius: 50%; background: var(--grad-main); opacity: 0.45; filter: blur(28px); z-index: 0; }
@@ -143,6 +146,12 @@
         <div class="stat-chip"><div class="stat-chip-val">680K→3.78M</div><div class="stat-chip-lbl">Google impressions in 12 months</div></div>
         <div class="stat-chip"><div class="stat-chip-val">1,647</div><div class="stat-chip-lbl">practitioners using the SEO tools I built</div></div>
       </div>
+
+      <p class="hero-press reveal d3">
+        <span class="hero-press-tag">Featured in</span>
+        <a href="https://searchengineland.com/guide/topic-clusters-for-ai-search" target="_blank" rel="noopener">Search Engine Land</a>
+        — its guide to topic clusters for AI search runs on the Query Fan-Out Generator I built.
+      </p>
       <div class="hero-btns reveal d4">
         <a href="/work/" class="btn-primary">See the Proof →</a>
         <a href="/tools/" class="btn-ghost">Try My Free Tools</a>
@@ -150,7 +159,7 @@
     </div>
     <div class="hero-right reveal d2">
       <div class="hero-photo-wrap">
-        <img class="hero-photo" src="https://cdn.builder.io/api/v1/image/assets%2F6712fcfd62e34922a6872f22e2c0f5c7%2Fa469fddeacc34c939bf9655839f510d0?format=webp&width=840&height=840&quality=82" alt="Khadija Zaman, Marketing Manager, SEO and AI Search Specialist" width="420" height="420" fetchpriority="high" decoding="async">
+        <img class="hero-photo" src="/static/img/khadija-hero.webp" alt="Khadija Zaman, Marketing Manager, SEO and AI Search Specialist" width="420" height="420" fetchpriority="high" decoding="async">
       </div>
     </div>
   </div>
@@ -233,10 +242,10 @@
           <div class="case-growth-grid">
             <figure class="case-shot">
               <a href="/static/uploads/gsctrafficgrowth.png" target="_blank" rel="noopener"><img src="/static/uploads/gsctrafficgrowth.png" alt="Wellows Google Search Console: 7.27K clicks and 3.78M impressions over the last 3 months, average position improving from 28.9 to 17.3" loading="lazy"></a>
-              <figcaption>Wellows — 7.27K clicks · 3.78M impressions · avg. position 28.9 → 17.3 (last 3 months vs. previous)</figcaption>
+              <figcaption>Wellows, site-wide — 7.27K clicks · 3.78M impressions · avg. position 28.9 → 17.3 (last 3 months vs. previous)</figcaption>
             </figure>
             <figure class="case-shot">
-              <a href="/static/uploads/gscyearoveryear.jpg" target="_blank" rel="noopener"><img src="/static/uploads/gscyearoveryear.jpg" alt="AllAboutAI author Google Search Console year over year: clicks 10.7K to 23.6K and impressions 275K to 928K, 2025 vs 2024" loading="lazy"></a>
+              <a href="/static/uploads/recognition/aaai.jpg" target="_blank" rel="noopener"><img src="/static/uploads/recognition/aaai.jpg" alt="AllAboutAI author Google Search Console year over year: clicks 10.7K to 23.6K and impressions 275K to 928K, 2025 vs 2024" loading="lazy"></a>
               <figcaption>AllAboutAI author pages — year over year: 10.7K → 23.6K clicks · 275K → 928K impressions (2025 vs. 2024)</figcaption>
             </figure>
           </div>
@@ -258,7 +267,7 @@
     <h2 class="sec-h2 reveal d1" style="max-width:620px">Tools I built to bridge search science and AI retrieval</h2>
     <p class="sec-lead reveal d2">Three instruments grounded in Google patent research, used by 1,647 practitioners worldwide, acquired entirely through organic search.</p>
     <div class="tools-grid">
-      <div class="tool-card reveal"><div class="tool-badge">829 Active Users</div><h3>Query Fan-Out Generator</h3><p>Built on Google's Query Fan-Out patent research, it generates the full semantic expansion of any seed query so your content covers how search engines and LLMs interpret intent — not just exact-match keywords.</p><a href="/tools/" class="tool-link">Explore the tools →</a></div>
+      <div class="tool-card reveal"><div class="tool-badge">Patent-Based · 829 Active Users</div><h3>Query Fan-Out Generator</h3><p>Built on Google's Query Fan-Out patent research, it generates the full semantic expansion of any seed query so your content covers how search engines and LLMs interpret intent — not just exact-match keywords.</p><a href="/tools/" class="tool-link">Explore the tools →</a></div>
       <div class="tool-card reveal d1"><div class="tool-badge">AI Search · 149 Users</div><h3>LLM Query Builder</h3><p>Constructs optimized query structures for LLM-based SEO research and entity mapping. Built for practitioners who need to work with AI retrieval systematically, not ad hoc.</p><a href="/tools/" class="tool-link">Explore the tools →</a></div>
       <div class="tool-card reveal d2"><div class="tool-badge">669 Users · 60–72% Engagement</div><h3>AI Humanizer</h3><p>Transforms AI-generated drafts into content that reads naturally, holds topical depth, and aligns with how LLMs evaluate quality signals. Users work with it, not through it.</p><a href="/tools/" class="tool-link">Explore the tools →</a></div>
     </div>
@@ -294,6 +303,7 @@
     <h2 class="reveal d1">Field notes on <span class="grad-text">SEO &amp; AI search</span></h2>
     <p class="reveal d2">Practical breakdowns on ranking in Google and getting cited by ChatGPT, Gemini, and Perplexity — plus the automations that make it repeatable. No fluff, no sales pitch.</p>
     <form class="newsletter-form reveal d2" id="newsletter-form">
+      <label class="hp-field" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
       <input type="email" name="email" placeholder="you@company.com" aria-label="Email address" required>
       <button type="submit">Subscribe →</button>
     </form>

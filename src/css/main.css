@@ -15,6 +15,9 @@
   --accent-3:     #93C5FD;
   --on-accent:    #FFFFFF;
   --accent-glow:  rgba(59,130,246,0.18);
+  /* Focus ring: --accent (#2563EB) only reaches ~2.3:1 on --bg-0, below the
+     3:1 WCAG 1.4.11 floor for UI indicators, so the ring uses the lighter accent. */
+  --focus-ring:   var(--accent-2);
   --text-1:       #F1F5F9;
   --text-2:       #94A3B8;
   --text-3:       #7B8CA4;
@@ -53,6 +56,27 @@ a { color: inherit; }
   transition: top 0.2s;
 }
 .skip-nav:focus { top: 1rem; }
+
+/* ── KEYBOARD FOCUS ──
+   One ring for every interactive element. :focus-visible so pointer users
+   never see it; the :focus fallback covers browsers without support. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+@supports not selector(:focus-visible) {
+  a:focus, button:focus, input:focus, select:focus, textarea:focus, [tabindex]:focus {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+}
 /* Visually-hidden (screen-reader only) — used for structural headings that shouldn't alter the visual design. */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
@@ -542,8 +566,78 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
   transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 .proof-shot:hover { border-color: var(--border-a); transform: translateY(-4px); box-shadow: 0 28px 56px rgba(0,0,0,0.4); }
-.proof-shot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.proof-shot:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
 .proof-shot img { display: block; width: 100%; height: auto; border-radius: calc(var(--r-lg) - 6px); }
+
+/* Inline press credit inside a tool card */
+.tool-press {
+  font-size: 0.82rem; line-height: 1.6; color: var(--text-2);
+  border-left: 2px solid var(--border-a); padding: 0.15rem 0 0.15rem 0.85rem;
+  margin: 0.9rem 0 0;
+}
+.tool-press strong { color: var(--accent-3); font-weight: 600; }
+.tool-press a { color: var(--accent-3); font-weight: 600; text-decoration: none; white-space: nowrap; }
+.tool-press a:hover { text-decoration: underline; }
+
+/* Small clarifying note under a headline number. */
+.num-note {
+  font-size: 0.8rem; line-height: 1.65; color: var(--text-3);
+  max-width: 720px; margin: -0.4rem 0 1.6rem;
+}
+.num-note strong { color: var(--accent-3); font-weight: 600; }
+
+/* ── PRESS / FEATURED IN ── */
+.press-card {
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 2rem; align-items: center;
+  background: var(--bg-card); border: 1px solid var(--border-a);
+  border-radius: var(--r-xl); padding: 2rem; margin-top: 1.5rem;
+}
+.press-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.09em;
+  font-weight: 700; color: var(--accent-3); margin-bottom: 1rem;
+}
+.press-quote {
+  font-family: var(--ff-display); font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 600; line-height: 1.4; letter-spacing: -0.015em; margin: 0 0 1rem;
+}
+.press-quote cite { font-style: normal; }
+.press-meta { font-size: 0.82rem; color: var(--text-2); line-height: 1.6; margin-bottom: 1.25rem; }
+.press-meta strong { color: var(--text-1); font-weight: 600; }
+.press-link { font-size: 0.87rem; font-weight: 600; color: var(--accent-3); text-decoration: none; }
+.press-link:hover { text-decoration: underline; }
+.press-shot { margin: 0; border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden; background: var(--bg-1); }
+.press-shot a { display: block; cursor: zoom-in; }
+.press-shot img { display: block; width: 100%; height: auto; }
+.press-shot figcaption { font-size: 0.72rem; color: var(--text-3); padding: 0.65rem 0.9rem; line-height: 1.5; }
+@media (max-width: 900px) { .press-card { grid-template-columns: 1fr; padding: 1.5rem; } }
+
+/* Origin story under the press card — mirrored so the two blocks alternate. */
+.press-origin {
+  display: grid; grid-template-columns: 1fr 1.05fr; gap: 2rem; align-items: center;
+  margin-top: 1.25rem; padding: 2rem;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-xl);
+}
+.press-origin .press-shot { background: var(--bg-0); }
+.press-stats { list-style: none; margin: 0 0 1.1rem; padding: 0; display: grid; gap: 0.55rem; }
+.press-stats li {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  border-left: 2px solid var(--border-a); padding-left: 0.85rem;
+}
+.press-stats strong {
+  font-family: var(--ff-display); font-size: 1.1rem; font-weight: 800; letter-spacing: -0.01em;
+  background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.press-stats span { font-size: 0.8rem; color: var(--text-3); }
+.press-scope {
+  font-size: 0.76rem; line-height: 1.6; color: var(--text-3);
+  border-top: 1px solid var(--border); padding-top: 0.8rem; margin: 0 0 1.1rem;
+}
+.press-scope strong { color: var(--text-2); font-weight: 600; }
+@media (max-width: 900px) {
+  .press-origin { grid-template-columns: 1fr; padding: 1.5rem; }
+  .press-origin figure { order: 2; }
+}
 
 /* ── FEATURED WORK TEASER (home) ── */
 .work-teaser-foot { display: flex; justify-content: center; margin-top: 2.5rem; }
@@ -643,6 +737,9 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 .toc a:hover { color: var(--text-1); }
 .toc a.active { color: #93C5FD; border-left-color: var(--accent); }
 .post-layout .prose { margin: 0; }
+/* A post with fewer than two h2s renders no TOC — drop the sidebar column
+   so the prose does not land in the 220px track. */
+.post-layout--no-toc { grid-template-columns: minmax(0, 720px); }
 @media (max-width: 900px) {
   .post-layout { grid-template-columns: 1fr; gap: 1.5rem; }
   .toc { position: static; top: auto; border: 1px solid var(--border); border-radius: var(--r-md); padding: 1rem 1.25rem; background: var(--bg-card); }

@@ -11,20 +11,23 @@
      analytics simply doesn't load).
   ═══════════════════════════════════════════════════════════ */
   var WEB3FORMS_KEY   = '0ca2b384-dbcd-4977-a41a-5f2d1a6c2abb';   // free access key from https://web3forms.com
-  var GA_MEASUREMENT_ID = 'G-9TD8PYD30L'; // e.g. 'G-XXXXXXXXXX' from Google Analytics 4
+  // Cloudflare Web Analytics beacon token — Cloudflare dashboard → Web Analytics →
+  // your site → Manage site → copy the token out of the snippet. Cookieless, so no
+  // consent banner is required. Leave blank and no analytics loads at all.
+  var CF_BEACON_TOKEN = '';
 
   var CONTACT_EMAIL = 'hello@khadijazaman.com';
 
-  /* ── Google Analytics 4 (loads on every page, only if an ID is set) ── */
-  if (/^G-\w+$/.test(GA_MEASUREMENT_ID)) {
-    var ga = document.createElement('script');
-    ga.async = true;
-    ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
-    document.head.appendChild(ga);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { window.dataLayer.push(arguments); };
-    window.gtag('js', new Date());
-    window.gtag('config', GA_MEASUREMENT_ID);
+  /* ── Cloudflare Web Analytics (loads on every page, only if a token is set) ──
+     Pageviews, referrers, countries, devices and Core Web Vitals. Sets no
+     cookies and stores no per-visitor identifiers, so it needs no consent
+     banner. Conversions are not tracked here — see the note in LAUNCH-GUIDE.md. */
+  if (CF_BEACON_TOKEN && CF_BEACON_TOKEN.length >= 16) {
+    var cf = document.createElement('script');
+    cf.defer = true;
+    cf.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    cf.setAttribute('data-cf-beacon', JSON.stringify({ token: CF_BEACON_TOKEN }));
+    document.head.appendChild(cf);
   }
 
   /* Show a small status line under a form. */
@@ -111,9 +114,12 @@
 
       if (!WEB3FORMS_KEY) {
         e.preventDefault();
-        var name  = (f.name  && f.name.value  || '').trim();
-        var email = (f.email && f.email.value || '').trim();
-        var msg   = (f.message && f.message.value || '').trim();
+        // NB: f.name is HTMLFormElement.name (the form's own attribute), not the
+        // input named "name" — read fields off f.elements so the lookup is by control.
+        var el    = f.elements;
+        var name  = ((el.name    || {}).value || '').trim();
+        var email = ((el.email   || {}).value || '').trim();
+        var msg   = ((el.message || {}).value || '').trim();
         var subject = encodeURIComponent('Website enquiry' + (intent ? ': ' + intent : ''));
         var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n' +
           (intent ? 'Looking for: ' + intent + '\n' : '') + (msg ? '\n' + msg + '\n' : ''));
@@ -137,7 +143,6 @@
           f.reset();
           if (btn) btn.textContent = 'Sent ✓';
           setStatus(f, 'Thanks — your message is in. I respond within 24–48 hours.', true);
-          if (window.gtag) window.gtag('event', 'generate_lead', { form: 'contact' });
           setTimeout(function () { if (btn) { btn.textContent = orig; btn.disabled = false; } }, 4000);
         } else { throw new Error((json && json.message) || 'Submission failed'); }
       }).catch(function () {
@@ -177,7 +182,6 @@
           newsForm.reset();
           if (btn) btn.textContent = 'Subscribed ✓';
           setStatus(newsForm, "You're on the list. Thanks for subscribing.", true);
-          if (window.gtag) window.gtag('event', 'sign_up', { form: 'newsletter' });
           setTimeout(function () { if (btn) { btn.textContent = orig; btn.disabled = false; } }, 4000);
         } else { throw new Error((json && json.message) || 'Submission failed'); }
       }).catch(function () {
@@ -308,7 +312,7 @@
     var dotsW  = document.getElementById('pc-dots');
     var prev   = document.getElementById('pc-prev');
     var next   = document.getElementById('pc-next');
-    if (!ptrack || !car) return;
+    if (!ptrack || !car || !dotsW) return;
     var slides = Array.prototype.slice.call(ptrack.querySelectorAll('.proof-shot'));
     if (!slides.length) return;
 
@@ -355,39 +359,25 @@
     update();
   })();
 
-  /* ── Blog: build the table of contents from the article's H2s ── */
+  /* ── Blog: scroll-spy over the table of contents ──
+     The TOC itself and the h2 ids are rendered at build time (see .eleventy.js
+     and _includes/post.njk), so this only highlights the section in view. */
   (function () {
     var prose   = document.querySelector('.prose');
-    var toc     = document.getElementById('toc');
     var tocList = document.getElementById('toc-list');
-    if (!prose || !toc || !tocList) return;
-    var heads = Array.prototype.slice.call(prose.querySelectorAll('h2'));
-    if (heads.length < 2) { toc.style.display = 'none'; return; }
+    if (!prose || !tocList || !('IntersectionObserver' in window)) return;
+    var links = Array.prototype.slice.call(tocList.querySelectorAll('a'));
+    var heads = Array.prototype.slice.call(prose.querySelectorAll('h2[id]'));
+    if (!links.length || !heads.length) return;
 
-    var links = [];
-    heads.forEach(function (h, i) {
-      if (!h.id) {
-        h.id = 'section-' + (i + 1) + '-' + h.textContent.toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
-      }
-      var li = document.createElement('li');
-      var a  = document.createElement('a');
-      a.href = '#' + h.id; a.textContent = h.textContent;
-      li.appendChild(a); tocList.appendChild(li);
-      links.push(a);
-    });
-
-    // Scroll-spy: highlight the section currently in view.
-    if ('IntersectionObserver' in window) {
-      var spy = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) {
-            links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id); });
-          }
-        });
-      }, { rootMargin: '-20% 0px -70% 0px' });
-      heads.forEach(function (h) { spy.observe(h); });
-    }
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    heads.forEach(function (h) { spy.observe(h); });
   })();
 
   /* ── Live form validation (contact + newsletter) ── */
