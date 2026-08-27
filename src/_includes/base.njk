@@ -41,10 +41,14 @@
 <nav aria-label="Main navigation">
   <a href="/" class="nav-logo">Khadija Zaman</a>
   <ul class="nav-links" id="nav-links">
-    <li><a href="/about/">About</a></li>
-    <li><a href="/work/">Work</a></li>
-    <li><a href="/blog/" class="active">Blog</a></li>
-    <li><a href="/tools/">Tools</a></li>
+    {#- `section` marks which nav item is current. Defaults to "blog" because
+        every page that used this layout was a blog page before case studies
+        joined; case-study.njk sets section: work. -#}
+    {%- set nav = section or "blog" %}
+    <li><a href="/about/"{% if nav == "about" %} class="active"{% endif %}>About</a></li>
+    <li><a href="/work/"{% if nav == "work" %} class="active"{% endif %}>Work</a></li>
+    <li><a href="/blog/"{% if nav == "blog" %} class="active"{% endif %}>Blog</a></li>
+    <li><a href="/tools/"{% if nav == "tools" %} class="active"{% endif %}>Tools</a></li>
     <li><a href="/contact/" class="nav-cta">Work Together →</a></li>
   </ul>
   <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>

@@ -16,6 +16,11 @@ This site covers her case studies, free SEO/AEO tools, and writing on how modern
 - [Work & Case Studies](https://khadijazaman.com/work/): Detailed case studies with GSC/GA4-verified metrics across AEO/LLM visibility, SEO, content, and automation.
 - [Contact](https://khadijazaman.com/contact/): How to hire Khadija for a full-time role or specialist SEO / AI-search strategy.
 
+## Case studies
+{%- for cs in collections.caseStudy %}
+- [{{ cs.data.study.title }}](https://khadijazaman.com{{ cs.url }}): {{ cs.data.study.description }}
+{%- endfor %}
+
 ## Free tools
 - [Citeability Checker](https://khadijazaman.com/tools/citeability-checker/): Scores how likely a page is to be cited by AI answer engines and shows what to fix.
 - [SERP Preview](https://khadijazaman.com/tools/serp-preview/): Pixel-accurate preview of how a title and description render in Google search results.

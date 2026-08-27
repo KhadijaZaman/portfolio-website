@@ -1,0 +1,153 @@
+---
+layout: base.njk
+ogType: article
+section: work
+tags: caseStudy
+pagination:
+  data: caseStudies
+  size: 1
+  alias: study
+  # Without this Eleventy adds only the FIRST paginated page to collections,
+  # so sitemap.xml, llms.txt and the cross-links between case studies would
+  # each list one study instead of all of them.
+  addAllPagesToCollections: true
+permalink: "/work/{{ study.slug }}/"
+eleventyComputed:
+  title: "{{ study.title }}"
+  metaTitle: "{{ study.metaTitle }} — Khadija Zaman"
+  description: "{{ study.description }}"
+---
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": study.title,
+  "description": study.description,
+  "about": study.pill,
+  "author": { "@type": "Person", "name": "Khadija Zaman", "url": site.url + "/" },
+  "publisher": { "@type": "Person", "name": "Khadija Zaman" },
+  "mainEntityOfPage": site.url + page.url,
+  "image": site.url + "/og-image.png"
+} | dump | safe }}</script>
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
+    { "@type": "ListItem", "position": 2, "name": "Work", "item": site.url + "/work/" },
+    { "@type": "ListItem", "position": 3, "name": study.title, "item": site.url + page.url }
+  ]
+} | dump | safe }}</script>
+
+<header class="page-hero">
+  <div class="page-hero-orb" aria-hidden="true"></div>
+  <div class="wrap" style="max-width:820px;">
+    <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/work/">Work</a> <span>/</span> Case study</nav>
+    <div class="case-pill {{ study.pillClass }} reveal" style="margin-bottom:1rem;">{{ study.pill }}</div>
+    <h1 class="reveal d1">{{ study.title }}</h1>
+    <p class="case-meta reveal d2" style="margin-top:1rem;">
+      {{ study.client }}{% if study.sector %} · {{ study.sector }}{% endif %}{% if study.window %} · {{ study.window }}{% endif %}{% if study.sources %} · Source: {{ study.sources }}{% endif %}
+    </p>
+    {%- if study.clientNote %}
+    <p class="num-note reveal d2" style="margin-top:0.6rem;">{{ study.clientNote }}</p>
+    {%- endif %}
+  </div>
+</header>
+
+<article aria-label="Case study">
+  <div class="wrap" style="max-width:820px;">
+
+    <div class="case-nums reveal" style="margin-bottom:2rem;">
+      {%- for s in study.stats %}
+      <div>
+        <div class="cn-val">{{ s.val }}</div>
+        <div class="cn-lbl">{{ s.lbl }}{% if s.note %}<span class="cn-note">{{ s.note }}</span>{% endif %}</div>
+      </div>
+      {%- endfor %}
+    </div>
+
+    <div class="cs-body">
+      <h2>The problem</h2>
+      <p>{{ study.problem }}</p>
+
+      {%- if study.approach.length %}
+      <h2>What I did</h2>
+      <ul class="case-approach cs-approach">
+        {%- for a in study.approach %}
+        <li><b>{{ a.title }}.</b> {{ a.body }}</li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+
+      <h2>The outcome</h2>
+      <p>{{ study.outcome }}</p>
+
+      {%- for t in study.tables %}
+      <h2>{{ t.caption }}</h2>
+      <div class="cs-table-wrap">
+        <table class="cs-table">
+          <thead>
+            <tr>{% for h in t.head %}<th{% if not loop.first %} class="num"{% endif %}>{{ h }}</th>{% endfor %}</tr>
+          </thead>
+          <tbody>
+            {%- for row in t.rows %}
+            <tr>{% for cell in row %}<td{% if not loop.first %} class="num"{% endif %}>{{ cell }}</td>{% endfor %}</tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+      <p class="press-scope">{{ t.scope }}</p>
+      {%- endfor %}
+
+      {%- if study.inference %}
+      <aside class="cs-inference">
+        <h3>{{ study.inference.title }}</h3>
+        <p>{{ study.inference.body }}</p>
+      </aside>
+      {%- endif %}
+    </div>
+
+    {%- if study.shots.length %}
+    <div class="case-growth">
+      <div class="case-growth-label">The data</div>
+      <div class="case-growth-grid">
+        {%- for shot in study.shots %}
+        <figure class="case-shot">
+          <a href="{{ shot.src }}" target="_blank" rel="noopener"><img src="{{ shot.src }}" alt="{{ shot.alt }}" loading="lazy"></a>
+          <figcaption>{{ shot.caption }}</figcaption>
+        </figure>
+        {%- endfor %}
+      </div>
+    </div>
+    {%- endif %}
+
+    {%- set others = collections.caseStudy | excludeUrl(page.url) %}
+    {%- if others.length %}
+    <div class="cs-more">
+      <h2>Other case studies</h2>
+      <div class="cs-more-grid">
+        {%- for other in others %}
+        <a class="cs-more-card" href="{{ other.url }}">
+          <div class="case-pill {{ other.data.study.pillClass }}">{{ other.data.study.pill }}</div>
+          <h3>{{ other.data.study.title }}</h3>
+          <span class="post-more">Read the case study →</span>
+        </a>
+        {%- endfor %}
+      </div>
+    </div>
+    {%- endif %}
+
+  </div>
+</article>
+
+<section class="contact-sec" aria-label="Work together">
+  <div class="contact-glow" aria-hidden="true"></div>
+  <div class="contact-inner wrap">
+    <div class="sec-tag reveal" style="justify-content:center;">Work With Me</div>
+    <h2 class="sec-h2 reveal d1" style="font-size:clamp(1.9rem,4vw,3rem);">Want results like these <span class="grad-text">for your brand?</span></h2>
+    <p class="sec-lead reveal d2">Tell me what you're building. I respond within 48 hours with a direct read on your situation, not a sales pitch.</p>
+    <div class="hero-btns reveal d2" style="justify-content:center; display:flex; gap:1rem; flex-wrap:wrap;">
+      <a href="/contact/" class="btn-primary">Start a Conversation →</a>
+      <a href="/work/" class="btn-ghost">All case studies</a>
+    </div>
+  </div>
+</section>
