@@ -17,6 +17,9 @@ eleventyExcludeFromCollections: true
   {%- for c in collections.categories %}
   <url><loc>{{ site.url }}/blog/category/{{ c.slug }}/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   {%- endfor %}
+  {%- for cs in collections.caseStudy %}
+  <url><loc>{{ site.url }}{{ cs.url }}</loc><lastmod>{{ buildDate }}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  {%- endfor %}
   {%- for post in collections.posts %}
   <url><loc>{{ site.url }}{{ post.url }}</loc><lastmod>{{ post.data.date | isoDate }}</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
   {%- endfor %}
