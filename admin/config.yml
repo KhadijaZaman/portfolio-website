@@ -1,0 +1,49 @@
+# Sveltia CMS configuration for khadijazaman.com
+# Editor lives at https://khadijazaman.com/admin/ — log in with GitHub.
+# Sveltia is a drop-in, Decap/Netlify-CMS-compatible editor (same config format).
+
+backend:
+  name: github
+  repo: KhadijaZaman/portfolio-website   # owner/repo the CMS commits to
+  branch: main
+  base_url: https://khadijazaman-cms-auth.khadijazaman.workers.dev
+  auth_endpoint: /auth
+
+# Lets you run the CMS locally against your working tree:
+#   npx @sveltia/cms-proxy-server   (then open http://localhost:8080/admin/)
+local_backend: true
+
+# Where images uploaded from the editor are stored and served from.
+media_folder: "src/static/uploads"
+public_folder: "/static/uploads"
+
+site_url: https://khadijazaman.com
+display_url: https://khadijazaman.com
+
+# "simple" commits straight to main (site rebuilds on publish).
+# Switch to "editorial_workflow" if you'd rather review posts as pull requests.
+publish_mode: simple
+
+collections:
+  - name: "blog"
+    label: "Blog posts"
+    label_singular: "Blog post"
+    description: "Write and publish articles. Saving commits to GitHub and rebuilds the site."
+    folder: "src/posts"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}"
+    sort_field: "date"
+    summary: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        default: "SEO"
+        options: ["AI Search", "GEO / AEO", "SEO", "Content Strategy", "Automation"]
+      - { label: "Short description (used for the card blurb + SEO meta)", name: "description", widget: "text" }
+      - { label: "Read time", name: "readTime", widget: "string", default: "6 min", hint: "e.g. 7 min" }
+      - { label: "Show the amber 'starter draft' banner", name: "starter", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }

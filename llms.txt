@@ -1,0 +1,40 @@
+# Khadija Zaman
+
+> Marketing Manager at Wellows specializing in SEO and AI-search visibility (GEO/AEO). I help brands get found on Google and cited inside AI answer engines — ChatGPT, Gemini, Perplexity, Claude, and Google AI Overviews — using semantic SEO, content strategy, and marketing automation run as one system.
+
+Khadija Zaman is an SEO and AI-search specialist based in Karachi, Pakistan, working with clients worldwide. Her work grew Google Search Console impressions from 680K to 3.78M and increased LLM referral traffic 22× in 12 months, entirely through organic search with zero paid spend. She builds free public tools grounded in Google patent research, used by 1,647 practitioners across the UK, US, and EU.
+
+This site covers her case studies, free SEO/AEO tools, and writing on how modern search visibility works across both traditional search engines and AI answer engines.
+
+## Core pages
+- [Home](https://khadijazaman.com/): Overview of Khadija's work in SEO and AI-search visibility, with verified results and proof.
+- [About](https://khadijazaman.com/about/): Background, career history, credentials, and specialisms in semantic SEO and AI search.
+- [Work & Case Studies](https://khadijazaman.com/work/): Detailed case studies with GSC/GA4-verified metrics across AEO/LLM visibility, SEO, content, and automation.
+- [Contact](https://khadijazaman.com/contact/): How to hire Khadija for a full-time role or specialist SEO / AI-search strategy.
+
+## Case studies
+- [AI visibility from near-zero: 9× LLM traffic on $0 paid spend](https://khadijazaman.com/work/wellows-ai-visibility/): Wellows had no citation footprint inside AI answers. Four months of AEO work took LLM sessions from 176/month to roughly nine times that, with zero paid spend.
+- [Losing 70% of organic clicks, then recovering to position 8.2](https://khadijazaman.com/work/core-update-recovery/): A high-volume publisher lost 70% of its organic clicks in four months. Five workstreams run together — not sequenced across vendors — took average position from 32 back to 8.2.
+- [Stuck near position 55 for two months, into the 20s in days](https://khadijazaman.com/work/ranking-breakthrough/): A property sat flat around position 55 for two months. A mid-September step change moved it into the 20s within days, and it held there for eleven weeks.
+
+## Free tools
+- [Citeability Checker](https://khadijazaman.com/tools/citeability-checker/): Scores how likely a page is to be cited by AI answer engines and shows what to fix.
+- [SERP Preview](https://khadijazaman.com/tools/serp-preview/): Pixel-accurate preview of how a title and description render in Google search results.
+- [Query Fan-Out Explorer](https://khadijazaman.com/tools/query-fan-out/): Expands a seed query into the sub-questions AI engines generate when answering, based on Google's query fan-out patent.
+- [Schema Generator](https://khadijazaman.com/tools/schema-generator/): Generates valid JSON-LD structured data to help search and answer engines understand a page.
+
+## Writing
+- [I Built a Test Designed to Break My Own Study. Two Findings Didn't Survive.](https://khadijazaman.com/blog/breaking-my-own-study/): How I rebuilt my cross-engine AI citation study from scratch, ran it against a permutation null, and retracted two headline findings that didn't hold up.
+- [Topic Cluster Architecture That Actually Scales Organic Traffic](https://khadijazaman.com/blog/topic-cluster-architecture/): Publishing more rarely fixes a plateau — fragmented architecture does. How to structure pillars, clusters, and internal links so authority concentrates.
+- [How to Get Your Brand Cited by ChatGPT, Gemini and Perplexity](https://khadijazaman.com/blog/get-cited-by-ai-search/): Ranking #1 in Google no longer guarantees you appear in an AI answer — the systems judge content differently. A checklist to make pages retrieval-ready.
+- [SEO vs AEO vs GEO: What Each One Actually Means, and How to Sequence Them](https://khadijazaman.com/blog/geo-aeo-vs-seo/): SEO, AEO, and GEO are layers, not rivals. A working definition of each, where they genuinely diverge, and the order to build them so the work compounds.
+
+## Recognition
+- Featured in Search Engine Land: its guide to topic clusters for AI search uses the Query Fan-Out Generator Khadija built for Wellows to demonstrate the method — "There are multiple query fan-out tools. For this tutorial, we'll use Wellows." https://searchengineland.com/guide/topic-clusters-for-ai-search
+- Bylined contributor at AllAboutAI.com: https://www.allaboutai.com/author/khadija-zaman/
+
+## More
+- [Blog](https://khadijazaman.com/blog/): All articles on SEO, AEO/GEO, content strategy, and AI search.
+- [RSS feed](https://khadijazaman.com/feed.xml): Subscribe to new posts.
+- [LinkedIn](https://www.linkedin.com/in/khadija-zaman-2628751b1/): Professional profile and updates.
+- [GitHub](https://github.com/KhadijaZaman): Open-source and project work.
