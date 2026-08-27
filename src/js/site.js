@@ -286,7 +286,9 @@
     }
     function close() {
       lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true');
-      lbImg.src = ''; document.body.style.overflow = '';
+      // removeAttribute, not src='': an empty src resolves to the current
+      // page URL and makes the browser re-download the HTML as an image.
+      lbImg.removeAttribute('src'); document.body.style.overflow = '';
     }
     document.querySelectorAll('.proof-shot, .case-shot a').forEach(function (a) {
       a.addEventListener('click', function (e) {
