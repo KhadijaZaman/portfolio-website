@@ -224,6 +224,10 @@ section { padding: 108px 6%; }
   padding: 1rem 1.5rem; border-radius: 0 var(--r-sm) var(--r-sm) 0;
   color: var(--text-1); font-size: 1.1rem; font-style: italic;
 }
+/* Long unbreakable tokens — SQL, function calls, URLs — otherwise push the
+   page wider than the viewport on a phone. anywhere lets them break mid-token
+   rather than forcing a horizontal scroll on the whole document. */
+.prose code, .prose a { overflow-wrap: anywhere; }
 .prose code {
   background: rgba(255,255,255,0.05); border: 1px solid var(--border);
   border-radius: 6px; padding: 0.12rem 0.45rem; font-size: 0.9em;
@@ -791,7 +795,11 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
    so the prose does not land in the 220px track. */
 .post-layout--no-toc { grid-template-columns: minmax(0, 720px); }
 @media (max-width: 900px) {
-  .post-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+  /* minmax(0,1fr), not 1fr: a plain 1fr track has an automatic minimum of
+     min-content, so a wide figure or table stretches the track past the
+     viewport and the whole page scrolls sideways. The desktop rule above
+     already uses minmax(0, 720px) for the same reason. */
+  .post-layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
   .toc { position: static; top: auto; border: 1px solid var(--border); border-radius: var(--r-md); padding: 1rem 1.25rem; background: var(--bg-card); }
   .toc ul { border-left: none; }
   .toc a { padding-left: 0; border-left: none; }
@@ -800,7 +808,22 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 
 /* ── BLOG POST: AUTHOR BIO ── */
 .author-box { display: flex; gap: 1.25rem; align-items: flex-start; margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
-.author-avatar { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-a); flex-shrink: 0; }
+/* Scoped to .author-box to outrank `.prose img` (0,1,1), which sets
+   width:100%, height:auto, a rounded-rect radius and a white background. The
+   author box lives inside .prose, so without this the avatar rendered as a
+   full-width white panel instead of a 72px circle — and pushed the author
+   text off-screen on narrow viewports. */
+.author-box .author-avatar {
+  width: 72px; height: 72px; flex: 0 0 72px;
+  border-radius: 50%; object-fit: cover;
+  border: 1px solid var(--border-a); background: none;
+}
+/* Needs both: flex:1 so it claims the space left by the 72px avatar, and
+   min-width:0 so it may shrink below its content's intrinsic width. With
+   neither, .author-links cannot wrap and the page scrolls sideways on a
+   phone; with min-width alone the box collapses to zero and the links spill
+   out instead. */
+.author-meta { flex: 1; min-width: 0; }
 .author-name { font-family: var(--ff-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.35rem; }
 .author-meta p { font-size: 0.9rem; color: var(--text-2); line-height: 1.7; margin-bottom: 0.75rem; }
 .author-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
