@@ -389,6 +389,10 @@ section { padding: 108px 6%; }
 /* The featured (Search Engine Land) tool spans the full grid row */
 .tool-card-featured { grid-column: 1 / -1; border-color: rgba(56,189,248,0.35); }
 .tool-card-featured .tool-badge { background: rgba(196,181,253,0.1); color: #C4B5FD; border-color: rgba(196,181,253,0.35); }
+/* Impact list in the About bio: the numbers lead, each with its source */
+.bio-impact { list-style: none; padding: 0; margin: 0 0 1.25rem; display: grid; gap: 0.5rem; }
+.bio-impact li { font-size: 0.95rem; color: var(--text-2); line-height: 1.6; padding-left: 1rem; border-left: 2px solid var(--border-a); }
+.bio-impact strong { font-family: var(--ff-display); font-size: 1.15rem; font-weight: 800; color: #93C5FD; margin-right: 0.35rem; }
 .num-note a { color: var(--accent-3); font-weight: 600; text-decoration: none; }
 .num-note a:hover { text-decoration: underline; }
 
