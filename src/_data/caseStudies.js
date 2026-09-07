@@ -29,7 +29,7 @@ module.exports = [
       "Wellows had no citation footprint inside AI answers. Four months of AEO work took LLM sessions from 176/month to roughly nine times that, with zero paid spend.",
 
     client: "Wellows",
-    clientNote: "In-house — my own work as Marketing Manager, not a client engagement.",
+    clientNote: "In-house — my own work leading SEO and AI search at Wellows, not a client engagement.",
     confidential: false,
     sector: "B2B SaaS",
     window: "July 2025 – February 2026",
