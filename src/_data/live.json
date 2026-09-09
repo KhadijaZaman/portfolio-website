@@ -1,0 +1,8 @@
+{
+  "updatedAt": "2026-09-09",
+  "updatedBy": "manual seed",
+  "note": "Overwritten by the n8n workflow in automation/n8n-live-metrics.json. Raw numbers only; the templates format them.",
+  "llm": { "multiplier": 22, "window": "12 months", "source": "GA4" },
+  "gsc": { "impressionsBefore": 680000, "impressions": 3780000, "clicks": 7270, "avgPositionBefore": 28.9, "avgPosition": 17.3, "window": "12 months" },
+  "tools": { "queryFanOut": 829, "llmQueryBuilder": 149, "aiHumanizer": 669 }
+}

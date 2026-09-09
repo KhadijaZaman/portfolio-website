@@ -77,6 +77,7 @@
     .stat-chip:hover { border-color: var(--border-a); }
     .stat-chip-val { font-family: var(--ff-display); font-size: 1.65rem; font-weight: 800; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
     .stat-chip-lbl { font-size: 0.74rem; color: var(--text-3); margin-top: 0.35rem; line-height: 1.4; }
+    .hero-updated { font-size: 0.7rem; color: var(--text-3); margin-top: 0.6rem; letter-spacing: 0.01em; }
     .hero-press { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem; font-size: 0.83rem; color: var(--text-2); line-height: 1.6; }
     .hero-press-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--text-3); }
     .hero-press a { color: var(--accent-3); font-weight: 600; text-decoration: none; }
@@ -119,6 +120,21 @@
     .cg-bar { display: flex; align-items: center; justify-content: space-between; margin-top: 0.4rem; color: #64748B; font-size: 0.8rem; }
     .cg-send { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; color: #fff; font-size: 0.9rem; }
     .cg-src { font-size: 0.68rem; color: #64748B; margin-top: 0.3rem; min-height: 1em; }
+    .cg-src a { color: #2563EB; }
+    .cg-input { display: block; width: 100%; font-family: var(--ff-display); font-weight: 500; font-size: 1.1rem; line-height: 1.35; min-height: 2.95rem; color: #0B1220; background: transparent; border: 0; outline: 0; padding: 0; }
+    .cg-input::placeholder { color: #94A3B8; }
+    .cg-input[hidden], .cg-q[hidden] { display: none; }   /* author display rules would otherwise beat the hidden attribute */
+    .cg-ask { background: none; border: 0; padding: 0.35rem 0; color: #64748B; font: 600 0.78rem var(--ff-body); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; min-height: 40px; }
+    .cg-ask:hover, .cg-ask:focus-visible { color: #0B1220; }
+    .cg-send { border: 0; cursor: pointer; }
+    .cg-send:focus-visible { outline: 2px solid #0B1220; outline-offset: 2px; }
+    .cg-prompt:focus-within { box-shadow: 0 20px 50px rgba(0,0,0,0.55), 0 0 0 4px rgba(56,189,248,0.35); }
+    /* hover or click a node: its lines stay lit, the rest fade */
+    .cg-node { cursor: pointer; transition: opacity 0.25s; }
+    .cg-out, .cg-back, .cg-faint { transition: opacity 0.25s; }
+    .cg-focus .cg-out:not(.on), .cg-focus .cg-back:not(.on), .cg-focus .cg-faint:not(.on) { opacity: 0.1; }
+    .cg-focus .cg-node:not(.on) { opacity: 0.35; }
+    .cg-node.on rect, .cg-node.on polygon { stroke: var(--accent-2); }
 
     @media (prefers-reduced-motion: reduce) { .cg-out, .cg-caret { animation: none; } }
 
@@ -150,6 +166,9 @@
         background: linear-gradient(#fff, #fff) padding-box, conic-gradient(from 200deg, #22C55E, #F59E0B, #EC4899, #3B82F6, #22C55E) border-box; }
       .cg-m-prompt p { font-family: var(--ff-display); font-weight: 500; font-size: 0.95rem; line-height: 1.35; color: #0B1220; }
       .cg-m-prompt .cg-chip { font-size: 0.7rem; padding: 1px 7px; }
+      .cg-m-form { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+      .cg-m-form input { flex: 1; min-width: 0; font: 500 0.9rem var(--ff-display); color: #0B1220; background: #F1F5F9; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.45rem 0.6rem; }
+      .cg-m-form button { border: 0; border-radius: 8px; background: var(--accent); color: #fff; font: 700 0.8rem var(--ff-body); padding: 0 0.8rem; min-height: 40px; cursor: pointer; }
     }
   </style>
 </head>
@@ -192,10 +211,11 @@
         I'm Khadija Zaman — I do SEO for the AI era. I get brands found on Google <em>and</em> cited inside ChatGPT, Gemini, Perplexity, and AI Overviews — then automate the work so that visibility compounds instead of resetting every month.
       </p>
       <div class="hero-stats reveal d3">
-        <div class="stat-chip"><div class="stat-chip-val">22×</div><div class="stat-chip-lbl">LLM referral traffic, 12 months (GA4)</div></div>
-        <div class="stat-chip"><div class="stat-chip-val">680K→3.78M</div><div class="stat-chip-lbl">Google impressions in 12 months</div></div>
-        <div class="stat-chip"><div class="stat-chip-val">1,647</div><div class="stat-chip-lbl">practitioners using the SEO tools I built</div></div>
+        <div class="stat-chip"><div class="stat-chip-val">{{ live.llm.multiplier }}×</div><div class="stat-chip-lbl">LLM referral traffic, {{ live.llm.window }} ({{ live.llm.source }})</div></div>
+        <div class="stat-chip"><div class="stat-chip-val">{{ live.gsc.impressionsBefore | compact }}→{{ live.gsc.impressions | compact }}</div><div class="stat-chip-lbl">Google impressions, {{ live.gsc.window }}</div></div>
+        <div class="stat-chip"><div class="stat-chip-val">{{ (live.tools.queryFanOut + live.tools.llmQueryBuilder + live.tools.aiHumanizer) | number }}</div><div class="stat-chip-lbl">practitioners using the SEO tools I built</div></div>
       </div>
+      <p class="hero-updated reveal d3">Figures updated {{ live.updatedAt | readableDate }} · {{ live.updatedBy }}</p>
 
       <p class="hero-press reveal d3">
         <span class="hero-press-tag">Featured in</span>
@@ -219,11 +239,13 @@
           <g id="cg-nodes"></g>
         </svg>
         <img class="cg-photo" src="/static/img/khadija-hero.webp" alt="Khadija Zaman, Marketing Manager, SEO and AI Search Specialist" width="420" height="420" fetchpriority="high" decoding="async">
-        <div class="cg-prompt" aria-live="polite" aria-label="Example prompt an answer engine resolves to Khadija's work">
-          <div class="cg-q"><span id="cg-q">How do I structure topic clusters for AI search? <a class="cg-chip" href="https://searchengineland.com/guide/topic-clusters-for-ai-search" target="_blank" rel="noopener">Search Engine Land guide</a></span><span class="cg-caret" aria-hidden="true"></span></div>
-          <div class="cg-bar" aria-hidden="true"><span>＋ &nbsp;⚙</span><span class="cg-send">↑</span></div>
+        <form class="cg-prompt" id="cg-form" aria-label="Ask what you are looking for; the answer is a page on this site">
+          <div class="cg-q" id="cg-qwrap" aria-live="polite"><span id="cg-q">How do I structure topic clusters for AI search? <a class="cg-chip" href="https://searchengineland.com/guide/topic-clusters-for-ai-search" target="_blank" rel="noopener">Search Engine Land guide</a></span><span class="cg-caret" aria-hidden="true"></span></div>
+          <label class="sr-only" for="cg-input">Ask what you are looking for</label>
+          <input class="cg-input" id="cg-input" type="text" placeholder="Ask about my work, tools, or results…" autocomplete="off" maxlength="120" hidden>
+          <div class="cg-bar"><button type="button" class="cg-ask" id="cg-ask">Ask your own question</button><button type="submit" class="cg-send" id="cg-send" aria-label="Ask">↑</button></div>
           <div class="cg-src" id="cg-src">The guide runs on the Query Fan-Out Generator I built</div>
-        </div>
+        </form>
       </div>
       <!-- Under 768px the SVG is hidden and this one-axis version shows instead. -->
       <div class="cg-mobile">
@@ -233,7 +255,8 @@
           <li>Google</li><li>ChatGPT</li><li>Gemini</li><li>Perplexity</li><li>AI Overviews</li>
         </ul>
         <div class="cg-m-prompt">
-          <p>How do I structure topic clusters for AI search? <a class="cg-chip" href="https://searchengineland.com/guide/topic-clusters-for-ai-search" target="_blank" rel="noopener">Search Engine Land</a></p>
+          <p id="cg-m-q" aria-live="polite">How do I structure topic clusters for AI search? <a class="cg-chip" href="https://searchengineland.com/guide/topic-clusters-for-ai-search" target="_blank" rel="noopener">Search Engine Land</a></p>
+          <form class="cg-m-form" id="cg-m-form"><label class="sr-only" for="cg-m-input">Ask what you are looking for</label><input id="cg-m-input" type="text" placeholder="Ask about my work…" autocomplete="off" maxlength="120"><button type="submit">Ask</button></form>
         </div>
       </div>
     </div>
@@ -421,32 +444,44 @@
 </footer>
 
 <script src="/js/site.js" defer></script>
+{#- Data for the hero script: live figures plus a search index of tools, posts, case studies and pages. -#}
+{%- set cgIndex = [] %}
+{%- for p in collections.posts %}{% set _ = cgIndex.push({ "t": p.data.title, "d": p.data.description, "u": p.url, "g": "Blog · " + p.data.category, "k": p.data.category }) %}{% endfor %}
+{%- for c in caseStudies %}{% set _ = cgIndex.push({ "t": c.title, "d": c.description, "u": "/work/" + c.slug + "/", "g": "Case study · " + c.pill, "k": c.pill + " " + (c.client or "") + " results case study proof numbers" }) %}{% endfor %}
+<script id="cg-data" type="application/json">{{ { "live": live, "fmt": { "impressions": live.gsc.impressions | compact, "impressionsBefore": live.gsc.impressionsBefore | compact, "users": (live.tools.queryFanOut + live.tools.llmQueryBuilder + live.tools.aiHumanizer) | number, "queryFanOut": live.tools.queryFanOut | number }, "index": askIndex.concat(cgIndex) } | dump | safe }}</script>
 {% raw %}
 <script>
-/* ── Hero citation graph + prompt bar (self-contained, no CDN) ──
-   Three lists drive everything. Add or remove an entry and the drawing follows.
-   Prompts: only questions with a real, checkable answer go here — the chip must
-   link to the thing that actually cites or ranks the work. */
+/* ── Hero citation graph + question box (self-contained, no CDN) ──
+   CG_ENGINES / CG_STACK draw the graph; each entry carries the prompt shown
+   when the visitor clicks it. Every chip links to a real page, never a claim.
+   The question box matches what the visitor types against the site index
+   emitted in #cg-data (tools, posts, case studies, pages). No model, no
+   network: it is a guide to the site, and says so. */
 (function () {
+  var data = {};
+  try { data = JSON.parse(document.getElementById('cg-data').textContent); } catch (e) {}
+  var LIVE = data.live || {}, FMT = data.fmt || {}, INDEX = data.index || [];
+  var gsc = LIVE.gsc || {}, llm = LIVE.llm || {};
+
   var CG_ENGINES = [
-    { label: 'Google',       angle: -140, r: 205 },
-    { label: 'ChatGPT',      angle:  -40, r: 205 },
-    { label: 'Gemini',       angle:    5, r: 220 },
-    { label: 'Perplexity',   angle:   45, r: 205 },
-    { label: 'AI Overviews', angle:  165, r: 210 }
+    { label: 'Google',       angle: -140, r: 205, prompt: { q: 'What does Search Engine Land recommend for topic clusters? ', chip: 'Search Engine Land guide', href: 'https://searchengineland.com/guide/topic-clusters-for-ai-search', src: 'The guide runs on the Query Fan-Out Generator I built' } },
+    { label: 'ChatGPT',      angle:  -40, r: 205, prompt: { q: 'How do I get my brand cited by ChatGPT? ', chip: 'Read the checklist', href: '/blog/get-cited-by-ai-search/', src: 'The retrieval-readiness checklist I use' } },
+    { label: 'Gemini',       angle:    5, r: 220, prompt: { q: 'Why does ranking #1 not mean Gemini cites you? ', chip: 'SEO vs AEO vs GEO', href: '/blog/geo-aeo-vs-seo/', src: 'Where the three layers diverge, and how to sequence them' } },
+    { label: 'Perplexity',   angle:   45, r: 205, prompt: { q: 'How do you measure citations in Perplexity? ', chip: 'Breaking my own study', href: '/blog/breaking-my-own-study/', src: 'A cross-engine citation study, rebuilt and tested against a null' } },
+    { label: 'AI Overviews', angle:  165, r: 210, prompt: { q: 'Why did clicks fall while rankings recovered? ', chip: 'Core update recovery', href: '/work/core-update-recovery/', src: 'Position 32 back to 8.2, with AI Overview absorption flagged as an inference' } }
   ];
   /* nearest: index into CG_ENGINES the faint line runs to */
   var CG_STACK = [
-    { label: 'GSC',    angle: -100, r: 262, nearest: 0 },
-    { label: 'GA4',    angle:  -20, r: 275, nearest: 1 },
-    { label: 'n8n',    angle:   28, r: 272, nearest: 2 },
-    { label: 'Ahrefs', angle:  200, r: 262, nearest: 4 },
-    { label: 'Looker', angle:  150, r: 262, nearest: 4 }
+    { label: 'GSC',    angle: -100, r: 262, nearest: 0, prompt: { q: 'How do you verify search growth? ', chip: 'Wellows case study', href: '/work/wellows-ai-visibility/', src: 'Search Console · ' + FMT.impressions + ' impressions, ' + (gsc.window || '12 months') + ', avg. position ' + gsc.avgPositionBefore + ' → ' + gsc.avgPosition } },
+    { label: 'GA4',    angle:  -20, r: 275, nearest: 1, prompt: { q: 'How do you track LLM referral traffic? ', chip: llm.multiplier + '× in ' + (llm.window || '12 months'), href: '/work/', src: 'GA4 · LLM referral sessions, ' + llm.multiplier + '× over ' + (llm.window || '12 months') + ', $0 paid' } },
+    { label: 'n8n',    angle:   28, r: 272, nearest: 2, prompt: { q: 'How do you automate SEO reporting? ', chip: 'Marketing automation', href: '/#expertise', src: 'n8n and LLM workflows wired into GA4 reporting. These hero figures are refreshed the same way.' } },
+    { label: 'Ahrefs', angle:  200, r: 262, nearest: 4, prompt: { q: 'How do you audit a site that lost 70% of its clicks? ', chip: 'Five workstreams, one owner', href: '/work/core-update-recovery/', src: 'Technical, semantic, topical authority, internal links, third-party mentions' } },
+    { label: 'Looker', angle:  150, r: 262, nearest: 4, prompt: { q: 'Where do the dashboards live? ', chip: 'GA4 + Looker reporting', href: '/work/wellows-ai-visibility/', src: 'Sources on every case study: GA4, Looker Studio, Search Console' } }
   ];
   var CG_PROMPTS = [
     { q: 'How do I structure topic clusters for AI search? ', chip: 'Search Engine Land guide', href: 'https://searchengineland.com/guide/topic-clusters-for-ai-search', src: 'The guide runs on the Query Fan-Out Generator I built' },
-    { q: 'What is query fan-out and how do I use it? ', chip: 'Query Fan-Out Generator', href: '/tools/', src: 'Built on Google’s query fan-out patent · 829 active users' },
-    { q: 'How do I research entities for LLM visibility? ', chip: 'LLM Query Builder', href: '/tools/', src: 'Built for practitioners who work with AI retrieval systematically' }
+    { q: 'What is query fan-out and how do I use it? ', chip: 'Query Fan-Out Generator', href: '/tools/#tool-query-fan-out', src: 'Built on Google’s query fan-out patent' + (FMT.queryFanOut ? ' · ' + FMT.queryFanOut + ' active users' : '') },
+    { q: 'How do I research entities for LLM visibility? ', chip: 'LLM Query Builder', href: '/tools/#tool-llm-query-builder', src: 'Built for practitioners who work with AI retrieval systematically' }
   ];
 
   var svg = document.getElementById('cg-svg'); if (!svg) return;
@@ -459,56 +494,127 @@
   function text(parent, x, y, str, cls) { var t = el('text', { x: x, y: y, 'text-anchor': 'middle', 'dominant-baseline': 'middle' }, parent); if (cls) t.setAttribute('class', cls); t.textContent = str; return t; }
   function pt(angle, r) { var a = angle * Math.PI / 180; return { x: C.x + Math.cos(a) * r, y: C.y + Math.sin(a) * r }; }
   var enginePts = CG_ENGINES.map(function (n) { return pt(n.angle, n.r); });
+  var allNodes = [];   /* { g, edges:[], prompt } */
+
+  /* highlight: a node and its lines stay lit, everything else fades */
+  var pinned = null;
+  function highlight(node) {
+    var on = node || pinned;
+    svg.classList.toggle('cg-focus', !!on);
+    allNodes.forEach(function (n) {
+      var hit = n === on;
+      n.g.classList.toggle('on', hit);
+      n.edges.forEach(function (e) { e.classList.toggle('on', hit); });
+    });
+  }
+  function wire(node) {
+    node.g.addEventListener('mouseenter', function () { highlight(node); });
+    node.g.addEventListener('mouseleave', function () { highlight(null); });
+    node.g.addEventListener('click', function () { pinned = (pinned === node) ? null : node; highlight(null); if (pinned) ask.showPrompt(node.prompt, true); else ask.resume(); });
+  }
 
   CG_ENGINES.forEach(function (n, i) {
-    var p = enginePts[i];
+    var p = enginePts[i], own = [];
     /* dashed line out (the query fanning out), curved line back (the citation returning) */
-    el('path', { d: 'M' + C.x + ' ' + C.y + ' L' + p.x + ' ' + p.y, 'class': 'cg-out' }, edges);
+    own.push(el('path', { d: 'M' + C.x + ' ' + C.y + ' L' + p.x + ' ' + p.y, 'class': 'cg-out' }, edges));
     var mid = { x: (C.x + p.x) / 2 + (p.y - C.y) * 0.18, y: (C.y + p.y) / 2 - (p.x - C.x) * 0.18 };
     var back = el('path', { id: 'cg-back-' + i, d: 'M' + p.x + ' ' + p.y + ' Q' + mid.x + ' ' + mid.y + ' ' + C.x + ' ' + C.y, 'class': 'cg-back' }, edges);
+    own.push(back);
     if (!reduce) {
       var dot = el('circle', { r: 3, fill: '#38BDF8' }, edges);
       var motion = el('animateMotion', { dur: (2.4 + i * 0.35) + 's', repeatCount: 'indefinite', begin: (-i * 0.7) + 's' }, dot);
       el('mpath', { href: '#' + back.id }, motion);
     }
     var w = n.label.length * 8.6 + 44, h = 38;
-    var g = el('g', { 'class': 'cg-node' }, nodes);   /* decorative: the SVG is aria-hidden and the copy names every engine */
-    el('title', {}, g).textContent = 'Cited in ' + n.label;
+    var g = el('g', { 'class': 'cg-node' }, nodes);   /* pointer-only: the SVG is aria-hidden; the question box covers keyboard users */
+    el('title', {}, g).textContent = n.prompt.q.trim();
     el('rect', { x: p.x - w / 2, y: p.y - h / 2, width: w, height: h, rx: 11 }, g);
     el('circle', { cx: p.x - w / 2 + 18, cy: p.y, r: 5, fill: '#38BDF8' }, g);
     text(g, p.x + 9, p.y + 1, n.label);
+    var node = { g: g, edges: own, prompt: n.prompt, label: n.label }; allNodes.push(node); wire(node);
   });
 
   CG_STACK.forEach(function (n) {
     var p = pt(n.angle, n.r), q = enginePts[n.nearest];
-    el('path', { d: 'M' + q.x + ' ' + q.y + ' L' + p.x + ' ' + p.y, 'class': 'cg-faint' }, edges);
+    var faint = el('path', { d: 'M' + q.x + ' ' + q.y + ' L' + p.x + ' ' + p.y, 'class': 'cg-faint' }, edges);
     var g = el('g', { 'class': 'cg-node cg-hex' }, nodes);
+    el('title', {}, g).textContent = n.prompt.q.trim();
     var pts = [];
     for (var k = 0; k < 6; k++) { var a = (60 * k - 30) * Math.PI / 180; pts.push((p.x + Math.cos(a) * 17).toFixed(1) + ',' + (p.y + Math.sin(a) * 17).toFixed(1)); }
     el('polygon', { points: pts.join(' ') }, g);
     text(g, p.x, p.y + 1, n.label);
+    var node = { g: g, edges: [faint], prompt: n.prompt, label: n.label }; allNodes.push(node); wire(node);
   });
 
-  /* prompt bar: type the question, then land the chip that answers it */
-  var q = document.getElementById('cg-q'), src = document.getElementById('cg-src');
-  if (!q || reduce) return;
-  function chip(p) { var a = document.createElement('a'); a.className = 'cg-chip'; a.href = p.href; a.textContent = p.chip; if (p.href.charAt(0) !== '/') { a.target = '_blank'; a.rel = 'noopener'; } return a; }
-  var i = 0, timer;
-  function show(p) { q.textContent = p.q; q.appendChild(chip(p)); src.textContent = p.src; }
-  function run() {
-    var p = CG_PROMPTS[i], n = 0; src.textContent = '';
-    (function type() {
-      if (n <= p.q.length) { q.textContent = p.q.slice(0, n); n++; timer = setTimeout(type, 34); }
-      else { show(p); timer = setTimeout(function () { i = (i + 1) % CG_PROMPTS.length; run(); }, 4200); }
-    })();
+  /* ── question box: match the visitor's words to a page on this site ── */
+  var STOP = /^(the|a|an|and|or|of|to|in|on|for|is|are|do|does|did|how|what|why|who|which|where|when|i|my|me|you|your|can|with|about|it|this|that|get|be|by|from|any|some|help|need|want|tell|show|please)$/;
+  function tokens(str) { return String(str || '').toLowerCase().replace(/[^a-z0-9#×\s-]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 1 && !STOP.test(w); }); }
+  function stem(w) { return w.replace(/(ies|ing|ed|s)$/, function (m) { return m === 'ies' ? 'y' : ''; }); }
+  function search(query) {
+    var qs = tokens(query).map(stem); if (!qs.length) return null;
+    var best = null, bestScore = 0;
+    /* engine and stack nodes answer by name */
+    allNodes.forEach(function (n) { var l = n.label.toLowerCase().replace(/\s/g, ''); if (query.toLowerCase().replace(/\s/g, '').indexOf(l) !== -1) { if (4 > bestScore) { bestScore = 4; best = { prompt: n.prompt, node: n }; } } });
+    INDEX.forEach(function (e) {
+      var tt = tokens(e.t).map(stem), kk = tokens(e.k).map(stem), dd = tokens(e.d).map(stem), score = 0;
+      qs.forEach(function (w) { if (tt.indexOf(w) !== -1) score += 3; else if (kk.indexOf(w) !== -1) score += 2; else if (dd.indexOf(w) !== -1) score += 1; });
+      if (score > bestScore) { bestScore = score; best = { entry: e }; }
+    });
+    return bestScore >= 2 ? best : null;
   }
-  /* start after the first prompt has been readable for a moment; pause when off-screen */
-  var started = false;
-  var io = new IntersectionObserver(function (en) {
-    if (en[0].isIntersecting) { if (!started) { started = true; timer = setTimeout(function () { i = 1; run(); }, 3500); } }
-    else if (started) { clearTimeout(timer); started = false; show(CG_PROMPTS[i]); }
-  });
-  io.observe(q);
+
+  var q = document.getElementById('cg-q'), src = document.getElementById('cg-src');
+  var form = document.getElementById('cg-form'), input = document.getElementById('cg-input'), askBtn = document.getElementById('cg-ask'), qwrap = document.getElementById('cg-qwrap');
+  function chip(p) { var a = document.createElement('a'); a.className = 'cg-chip'; a.href = p.href; a.textContent = p.chip; if (p.href.charAt(0) !== '/') { a.target = '_blank'; a.rel = 'noopener'; } return a; }
+  function render(target, srcEl, p) { target.textContent = p.q; target.appendChild(chip(p)); if (srcEl) srcEl.textContent = p.src || ''; }
+  function answerFor(query) {
+    var hit = search(query), trimmed = query.trim().replace(/\?+$/, '');
+    if (hit && hit.prompt) { pinned = hit.node; highlight(null); return { q: trimmed + '? ', chip: hit.prompt.chip, href: hit.prompt.href, src: hit.prompt.src }; }
+    if (hit && hit.entry) { var e = hit.entry; return { q: trimmed + '? ', chip: e.t, href: e.u, src: e.g + ' · ' + e.d }; }
+    return { q: trimmed + '? ', chip: 'Ask me directly', href: '/contact/', src: 'Nothing on this site answers that yet. I reply within 48 hours.' };
+  }
+
+  var ask = { showPrompt: function () {}, resume: function () {} };
+  if (q && form && input) {
+    var i = 0, timer, cycling = true, typing = null;
+    function stop() { clearTimeout(timer); clearTimeout(typing); cycling = false; }
+    function show(p) { render(q, src, p); }
+    function typeThen(p, done) {
+      var n = 0; src.textContent = ''; clearTimeout(typing);
+      (function step() { if (n <= p.q.length) { q.textContent = p.q.slice(0, n); n++; typing = setTimeout(step, reduce ? 0 : 34); } else { show(p); if (done) done(); } })();
+    }
+    function run() { if (!cycling) return; typeThen(CG_PROMPTS[i], function () { timer = setTimeout(function () { i = (i + 1) % CG_PROMPTS.length; run(); }, 4200); }); }
+    ask.showPrompt = function (p) { stop(); input.hidden = true; qwrap.hidden = false; askBtn.textContent = 'Ask your own question'; typeThen(p); };
+    ask.resume = function () { if (cycling || reduce) return; cycling = true; run(); };
+    function openInput() { stop(); pinned = null; highlight(null); qwrap.hidden = true; input.hidden = false; input.value = ''; src.textContent = 'A guide to this site, not an AI. Type a topic, a tool, or an engine name.'; askBtn.textContent = 'Back to examples'; input.focus(); }
+    function closeInput() { input.hidden = true; qwrap.hidden = false; askBtn.textContent = 'Ask your own question'; }
+    askBtn.addEventListener('click', function () { if (input.hidden) openInput(); else { closeInput(); ask.resume(); } });
+    qwrap.addEventListener('click', function (e) { if (e.target.closest('a')) return; openInput(); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (input.hidden) { openInput(); return; }
+      var v = input.value.trim(); if (!v) { input.focus(); return; }
+      closeInput(); askBtn.textContent = 'Ask another question'; typeThen(answerFor(v));
+    });
+    input.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeInput(); ask.resume(); } });
+    /* start cycling after the first prompt has been readable; pause off-screen */
+    var started = false;
+    var io = new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) { if (!started && cycling) { started = true; timer = setTimeout(function () { i = 1; run(); }, 3500); } }
+      else if (started && cycling) { clearTimeout(timer); clearTimeout(typing); started = false; show(CG_PROMPTS[i]); }
+    });
+    if (!reduce) io.observe(q); else cycling = false;
+  }
+
+  /* mobile: same matcher, plain form */
+  var mForm = document.getElementById('cg-m-form'), mInput = document.getElementById('cg-m-input'), mQ = document.getElementById('cg-m-q');
+  if (mForm && mInput && mQ) {
+    mForm.addEventListener('submit', function (e) {
+      e.preventDefault(); var v = mInput.value.trim(); if (!v) return;
+      var p = answerFor(v); render(mQ, null, p);
+      var s = document.createElement('small'); s.style.cssText = 'display:block;margin-top:.3rem;color:#64748B;font:500 .72rem/1.4 Inter,sans-serif'; s.textContent = p.src; mQ.appendChild(s);
+    });
+  }
 })();
 </script>
 <script>
