@@ -94,7 +94,9 @@ summary:focus-visible,
 .reveal.d5 { transition-delay: 0.40s; }
 
 /* ── NAV ── */
-nav {
+/* The site header only. A bare `nav` selector here also pinned every
+   breadcrumb <nav> to the top of the screen, hidden behind this bar. */
+body > nav {
   position: fixed; top: 0; inset-inline: 0; z-index: 200;
   height: 64px;
   display: flex; align-items: center; justify-content: space-between;
@@ -359,7 +361,7 @@ section { padding: 108px 6%; }
 .case-nums { display: flex; gap: 2rem; flex-wrap: wrap; padding-bottom: 1.25rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
 .cn-val { font-family: var(--ff-display); font-size: 1.5rem; font-weight: 800; color: #93C5FD; }
 .cn-val.green { color: #93C5FD; }
-.cn-lbl { font-size: 0.65rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.2rem; }
+.cn-lbl { font-size: 0.72rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.2rem; }
 
 /* ── TOOLS ── */
 .tools-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
@@ -555,7 +557,9 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 
 /* ── FEATURED CASE STUDY ── */
 .case-card.featured { grid-column: 1 / -1; }
-.case-meta { font-size: 0.7rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
+/* With an even card count after the full-width featured card, the last card would sit alone in its row. */
+.cases-grid > .case-card:last-child:nth-child(even) { grid-column: 1 / -1; }
+.case-meta { font-size: 0.74rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
 .case-approach { list-style: none; margin: 0.9rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
 .case-approach li { font-size: 0.85rem; color: var(--text-2); line-height: 1.6; padding-left: 0.9rem; position: relative; }
 .case-approach li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); }
@@ -585,7 +589,7 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 
 /* ── CASE STUDY PAGES (/work/<slug>/) ── */
 /* Baseline printed under a headline stat, so a multiplier never stands alone. */
-.cn-note { display: block; color: var(--text-3); font-size: 0.92em; margin-top: 0.15rem; }
+.cn-note { display: block; color: var(--text-3); font-size: 1em; text-transform: none; letter-spacing: 0; margin-top: 0.15rem; }
 
 .cs-body h2 {
   font-family: var(--ff-display); font-size: 1.35rem; font-weight: 700;
@@ -703,7 +707,7 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
-  .sec-canvas, #hero-3d { display: none; }
+  .sec-canvas { display: none; }
   .sec-bg-orb { animation: none !important; }
   .exp-card, .case-card, .tool-card, .post-card, .stat-chip { transform: none !important; transition: border-color 0.25s, box-shadow 0.25s !important; }
   .marquee-track { animation: none !important; }
@@ -881,7 +885,7 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
   display: flex; align-items: center; justify-content: center; position: relative; }
 .score-ring::after { content: ''; position: absolute; inset: 10px; border-radius: 50%; background: var(--bg-card); }
 .score-num { position: relative; z-index: 1; font-family: var(--ff-display); font-size: 1.9rem; font-weight: 800; }
-.score-verdict h3 { font-family: var(--ff-display); font-size: 1.25rem; font-weight: 800; margin-bottom: 0.3rem; }
+.score-verdict h2 { font-family: var(--ff-display); font-size: 1.25rem; font-weight: 800; margin-bottom: 0.3rem; }
 .score-verdict p { font-size: 0.9rem; color: var(--text-2); line-height: 1.6; }
 
 /* check list */
@@ -943,3 +947,57 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 .blog-rss { font-size: 0.82rem; font-weight: 600; color: var(--text-3); text-decoration: none; border: 1px solid var(--border); border-radius: 100px; padding: 0.5rem 1.1rem; transition: color 0.2s, border-color 0.2s; }
 .blog-rss:hover { color: var(--text-1); border-color: var(--border-a); }
 @media (max-width: 600px) { .blog-filter { flex-direction: column; align-items: stretch; } .blog-search { max-width: none; } }
+
+/* ── CURVE (tools page, about page): items placed along one path by site.js ── */
+.curve { position: relative; margin: 2rem 0 0.5rem; overflow-x: auto; }
+.curve svg { display: block; width: 100%; min-width: 880px; height: auto; overflow: visible; }
+.curve-path { fill: none; stroke-width: 2.2; }
+.curve-group { font-family: var(--ff-body); font-weight: 700; font-size: 10px; letter-spacing: 0.1em; fill: var(--accent-3); }
+.curve-group-line { stroke: var(--border); stroke-width: 1; }
+.curve-dot { cursor: pointer; outline: none; text-decoration: none; }
+.curve-core { fill: var(--accent); stroke: var(--bg-1); stroke-width: 3; transition: fill 0.2s; }
+.curve-halo { fill: rgba(56,189,248,0.18); opacity: 0; transition: opacity 0.2s; }
+.curve-tick { stroke: var(--border-a); stroke-width: 1; }
+.curve-pill { fill: var(--bg-card); stroke: var(--border); stroke-width: 1; transition: stroke 0.2s; }
+.curve-card { transition: transform 0.2s; }
+.curve-dot:hover .curve-core { fill: var(--accent-2); }
+.curve-dot:hover .curve-halo { opacity: 1; }
+.curve-dot:hover .curve-pill { stroke: var(--accent-2); }
+.curve-dot:hover .curve-card { transform: translateY(-3px); }
+.curve-year { font-family: var(--ff-body); font-weight: 700; font-size: 10.5px; fill: var(--accent-3); letter-spacing: 0.06em; }
+.curve-label { font-family: var(--ff-display); font-weight: 700; font-size: 13px; fill: var(--text-1); }
+.curve-sub { font-family: var(--ff-body); font-weight: 500; font-size: 10.5px; fill: var(--text-3); }
+@media (max-width: 640px) { .curve { display: none; } }   /* the cards / timeline below carry the same content */
+@media (prefers-reduced-motion: reduce) { .curve-card, .curve-core, .curve-halo, .curve-pill { transition: none; } }
+
+/* ── CASE STUDY ENTITY MAP: drawn by site.js from study.map ── */
+.cs-map { margin: 0.75rem 0 0.5rem; overflow-x: auto; }
+.cs-map svg { display: block; width: 100%; min-width: 480px; height: auto; overflow: visible; }
+.cs-map-group { font-family: var(--ff-body); font-weight: 700; font-size: 9.5px; letter-spacing: 0.1em; fill: var(--text-3); }
+.cs-map-node rect { fill: var(--bg-card); stroke: var(--border-a); stroke-width: 1.2; }
+.cs-map-node text { font-family: var(--ff-display); font-weight: 700; font-size: 12.5px; fill: var(--text-1); }
+.cs-map-node.ctr rect { fill: var(--accent); stroke: none; }
+.cs-map-node.ctr text { fill: #fff; font-size: 14px; }
+.cs-map-node.tool rect { stroke: var(--accent-2); }
+.cs-map-edge { fill: none; stroke: var(--accent); stroke-width: 1.4; opacity: 0.7; }
+.cs-map-edge.d { stroke-dasharray: 4 5; }
+.cs-map-edge.c { stroke: var(--accent-2); }
+.cs-map-edge-bg { fill: var(--bg-0); }
+.cs-map-edge-label { font-family: var(--ff-body); font-weight: 600; font-size: 10px; fill: var(--accent-3); }
+.cs-map-legend { list-style: none; margin: 0.5rem 0 1.5rem; padding: 0; display: flex; gap: 1rem 1.25rem; flex-wrap: wrap; font-size: 0.72rem; color: var(--text-3); }
+.cs-map-legend i { display: inline-block; width: 16px; height: 0; border-top: 2px solid var(--accent); vertical-align: middle; margin-right: 6px; }
+.cs-map-legend i.d { border-top-style: dashed; }
+.cs-map-legend i.c { border-top-color: var(--accent-2); }
+
+/* ── TAP TARGETS ──
+   Text links and small controls get at least a 40px tall hit area on touch
+   screens without changing how they look. */
+.nav-logo { display: inline-flex; align-items: center; min-height: 44px; }
+.crumbs a { display: inline-flex; align-items: center; min-height: 40px; }
+.footer-col a { padding: 0.45rem 0; margin-bottom: 0; }
+.press-link, .tool-link, .free-tool-cta, .post-more, .blog-rss, .contact-link { display: inline-flex; align-items: center; min-height: 40px; }
+.chip { min-height: 40px; }
+.toc a { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+/* carousel dots: the visible dot stays 8px, the hit area becomes 24px */
+.pc-dot { box-sizing: content-box; padding: 8px; background-clip: content-box; }
+.pc-dot.active { background-clip: content-box; }
