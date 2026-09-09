@@ -943,3 +943,44 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 .blog-rss { font-size: 0.82rem; font-weight: 600; color: var(--text-3); text-decoration: none; border: 1px solid var(--border); border-radius: 100px; padding: 0.5rem 1.1rem; transition: color 0.2s, border-color 0.2s; }
 .blog-rss:hover { color: var(--text-1); border-color: var(--border-a); }
 @media (max-width: 600px) { .blog-filter { flex-direction: column; align-items: stretch; } .blog-search { max-width: none; } }
+
+/* ── CURVE (tools page, about page): items placed along one path by site.js ── */
+.curve { position: relative; margin: 2rem 0 0.5rem; overflow-x: auto; }
+.curve svg { display: block; width: 100%; min-width: 880px; height: auto; overflow: visible; }
+.curve-path { fill: none; stroke-width: 2.2; }
+.curve-group { font-family: var(--ff-body); font-weight: 700; font-size: 10px; letter-spacing: 0.1em; fill: var(--accent-3); }
+.curve-group-line { stroke: var(--border); stroke-width: 1; }
+.curve-dot { cursor: pointer; outline: none; text-decoration: none; }
+.curve-core { fill: var(--accent); stroke: var(--bg-1); stroke-width: 3; transition: fill 0.2s; }
+.curve-halo { fill: rgba(56,189,248,0.18); opacity: 0; transition: opacity 0.2s; }
+.curve-tick { stroke: var(--border-a); stroke-width: 1; }
+.curve-pill { fill: var(--bg-card); stroke: var(--border); stroke-width: 1; transition: stroke 0.2s; }
+.curve-card { transition: transform 0.2s; }
+.curve-dot:hover .curve-core, .curve-dot:focus-visible .curve-core { fill: var(--accent-2); }
+.curve-dot:hover .curve-halo, .curve-dot:focus-visible .curve-halo { opacity: 1; }
+.curve-dot:hover .curve-pill, .curve-dot:focus-visible .curve-pill { stroke: var(--accent-2); }
+.curve-dot:hover .curve-card { transform: translateY(-3px); }
+.curve-year { font-family: var(--ff-body); font-weight: 700; font-size: 10.5px; fill: var(--accent-3); letter-spacing: 0.06em; }
+.curve-label { font-family: var(--ff-display); font-weight: 700; font-size: 13px; fill: var(--text-1); }
+.curve-sub { font-family: var(--ff-body); font-weight: 500; font-size: 10.5px; fill: var(--text-3); }
+@media (max-width: 640px) { .curve { display: none; } }   /* the cards / timeline below carry the same content */
+@media (prefers-reduced-motion: reduce) { .curve-card, .curve-core, .curve-halo, .curve-pill { transition: none; } }
+
+/* ── CASE STUDY ENTITY MAP: drawn by site.js from study.map ── */
+.cs-map { margin: 0.75rem 0 0.5rem; overflow-x: auto; }
+.cs-map svg { display: block; width: 100%; min-width: 480px; height: auto; overflow: visible; }
+.cs-map-group { font-family: var(--ff-body); font-weight: 700; font-size: 9.5px; letter-spacing: 0.1em; fill: var(--text-3); }
+.cs-map-node rect { fill: var(--bg-card); stroke: var(--border-a); stroke-width: 1.2; }
+.cs-map-node text { font-family: var(--ff-display); font-weight: 700; font-size: 12.5px; fill: var(--text-1); }
+.cs-map-node.ctr rect { fill: var(--accent); stroke: none; }
+.cs-map-node.ctr text { fill: #fff; font-size: 14px; }
+.cs-map-node.tool rect { stroke: var(--accent-2); }
+.cs-map-edge { fill: none; stroke: var(--accent); stroke-width: 1.4; opacity: 0.7; }
+.cs-map-edge.d { stroke-dasharray: 4 5; }
+.cs-map-edge.c { stroke: var(--accent-2); }
+.cs-map-edge-bg { fill: var(--bg-0); }
+.cs-map-edge-label { font-family: var(--ff-body); font-weight: 600; font-size: 10px; fill: var(--accent-3); }
+.cs-map-legend { list-style: none; margin: 0.5rem 0 1.5rem; padding: 0; display: flex; gap: 1rem 1.25rem; flex-wrap: wrap; font-size: 0.72rem; color: var(--text-3); }
+.cs-map-legend i { display: inline-block; width: 16px; height: 0; border-top: 2px solid var(--accent); vertical-align: middle; margin-right: 6px; }
+.cs-map-legend i.d { border-top-style: dashed; }
+.cs-map-legend i.c { border-top-color: var(--accent-2); }
