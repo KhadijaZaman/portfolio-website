@@ -72,10 +72,6 @@
     .hero h1 { font-family: var(--ff-display); font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
     .hero-sub { font-size: 1.05rem; color: var(--text-2); line-height: 1.75; max-width: 540px; margin-bottom: 1.75rem; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem; }
-    .hero-engines { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
-    .he-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); font-weight: 700; margin-right: 0.15rem; }
-    .he-chip { font-size: 0.78rem; font-weight: 600; color: var(--text-2); background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 100px; padding: 0.32rem 0.8rem; transition: border-color 0.2s, color 0.2s; }
-    .he-chip:hover { border-color: var(--border-a); color: var(--text-1); }
     .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
     .stat-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 1.25rem 1rem; transition: border-color 0.25s; display: flex; flex-direction: column; }
     .stat-chip:hover { border-color: var(--border-a); }
@@ -139,7 +135,6 @@
     @media (max-width: 768px) {
       .hero { padding: 88px 5% 60px; }
       .hero h1 { font-size: 2.1rem; }
-      .hero-engines { display: none; }               /* the mobile graph carries the engine chips */
       .hero-right { order: -1; margin: 0 0 1.75rem; }
       .hero-right::before { -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 72%); mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 72%); }
       .cg { display: none; }
@@ -195,14 +190,6 @@
       <p class="hero-sub reveal d2">
         I'm Khadija Zaman — I do SEO for the AI era. I get brands found on Google <em>and</em> cited inside ChatGPT, Gemini, Perplexity, and AI Overviews — then automate the work so that visibility compounds instead of resetting every month.
       </p>
-      <div class="hero-engines reveal d2" aria-label="Visible across these engines">
-        <span class="he-label">Visible across</span>
-        <span class="he-chip">Google</span>
-        <span class="he-chip">ChatGPT</span>
-        <span class="he-chip">Gemini</span>
-        <span class="he-chip">Perplexity</span>
-        <span class="he-chip">AI Overviews</span>
-      </div>
       <div class="hero-stats reveal d3">
         <div class="stat-chip"><div class="stat-chip-val">22×</div><div class="stat-chip-lbl">LLM referral traffic, 12 months (GA4)</div></div>
         <div class="stat-chip"><div class="stat-chip-val">680K→3.78M</div><div class="stat-chip-lbl">Google impressions in 12 months</div></div>
@@ -270,11 +257,11 @@
 <!-- ══════════════ IMPACT BAR ══════════════ -->
 <div class="impact-bar" aria-label="Impact at a glance">
   <div class="impact-bar-inner">
-    <div class="impact-num reveal"><div class="impact-num-val">22×</div><div class="impact-num-lbl">LLM referral traffic, 12 months</div></div>
+    <div class="impact-num reveal"><div class="impact-num-val">+121%</div><div class="impact-num-lbl">GSC clicks YoY · AllAboutAI author pages</div></div>
     <div class="impact-divider" aria-hidden="true"></div>
-    <div class="impact-num reveal d1"><div class="impact-num-val">+121%</div><div class="impact-num-lbl">GSC clicks YoY · AllAboutAI author pages</div></div>
+    <div class="impact-num reveal d1"><div class="impact-num-val">$0</div><div class="impact-num-lbl">Paid spend behind the AI-visibility results</div></div>
     <div class="impact-divider" aria-hidden="true"></div>
-    <div class="impact-num reveal d2"><div class="impact-num-val">1,647</div><div class="impact-num-lbl">Practitioners using my tools</div></div>
+    <div class="impact-num reveal d2"><div class="impact-num-val">6</div><div class="impact-num-lbl">Projects with numbers that hold up</div></div>
     <div class="impact-divider" aria-hidden="true"></div>
     <div class="impact-num reveal d3"><div class="impact-num-val">4</div><div class="impact-num-lbl">Industries: SaaS, cyber, affiliate, agency</div></div>
   </div>
@@ -304,21 +291,20 @@
   <div class="wrap" style="position: relative; z-index: 1;">
     <div class="sec-tag reveal">Selected Work</div>
     <h2 class="sec-h2 reveal d1">The work, not the pitch</h2>
-    <p class="sec-lead reveal d2">Five projects across AEO/LLM visibility, SEO management, content strategy, and product launches — each with a clear problem, a clear approach, and numbers that hold up. Here's the headline one.</p>
+    <p class="sec-lead reveal d2">Six projects across AEO/LLM visibility, SEO management, content strategy, and product launches — each with a clear problem, a clear approach, and numbers that hold up. Here's the headline one.</p>
     <div class="cases-grid">
       <div class="case-card featured reveal">
         <div class="case-card-top-bar bar-green"></div>
         <div class="case-pill pill-green">AEO / LLM Visibility · Featured</div>
-        <div class="case-meta">Wellows · July 2025 – Feb 2026 · Source: GA4 / Looker Studio / GSC</div>
+        <div class="case-meta">Wellows · 12 months · Source: GA4 / Looker Studio / GSC</div>
         <div class="case-nums">
-          <div><div class="cn-val green">9×</div><div class="cn-lbl">LLM Sessions, 4 Months<span class="cn-note">from a 176/month baseline</span></div></div>
+          <div><div class="cn-val green">22×</div><div class="cn-lbl">LLM Referral Traffic, 12 Months<span class="cn-note">GA4</span></div></div>
+          <div><div class="cn-val green">680K→3.78M</div><div class="cn-lbl">Google Impressions, 12 Months</div></div>
           <div><div class="cn-val green">28.9→17.3</div><div class="cn-lbl">Avg. SERP Position</div></div>
-          <div><div class="cn-val green">45s→6+ min</div><div class="cn-lbl">Session Duration</div></div>
-          <div><div class="cn-val green">3.78M</div><div class="cn-lbl">GSC Impressions</div></div>
           <div><div class="cn-val green">$0</div><div class="cn-lbl">Paid Spend</div></div>
         </div>
-        <h3>9× LLM Visibility and #1–#2 Tool Rankings — Built Entirely on AEO, $0 Paid</h3>
-        <p>Wellows started with near-zero LLM visibility and no citation footprint. I built measurable AI-search presence from scratch — zero paid spend.</p>
+        <h3>22× LLM Traffic: Getting a SaaS Brand Cited Inside AI Answers — Built Entirely on AEO, $0 Paid</h3>
+        <p>Wellows had Google traffic but near-zero presence inside AI answers and no citation footprint. I built measurable AI-search presence from scratch, with zero paid spend. <a href="/work/wellows-ai-visibility/">The case study</a> covers the first four months in detail, from a 176-sessions-a-month baseline.</p>
         <ul class="case-approach">
           <li><b>AEO framework.</b> Koray Tuğberk's logic + Google's query fan-out patent for LLM retrieval.</li>
           <li><b>Citation experiments.</b> Grounded vs. non-grounded tests tracking explicit and implicit AI visibility.</li>
@@ -340,7 +326,7 @@
       </div>
     </div>
     <div class="work-teaser-foot reveal d1">
-      <a href="/work/" class="btn-primary">See all five case studies →</a>
+      <a href="/work/" class="btn-primary">See all six projects →</a>
     </div>
   </div>
 </section>
@@ -387,8 +373,8 @@
   <div class="newsletter-glow" aria-hidden="true"></div>
   <div class="newsletter-inner">
     <div class="sec-tag reveal" style="justify-content:center;">The Newsletter</div>
-    <h2 class="reveal d1">Field notes on <span class="grad-text">SEO &amp; AI search</span></h2>
-    <p class="reveal d2">Practical breakdowns on ranking in Google and getting cited by ChatGPT, Gemini, and Perplexity — plus the automations that make it repeatable. No fluff, no sales pitch.</p>
+    <h2 class="reveal d1">Get the next <span class="grad-text">teardown</span> first</h2>
+    <p class="reveal d2">One email when a new post, tool, or case study goes up — the method, the numbers, and what did not work. No fluff, no sales pitch.</p>
     <form class="newsletter-form reveal d2" id="newsletter-form">
       <label class="hp-field" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
       <input type="email" name="email" placeholder="you@company.com" aria-label="Email address" required>
