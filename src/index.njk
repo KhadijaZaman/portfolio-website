@@ -101,8 +101,7 @@
     @keyframes cg-dash { to { stroke-dashoffset: -22; } }
     .cg-node { cursor: default; }
     .cg-node rect { fill: var(--bg-card); stroke: var(--border-a); stroke-width: 1.2; transition: stroke 0.2s, fill 0.2s; }
-    .cg-node:hover rect, .cg-node:focus-visible rect { stroke: var(--accent-2); fill: var(--bg-card-h); }
-    .cg-node:focus-visible { outline: none; }
+    .cg-node:hover rect { stroke: var(--accent-2); fill: var(--bg-card-h); }
     .cg-node text { font-family: var(--ff-display); font-weight: 700; font-size: 14px; fill: var(--text-1); }
     .cg-node.cg-hex polygon { fill: var(--bg-card); stroke: rgba(59,130,246,0.5); stroke-width: 1.2; }
     .cg-node.cg-hex text { font-family: var(--ff-body); font-weight: 600; font-size: 8.5px; fill: var(--accent-3); letter-spacing: 0.04em; }
@@ -473,7 +472,7 @@
       el('mpath', { href: '#' + back.id }, motion);
     }
     var w = n.label.length * 8.6 + 44, h = 38;
-    var g = el('g', { 'class': 'cg-node', tabindex: '0' }, nodes);
+    var g = el('g', { 'class': 'cg-node' }, nodes);   /* decorative: the SVG is aria-hidden and the copy names every engine */
     el('title', {}, g).textContent = 'Cited in ' + n.label;
     el('rect', { x: p.x - w / 2, y: p.y - h / 2, width: w, height: h, rx: 11 }, g);
     el('circle', { cx: p.x - w / 2 + 18, cy: p.y, r: 5, fill: '#38BDF8' }, g);

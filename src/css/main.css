@@ -960,9 +960,9 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 .curve-tick { stroke: var(--border-a); stroke-width: 1; }
 .curve-pill { fill: var(--bg-card); stroke: var(--border); stroke-width: 1; transition: stroke 0.2s; }
 .curve-card { transition: transform 0.2s; }
-.curve-dot:hover .curve-core, .curve-dot:focus-visible .curve-core { fill: var(--accent-2); }
-.curve-dot:hover .curve-halo, .curve-dot:focus-visible .curve-halo { opacity: 1; }
-.curve-dot:hover .curve-pill, .curve-dot:focus-visible .curve-pill { stroke: var(--accent-2); }
+.curve-dot:hover .curve-core { fill: var(--accent-2); }
+.curve-dot:hover .curve-halo { opacity: 1; }
+.curve-dot:hover .curve-pill { stroke: var(--accent-2); }
 .curve-dot:hover .curve-card { transform: translateY(-3px); }
 .curve-year { font-family: var(--ff-body); font-weight: 700; font-size: 10.5px; fill: var(--accent-3); letter-spacing: 0.06em; }
 .curve-label { font-family: var(--ff-display); font-weight: 700; font-size: 13px; fill: var(--text-1); }
