@@ -1001,3 +1001,50 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 /* carousel dots: the visible dot stays 8px, the hit area becomes 24px */
 .pc-dot { box-sizing: content-box; padding: 8px; background-clip: content-box; }
 .pc-dot.active { background-clip: content-box; }
+
+/* ── HOMEPAGE PROOF STRIP + COMPACT WORK GRID (Sep 2026 restructure) ──
+   The proof strip is three links, not four numbers; the work grid shows
+   all six projects at a glance so the proof index is one screen below the
+   hero instead of four. */
+.impact-bar-3 { justify-content: center; }
+.impact-link { text-decoration: none; color: inherit; border-radius: var(--r-md); padding: 0.75rem 0.5rem; transition: background 0.2s; }
+.impact-link:hover { background: rgba(59,130,246,0.06); }
+.impact-link .impact-num-val { font-size: clamp(1.5rem, 2.6vw, 2.2rem); line-height: 1.15; }
+.impact-link .impact-num-lbl { max-width: 320px; margin-left: auto; margin-right: auto; }
+.mini-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.mini-case { display: flex; flex-direction: column; gap: 0.6rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.5rem; text-decoration: none; color: inherit; transition: border-color 0.25s, transform 0.25s; }
+a.mini-case:hover { border-color: var(--border-a); transform: translateY(-3px); }
+.mini-case .case-pill { align-self: flex-start; }
+.mini-val { font-family: var(--ff-display); font-size: 1.15rem; font-weight: 800; color: #93C5FD; line-height: 1.25; }
+.mini-case h3 { font-family: var(--ff-display); font-size: 1rem; font-weight: 700; line-height: 1.35; color: var(--text-1); }
+.mini-case p { font-size: 0.84rem; color: var(--text-2); line-height: 1.7; flex: 1; }
+.mini-case p a { color: var(--accent-3); }
+.mini-summary { border-style: dashed; }
+.mini-summary .mini-val { color: var(--text-2); }
+.exp-grid-lead { grid-template-columns: repeat(3, 1fr); }
+.exp-card-lead { grid-column: 1 / -1; border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.04); }
+.exp-card-lead p { font-size: 0.95rem; }
+.exp-card-lead p + p { margin-top: 0.75rem; }
+.exp-card-lead a { color: var(--accent-3); }
+@media (max-width: 1024px) { .mini-grid, .exp-grid-lead { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .mini-grid, .exp-grid-lead { grid-template-columns: 1fr; } .impact-link .impact-num-lbl { max-width: none; } }
+
+/* ── /work/: results without a full write-up ──
+   Plain rows, not cards, so they never present as something to click. */
+.results-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+.result-row { background: transparent; border: 1px dashed var(--border-a); border-radius: var(--r-lg); padding: 1.25rem 1.4rem; }
+.result-row .case-pill { margin-bottom: 0.75rem; }
+.result-row h3 { font-family: var(--ff-display); font-size: 1rem; font-weight: 700; line-height: 1.35; margin-bottom: 0.5rem; }
+.result-row p { font-size: 0.84rem; color: var(--text-2); line-height: 1.7; }
+.result-row .case-nums { border-bottom: 0; padding-bottom: 0; margin-bottom: 0.75rem; gap: 1.25rem; }
+.result-row .cn-val { font-size: 1.2rem; }
+@media (max-width: 1024px) { .results-strip { grid-template-columns: 1fr; } }
+
+/* ── /about/: question-and-answer block for the identity queries ── */
+.qa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.5rem; }
+.qa-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.4rem 1.5rem; }
+.qa-item h3 { font-family: var(--ff-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.qa-item p { font-size: 0.875rem; color: var(--text-2); line-height: 1.75; }
+.qa-item a { color: var(--accent-3); }
+@media (max-width: 900px) { .qa-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .impact-bar-3 .impact-num { flex-basis: 100%; } }
