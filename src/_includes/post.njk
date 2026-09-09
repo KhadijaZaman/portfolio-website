@@ -8,8 +8,8 @@ ogType: article
   "headline": title,
   "description": description,
   "datePublished": (date | isoDate),
-  "author": { "@type": "Person", "name": "Khadija Zaman", "url": site.url + "/" },
-  "publisher": { "@type": "Person", "name": "Khadija Zaman" },
+  "author": { "@id": site.url + "/#person" },
+  "publisher": { "@id": site.url + "/#person" },
   "mainEntityOfPage": site.url + page.url,
   "image": site.url + "/web-app-manifest-512x512.png"
 } | dump | safe }}</script>
@@ -60,7 +60,7 @@ ogType: article
         <img class="author-avatar" src="/static/img/khadija-avatar.webp" alt="Khadija Zaman" width="72" height="72" loading="lazy">
         <div class="author-meta">
           <div class="author-name">Khadija Zaman</div>
-          <p>SEO &amp; GEO/AEO specialist and Marketing Manager at Wellows — I get brands ranked on Google and cited by ChatGPT, Gemini, and Perplexity, then automate the execution.</p>
+          <p>SEO and AI search (GEO/AEO) lead, in-house at Wellows — I get brands ranked on Google and cited by ChatGPT, Gemini, and Perplexity, then automate the execution.</p>
           <div class="author-links">
             <a href="/about/">More about me →</a>
             <a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
