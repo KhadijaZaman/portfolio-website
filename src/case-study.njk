@@ -78,6 +78,19 @@ eleventyComputed:
       </ul>
       {%- endif %}
 
+      {%- if study.map %}
+      <h2>The system in one picture</h2>
+      <div class="cs-map reveal" role="img" aria-label="{{ study.map.alt }}">
+        <svg viewBox="0 0 560 430" aria-hidden="true" focusable="false"></svg>
+        <script type="application/json">{{ study.map | dump | safe }}</script>
+      </div>
+      <ul class="cs-map-legend" aria-label="Legend">
+        {%- for l in study.map.legend %}
+        <li><i class="{{ l.style }}"></i>{{ l.label }}</li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+
       <h2>The outcome</h2>
       <p>{{ study.outcome }}</p>
 
