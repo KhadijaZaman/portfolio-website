@@ -64,6 +64,15 @@ module.exports = function (eleventyConfig) {
 
   // Small array helpers for "read next" / "latest posts".
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
+  // Live metrics arrive as raw numbers (see src/_data/live.json); these format them.
+  eleventyConfig.addFilter("number", (n) => Number(n).toLocaleString("en-US"));
+  eleventyConfig.addFilter("compact", (n) => {
+    n = Number(n);
+    const trim = (s) => s.includes(".") ? s.replace(/0+$/, "").replace(/\.$/, "") : s;
+    if (n >= 1e6) return trim((n / 1e6).toFixed(n >= 1e7 ? 0 : 2)) + "M";
+    if (n >= 1e3) return trim((n / 1e3).toFixed(n >= 1e5 ? 0 : 1)) + "K";
+    return String(n);
+  });
   eleventyConfig.addFilter("excludeUrl", (arr, url) => (arr || []).filter((p) => p.url !== url));
   eleventyConfig.addFilter("slugify", slug);
   // Posts sharing a category with the given post first, then the rest ("read next").
