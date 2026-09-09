@@ -1,6 +1,6 @@
 # khadijazaman.com
 
-Personal-brand website for **Khadija Zaman** — SEO and AI search (GEO/AEO) lead, in-house at Wellows (a Disrupt.com company), running **SEO, AEO, and GEO as one system** with the automation that ships it.
+Personal-brand website for **Khadija Zaman** — AI Search Manager at Wellows (a Disrupt.com company), running **SEO, AEO, and GEO as one system** with the automation that ships it.
 
 Content-first, multi-page site: a homepage gateway, an about page, a work/case-studies page, a **CMS-driven blog**, a tools hub (four free in-browser tools, the three production tools built at Wellows with live links, and the open-source projects on GitHub), a contact page, and a crawlable XML sitemap. Built with a lightweight static-site generator so **new blog posts are written in a visual editor — no code**.
 
