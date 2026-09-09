@@ -555,6 +555,8 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 
 /* ── FEATURED CASE STUDY ── */
 .case-card.featured { grid-column: 1 / -1; }
+/* With an even card count after the full-width featured card, the last card would sit alone in its row. */
+.cases-grid > .case-card:last-child:nth-child(even) { grid-column: 1 / -1; }
 .case-meta { font-size: 0.7rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
 .case-approach { list-style: none; margin: 0.9rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
 .case-approach li { font-size: 0.85rem; color: var(--text-2); line-height: 1.6; padding-left: 0.9rem; position: relative; }
