@@ -30,20 +30,24 @@ module.exports = [
     pillClass: "pill-blue",
     barClass: "bar-blue",
 
-    title: "AI visibility from near-zero: 9× LLM traffic on $0 paid spend",
-    metaTitle: "9× LLM Traffic From Near-Zero, $0 Paid",
+    /* 9× over Jul 2025 – Feb 2026 from a 176/month baseline. The 22× figure
+       elsewhere on the site is a DIFFERENT, confidential project; it must
+       never be attached to this study. The homepage and /work/ cards use the
+       identical wording to this title. */
+    title: "AI visibility from near-zero: 9× LLM traffic in 8 months on $0 paid spend",
+    metaTitle: "9× LLM Traffic in 8 Months From Near-Zero, $0 Paid",
     description:
-      "Wellows had no citation footprint inside AI answers. Four months of AEO work took LLM sessions from 176/month to roughly nine times that, with zero paid spend.",
+      "Wellows had no citation footprint inside AI answers. Eight months of AEO work took LLM sessions from a 176/month baseline to roughly nine times that, with zero paid spend (GA4).",
 
     client: "Wellows",
-    clientNote: "In-house — my own work as Marketing Manager, not a client engagement.",
+    clientNote: "In-house — my own work as the SEO and AI-search lead at Wellows (title: Marketing Manager), not a client engagement.",
     confidential: false,
     sector: "B2B SaaS",
     window: "July 2025 – February 2026",
     sources: "GA4, Looker Studio, Google Search Console",
 
     stats: [
-      { val: "9×", lbl: "LLM sessions", note: "from a 176/month baseline" },
+      { val: "9×", lbl: "LLM sessions, 8 months", note: "from a 176/month baseline, Jul 2025 – Feb 2026 (GA4)" },
       { val: "28.9→17.3", lbl: "Avg. SERP position" },
       { val: "45s→6+ min", lbl: "Session duration" },
       { val: "$0", lbl: "Paid spend" }
@@ -103,7 +107,7 @@ module.exports = [
     },
 
     outcome:
-      "LLM sessions rose from 176 a month to roughly nine times that over the period. Average position improved from 28.9 to 17.3 and session duration went from 45 seconds to over six minutes — the second number matters more than it looks, because it separates traffic that arrives and leaves from traffic that arrives and reads.",
+      "LLM sessions rose from 176 a month to roughly nine times that across the eight months this case study covers (GA4). Average position improved from 28.9 to 17.3 and session duration went from 45 seconds to over six minutes — the second number matters more than it looks, because it separates traffic that arrives and leaves from traffic that arrives and reads.",
 
     tables: [
       {
