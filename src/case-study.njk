@@ -125,7 +125,7 @@ eleventyComputed:
       <div class="case-growth-grid">
         {%- for shot in study.shots %}
         <figure class="case-shot">
-          <a href="{{ shot.src }}" target="_blank" rel="noopener"><img src="{{ shot.src }}" alt="{{ shot.alt }}" loading="lazy"></a>
+          <a href="{{ shot.src }}" target="_blank" rel="noopener"><img src="{{ shot.src }}" alt="{{ shot.alt }}" loading="lazy"{% if shot.width %} width="{{ shot.width }}" height="{{ shot.height }}"{% endif %}></a>
           <figcaption>{{ shot.caption }}</figcaption>
         </figure>
         {%- endfor %}

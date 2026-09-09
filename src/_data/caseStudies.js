@@ -122,6 +122,7 @@ module.exports = [
     shots: [
       {
         src: "/static/uploads/gsctrafficgrowth.png",
+        width: 1612, height: 551,
         alt: "Wellows Google Search Console: 7.27K clicks and 3.78M impressions over the last 3 months, average position improving from 28.9 to 17.3",
         caption: "Wellows, site-wide — 7.27K clicks · 3.78M impressions · avg. position 28.9 → 17.3 (last 3 months vs. previous)"
       }
