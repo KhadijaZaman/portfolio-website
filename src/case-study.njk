@@ -23,8 +23,8 @@ eleventyComputed:
   "headline": study.title,
   "description": study.description,
   "about": study.pill,
-  "author": { "@type": "Person", "name": "Khadija Zaman", "url": site.url + "/" },
-  "publisher": { "@type": "Person", "name": "Khadija Zaman" },
+  "author": { "@id": site.url + "/#person" },
+  "publisher": { "@id": site.url + "/#person" },
   "mainEntityOfPage": site.url + page.url,
   "image": site.url + "/og-image.png"
 } | dump | safe }}</script>
@@ -78,6 +78,19 @@ eleventyComputed:
       </ul>
       {%- endif %}
 
+      {%- if study.map %}
+      <h2>The system in one picture</h2>
+      <div class="cs-map reveal" role="img" aria-label="{{ study.map.alt }}">
+        <svg viewBox="0 0 560 430" aria-hidden="true" focusable="false"></svg>
+        <script type="application/json">{{ study.map | dump | safe }}</script>
+      </div>
+      <ul class="cs-map-legend" aria-label="Legend">
+        {%- for l in study.map.legend %}
+        <li><i class="{{ l.style }}"></i>{{ l.label }}</li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+
       <h2>The outcome</h2>
       <p>{{ study.outcome }}</p>
 
@@ -112,7 +125,7 @@ eleventyComputed:
       <div class="case-growth-grid">
         {%- for shot in study.shots %}
         <figure class="case-shot">
-          <a href="{{ shot.src }}" target="_blank" rel="noopener"><img src="{{ shot.src }}" alt="{{ shot.alt }}" loading="lazy"></a>
+          <a href="{{ shot.src }}" target="_blank" rel="noopener"><img src="{{ shot.src }}" alt="{{ shot.alt }}" loading="lazy"{% if shot.width %} width="{{ shot.width }}" height="{{ shot.height }}"{% endif %}></a>
           <figcaption>{{ shot.caption }}</figcaption>
         </figure>
         {%- endfor %}

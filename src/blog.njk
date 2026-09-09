@@ -1,6 +1,6 @@
 ---
 layout: base.njk
-title: "Blog · SEO, AI Search & Automation Field Notes"
+title: "Blog · SEO & AI Search Field Notes"
 description: "Practical writing on SEO, AI search visibility (GEO/AEO), semantic content strategy, and marketing automation by Khadija Zaman."
 permalink: /blog/index.html
 ---
@@ -9,7 +9,7 @@ permalink: /blog/index.html
   "@type": "Blog",
   "name": "Khadija Zaman — Blog",
   "url": site.url + "/blog/",
-  "author": { "@type": "Person", "name": "Khadija Zaman", "url": site.url + "/" }
+  "author": { "@id": site.url + "/#person" }
 } | dump | safe }}</script>
 <script type="application/ld+json">{{ {
   "@context": "https://schema.org",
