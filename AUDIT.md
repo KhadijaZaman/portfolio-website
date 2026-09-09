@@ -1,7 +1,7 @@
 # Portfolio audit — khadijazaman.com
 
 **Date:** 26 August 2026
-**Scope:** source-level audit of this repository at `claude/khadijazaman-portfolio-review-nqyrhv`.
+**Scope:** source-level audit of this repository at the main branch.
 
 ## How this audit was performed — and its limits
 
