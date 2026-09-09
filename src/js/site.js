@@ -514,33 +514,8 @@
     });
   });
 
-  /* ── Animated count-up for headline stats ── */
-  (function () {
-    if (REDUCE) return;
-    var els = document.querySelectorAll('.impact-num-val, .stat-chip-val');
-    if (!els.length) return;
-    function parse(t) {
-      var m = t.match(/^([^\d]*)([\d,]+(?:\.\d+)?)(.*)$/);
-      if (!m) return null;
-      return { pre: m[1], num: parseFloat(m[2].replace(/,/g, '')), suf: m[3], dec: (m[2].split('.')[1] || '').length };
-    }
-    function fmt(n, d) { return n.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); }
-    function run(el) {
-      if (el.textContent.indexOf('→') !== -1) return; // skip "A→B" style values
-      var d = parse(el.textContent.trim()); if (!d) return;
-      var dur = 1400, start = null;
-      function frame(ts) {
-        if (!start) start = ts;
-        var t = Math.min((ts - start) / dur, 1), e = 1 - Math.pow(1 - t, 3);
-        el.textContent = d.pre + fmt(d.num * e, d.dec) + d.suf;
-        if (t < 1) requestAnimationFrame(frame);
-        else el.textContent = d.pre + fmt(d.num, d.dec) + d.suf;
-      }
-      requestAnimationFrame(frame);
-    }
-    var obs = new IntersectionObserver(function (ents, o) {
-      ents.forEach(function (e) { if (e.isIntersecting) { run(e.target); o.unobserve(e.target); } });
-    }, { threshold: 0.6 });
-    els.forEach(function (el) { obs.observe(el); });
-  })();
+  /* The headline stats used to count up from zero on scroll. That showed a
+     smaller number than the real one for the first second of every visit, so
+     the values are now printed once, server-side, and never animated. */
+
 })();
