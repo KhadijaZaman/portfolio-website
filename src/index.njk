@@ -212,7 +212,7 @@
       </p>
       <div class="hero-stats reveal d3">
         <div class="stat-chip"><div class="stat-chip-val">{{ live.llm.multiplier }}×</div><div class="stat-chip-lbl">LLM referral traffic, {{ live.llm.window }} ({{ live.llm.source }})</div></div>
-        <div class="stat-chip"><div class="stat-chip-val">{{ live.gsc.impressionsBefore | compact }}→{{ live.gsc.impressions | compact }}</div><div class="stat-chip-lbl">Google impressions in {{ live.gsc.window }}</div></div>
+        <div class="stat-chip"><div class="stat-chip-val">{{ live.gsc.impressionsBefore | compact }}→{{ live.gsc.impressions | compact }}</div><div class="stat-chip-lbl">Google impressions, {{ live.gsc.window }}</div></div>
         <div class="stat-chip"><div class="stat-chip-val">{{ (live.tools.queryFanOut + live.tools.llmQueryBuilder + live.tools.aiHumanizer) | number }}</div><div class="stat-chip-lbl">practitioners using the SEO tools I built</div></div>
       </div>
       <p class="hero-updated reveal d3">Figures updated {{ live.updatedAt | readableDate }} · {{ live.updatedBy }}</p>
@@ -448,7 +448,7 @@
 {%- set cgIndex = [] %}
 {%- for p in collections.posts %}{% set _ = cgIndex.push({ "t": p.data.title, "d": p.data.description, "u": p.url, "g": "Blog · " + p.data.category, "k": p.data.category }) %}{% endfor %}
 {%- for c in caseStudies %}{% set _ = cgIndex.push({ "t": c.title, "d": c.description, "u": "/work/" + c.slug + "/", "g": "Case study · " + c.pill, "k": c.pill + " " + (c.client or "") + " results case study proof numbers" }) %}{% endfor %}
-<script id="cg-data" type="application/json">{{ { "live": live, "index": askIndex.concat(cgIndex) } | dump | safe }}</script>
+<script id="cg-data" type="application/json">{{ { "live": live, "fmt": { "impressions": live.gsc.impressions | compact, "impressionsBefore": live.gsc.impressionsBefore | compact, "users": (live.tools.queryFanOut + live.tools.llmQueryBuilder + live.tools.aiHumanizer) | number, "queryFanOut": live.tools.queryFanOut | number }, "index": askIndex.concat(cgIndex) } | dump | safe }}</script>
 {% raw %}
 <script>
 /* ── Hero citation graph + question box (self-contained, no CDN) ──
@@ -460,9 +460,8 @@
 (function () {
   var data = {};
   try { data = JSON.parse(document.getElementById('cg-data').textContent); } catch (e) {}
-  var LIVE = data.live || {}, INDEX = data.index || [];
-  function fmt(n) { n = Number(n); var trim = function (s) { return s.indexOf('.') !== -1 ? s.replace(/0+$/, '').replace(/\.$/, '') : s; }; if (n >= 1e6) return trim((n / 1e6).toFixed(n >= 1e7 ? 0 : 2)) + 'M'; if (n >= 1e3) return trim((n / 1e3).toFixed(n >= 1e5 ? 0 : 1)) + 'K'; return String(n); }
-  var gsc = LIVE.gsc || {}, llm = LIVE.llm || {}, tools = LIVE.tools || {};
+  var LIVE = data.live || {}, FMT = data.fmt || {}, INDEX = data.index || [];
+  var gsc = LIVE.gsc || {}, llm = LIVE.llm || {};
 
   var CG_ENGINES = [
     { label: 'Google',       angle: -140, r: 205, prompt: { q: 'What does Search Engine Land recommend for topic clusters? ', chip: 'Search Engine Land guide', href: 'https://searchengineland.com/guide/topic-clusters-for-ai-search', src: 'The guide runs on the Query Fan-Out Generator I built' } },
@@ -473,7 +472,7 @@
   ];
   /* nearest: index into CG_ENGINES the faint line runs to */
   var CG_STACK = [
-    { label: 'GSC',    angle: -100, r: 262, nearest: 0, prompt: { q: 'How do you verify search growth? ', chip: 'Wellows case study', href: '/work/wellows-ai-visibility/', src: 'Search Console · ' + fmt(gsc.impressions) + ' impressions in ' + (gsc.window || '12 months') + ', avg. position ' + gsc.avgPositionBefore + ' → ' + gsc.avgPosition } },
+    { label: 'GSC',    angle: -100, r: 262, nearest: 0, prompt: { q: 'How do you verify search growth? ', chip: 'Wellows case study', href: '/work/wellows-ai-visibility/', src: 'Search Console · ' + FMT.impressions + ' impressions, ' + (gsc.window || '12 months') + ', avg. position ' + gsc.avgPositionBefore + ' → ' + gsc.avgPosition } },
     { label: 'GA4',    angle:  -20, r: 275, nearest: 1, prompt: { q: 'How do you track LLM referral traffic? ', chip: llm.multiplier + '× in ' + (llm.window || '12 months'), href: '/work/', src: 'GA4 · LLM referral sessions, ' + llm.multiplier + '× over ' + (llm.window || '12 months') + ', $0 paid' } },
     { label: 'n8n',    angle:   28, r: 272, nearest: 2, prompt: { q: 'How do you automate SEO reporting? ', chip: 'Marketing automation', href: '/#expertise', src: 'n8n and LLM workflows wired into GA4 reporting. These hero figures are refreshed the same way.' } },
     { label: 'Ahrefs', angle:  200, r: 262, nearest: 4, prompt: { q: 'How do you audit a site that lost 70% of its clicks? ', chip: 'Five workstreams, one owner', href: '/work/core-update-recovery/', src: 'Technical, semantic, topical authority, internal links, third-party mentions' } },
@@ -481,7 +480,7 @@
   ];
   var CG_PROMPTS = [
     { q: 'How do I structure topic clusters for AI search? ', chip: 'Search Engine Land guide', href: 'https://searchengineland.com/guide/topic-clusters-for-ai-search', src: 'The guide runs on the Query Fan-Out Generator I built' },
-    { q: 'What is query fan-out and how do I use it? ', chip: 'Query Fan-Out Generator', href: '/tools/#tool-query-fan-out', src: 'Built on Google’s query fan-out patent · ' + (tools.queryFanOut || 829) + ' active users' },
+    { q: 'What is query fan-out and how do I use it? ', chip: 'Query Fan-Out Generator', href: '/tools/#tool-query-fan-out', src: 'Built on Google’s query fan-out patent' + (FMT.queryFanOut ? ' · ' + FMT.queryFanOut + ' active users' : '') },
     { q: 'How do I research entities for LLM visibility? ', chip: 'LLM Query Builder', href: '/tools/#tool-llm-query-builder', src: 'Built for practitioners who work with AI retrieval systematically' }
   ];
 
@@ -550,7 +549,7 @@
   /* ── question box: match the visitor's words to a page on this site ── */
   var STOP = /^(the|a|an|and|or|of|to|in|on|for|is|are|do|does|did|how|what|why|who|which|where|when|i|my|me|you|your|can|with|about|it|this|that|get|be|by|from|any|some|help|need|want|tell|show|please)$/;
   function tokens(str) { return String(str || '').toLowerCase().replace(/[^a-z0-9#×\s-]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 1 && !STOP.test(w); }); }
-  function stem(w) { return w.replace(/(ies|es|s|ing|ed)$/, function (m) { return m === 'ies' ? 'y' : ''; }); }
+  function stem(w) { return w.replace(/(ies|ing|ed|s)$/, function (m) { return m === 'ies' ? 'y' : ''; }); }
   function search(query) {
     var qs = tokens(query).map(stem); if (!qs.length) return null;
     var best = null, bestScore = 0;
@@ -567,7 +566,7 @@
   var q = document.getElementById('cg-q'), src = document.getElementById('cg-src');
   var form = document.getElementById('cg-form'), input = document.getElementById('cg-input'), askBtn = document.getElementById('cg-ask'), qwrap = document.getElementById('cg-qwrap');
   function chip(p) { var a = document.createElement('a'); a.className = 'cg-chip'; a.href = p.href; a.textContent = p.chip; if (p.href.charAt(0) !== '/') { a.target = '_blank'; a.rel = 'noopener'; } return a; }
-  function render(target, srcEl, p) { target.textContent = p.q; target.appendChild(chip(p)); if (srcEl) { srcEl.textContent = ''; if (p.srcHtml) srcEl.innerHTML = p.srcHtml; else srcEl.textContent = p.src || ''; } }
+  function render(target, srcEl, p) { target.textContent = p.q; target.appendChild(chip(p)); if (srcEl) srcEl.textContent = p.src || ''; }
   function answerFor(query) {
     var hit = search(query), trimmed = query.trim().replace(/\?+$/, '');
     if (hit && hit.prompt) { pinned = hit.node; highlight(null); return { q: trimmed + '? ', chip: hit.prompt.chip, href: hit.prompt.href, src: hit.prompt.src }; }
@@ -578,15 +577,15 @@
   var ask = { showPrompt: function () {}, resume: function () {} };
   if (q && form && input) {
     var i = 0, timer, cycling = true, typing = null;
-    function stop() { clearTimeout(timer); cycling = false; }
+    function stop() { clearTimeout(timer); clearTimeout(typing); cycling = false; }
     function show(p) { render(q, src, p); }
     function typeThen(p, done) {
       var n = 0; src.textContent = ''; clearTimeout(typing);
       (function step() { if (n <= p.q.length) { q.textContent = p.q.slice(0, n); n++; typing = setTimeout(step, reduce ? 0 : 34); } else { show(p); if (done) done(); } })();
     }
     function run() { if (!cycling) return; typeThen(CG_PROMPTS[i], function () { timer = setTimeout(function () { i = (i + 1) % CG_PROMPTS.length; run(); }, 4200); }); }
-    ask.showPrompt = function (p) { stop(); input.hidden = true; qwrap.hidden = false; typeThen(p); };
-    ask.resume = function () { if (cycling) return; cycling = true; run(); };
+    ask.showPrompt = function (p) { stop(); input.hidden = true; qwrap.hidden = false; askBtn.textContent = 'Ask your own question'; typeThen(p); };
+    ask.resume = function () { if (cycling || reduce) return; cycling = true; run(); };
     function openInput() { stop(); pinned = null; highlight(null); qwrap.hidden = true; input.hidden = false; input.value = ''; src.textContent = 'A guide to this site, not an AI. Type a topic, a tool, or an engine name.'; askBtn.textContent = 'Back to examples'; input.focus(); }
     function closeInput() { input.hidden = true; qwrap.hidden = false; askBtn.textContent = 'Ask your own question'; }
     askBtn.addEventListener('click', function () { if (input.hidden) openInput(); else { closeInput(); ask.resume(); } });
@@ -602,7 +601,7 @@
     var started = false;
     var io = new IntersectionObserver(function (en) {
       if (en[0].isIntersecting) { if (!started && cycling) { started = true; timer = setTimeout(function () { i = 1; run(); }, 3500); } }
-      else if (started && cycling) { clearTimeout(timer); started = false; show(CG_PROMPTS[i]); }
+      else if (started && cycling) { clearTimeout(timer); clearTimeout(typing); started = false; show(CG_PROMPTS[i]); }
     });
     if (!reduce) io.observe(q); else cycling = false;
   }

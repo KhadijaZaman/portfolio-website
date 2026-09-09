@@ -7,7 +7,7 @@ with the new numbers a few minutes later.
 
 ```
 Monday 06:00 ─┬─ GA4 Data API  (LLM referral sessions, last 12 months vs the 12 before)
-              ├─ Search Console (impressions, clicks, avg position, same two windows)
+              ├─ Search Console (impressions, clicks, avg position: last 3 months vs the same 3 months a year earlier)
               └─ GitHub: read live.json (keeps the manually tracked tool counts)
                    └─ Code: assemble JSON ─► GitHub: commit src/_data/live.json to main ─► site rebuilds
 ```
@@ -17,12 +17,18 @@ Monday 06:00 ─┬─ GA4 Data API  (LLM referral sessions, last 12 months vs t
 | Field | Meaning | Source |
 | --- | --- | --- |
 | `llm.multiplier` | LLM referral sessions, last 12 months divided by the 12 before, one decimal | GA4 |
-| `gsc.impressions`, `gsc.impressionsBefore` | Impressions over the same two windows | Search Console |
-| `gsc.avgPosition`, `gsc.avgPositionBefore` | Average position over the same two windows | Search Console |
+| `gsc.impressions`, `gsc.impressionsBefore` | Impressions, last 3 months vs the same 3 months a year earlier | Search Console |
+| `gsc.avgPosition`, `gsc.avgPositionBefore` | Average position over those two windows | Search Console |
 | `tools.*` | Users of the three Wellows tools | Manual. The workflow keeps whatever is in the file. |
 | `updatedAt`, `updatedBy` | Shown under the hero stats as "Figures updated …" | Workflow |
 
 Raw numbers only. The templates format them (`680000` becomes `680K`).
+
+Search Console keeps 16 months of data, so a true "12 months vs the 12 before"
+is not available from the API. The workflow compares the latest 3 months with the
+same 3 months a year earlier, and writes that window label into the file so the
+hero says what it measures. If any source returns nothing, the run fails instead
+of publishing seed or zero figures; check the execution log in n8n.
 
 ## Set-up, about 30 minutes
 
