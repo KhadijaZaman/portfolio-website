@@ -437,33 +437,85 @@
     });
   })();
 
-  /* ── Animated count-up for headline stats ── */
-  (function () {
-    if (REDUCE) return;
-    var els = document.querySelectorAll('.impact-num-val, .stat-chip-val');
-    if (!els.length) return;
-    function parse(t) {
-      var m = t.match(/^([^\d]*)([\d,]+(?:\.\d+)?)(.*)$/);
-      if (!m) return null;
-      return { pre: m[1], num: parseFloat(m[2].replace(/,/g, '')), suf: m[3], dec: (m[2].split('.')[1] || '').length };
-    }
-    function fmt(n, d) { return n.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); }
-    function run(el) {
-      if (el.textContent.indexOf('→') !== -1) return; // skip "A→B" style values
-      var d = parse(el.textContent.trim()); if (!d) return;
-      var dur = 1400, start = null;
-      function frame(ts) {
-        if (!start) start = ts;
-        var t = Math.min((ts - start) / dur, 1), e = 1 - Math.pow(1 - t, 3);
-        el.textContent = d.pre + fmt(d.num * e, d.dec) + d.suf;
-        if (t < 1) requestAnimationFrame(frame);
-        else el.textContent = d.pre + fmt(d.num, d.dec) + d.suf;
+  /* ── Curve: items placed along one SVG path ──
+     Any .curve element with a JSON <script> inside is drawn here. The JSON gives
+     the path, the items (label, sub, href, optional t 0..1 and above flag) and
+     optional group brackets. Positions come from the path itself, so adding an
+     item is one more entry, not a hand-placed label. */
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  function svgEl(tag, attrs, parent) { var e = document.createElementNS(SVGNS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  function svgText(parent, x, y, str, cls, anchor) { var t = svgEl('text', { x: x, y: y, 'text-anchor': anchor || 'middle', 'dominant-baseline': 'middle' }, parent); if (cls) t.setAttribute('class', cls); t.textContent = str; return t; }
+  function readJSON(host) { var s = host.querySelector('script[type="application/json"]'); try { return s ? JSON.parse(s.textContent) : null; } catch (e) { return null; } }
+
+  document.querySelectorAll('.curve').forEach(function (host, hi) {
+    var svg = host.querySelector('svg'), data = readJSON(host); if (!svg || !data || !data.items) return;
+    var gid = 'curve-grad-' + hi;
+    var defs = svgEl('defs', {}, svg);
+    var grad = svgEl('linearGradient', { id: gid, x1: '0', x2: '1', y1: '0', y2: '0' }, defs);
+    svgEl('stop', { offset: '0', 'stop-color': '#2563EB' }, grad);
+    svgEl('stop', { offset: '1', 'stop-color': '#38BDF8' }, grad);
+    (data.groups || []).forEach(function (g) {
+      svgText(svg, (g.from + g.to) / 2, 26, g.label, 'curve-group');
+      svgEl('line', { x1: g.from, y1: 36, x2: g.to, y2: 36, 'class': 'curve-group-line' }, svg);
+    });
+    var path = svgEl('path', { d: data.path, 'class': 'curve-path', stroke: 'url(#' + gid + ')' }, svg);
+    var L = path.getTotalLength(), n = data.items.length;
+    data.items.forEach(function (it, i) {
+      var t = typeof it.t === 'number' ? it.t : 0.05 + i * (0.9 / Math.max(n - 1, 1));
+      var p = path.getPointAtLength(L * t);
+      var up = typeof it.above === 'boolean' ? it.above : i % 2 === 1;
+      /* The SVG is aria-hidden and the cards/timeline below repeat every item, so
+         these are pointer-only: tabindex -1 keeps them out of the keyboard order. */
+      var g = svgEl(it.href ? 'a' : 'g', it.href ? { href: it.href, 'class': 'curve-dot', tabindex: '-1' } : { 'class': 'curve-dot' }, svg);
+      if (it.href && it.href.charAt(0) !== '/' && it.href.charAt(0) !== '#') { g.setAttribute('target', '_blank'); g.setAttribute('rel', 'noopener'); }
+      var title = svgEl('title', {}, g); title.textContent = it.label + (it.sub ? ' · ' + it.sub : '');
+      svgEl('circle', { 'class': 'curve-halo', cx: p.x, cy: p.y, r: 16 }, g);
+      svgEl('circle', { 'class': 'curve-core', cx: p.x, cy: p.y, r: it.big ? 7 : 6 }, g);
+      if (it.big) svgEl('circle', { cx: p.x, cy: p.y, r: 11, fill: 'none', stroke: '#38BDF8', 'stroke-width': 1, opacity: 0.6 }, g);
+      var lines = 2 + (it.year ? 1 : 0), h = lines * 15 + 14, gap = 62;
+      var ty = up ? p.y - gap : p.y + gap;
+      svgEl('line', { 'class': 'curve-tick', x1: p.x, y1: up ? p.y - 9 : p.y + 9, x2: p.x, y2: up ? ty + h / 2 : ty - h / 2 }, g);
+      var w = Math.max(it.label.length * 6.6, (it.sub || '').length * 6.1) + 30;
+      var card = svgEl('g', { 'class': 'curve-card' }, g);
+      svgEl('rect', { 'class': 'curve-pill', x: p.x - w / 2, y: ty - h / 2, width: w, height: h, rx: 10 }, card);
+      var y0 = ty - (lines - 1) * 7.5;
+      if (it.year) { svgText(card, p.x, y0, it.year, 'curve-year'); y0 += 15; }
+      svgText(card, p.x, y0, it.label, 'curve-label'); y0 += 15;
+      if (it.sub) svgText(card, p.x, y0, it.sub, 'curve-sub');
+    });
+  });
+
+  /* ── Case study entity map: client in the centre, what was done around it ──
+     Drawn from the `map` object in src/_data/caseStudies.js, so the picture and
+     the numbers on the page come from the same file. */
+  document.querySelectorAll('.cs-map').forEach(function (host) {
+    var svg = host.querySelector('svg'), data = readJSON(host); if (!svg || !data || !data.nodes) return;
+    var nodes = data.nodes;
+    (data.groups || []).forEach(function (g) { svgText(svg, g.x, g.y, g.label, 'cs-map-group'); });
+    var eg = svgEl('g', {}, svg);
+    (data.edges || []).forEach(function (e) {
+      var a = nodes[e[0]], b = nodes[e[1]]; if (!a || !b) return;
+      var mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy) || 1;
+      var cx = mx - dy / len * 22, cy = my + dx / len * 22;
+      svgEl('path', { d: 'M' + a.x + ' ' + a.y + ' Q' + cx + ' ' + cy + ' ' + b.x + ' ' + b.y, 'class': 'cs-map-edge ' + (e[2] || '') }, eg);
+      if (e[3]) {
+        var lx = (a.x + 2 * cx + b.x) / 4, ly = (a.y + 2 * cy + b.y) / 4, w = e[3].length * 5.6 + 10;
+        svgEl('rect', { x: lx - w / 2, y: ly - 8, width: w, height: 16, rx: 4, 'class': 'cs-map-edge-bg' }, eg);
+        svgText(eg, lx, ly + 1, e[3], 'cs-map-edge-label');
       }
-      requestAnimationFrame(frame);
-    }
-    var obs = new IntersectionObserver(function (ents, o) {
-      ents.forEach(function (e) { if (e.isIntersecting) { run(e.target); o.unobserve(e.target); } });
-    }, { threshold: 0.6 });
-    els.forEach(function (el) { obs.observe(el); });
-  })();
+    });
+    var ng = svgEl('g', {}, svg);
+    Object.keys(nodes).forEach(function (k) {
+      var nd = nodes[k], big = nd.cls === 'ctr';
+      var w = nd.label.length * (big ? 8.6 : 7.4) + (big ? 36 : 26), h = big ? 44 : 32;
+      var g = svgEl('g', { 'class': 'cs-map-node ' + (nd.cls || '') }, ng);
+      svgEl('rect', { x: nd.x - w / 2, y: nd.y - h / 2, width: w, height: h, rx: big ? 14 : 9 }, g);
+      svgText(g, nd.x, nd.y + 1, nd.label);
+    });
+  });
+
+  /* The headline stats used to count up from zero on scroll. That showed a
+     smaller number than the real one for the first second of every visit, so
+     the values are now printed once, server-side, and never animated. */
+
 })();
