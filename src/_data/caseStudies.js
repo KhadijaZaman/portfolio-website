@@ -31,7 +31,7 @@ module.exports = [
     barClass: "bar-blue",
 
     title: "AI visibility from near-zero: 9× LLM traffic on $0 paid spend",
-    metaTitle: "9× LLM Traffic From Near-Zero, $0 Paid — Case Study",
+    metaTitle: "9× LLM Traffic From Near-Zero, $0 Paid",
     description:
       "Wellows had no citation footprint inside AI answers. Four months of AEO work took LLM sessions from 176/month to roughly nine times that, with zero paid spend.",
 
@@ -137,9 +137,9 @@ module.exports = [
     barClass: "bar-green",
 
     title: "Losing 70% of organic clicks, then recovering to position 8.2",
-    metaTitle: "Core Update Recovery: Position 32 Back to 8.2 — Case Study",
+    metaTitle: "Core Update Recovery: Position 32 to 8.2",
     description:
-      "A high-volume publisher lost 70% of its organic clicks in four months. Five workstreams run together — not sequenced across vendors — took average position from 32 back to 8.2.",
+      "A publisher lost 70% of organic clicks in four months. Five workstreams run together, not split across vendors, took average position from 32 back to 8.2.",
 
     client: "Confidential — a high-volume AI content publisher",
     confidential: true,
@@ -230,7 +230,7 @@ module.exports = [
     barClass: "bar-blue",
 
     title: "Stuck near position 55 for two months, into the 20s in days",
-    metaTitle: "Position 55 to the 20s in Days, Held 11 Weeks — Case Study",
+    metaTitle: "Position 55 to the 20s, Held 11 Weeks",
     description:
       "A property sat flat around position 55 for two months. A mid-September step change moved it into the 20s within days, and it held there for eleven weeks.",
 
