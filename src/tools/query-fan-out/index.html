@@ -56,7 +56,7 @@
   <div class="wrap">
     <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/tools/">Tools</a> <span>/</span> Query Fan-Out</nav>
     <h1 class="reveal d1">Query Fan-Out Explorer</h1>
-    <p class="lead reveal d2">Search engines and LLMs don't answer your query — they fan it out into dozens of related sub-queries and synthesize the results. Enter a seed term to see the questions your content needs to cover to be retrieved and cited.</p>
+    <p class="lead reveal d2">Search engines and LLMs don't answer your query — they fan it out into dozens of sub-queries and synthesize the results. This explorer groups its expansion into the five sub-query types described in Google's query fan-out patent research (related, implicit, comparative, recent, personal), so you can see the questions your content needs to cover to be retrieved and cited.</p>
   </div>
 </header>
 
@@ -73,21 +73,21 @@
       </div>
       <div class="tool-output" id="qf-output" hidden></div>
     </div>
-    <p style="margin-top:1.75rem; font-size:0.88rem; color:var(--text-2); line-height:1.7;">This is a free, template-based taste of the real thing. My <a href="/tools/" style="color:#93C5FD;text-decoration:none;font-weight:600;">Query Fan-Out Generator</a> uses Google's patent research to model true semantic expansion. <a href="/contact/" style="color:#93C5FD; text-decoration:none; font-weight:600;">Want access? →</a></p>
+    <p style="margin-top:1.75rem; font-size:0.88rem; color:var(--text-2); line-height:1.7;">This is a free, template-based taste of the real thing. The full <a href="/tools/#tool-query-fan-out" style="color:#93C5FD;text-decoration:none;font-weight:600;">Query Fan-Out Generator</a> I built at Wellows models true semantic expansion from Google's patent research: 40+ variants per seed, classified by intent and relevance, with CSV export. It is the tool <a href="https://searchengineland.com/guide/topic-clusters-for-ai-search" target="_blank" rel="noopener" style="color:#93C5FD;text-decoration:none;font-weight:600;">Search Engine Land</a> used to demonstrate the method.</p>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="footer-in">
-    <div class="footer-brand"><a href="/" class="nav-logo">Khadija Zaman</a><p>SEO and AI search lead (GEO/AEO), in-house at Wellows. Semantic SEO, content strategy and marketing automation, run as one system. Karachi, Pakistan.</p></div>
+    <div class="footer-brand"><a href="/" class="nav-logo">Khadija Zaman</a><p>AI Search Manager at Wellows, a Disrupt.com company. Semantic SEO, content strategy and marketing automation, run as one system. Karachi, Pakistan.</p></div>
     <div class="footer-cols">
       <div class="footer-col"><h5>Site</h5><a href="/about/">About</a><a href="/cv/">CV</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/">Contact</a></div>
       <div class="footer-col"><h5>Work</h5><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
       <div class="footer-col"><h5>Connect</h5><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a><a href="mailto:hello@khadijazaman.com">Email</a></div>
     </div>
   </div>
-  <div class="footer-bottom"><div class="footer-copy">© 2026 Khadija Zaman · SEO &amp; AI Search Lead · Karachi, Pakistan</div><div class="footer-copy">Built to be ranked by search engines and cited by answer engines.</div></div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Khadija Zaman · AI Search Manager · Karachi, Pakistan</div><div class="footer-copy">Built to be ranked by search engines and cited by answer engines.</div></div>
 </footer>
 
 <script src="/js/site.js" defer></script>
@@ -96,11 +96,16 @@
   var $ = function (id) { return document.getElementById(id); };
   var input = $('qf-input');
 
+  // The five sub-query types Google's query fan-out patent research describes:
+  // related, implicit, comparative, recent, and personal. Each group is a
+  // template set; the production Query Fan-Out Generator on Wellows does the
+  // real semantic expansion.
   var GROUPS = [
-    { name: 'Informational (what/why)', t: ['what is {q}', 'what does {q} mean', 'why is {q} important', 'how does {q} work', '{q} explained', 'benefits of {q}', 'is {q} worth it', 'who needs {q}'] },
-    { name: 'How-to & process', t: ['how to do {q}', 'how to get started with {q}', '{q} step by step', '{q} best practices', '{q} checklist', 'common {q} mistakes', 'how to measure {q}'] },
-    { name: 'Commercial (best/tools)', t: ['best {q} tools', 'top {q} software', '{q} services', '{q} for small business', '{q} pricing', 'free {q} tools', '{q} for beginners'] },
-    { name: 'Comparative (vs/alternatives)', t: ['{q} vs traditional SEO', '{q} alternatives', '{q} pros and cons', 'is {q} better than SEO', '{q} examples'] }
+    { name: 'Related queries (what/why/how)', t: ['what is {q}', 'what does {q} mean', 'why is {q} important', 'how does {q} work', '{q} explained', 'benefits of {q}', 'is {q} worth it', 'who needs {q}', 'how to do {q}', '{q} step by step', '{q} best practices', '{q} checklist', 'common {q} mistakes', 'how to measure {q}'] },
+    { name: 'Implicit queries (what the searcher also needs)', t: ['{q} requirements', '{q} cost', 'how long does {q} take', '{q} tools needed', 'who should own {q}', '{q} risks', 'what to do before {q}', 'what happens after {q}'] },
+    { name: 'Comparative queries (vs/alternatives)', t: ['{q} vs traditional SEO', '{q} alternatives', '{q} pros and cons', 'is {q} better than SEO', 'best {q} tools', 'top {q} software', '{q} pricing', 'free {q} tools', '{q} examples'] },
+    { name: 'Recent queries (freshness)', t: ['{q} 2026', 'latest {q} updates', '{q} trends', 'new {q} features', 'is {q} still relevant', '{q} changes this year'] },
+    { name: 'Personal queries (situation-specific)', t: ['{q} for small business', '{q} for beginners', '{q} for ecommerce', '{q} for B2B SaaS', '{q} for agencies', '{q} for local businesses', '{q} for a one-person team'] }
   ];
 
   function clean(q) { return q.trim().replace(/\s+/g, ' ').toLowerCase(); }
