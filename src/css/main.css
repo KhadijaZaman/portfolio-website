@@ -1048,3 +1048,6 @@ a.mini-case:hover { border-color: var(--border-a); transform: translateY(-3px); 
 .qa-item a { color: var(--accent-3); }
 @media (max-width: 900px) { .qa-grid { grid-template-columns: 1fr; } }
 @media (max-width: 768px) { .impact-bar-3 .impact-num { flex-basis: 100%; } }
+/* seven work cards: the odd one out spans the row instead of dangling */
+.mini-grid > .mini-case:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
+.results-strip { grid-template-columns: repeat(2, 1fr); }
