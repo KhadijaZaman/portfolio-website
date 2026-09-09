@@ -76,7 +76,7 @@
     .stat-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 1.25rem 1rem; transition: border-color 0.25s; display: flex; flex-direction: column; }
     .stat-chip:hover { border-color: var(--border-a); }
     .stat-chip-val { font-family: var(--ff-display); font-size: 1.65rem; font-weight: 800; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
-    .stat-chip-lbl { font-size: 0.68rem; color: var(--text-3); margin-top: 0.35rem; line-height: 1.4; }
+    .stat-chip-lbl { font-size: 0.74rem; color: var(--text-3); margin-top: 0.35rem; line-height: 1.4; }
     .hero-press { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem; font-size: 0.83rem; color: var(--text-2); line-height: 1.6; }
     .hero-press-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--text-3); }
     .hero-press a { color: var(--accent-3); font-weight: 600; text-decoration: none; }
@@ -120,6 +120,8 @@
     .cg-bar { display: flex; align-items: center; justify-content: space-between; margin-top: 0.4rem; color: #64748B; font-size: 0.8rem; }
     .cg-send { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; color: #fff; font-size: 0.9rem; }
     .cg-src { font-size: 0.68rem; color: #64748B; margin-top: 0.3rem; min-height: 1em; }
+
+    @media (prefers-reduced-motion: reduce) { .cg-out, .cg-caret { animation: none; } }
 
     /* ── mobile fallback: same graph collapsed to one axis ── */
     .cg-mobile { display: none; }
@@ -314,11 +316,11 @@
           <div class="case-growth-label">Search growth · GSC-verified (Wellows + AllAboutAI author pages)</div>
           <div class="case-growth-grid">
             <figure class="case-shot">
-              <a href="/static/uploads/gsctrafficgrowth.png" target="_blank" rel="noopener"><img src="/static/uploads/gsctrafficgrowth.png" alt="Wellows Google Search Console: 7.27K clicks and 3.78M impressions over the last 3 months, average position improving from 28.9 to 17.3" loading="lazy"></a>
+              <a href="/static/uploads/gsctrafficgrowth.png" target="_blank" rel="noopener"><img src="/static/uploads/gsctrafficgrowth.png" alt="Wellows Google Search Console: 7.27K clicks and 3.78M impressions over the last 3 months, average position improving from 28.9 to 17.3" loading="lazy" width="1612" height="551"></a>
               <figcaption>Wellows, site-wide — 7.27K clicks · 3.78M impressions · avg. position 28.9 → 17.3 (last 3 months vs. previous)</figcaption>
             </figure>
             <figure class="case-shot">
-              <a href="/static/uploads/recognition/author-pages-yoy.jpg" target="_blank" rel="noopener"><img src="/static/uploads/recognition/author-pages-yoy.jpg" alt="AllAboutAI author Google Search Console year over year: clicks 10.7K to 23.6K and impressions 275K to 928K, 2025 vs 2024" loading="lazy"></a>
+              <a href="/static/uploads/recognition/author-pages-yoy.jpg" target="_blank" rel="noopener"><img src="/static/uploads/recognition/author-pages-yoy.jpg" alt="AllAboutAI author Google Search Console year over year: clicks 10.7K to 23.6K and impressions 275K to 928K, 2025 vs 2024" loading="lazy" width="730" height="391"></a>
               <figcaption>AllAboutAI author pages — year over year: 10.7K → 23.6K clicks · 275K → 928K impressions (2025 vs. 2024)</figcaption>
             </figure>
           </div>
