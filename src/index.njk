@@ -6,7 +6,7 @@
   <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Khadija Zaman · SEO &amp; AI Search Lead (GEO/AEO)</title>
-  <meta name="description" content="Khadija Zaman, SEO and AI search lead in Karachi. Brands found on Google and cited inside ChatGPT, Gemini, Perplexity and AI Overviews. LLM referral traffic 9× in 8 months, 22× at 12 (GA4).">
+  <meta name="description" content="Khadija Zaman, SEO and AI search lead in Karachi. Brands found on Google and cited inside ChatGPT, Gemini, Perplexity and AI Overviews. LLM referral sessions 9× in 8 months at Wellows, 22× in 12 months for a confidential client (GA4).">
   <link rel="canonical" href="https://khadijazaman.com/">
 
   <!-- Open Graph -->
@@ -235,7 +235,7 @@
         I'm Khadija Zaman, SEO and AI search lead at Wellows, with 6+ years in search across agency and in-house roles. I get brands found on Google <em>and</em> cited inside ChatGPT, Gemini, Perplexity, and AI Overviews, then automate the work so visibility compounds instead of resetting every month.
       </p>
       <div class="hero-stats reveal d3">
-        <div class="stat-chip"><div class="stat-chip-val">{{ live.llm.multiplier }}×</div><div class="stat-chip-lbl">LLM referral sessions at {{ live.llm.window }}, {{ live.llm.caseMultiplier }}× at {{ live.llm.caseWindow }}, from {{ live.llm.baseline }}/month ({{ live.llm.source }}){% if live.llm.sessionsAfter and live.llm.shareOfTotal %} · now {{ live.llm.sessionsAfter | number }}/month, {{ live.llm.shareOfTotal }}% of all sessions{% endif %}</div></div>
+        <div class="stat-chip"><div class="stat-chip-val">{{ live.llm.wellows.multiplier }}×</div><div class="stat-chip-lbl">LLM referral sessions at Wellows, {{ live.llm.wellows.window }}, from {{ live.llm.wellows.baseline }}/month ({{ live.llm.wellows.source }}){% if live.llm.wellows.sessionsAfter and live.llm.wellows.shareOfTotal %} · now {{ live.llm.wellows.sessionsAfter | number }}/month, {{ live.llm.wellows.shareOfTotal }}% of all sessions{% endif %}</div></div>
         <div class="stat-chip"><div class="stat-chip-val">{{ live.gsc.impressionsBefore | compact }}→{{ live.gsc.impressions | compact }}</div><div class="stat-chip-lbl">Google impressions, {{ live.gsc.window }}</div></div>
         <div class="stat-chip"><div class="stat-chip-val">{{ (live.tools.queryFanOut + live.tools.llmQueryBuilder + live.tools.aiHumanizer) | number }}</div><div class="stat-chip-lbl">practitioners using the SEO tools I built</div></div>
       </div>
@@ -300,8 +300,8 @@
 <div class="impact-bar" aria-label="Three proof points">
   <div class="impact-bar-inner impact-bar-3">
     <a class="impact-num impact-link reveal" href="/work/wellows-ai-visibility/">
-      <div class="impact-num-val">{{ live.llm.caseMultiplier }}× → {{ live.llm.multiplier }}×</div>
-      <div class="impact-num-lbl">LLM referral sessions at Wellows: {{ live.llm.caseMultiplier }}× in {{ live.llm.caseWindow }}, {{ live.llm.multiplier }}× at {{ live.llm.window }}, from {{ live.llm.baseline }}/month ({{ live.llm.source }})</div>
+      <div class="impact-num-val">{{ live.llm.wellows.multiplier }}× LLM traffic</div>
+      <div class="impact-num-lbl">LLM referral sessions at Wellows, {{ live.llm.wellows.window }}, from {{ live.llm.wellows.baseline }}/month, $0 paid ({{ live.llm.wellows.source }}). A separate {{ live.llm.confidential.multiplier }}× over {{ live.llm.confidential.window }} for a {{ live.llm.confidential.client }} is listed on the work page.</div>
     </a>
     <div class="impact-divider" aria-hidden="true"></div>
     <a class="impact-num impact-link reveal d1" href="/blog/breaking-my-own-study/">
@@ -323,13 +323,13 @@
   <div class="wrap" style="position: relative; z-index: 1;">
     <div class="sec-tag reveal">Selected Work</div>
     <h2 class="sec-h2 reveal d1">The work, not the pitch</h2>
-    <p class="sec-lead reveal d2">Three case studies with full write-ups, and three further results with headline figures only. Every number names its source and its window.</p>
+    <p class="sec-lead reveal d2">Three case studies with full write-ups, and four further results with headline figures only. Every number names its source and its window.</p>
     <div class="mini-grid">
       <a class="mini-case reveal" href="/work/wellows-ai-visibility/">
         <div class="case-pill pill-green">AEO / LLM Visibility · Case study</div>
-        <div class="mini-val">{{ live.llm.caseMultiplier }}× in {{ live.llm.caseWindow }} · {{ live.llm.multiplier }}× at {{ live.llm.window }}</div>
-        <h3>AI visibility from near-zero: {{ live.llm.caseMultiplier }}× LLM traffic in {{ live.llm.caseWindow }}, {{ live.llm.multiplier }}× at {{ live.llm.window }}, $0 paid</h3>
-        <p>Wellows, in-house. LLM referral sessions from a {{ live.llm.baseline }}/month baseline; average position 28.9 → 17.3. {{ live.llm.source }} and Search Console.</p>
+        <div class="mini-val">{{ live.llm.wellows.multiplier }}× LLM sessions in {{ live.llm.wellows.window }}</div>
+        <h3>AI visibility from near-zero: {{ live.llm.wellows.multiplier }}× LLM traffic in {{ live.llm.wellows.window }} on $0 paid spend</h3>
+        <p>Wellows, in-house, {{ live.llm.wellows.range }}. LLM referral sessions from a {{ live.llm.wellows.baseline }}/month baseline; average position 28.9 → 17.3. {{ live.llm.wellows.source }} and Search Console.</p>
         <span class="post-more">Read the case study →</span>
       </a>
       <a class="mini-case reveal d1" href="/work/core-update-recovery/">
@@ -357,6 +357,12 @@
         <div class="mini-val">8K → 25K monthly sessions</div>
         <h3>Topic cluster architecture for an affiliate site, six months</h3>
         <p>Intent-mapped clusters and internal linking, no technical overhaul. Headline figures only; no full write-up on this site.</p>
+      </div>
+      <div class="mini-case mini-summary reveal d2">
+        <div class="case-pill pill-green">AEO / LLM Visibility · Summary</div>
+        <div class="mini-val">{{ live.llm.confidential.multiplier }}× LLM referral traffic, {{ live.llm.confidential.window }}</div>
+        <h3>LLM referral growth for a confidential client</h3>
+        <p>A separate engagement from the Wellows study. {{ live.llm.confidential.source }}; the client and baseline are not published. Headline figure only; no full write-up on this site.</p>
       </div>
       <div class="mini-case mini-summary reveal d2">
         <div class="case-pill pill-green">Product Launch · Summary</div>
@@ -481,7 +487,7 @@
   /* nearest: index into CG_ENGINES the faint line runs to */
   var CG_STACK = [
     { label: 'GSC',    angle: -100, r: 262, nearest: 0, prompt: { q: 'How do you verify search growth? ', chip: 'Wellows case study', href: '/work/wellows-ai-visibility/', src: 'Search Console · ' + FMT.impressions + ' impressions, ' + (gsc.window || '12 months') + ', avg. position ' + gsc.avgPositionBefore + ' → ' + gsc.avgPosition } },
-    { label: 'GA4',    angle:  -20, r: 275, nearest: 1, prompt: { q: 'How do you track LLM referral traffic? ', chip: llm.caseMultiplier + '× in ' + (llm.caseWindow || '8 months') + ', ' + llm.multiplier + '× at ' + (llm.window || '12 months'), href: '/work/wellows-ai-visibility/', src: 'GA4 · LLM referral sessions from ' + llm.baseline + '/month: ' + llm.caseMultiplier + '× at ' + (llm.caseWindow || '8 months') + ', ' + llm.multiplier + '× at ' + (llm.window || '12 months') + ', $0 paid' } },
+    { label: 'GA4',    angle:  -20, r: 275, nearest: 1, prompt: { q: 'How do you track LLM referral traffic? ', chip: (llm.wellows || {}).multiplier + '× in ' + ((llm.wellows || {}).window || '8 months'), href: '/work/wellows-ai-visibility/', src: 'GA4 · Wellows LLM referral sessions from ' + (llm.wellows || {}).baseline + '/month, ' + (llm.wellows || {}).multiplier + '× over ' + ((llm.wellows || {}).window || '8 months') + ', $0 paid' } },
     { label: 'n8n',    angle:   28, r: 272, nearest: 2, prompt: { q: 'How do you automate SEO reporting? ', chip: 'Marketing automation', href: '/#expertise', src: 'n8n and LLM workflows wired into GA4 reporting, so the numbers arrive without anyone exporting them.' } },
     { label: 'Ahrefs', angle:  200, r: 262, nearest: 4, prompt: { q: 'How do you audit a site that lost 70% of its clicks? ', chip: 'Five workstreams, one owner', href: '/work/core-update-recovery/', src: 'Technical, semantic, topical authority, internal links, third-party mentions' } },
     { label: 'Looker', angle:  150, r: 262, nearest: 4, prompt: { q: 'Where do the dashboards live? ', chip: 'GA4 + Looker reporting', href: '/work/wellows-ai-visibility/', src: 'Sources on every case study: GA4, Looker Studio, Search Console' } }

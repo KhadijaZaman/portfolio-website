@@ -30,24 +30,24 @@ module.exports = [
     pillClass: "pill-blue",
     barClass: "bar-blue",
 
-    /* One metric, two windows, stated the same way everywhere: 9× over the
-       8-month case-study window (Jul 2025 – Feb 2026) and 22× at 12 months.
-       The homepage and /work/ cards use the identical wording. */
-    title: "AI visibility from near-zero: 9× LLM traffic in 8 months, 22× at 12 months, $0 paid",
-    metaTitle: "9× LLM Traffic in 8 Months, 22× at 12, $0 Paid",
+    /* 9× over Jul 2025 – Feb 2026 from a 176/month baseline. The 22× figure
+       elsewhere on the site is a DIFFERENT, confidential project; it must
+       never be attached to this study. The homepage and /work/ cards use the
+       identical wording to this title. */
+    title: "AI visibility from near-zero: 9× LLM traffic in 8 months on $0 paid spend",
+    metaTitle: "9× LLM Traffic in 8 Months From Near-Zero, $0 Paid",
     description:
-      "Wellows had no citation footprint inside AI answers. AEO work took LLM sessions from a 176/month baseline to 9× in 8 months and 22× at 12 months, with zero paid spend (GA4).",
+      "Wellows had no citation footprint inside AI answers. Eight months of AEO work took LLM sessions from a 176/month baseline to roughly nine times that, with zero paid spend (GA4).",
 
     client: "Wellows",
     clientNote: "In-house — my own work as the SEO and AI-search lead at Wellows (title: Marketing Manager), not a client engagement.",
     confidential: false,
     sector: "B2B SaaS",
-    window: "July 2025 – February 2026, with the 12-month figure to June 2026",
+    window: "July 2025 – February 2026",
     sources: "GA4, Looker Studio, Google Search Console",
 
     stats: [
-      { val: "9×", lbl: "LLM sessions, 8 months", note: "from a 176/month baseline, Jul 2025 – Feb 2026" },
-      { val: "22×", lbl: "LLM sessions, 12 months", note: "same baseline, 12 months to June 2026 (GA4)" },
+      { val: "9×", lbl: "LLM sessions, 8 months", note: "from a 176/month baseline, Jul 2025 – Feb 2026 (GA4)" },
       { val: "28.9→17.3", lbl: "Avg. SERP position" },
       { val: "45s→6+ min", lbl: "Session duration" },
       { val: "$0", lbl: "Paid spend" }
@@ -72,7 +72,7 @@ module.exports = [
     ],
 
     map: {
-      alt: "Wellows in the centre. Dashed lines to Reddit, Quora and G2, where AEO answers were placed. Solid lines to the three tools built as LLM entry points. A cyan measurement loop through n8n into GA4 and Looker, labelled with the 9× then 22× LLM sessions result.",
+      alt: "Wellows in the centre. Dashed lines to Reddit, Quora and G2, where AEO answers were placed. Solid lines to the three tools built as LLM entry points. A cyan measurement loop through n8n into GA4 and Looker, labelled with the 9× LLM sessions result.",
       groups: [
         { x: 80, y: 20, label: "CHANNELS" },
         { x: 470, y: 20, label: "LLM ENTRY POINTS" },
@@ -97,7 +97,7 @@ module.exports = [
         ["wellows", "lqb",    "",  "149 users"],
         ["wellows", "hum",    "",  "669 users"],
         ["wellows", "n8n",    "c", "reporting"],
-        ["n8n",     "ga4",    "c", "9× → 22× LLM sessions"]
+        ["n8n",     "ga4",    "c", "9× LLM sessions"]
       ],
       legend: [
         { style: "d", label: "Distribution channel" },
@@ -107,18 +107,18 @@ module.exports = [
     },
 
     outcome:
-      "LLM sessions rose from 176 a month to roughly nine times that across the eight months this case study covers in detail, and to 22× the same baseline at the 12-month mark (GA4). Average position improved from 28.9 to 17.3 and session duration went from 45 seconds to over six minutes — the second number matters more than it looks, because it separates traffic that arrives and leaves from traffic that arrives and reads.",
+      "LLM sessions rose from 176 a month to roughly nine times that across the eight months this case study covers (GA4). Average position improved from 28.9 to 17.3 and session duration went from 45 seconds to over six minutes — the second number matters more than it looks, because it separates traffic that arrives and leaves from traffic that arrives and reads.",
 
     tables: [
       {
         caption: "Before and after",
-        scope: "Wellows. The 8-month column is July 2025 – February 2026; the 12-month column runs to June 2026 and is the figure used on the homepage. Sources: GA4 for sessions and duration, Search Console for position.",
-        head: ["Metric", "Before", "After 8 months", "After 12 months"],
+        scope: "Wellows, July 2025 – February 2026. Sources: GA4 for sessions and duration, Search Console for position.",
+        head: ["Metric", "Before", "After"],
         rows: [
-          ["LLM sessions", "176 / month", "≈9× the baseline", "≈22× the baseline"],
-          ["Avg. position", "28.9", "17.3", "17.3"],
-          ["Session duration", "45 sec", "6+ min", "6+ min"],
-          ["Paid spend", "—", "$0", "$0"]
+          ["LLM sessions", "176 / month", "≈9× the baseline"],
+          ["Avg. position", "28.9", "17.3"],
+          ["Session duration", "45 sec", "6+ min"],
+          ["Paid spend", "—", "$0"]
         ]
       }
     ],
