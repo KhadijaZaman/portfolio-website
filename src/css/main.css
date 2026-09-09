@@ -703,7 +703,7 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
 
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
-  .sec-canvas, #hero-3d { display: none; }
+  .sec-canvas { display: none; }
   .sec-bg-orb { animation: none !important; }
   .exp-card, .case-card, .tool-card, .post-card, .stat-chip { transform: none !important; transition: border-color 0.25s, box-shadow 0.25s !important; }
   .marquee-track { animation: none !important; }
