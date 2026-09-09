@@ -66,11 +66,13 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
   // Live metrics arrive as raw numbers (see src/_data/live.json); these format them.
   eleventyConfig.addFilter("number", (n) => Number(n).toLocaleString("en-US"));
-  eleventyConfig.addFilter("compact", (n) => {
-    n = Number(n);
+  eleventyConfig.addFilter("compact", (v) => {
+    const n = Number(v);
+    if (!Number.isFinite(n)) return "";
     const trim = (s) => s.includes(".") ? s.replace(/0+$/, "").replace(/\.$/, "") : s;
-    if (n >= 1e6) return trim((n / 1e6).toFixed(n >= 1e7 ? 0 : 2)) + "M";
-    if (n >= 1e3) return trim((n / 1e3).toFixed(n >= 1e5 ? 0 : 1)) + "K";
+    // thresholds sit just under each unit so 999,950 rounds to "1M", not "1000K"
+    if (Math.abs(n) >= 999500) return trim((n / 1e6).toFixed(Math.abs(n) >= 1e7 ? 0 : 2)) + "M";
+    if (Math.abs(n) >= 999.5) return trim((n / 1e3).toFixed(Math.abs(n) >= 1e5 ? 0 : 1)) + "K";
     return String(n);
   });
   eleventyConfig.addFilter("excludeUrl", (arr, url) => (arr || []).filter((p) => p.url !== url));
