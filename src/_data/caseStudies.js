@@ -14,6 +14,13 @@
    A fourth case study (a 9-day high-intent breakthrough) is deliberately not
    here. Nine days is a signal, not a result; it goes in once there is a
    longer window to stand on.
+
+   `map` draws the "system in one picture" graph on the case page (site.js
+   renders it into a 560×430 box). `nodes` are keyed by id with a position and
+   label; `cls` is "ctr" for the client in the centre or "tool" for something
+   built. `edges` are [from, to, style, label] where style is "" (solid), "d"
+   (dashed) or "c" (cyan). Only studies whose approach is described get a map:
+   a graph of a method the page does not explain would be decoration.
 */
 module.exports = [
   {
@@ -24,7 +31,7 @@ module.exports = [
     barClass: "bar-blue",
 
     title: "AI visibility from near-zero: 9× LLM traffic on $0 paid spend",
-    metaTitle: "9× LLM Traffic From Near-Zero, $0 Paid — Case Study",
+    metaTitle: "9× LLM Traffic From Near-Zero, $0 Paid",
     description:
       "Wellows had no citation footprint inside AI answers. Four months of AEO work took LLM sessions from 176/month to roughly nine times that, with zero paid spend.",
 
@@ -60,6 +67,41 @@ module.exports = [
       }
     ],
 
+    map: {
+      alt: "Wellows in the centre. Dashed lines to Reddit, Quora and G2, where AEO answers were placed. Solid lines to the three tools built as LLM entry points. A cyan measurement loop through n8n into GA4 and Looker, labelled with the 9× LLM sessions result.",
+      groups: [
+        { x: 80, y: 20, label: "CHANNELS" },
+        { x: 470, y: 20, label: "LLM ENTRY POINTS" },
+        { x: 120, y: 410, label: "MEASUREMENT" }
+      ],
+      nodes: {
+        wellows: { x: 250, y: 210, label: "Wellows", cls: "ctr" },
+        reddit:  { x: 70,  y: 80,  label: "Reddit" },
+        quora:   { x: 60,  y: 210, label: "Quora" },
+        g2:      { x: 70,  y: 340, label: "G2" },
+        qfo:     { x: 440, y: 60,  label: "Query Fan-Out Generator", cls: "tool" },
+        lqb:     { x: 470, y: 160, label: "LLM Query Builder", cls: "tool" },
+        hum:     { x: 460, y: 260, label: "AI Humanizer", cls: "tool" },
+        n8n:     { x: 250, y: 385, label: "n8n" },
+        ga4:     { x: 440, y: 385, label: "GA4 / Looker" }
+      },
+      edges: [
+        ["wellows", "reddit", "d", "AEO answers"],
+        ["wellows", "quora",  "d", "AEO answers"],
+        ["wellows", "g2",     "d", "reviews"],
+        ["wellows", "qfo",    "",  "829 users"],
+        ["wellows", "lqb",    "",  "149 users"],
+        ["wellows", "hum",    "",  "669 users"],
+        ["wellows", "n8n",    "c", "reporting"],
+        ["n8n",     "ga4",    "c", "9× LLM sessions"]
+      ],
+      legend: [
+        { style: "d", label: "Distribution channel" },
+        { style: "",  label: "Tool built as an LLM entry point" },
+        { style: "c", label: "Measurement loop" }
+      ]
+    },
+
     outcome:
       "LLM sessions rose from 176 a month to roughly nine times that over the period. Average position improved from 28.9 to 17.3 and session duration went from 45 seconds to over six minutes — the second number matters more than it looks, because it separates traffic that arrives and leaves from traffic that arrives and reads.",
 
@@ -80,6 +122,7 @@ module.exports = [
     shots: [
       {
         src: "/static/uploads/gsctrafficgrowth.png",
+        width: 1612, height: 551,
         alt: "Wellows Google Search Console: 7.27K clicks and 3.78M impressions over the last 3 months, average position improving from 28.9 to 17.3",
         caption: "Wellows, site-wide — 7.27K clicks · 3.78M impressions · avg. position 28.9 → 17.3 (last 3 months vs. previous)"
       }
@@ -94,9 +137,9 @@ module.exports = [
     barClass: "bar-green",
 
     title: "Losing 70% of organic clicks, then recovering to position 8.2",
-    metaTitle: "Core Update Recovery: Position 32 Back to 8.2 — Case Study",
+    metaTitle: "Core Update Recovery: Position 32 to 8.2",
     description:
-      "A high-volume publisher lost 70% of its organic clicks in four months. Five workstreams run together — not sequenced across vendors — took average position from 32 back to 8.2.",
+      "A publisher lost 70% of organic clicks in four months. Five workstreams run together, not split across vendors, took average position from 32 back to 8.2.",
 
     client: "Confidential — a high-volume AI content publisher",
     confidential: true,
@@ -116,6 +159,34 @@ module.exports = [
         body: "Technical and on-page SEO, semantic optimisation, topical authority, internal linking, and third-party mentions — run together rather than sequenced."
       }
     ],
+
+    map: {
+      alt: "The publisher in the centre with five workstreams around it, all run by one owner at the same time: technical and on-page SEO, semantic optimisation, topical authority, internal linking, third-party mentions. A cyan line to the outcome, average position 32 to 8.2.",
+      groups: [
+        { x: 280, y: 20, label: "FIVE WORKSTREAMS · ONE OWNER · RUN TOGETHER" }
+      ],
+      nodes: {
+        pub:  { x: 280, y: 215, label: "Publisher", cls: "ctr" },
+        ws1:  { x: 280, y: 60,  label: "Technical & on-page SEO" },
+        ws2:  { x: 100, y: 140, label: "Semantic optimisation" },
+        ws3:  { x: 460, y: 140, label: "Topical authority" },
+        ws4:  { x: 95,  y: 300, label: "Internal linking" },
+        ws5:  { x: 465, y: 300, label: "Third-party mentions" },
+        out:  { x: 280, y: 395, label: "Avg. position 32 → 8.2", cls: "tool" }
+      },
+      edges: [
+        ["pub", "ws1", "", ""],
+        ["pub", "ws2", "", ""],
+        ["pub", "ws3", "", ""],
+        ["pub", "ws4", "", ""],
+        ["pub", "ws5", "", ""],
+        ["pub", "out", "c", "12-month average"]
+      ],
+      legend: [
+        { style: "",  label: "Workstream, owned and run together" },
+        { style: "c", label: "Outcome, Search Console" }
+      ]
+    },
 
     outcome:
       "Average position recovered from the post-decline low of 32 to 8.2. That is the number to judge this by: it measures whether the site earned its standing back, independent of how traffic happened to be distributed across the period.",
@@ -159,7 +230,7 @@ module.exports = [
     barClass: "bar-blue",
 
     title: "Stuck near position 55 for two months, into the 20s in days",
-    metaTitle: "Position 55 to the 20s in Days, Held 11 Weeks — Case Study",
+    metaTitle: "Position 55 to the 20s, Held 11 Weeks",
     description:
       "A property sat flat around position 55 for two months. A mid-September step change moved it into the 20s within days, and it held there for eleven weeks.",
 
