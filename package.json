@@ -1,7 +1,7 @@
 {
   "name": "khadijazaman.com",
   "version": "1.0.0",
-  "description": "Personal-brand website for Khadija Zaman — SEO and AI search (GEO/AEO) lead: SEO, AEO, GEO, and marketing automation.",
+  "description": "Personal-brand website for Khadija Zaman — AI Search Manager: SEO, AEO, GEO, and marketing automation.",
   "private": true,
   "scripts": {
     "build": "eleventy",
