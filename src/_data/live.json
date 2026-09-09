@@ -1,10 +1,16 @@
 {
   "updatedAt": "2026-09-09",
   "updatedBy": "GA4 and Search Console",
-  "note": "The homepage hero reads its headline figures from this file. Edit the raw numbers here (the templates format them) and bump updatedAt.",
+  "note": "The homepage hero reads its headline figures from this file. Edit the raw numbers here (the templates format them) and bump updatedAt. llm.caseMultiplier / llm.caseWindow are the case-study window (Jul 2025 - Feb 2026); llm.multiplier / llm.window are the full 12-month figure. Fill llm.sessionsAfter (monthly LLM sessions at month 12) and llm.shareOfTotal (as a percentage, e.g. 4.2) when you have them; the templates print them only when both are set.",
   "llm": {
+    "baseline": 176,
+    "caseMultiplier": 9,
+    "caseWindow": "8 months",
+    "caseRange": "Jul 2025 – Feb 2026",
     "multiplier": 22,
     "window": "12 months",
+    "sessionsAfter": null,
+    "shareOfTotal": null,
     "source": "GA4"
   },
   "gsc": {

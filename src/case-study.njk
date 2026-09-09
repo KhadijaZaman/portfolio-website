@@ -23,8 +23,8 @@ eleventyComputed:
   "headline": study.title,
   "description": study.description,
   "about": study.pill,
-  "author": { "@type": "Person", "name": "Khadija Zaman", "url": site.url + "/" },
-  "publisher": { "@type": "Person", "name": "Khadija Zaman" },
+  "author": { "@id": site.url + "/#person" },
+  "publisher": { "@id": site.url + "/#person" },
   "mainEntityOfPage": site.url + page.url,
   "image": site.url + "/og-image.png"
 } | dump | safe }}</script>
