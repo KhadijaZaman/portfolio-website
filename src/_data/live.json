@@ -1,17 +1,23 @@
 {
   "updatedAt": "2026-09-09",
   "updatedBy": "GA4 and Search Console",
-  "note": "The homepage hero reads its headline figures from this file. Edit the raw numbers here (the templates format them) and bump updatedAt. llm.caseMultiplier / llm.caseWindow are the case-study window (Jul 2025 - Feb 2026); llm.multiplier / llm.window are the full 12-month figure. Fill llm.sessionsAfter (monthly LLM sessions at month 12) and llm.shareOfTotal (as a percentage, e.g. 4.2) when you have them; the templates print them only when both are set.",
+  "note": "The homepage hero reads its headline figures from this file. Edit the raw numbers here (the templates format them) and bump updatedAt. llm.wellows is the Wellows case study (9x from 176/month over Jul 2025 - Feb 2026). llm.confidential is a DIFFERENT project (22x over 12 months, GA4, client confidential); never present the two as one metric. Fill wellows.sessionsAfter (monthly LLM sessions at the end of the window) and wellows.shareOfTotal (percentage, e.g. 4.2) when known; the templates print them only when both are set.",
   "llm": {
-    "baseline": 176,
-    "caseMultiplier": 9,
-    "caseWindow": "8 months",
-    "caseRange": "Jul 2025 – Feb 2026",
-    "multiplier": 22,
-    "window": "12 months",
-    "sessionsAfter": null,
-    "shareOfTotal": null,
-    "source": "GA4"
+    "wellows": {
+      "multiplier": 9,
+      "baseline": 176,
+      "window": "8 months",
+      "range": "Jul 2025 – Feb 2026",
+      "sessionsAfter": null,
+      "shareOfTotal": null,
+      "source": "GA4"
+    },
+    "confidential": {
+      "multiplier": 22,
+      "window": "12 months",
+      "client": "confidential client",
+      "source": "GA4"
+    }
   },
   "gsc": {
     "impressionsBefore": 680000,

@@ -75,11 +75,13 @@ Then commit the PDF alongside the HTML change.
 
 The homepage hero, proof strip and work grid read their figures from
 `src/_data/live.json`; the case-study pages read `src/_data/caseStudies.js`.
-The LLM referral figure is stated as **one metric, two windows** everywhere:
-9× over the 8-month case-study window and 22× at 12 months, both from the
-176-sessions-a-month baseline. If either number changes, change it in those
-two files and grep `src/` for the old value before pushing; the /work/ card,
-About page, tools page, CV and `llms.txt` repeat it in prose.
+There are **two separate LLM referral figures** and they must never be
+presented as one metric: 9× at Wellows over Jul 2025 – Feb 2026 from a
+176-sessions-a-month baseline (the case study), and 22× over 12 months for
+a confidential client (GA4, no published baseline). If either changes,
+change it in those two files and grep `src/` for the old value before
+pushing; the /work/ page, About page, tools page, CV and `llms.txt` repeat
+them in prose.
 
 ## Publishing a blog post
 
