@@ -5,8 +5,8 @@
   <script>document.documentElement.classList.add('js');</script>
   <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Khadija Zaman · SEO for Google &amp; AI Search (GEO/AEO)</title>
-  <meta name="description" content="SEO for the AI era — I get brands found on Google and cited inside ChatGPT, Gemini, Perplexity, and AI Overviews. 22× LLM growth in 12 months (GA4).">
+  <title>Khadija Zaman · SEO &amp; AI Search Lead (GEO/AEO)</title>
+  <meta name="description" content="Khadija Zaman, SEO and AI search lead in Karachi. Brands found on Google and cited inside ChatGPT, Gemini, Perplexity and AI Overviews. LLM referral sessions 9× in 8 months at Wellows, 22× in 12 months for a confidential client (GA4).">
   <link rel="canonical" href="https://khadijazaman.com/">
 
   <!-- Open Graph -->
@@ -33,27 +33,45 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap"></noscript>
   <link rel="stylesheet" href="/css/main.css">
+  <link rel="preload" as="image" href="/static/img/khadija-hero.webp" fetchpriority="high">
 
+  {#- The Person node is the one entity every other page points at by @id.
+      base.njk carries the same node for templated pages; the hand-built
+      HTML pages (about, work, tools, contact, cv) each repeat it. Keep the
+      five copies identical. -#}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Khadija Zaman",
-    "url": "https://khadijazaman.com/",
-    "image": "https://khadijazaman.com/apple-touch-icon.png",
-    "jobTitle": "AI Search Manager",
-    "worksFor": { "@type": "Organization", "name": "Wellows", "url": "https://wellows.com/", "parentOrganization": { "@type": "Organization", "name": "Disrupt.com", "url": "https://disrupt.com/" } },
-    "address": { "@type": "PostalAddress", "addressLocality": "Karachi", "addressCountry": "PK" },
-    "sameAs": ["https://www.linkedin.com/in/khadija-zaman-2628751b1/", "https://github.com/KhadijaZaman", "https://www.allaboutai.com/author/khadija-zaman/"],
-    "knowsAbout": ["Search Engine Optimization", "Generative Engine Optimization", "Answer Engine Optimization", "Content Strategy", "Marketing Automation", "Semantic SEO"]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Khadija Zaman",
-    "url": "https://khadijazaman.com/"
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://khadijazaman.com/#person",
+        "name": "Khadija Zaman",
+        "url": "https://khadijazaman.com/",
+        "image": "https://khadijazaman.com/apple-touch-icon.png",
+        "description": "Khadija Zaman is an SEO and AI search (GEO/AEO) lead based in Karachi, Pakistan. In search since 2019, she has owned SEO, content and AI-search programs in-house at Wellows since 2023, where her formal title is Marketing Manager, and builds SEO tooling grounded in Google patent research used by 1,647 practitioners.",
+        "jobTitle": "Marketing Manager",
+        "worksFor": { "@type": "Organization", "name": "Wellows", "url": "https://wellows.com/" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Karachi", "addressCountry": "PK" },
+        "email": "mailto:hello@khadijazaman.com",
+        "sameAs": ["https://www.linkedin.com/in/khadija-zaman-2628751b1/", "https://github.com/KhadijaZaman", "https://www.allaboutai.com/author/khadija-zaman/"],
+        "knowsAbout": ["Search Engine Optimization", "Generative Engine Optimization", "Answer Engine Optimization", "Semantic SEO", "Query Fan-Out", "Content Strategy", "Marketing Automation"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://khadijazaman.com/#website",
+        "name": "Khadija Zaman",
+        "url": "https://khadijazaman.com/",
+        "publisher": { "@id": "https://khadijazaman.com/#person" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://khadijazaman.com/#webpage",
+        "url": "https://khadijazaman.com/",
+        "isPartOf": { "@id": "https://khadijazaman.com/#website" },
+        "about": { "@id": "https://khadijazaman.com/#person" }
+      }
+    ]
   }
   </script>
 
@@ -64,37 +82,118 @@
     .hero-orb-2 { position: absolute; bottom: -20%; left: -10%; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 65%); pointer-events: none; animation: float-med 13s ease-in-out infinite; }
     @keyframes float-slow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} }
     @keyframes float-med { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
-    #hero-3d { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; display: block; }
-    /* main.css hides this under reduced motion, but the rule above loads later
-       and would win on equal specificity — restate it here. */
-    @media (prefers-reduced-motion: reduce) { #hero-3d { display: none; } }
-    .hero-grid { max-width: 1240px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 460px; gap: 1.5rem; align-items: center; position: relative; z-index: 1; }
+    .hero-grid { max-width: 1240px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 540px; gap: 1.5rem; align-items: center; position: relative; z-index: 1; }
     .avail-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.25); border-radius: 100px; padding: 0.35rem 1rem; font-size: 0.78rem; font-weight: 500; color: #93C5FD; margin-bottom: 1.25rem; }
     .avail-dot { width: 7px; height: 7px; background: #60A5FA; border-radius: 50%; animation: blink 2s ease-in-out infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
     .hero h1 { font-family: var(--ff-display); font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
     .hero-sub { font-size: 1.05rem; color: var(--text-2); line-height: 1.75; max-width: 540px; margin-bottom: 1.75rem; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem; }
-    .hero-engines { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
-    .he-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); font-weight: 700; margin-right: 0.15rem; }
-    .he-chip { font-size: 0.78rem; font-weight: 600; color: var(--text-2); background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 100px; padding: 0.32rem 0.8rem; transition: border-color 0.2s, color 0.2s; }
-    .he-chip:hover { border-color: var(--border-a); color: var(--text-1); }
     .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
     .stat-chip { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 1.25rem 1rem; transition: border-color 0.25s; display: flex; flex-direction: column; }
     .stat-chip:hover { border-color: var(--border-a); }
     .stat-chip-val { font-family: var(--ff-display); font-size: 1.65rem; font-weight: 800; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
-    .stat-chip-lbl { font-size: 0.68rem; color: var(--text-3); margin-top: 0.35rem; line-height: 1.4; }
+    .stat-chip-lbl { font-size: 0.74rem; color: var(--text-3); margin-top: 0.35rem; line-height: 1.4; }
+    .hero-updated { font-size: 0.7rem; color: var(--text-3); margin-top: 0.6rem; letter-spacing: 0.01em; }
     .hero-press { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.25rem; font-size: 0.83rem; color: var(--text-2); line-height: 1.6; }
     .hero-press-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; color: var(--text-3); }
     .hero-press a { color: var(--accent-3); font-weight: 600; text-decoration: none; }
+    .hero-press + .hero-press { margin-top: 0.5rem; }
     .hero-press a:hover { text-decoration: underline; }
-    .hero-right { display: flex; justify-content: center; align-items: center; }
-    .hero-photo-wrap { position: relative; }
-    .hero-photo-wrap::before { content: ''; position: absolute; inset: -16px; border-radius: 50%; background: var(--grad-main); opacity: 0.45; filter: blur(28px); z-index: 0; }
-    .hero-photo { display: block; width: 420px; height: 420px; border-radius: 50%; object-fit: cover; object-position: center top; border: 2px solid rgba(59,130,246,0.4); box-shadow: 0 0 0 8px rgba(59,130,246,0.06), 0 24px 64px rgba(0,0,0,0.5); position: relative; z-index: 1; }
+    .hero-right { display: flex; justify-content: center; align-items: center; position: relative; }
+    /* faint grid behind the graph, fading out toward the text column */
+    .hero-right::before { content: ''; position: absolute; inset: -6% -4%; pointer-events: none;
+      background-image: linear-gradient(rgba(147,197,253,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(147,197,253,0.07) 1px, transparent 1px);
+      background-size: 34px 34px;
+      -webkit-mask-image: radial-gradient(ellipse 55% 60% at 50% 45%, #000 20%, transparent 72%); mask-image: radial-gradient(ellipse 55% 60% at 50% 45%, #000 20%, transparent 72%); }
+
+    /* ── citation graph: Khadija in the centre, the engines that cite her around her ── */
+    .cg { position: relative; width: 100%; max-width: 540px; aspect-ratio: 560 / 540; }
+    .cg svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .cg-photo { position: absolute; left: 50%; top: 44.4%; width: 32.9%; height: auto; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; object-fit: cover; object-position: center top;
+      border: 2px solid rgba(59,130,246,0.45); box-shadow: 0 0 0 10px rgba(59,130,246,0.06), 0 0 60px rgba(59,130,246,0.25), 0 24px 64px rgba(0,0,0,0.5); z-index: 1; }
+    .cg-glow { fill: rgba(59,130,246,0.12); }
+    .cg-ring { fill: none; stroke: rgba(59,130,246,0.35); stroke-width: 2; }
+    .cg-out { stroke: var(--accent); stroke-width: 1.6; fill: none; stroke-dasharray: 5 6; opacity: 0.75; animation: cg-dash 1.1s linear infinite; }
+    .cg-back { stroke: var(--accent-2); stroke-width: 1.4; fill: none; opacity: 0.5; }
+    .cg-faint { stroke: var(--border-a); stroke-width: 1; fill: none; stroke-dasharray: 2 5; }
+    @keyframes cg-dash { to { stroke-dashoffset: -22; } }
+    .cg-node { cursor: default; }
+    .cg-node rect { fill: var(--bg-card); stroke: var(--border-a); stroke-width: 1.2; transition: stroke 0.2s, fill 0.2s; }
+    .cg-node:hover rect { stroke: var(--accent-2); fill: var(--bg-card-h); }
+    .cg-node text { font-family: var(--ff-display); font-weight: 700; font-size: 14px; fill: var(--text-1); }
+    .cg-node.cg-hex polygon { fill: var(--bg-card); stroke: rgba(59,130,246,0.5); stroke-width: 1.2; }
+    .cg-node.cg-hex text { font-family: var(--ff-body); font-weight: 600; font-size: 8.5px; fill: var(--accent-3); letter-spacing: 0.04em; }
+
+    /* the prompt bar: a real question, answered with the entity that cites her */
+    .cg-prompt { position: absolute; left: 50%; bottom: -2%; transform: translateX(-50%); width: 74%; min-width: 300px; z-index: 2; color: #0B1220; border-radius: 20px; padding: 0.85rem 1rem 0.7rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.55); border: 3px solid transparent;
+      background: linear-gradient(#fff, #fff) padding-box, conic-gradient(from 200deg, #22C55E, #F59E0B, #EC4899, #3B82F6, #22C55E) border-box; }
+    .cg-q { font-family: var(--ff-display); font-weight: 500; font-size: 1.1rem; line-height: 1.35; min-height: 2.95rem; color: #0B1220; }
+    .cg-caret { display: inline-block; width: 2px; height: 1.05em; background: #0B1220; vertical-align: -0.15em; margin-left: 2px; animation: cg-blink 1s steps(1) infinite; }
+    @keyframes cg-blink { 50% { opacity: 0; } }
+    .cg-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; border-radius: 6px; padding: 2px 8px; font-family: var(--ff-body); font-weight: 600; font-size: 0.8rem; text-decoration: none; vertical-align: 1px; white-space: nowrap; }
+    .cg-chip:hover, .cg-chip:focus-visible { background: #1D4ED8; }
+    .cg-chip::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-3); }
+    .cg-bar { display: flex; align-items: center; justify-content: space-between; margin-top: 0.4rem; color: #64748B; font-size: 0.8rem; }
+    .cg-send { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; color: #fff; font-size: 0.9rem; }
+    .cg-src { font-size: 0.68rem; color: #64748B; margin-top: 0.3rem; min-height: 1em; }
+    .cg-src a { color: #2563EB; }
+    .cg-input { display: block; width: 100%; font-family: var(--ff-display); font-weight: 500; font-size: 1.1rem; line-height: 1.35; min-height: 2.95rem; color: #0B1220; background: transparent; border: 0; outline: 0; padding: 0; }
+    .cg-input::placeholder { color: #94A3B8; }
+    .cg-input[hidden], .cg-q[hidden] { display: none; }   /* author display rules would otherwise beat the hidden attribute */
+    .cg-ask { background: none; border: 0; padding: 0.35rem 0; color: #64748B; font: 600 0.78rem var(--ff-body); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; min-height: 40px; }
+    .cg-ask:hover, .cg-ask:focus-visible { color: #0B1220; }
+    .cg-send { border: 0; cursor: pointer; }
+    .cg-send:focus-visible { outline: 2px solid #0B1220; outline-offset: 2px; }
+    .cg-prompt:focus-within { box-shadow: 0 20px 50px rgba(0,0,0,0.55), 0 0 0 4px rgba(56,189,248,0.35); }
+    /* hover or click a node: its lines stay lit, the rest fade */
+    .cg-node { cursor: pointer; transition: opacity 0.25s; }
+    .cg-out, .cg-back, .cg-faint { transition: opacity 0.25s; }
+    .cg-focus .cg-out:not(.on), .cg-focus .cg-back:not(.on), .cg-focus .cg-faint:not(.on) { opacity: 0.1; }
+    .cg-focus .cg-node:not(.on) { opacity: 0.35; }
+    .cg-node.on rect, .cg-node.on polygon { stroke: var(--accent-2); }
+
+    @media (prefers-reduced-motion: reduce) { .cg-out, .cg-caret { animation: none; } }
+
+    /* ── mobile fallback: same graph collapsed to one axis ── */
+    .cg-mobile { display: none; }
     .sec-orb-1, .sec-orb-2, .sec-orb-3 { animation: float-slow 15s ease-in-out infinite; }
-    @media (max-width: 1024px) { .hero-grid { grid-template-columns: 1fr; } .hero-right { margin-top: 2.5rem; } .hero-photo { width: 240px; height: 240px; } }
-    @media (max-width: 768px) { .hero { padding: 88px 5% 60px; } .hero h1 { font-size: 2.1rem; } .hero-right { display: none; } }
+    @media (max-width: 1024px) {
+      /* minmax(0,1fr): a plain 1fr track grows to the content's min-content width, and
+         Chromium sizes a wrapping flex row (the engine chips) as if it were one line,
+         which pushed the whole hero past the viewport on phones. */
+      .hero-grid { grid-template-columns: minmax(0, 1fr); }
+      .hero-right { margin-top: 2.5rem; min-width: 0; }
+      .cg { max-width: 480px; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 88px 5% 60px; }
+      /* three 1fr columns can't shrink below the widest value ("680K→3.78M"),
+         which pushed the whole hero past a 390px viewport; stack them instead */
+      .hero-stats { grid-template-columns: 1fr; gap: 0.6rem; }
+      .stat-chip { flex-direction: row; align-items: baseline; gap: 0.75rem; padding: 0.85rem 1rem; }
+      .stat-chip-val { font-size: 1.4rem; flex-shrink: 0; }
+      .stat-chip-lbl { margin-top: 0; }
+      .hero h1 { font-size: 2.1rem; }
+      .hero-right { order: -1; margin: 0 0 1.75rem; }
+      .hero-right::before { -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 72%); mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 20%, transparent 72%); }
+      .cg { display: none; }
+      .cg-mobile { display: block; width: 100%; position: relative; }
+      .cg-m-photo { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; object-position: center top; display: block; margin: 0 auto;
+        border: 2px solid rgba(59,130,246,0.45); box-shadow: 0 0 0 8px rgba(59,130,246,0.07), 0 0 40px rgba(59,130,246,0.22); }
+      .cg-m-spokes { display: flex; justify-content: center; gap: 10px; margin-top: 6px; }
+      .cg-m-spokes i { width: 1px; height: 18px; background: var(--border-a); display: block; }
+      .cg-m-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; list-style: none; }
+      .cg-m-chips li { font-family: var(--ff-display); font-size: 0.72rem; font-weight: 700; color: var(--text-1); background: var(--bg-card); border: 1px solid var(--border-a); border-radius: 100px; padding: 5px 11px; }
+      .cg-m-prompt { margin: 1rem auto 0; max-width: 420px; color: #0B1220; border-radius: 16px; padding: 0.65rem 0.8rem; border: 2px solid transparent;
+        background: linear-gradient(#fff, #fff) padding-box, conic-gradient(from 200deg, #22C55E, #F59E0B, #EC4899, #3B82F6, #22C55E) border-box; }
+      .cg-m-prompt p { font-family: var(--ff-display); font-weight: 500; font-size: 0.95rem; line-height: 1.35; color: #0B1220; }
+      .cg-m-prompt .cg-chip { font-size: 0.7rem; padding: 1px 7px; }
+      .cg-m-form { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+      .cg-m-form input { flex: 1; min-width: 0; font: 500 0.9rem var(--ff-display); color: #0B1220; background: #F1F5F9; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.45rem 0.6rem; }
+      .cg-m-form button { border: 0; border-radius: 8px; background: var(--accent); color: #fff; font: 700 0.8rem var(--ff-body); padding: 0 0.8rem; min-height: 40px; cursor: pointer; }
+    }
   </style>
 </head>
 <body>
@@ -108,7 +207,7 @@
     <li><a href="/about/">About</a></li>
     <li><a href="/work/">Work</a></li>
     <li><a href="/blog/">Blog</a></li>
-    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/tools/">Tools</a></li><li><a href="/cv/">CV</a></li>
     <li><a href="/contact/" class="nav-cta">Work Together →</a></li>
   </ul>
   <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">
@@ -120,159 +219,184 @@
 
 <!-- ══════════════ HERO ══════════════ -->
 <section class="hero" id="home" aria-label="Introduction">
-  <canvas id="hero-3d" aria-hidden="true"></canvas>
   <div class="hero-orb-1" aria-hidden="true"></div>
   <div class="hero-orb-2" aria-hidden="true"></div>
   <div class="hero-grid">
     <div>
       <div class="avail-badge reveal">
         <span class="avail-dot"></span>
-        SEO for search &amp; AI · Selectively available worldwide
+        SEO &amp; AI Search Lead · Karachi, Pakistan · In search since 2019
       </div>
       <h1 class="reveal d1">
         Visible in search.<br>Cited by AI.<br>
         <span class="grad-text">That's modern SEO.</span>
       </h1>
       <p class="hero-sub reveal d2">
-        I'm Khadija Zaman, AI Search Manager at Disrupt.com [Wellows]. I run SEO, AEO, and GEO as one system, so brands rank on Google <em>and</em> get cited inside ChatGPT, Gemini, Perplexity, and AI Overviews — then automate the work so that visibility compounds instead of resetting every month.
+        I'm Khadija Zaman, SEO and AI search lead at Wellows, with 6+ years in search across agency and in-house roles. I get brands found on Google <em>and</em> cited inside ChatGPT, Gemini, Perplexity, and AI Overviews, then automate the work so visibility compounds instead of resetting every month.
       </p>
-      <div class="hero-engines reveal d2" aria-label="Visible across these engines">
-        <span class="he-label">Visible across</span>
-        <span class="he-chip">Google</span>
-        <span class="he-chip">ChatGPT</span>
-        <span class="he-chip">Gemini</span>
-        <span class="he-chip">Perplexity</span>
-        <span class="he-chip">AI Overviews</span>
-      </div>
       <div class="hero-stats reveal d3">
-        <div class="stat-chip"><div class="stat-chip-val">22×</div><div class="stat-chip-lbl">LLM referral traffic, 12 months (GA4)</div></div>
-        <div class="stat-chip"><div class="stat-chip-val">680K→3.78M</div><div class="stat-chip-lbl">Google impressions in 12 months</div></div>
-        <div class="stat-chip"><div class="stat-chip-val">1,647</div><div class="stat-chip-lbl">practitioners using the SEO tools I built</div></div>
+        <div class="stat-chip"><div class="stat-chip-val">{{ live.llm.wellows.multiplier }}×</div><div class="stat-chip-lbl">LLM referral sessions at Wellows, {{ live.llm.wellows.window }}, from {{ live.llm.wellows.baseline }}/month ({{ live.llm.wellows.source }}){% if live.llm.wellows.sessionsAfter and live.llm.wellows.shareOfTotal %} · now {{ live.llm.wellows.sessionsAfter | number }}/month, {{ live.llm.wellows.shareOfTotal }}% of all sessions{% endif %}</div></div>
+        <div class="stat-chip"><div class="stat-chip-val">{{ live.gsc.impressionsBefore | compact }}→{{ live.gsc.impressions | compact }}</div><div class="stat-chip-lbl">Google impressions, {{ live.gsc.window }}</div></div>
+        <div class="stat-chip"><div class="stat-chip-val">{{ (live.tools.queryFanOut + live.tools.llmQueryBuilder + live.tools.aiHumanizer) | number }}</div><div class="stat-chip-lbl">practitioners using the SEO tools I built</div></div>
       </div>
+      <p class="hero-updated reveal d3">Figures updated {{ live.updatedAt | readableDate }} · {{ live.updatedBy }}</p>
 
+      <p class="hero-press reveal d3">
+        <span class="hero-press-tag">Method</span>
+        I ran a permutation null against my own published citation study and retracted two headline findings.
+        <a href="/blog/breaking-my-own-study/">Read how →</a>
+      </p>
       <p class="hero-press reveal d3">
         <span class="hero-press-tag">Featured in</span>
         <a href="https://searchengineland.com/guide/topic-clusters-for-ai-search" target="_blank" rel="noopener">Search Engine Land</a>
-        — its guide to topic clusters for AI search runs on the Query Fan-Out Generator I built.
+        — its guide to topic clusters for AI search runs on the Query Fan-Out Generator I built at Wellows. The article credits Wellows; <a href="https://www.linkedin.com/posts/saleemahrar_i-have-always-believed-that-when-you-want-activity-7395425630474907648-Zn_i" target="_blank" rel="noopener">the COO&rsquo;s post</a> on the experiment behind it names me.
       </p>
       <div class="hero-btns reveal d4">
         <a href="/work/" class="btn-primary">See the Proof →</a>
-        <a href="/tools/" class="btn-ghost">Try My Free Tools</a>
+        <a href="/cv/" class="btn-ghost">Read my CV</a>
       </div>
     </div>
     <div class="hero-right reveal d2">
-      <div class="hero-photo-wrap">
-        <img class="hero-photo" src="/static/img/khadija-hero.webp" alt="Khadija Zaman, AI Search Manager, SEO, AEO and GEO specialist" width="420" height="420" fetchpriority="high" decoding="async">
+      <!-- Citation graph: nodes and edges are drawn by the script at the foot of
+           this page from the CG_ENGINES / CG_STACK / CG_PROMPTS lists there.
+           Edit those lists, not the SVG. -->
+      <div class="cg">
+        <svg id="cg-svg" viewBox="0 0 560 540" aria-hidden="true" focusable="false">
+          <circle class="cg-glow" cx="280" cy="240" r="122"></circle>
+          <circle class="cg-ring" cx="280" cy="240" r="96"></circle>
+          <g id="cg-edges"></g>
+          <g id="cg-nodes"></g>
+        </svg>
+        <img class="cg-photo" src="/static/img/khadija-hero.webp" alt="Khadija Zaman, SEO and AI search lead" width="420" height="420" fetchpriority="high" decoding="async">
+        <form class="cg-prompt" id="cg-form" aria-label="Ask what you are looking for; the answer is a page on this site">
+          <div class="cg-q" id="cg-qwrap" aria-live="polite"><span id="cg-q">How do I structure topic clusters for AI search? <a class="cg-chip" href="https://searchengineland.com/guide/topic-clusters-for-ai-search" target="_blank" rel="noopener">Search Engine Land guide</a></span><span class="cg-caret" aria-hidden="true"></span></div>
+          <label class="sr-only" for="cg-input">Ask what you are looking for</label>
+          <input class="cg-input" id="cg-input" type="text" placeholder="Ask about my work, tools, or results…" autocomplete="off" maxlength="120" hidden>
+          <div class="cg-bar"><button type="button" class="cg-ask" id="cg-ask">Ask your own question</button><button type="submit" class="cg-send" id="cg-send" aria-label="Ask">↑</button></div>
+          <div class="cg-src" id="cg-src">The guide runs on the Query Fan-Out Generator I built</div>
+        </form>
+      </div>
+      <!-- Under 768px the SVG is hidden and this one-axis version shows instead. -->
+      <div class="cg-mobile">
+        <img class="cg-m-photo" src="/static/img/khadija-hero.webp" alt="Khadija Zaman, SEO and AI search lead" width="132" height="132" fetchpriority="high" decoding="async">
+        <div class="cg-m-spokes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <ul class="cg-m-chips" aria-label="Visible across these engines">
+          <li>Google</li><li>ChatGPT</li><li>Gemini</li><li>Perplexity</li><li>AI Overviews</li>
+        </ul>
+        <div class="cg-m-prompt">
+          <p id="cg-m-q" aria-live="polite">How do I structure topic clusters for AI search? <a class="cg-chip" href="https://searchengineland.com/guide/topic-clusters-for-ai-search" target="_blank" rel="noopener">Search Engine Land</a></p>
+          <form class="cg-m-form" id="cg-m-form"><label class="sr-only" for="cg-m-input">Ask what you are looking for</label><input id="cg-m-input" type="text" placeholder="Ask about my work…" autocomplete="off" maxlength="120"><button type="submit">Ask</button></form>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ MARQUEE TICKER ══════════════ -->
-<div class="marquee" aria-label="Areas of specialism">
-  <div class="marquee-track" id="marquee-track">
-    <span class="marquee-item">Semantic SEO</span><span class="marquee-dot"></span>
-    <span class="marquee-item">Generative Engine Optimization</span><span class="marquee-dot"></span>
-    <span class="marquee-item">Answer Engine Optimization</span><span class="marquee-dot"></span>
-    <span class="marquee-item">LLM Visibility</span><span class="marquee-dot"></span>
-    <span class="marquee-item">Query Fan-Out</span><span class="marquee-dot"></span>
-    <span class="marquee-item">Entity SEO</span><span class="marquee-dot"></span>
-    <span class="marquee-item">Content Strategy</span><span class="marquee-dot"></span>
-    <span class="marquee-item">Technical SEO</span><span class="marquee-dot"></span>
-    <span class="marquee-item">Marketing Automation</span><span class="marquee-dot"></span>
+<!-- ══════════════ PROOF STRIP ══════════════
+     Three proof points, each a link to the page that backs it. Replaces the
+     marquee and the four-number impact bar: the reviewer's read was that the
+     retraction and the Search Engine Land feature were buried six screens
+     down, and that "6 projects" over-promised. -->
+<div class="impact-bar" aria-label="Three proof points">
+  <div class="impact-bar-inner impact-bar-3">
+    <a class="impact-num impact-link reveal" href="/work/wellows-ai-visibility/">
+      <div class="impact-num-val">{{ live.llm.wellows.multiplier }}× LLM traffic</div>
+      <div class="impact-num-lbl">LLM referral sessions at Wellows, {{ live.llm.wellows.window }}, from {{ live.llm.wellows.baseline }}/month, $0 paid ({{ live.llm.wellows.source }}). A separate {{ live.llm.confidential.multiplier }}× over {{ live.llm.confidential.window }} for a {{ live.llm.confidential.client }} is listed on the work page.</div>
+    </a>
+    <div class="impact-divider" aria-hidden="true"></div>
+    <a class="impact-num impact-link reveal d1" href="/blog/breaking-my-own-study/">
+      <div class="impact-num-val">2 retracted</div>
+      <div class="impact-num-lbl">Headline findings I withdrew from my own published citation study after a permutation-null test</div>
+    </a>
+    <div class="impact-divider" aria-hidden="true"></div>
+    <a class="impact-num impact-link reveal d2" href="/work/#press">
+      <div class="impact-num-val">Search Engine Land</div>
+      <div class="impact-num-lbl">Its guide to topic clusters for AI search runs on the Query Fan-Out Generator I built at Wellows</div>
+    </a>
   </div>
 </div>
 
-<!-- ══════════════ IMPACT BAR ══════════════ -->
-<div class="impact-bar" aria-label="Impact at a glance">
-  <div class="impact-bar-inner">
-    <div class="impact-num reveal"><div class="impact-num-val">22×</div><div class="impact-num-lbl">LLM referral traffic, 12 months</div></div>
-    <div class="impact-divider" aria-hidden="true"></div>
-    <div class="impact-num reveal d1"><div class="impact-num-val">+121%</div><div class="impact-num-lbl">GSC clicks YoY · AllAboutAI author pages</div></div>
-    <div class="impact-divider" aria-hidden="true"></div>
-    <div class="impact-num reveal d2"><div class="impact-num-val">1,647</div><div class="impact-num-lbl">Practitioners using my tools</div></div>
-    <div class="impact-divider" aria-hidden="true"></div>
-    <div class="impact-num reveal d3"><div class="impact-num-val">4</div><div class="impact-num-lbl">Industries: SaaS, cyber, affiliate, agency</div></div>
-  </div>
-</div>
-
-<!-- ══════════════ EXPERTISE ══════════════ -->
-<section id="expertise" aria-label="Expertise" class="sec-3d">
-  <canvas id="exp-3d" aria-hidden="true" class="sec-canvas"></canvas>
-  <div class="sec-bg-orb sec-orb-1" aria-hidden="true"></div>
-  <div class="wrap" style="position: relative; z-index: 1;">
-    <div class="sec-tag reveal">What I Do</div>
-    <h2 class="sec-h2 reveal d1">Four disciplines. One integrated system.</h2>
-    <p class="sec-lead reveal d2">SEO, AI search visibility, content strategy, and marketing automation. Most teams hire separately for each. I run them as one compounding system where every discipline accelerates the others.</p>
-    <div class="exp-grid exp-grid-4">
-      <div class="exp-card reveal"><div class="exp-icon ei-indigo"><span class="exp-num">01</span></div><h3>SEO Management</h3><p>Full-program SEO ownership: technical audits, site architecture, crawl optimization, Core Web Vitals, schema markup, and indexation governance. I build the compounding foundations competitors take months to catch up to.</p></div>
-      <div class="exp-card reveal d1"><div class="exp-icon ei-violet"><span class="exp-num">02</span></div><h3>AI Search Visibility</h3><p>GEO and AEO for brands that need to be cited, not just ranked. Entity frameworks, retrieval-ready content, and structured signals that put your brand inside ChatGPT, Gemini, Claude, and Google AI Overviews before your competitors appear.</p></div>
-      <div class="exp-card reveal d2"><div class="exp-icon ei-amber"><span class="exp-num">03</span></div><h3>Content Strategy</h3><p>Topic cluster architecture, search intent modeling, and editorial frameworks built for how AI models interpret authority. Content that ranks today and earns citations tomorrow, without needing a full production team to maintain it.</p></div>
-      <div class="exp-card reveal d3"><div class="exp-icon ei-cyan"><span class="exp-num">04</span></div><h3>Marketing Automation</h3><p>LLM and n8n workflows that eliminate manual reporting, content production overhead, and repetitive SEO tasks. Auditable systems with measurable output quality, built so teams scale execution without scaling headcount.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════ FEATURED WORK TEASER ══════════════ -->
+<!-- ══════════════ WORK ══════════════ -->
 <section id="work" class="cases-sec sec-3d" aria-label="Selected Work" style="background: var(--bg-1);">
   <canvas id="cases-3d" aria-hidden="true" class="sec-canvas"></canvas>
   <div class="sec-bg-orb sec-orb-2" aria-hidden="true"></div>
   <div class="wrap" style="position: relative; z-index: 1;">
     <div class="sec-tag reveal">Selected Work</div>
     <h2 class="sec-h2 reveal d1">The work, not the pitch</h2>
-    <p class="sec-lead reveal d2">Five projects across AEO/LLM visibility, SEO management, content strategy, and product launches — each with a clear problem, a clear approach, and numbers that hold up. Here's the headline one.</p>
-    <div class="cases-grid">
-      <div class="case-card featured reveal">
-        <div class="case-card-top-bar bar-green"></div>
-        <div class="case-pill pill-green">AEO / LLM Visibility · Featured</div>
-        <div class="case-meta">Wellows · July 2025 – Feb 2026 · Source: GA4 / Looker Studio / GSC</div>
-        <div class="case-nums">
-          <div><div class="cn-val green">9×</div><div class="cn-lbl">LLM Sessions, 4 Months<span class="cn-note">from a 176/month baseline</span></div></div>
-          <div><div class="cn-val green">28.9→17.3</div><div class="cn-lbl">Avg. SERP Position</div></div>
-          <div><div class="cn-val green">45s→6+ min</div><div class="cn-lbl">Session Duration</div></div>
-          <div><div class="cn-val green">3.78M</div><div class="cn-lbl">GSC Impressions</div></div>
-          <div><div class="cn-val green">$0</div><div class="cn-lbl">Paid Spend</div></div>
-        </div>
-        <h3>9× LLM Visibility and #1–#2 Tool Rankings — Built Entirely on AEO, $0 Paid</h3>
-        <p>Wellows started with near-zero LLM visibility and no citation footprint. I built measurable AI-search presence from scratch — zero paid spend.</p>
-        <ul class="case-approach">
-          <li><b>AEO framework.</b> Koray Tuğberk's logic + Google's query fan-out patent for LLM retrieval.</li>
-          <li><b>Citation experiments.</b> Grounded vs. non-grounded tests tracking explicit and implicit AI visibility.</li>
-          <li><b>Tool- &amp; community-led.</b> Three AI tools as LLM entry points; AEO across Reddit, Quora, G2; n8n + GA4 reporting.</li>
-        </ul>
-        <div class="case-growth">
-          <div class="case-growth-label">Search growth · GSC-verified (Wellows + AllAboutAI author pages)</div>
-          <div class="case-growth-grid">
-            <figure class="case-shot">
-              <a href="/static/uploads/gsctrafficgrowth.png" target="_blank" rel="noopener"><img src="/static/uploads/gsctrafficgrowth.png" alt="Wellows Google Search Console: 7.27K clicks and 3.78M impressions over the last 3 months, average position improving from 28.9 to 17.3" loading="lazy"></a>
-              <figcaption>Wellows, site-wide — 7.27K clicks · 3.78M impressions · avg. position 28.9 → 17.3 (last 3 months vs. previous)</figcaption>
-            </figure>
-            <figure class="case-shot">
-              <a href="/static/uploads/recognition/author-pages-yoy.jpg" target="_blank" rel="noopener"><img src="/static/uploads/recognition/author-pages-yoy.jpg" alt="AllAboutAI author Google Search Console year over year: clicks 10.7K to 23.6K and impressions 275K to 928K, 2025 vs 2024" loading="lazy"></a>
-              <figcaption>AllAboutAI author pages — year over year: 10.7K → 23.6K clicks · 275K → 928K impressions (2025 vs. 2024)</figcaption>
-            </figure>
-          </div>
-        </div>
+    <p class="sec-lead reveal d2">Three case studies with full write-ups, and four further results with headline figures only. Every number names its source and its window.</p>
+    <div class="mini-grid">
+      <a class="mini-case reveal" href="/work/wellows-ai-visibility/">
+        <div class="case-pill pill-green">AEO / LLM Visibility · Case study</div>
+        <div class="mini-val">{{ live.llm.wellows.multiplier }}× LLM sessions in {{ live.llm.wellows.window }}</div>
+        <h3>AI visibility from near-zero: {{ live.llm.wellows.multiplier }}× LLM traffic in {{ live.llm.wellows.window }} on $0 paid spend</h3>
+        <p>Wellows, in-house, {{ live.llm.wellows.range }}. LLM referral sessions from a {{ live.llm.wellows.baseline }}/month baseline; average position 28.9 → 17.3. {{ live.llm.wellows.source }} and Search Console.</p>
+        <span class="post-more">Read the case study →</span>
+      </a>
+      <a class="mini-case reveal d1" href="/work/core-update-recovery/">
+        <div class="case-pill pill-green">SEO Management · Case study</div>
+        <div class="mini-val">Position 32 → 8.2</div>
+        <h3>Losing 70% of organic clicks, then recovering to position 8.2</h3>
+        <p>A high-volume publisher, confidential. Five workstreams run by one owner. Search Console, 12 months to May 2026.</p>
+        <span class="post-more">Read the case study →</span>
+      </a>
+      <a class="mini-case reveal d2" href="/work/ranking-breakthrough/">
+        <div class="case-pill pill-blue">Content Strategy · Case study</div>
+        <div class="mini-val">Position 55 → 20s, held 11 weeks</div>
+        <h3>Stuck near position 55 for two months, into the 20s in days</h3>
+        <p>Confidential property. A mid-September step change that held for eleven weeks. Search Console, July – November 2025.</p>
+        <span class="post-more">Read the case study →</span>
+      </a>
+      <div class="mini-case mini-summary reveal">
+        <div class="case-pill pill-green">Brand Authority · Summary</div>
+        <div class="mini-val">{{ (live.tools.queryFanOut + live.tools.llmQueryBuilder + live.tools.aiHumanizer) | number }} users, zero paid</div>
+        <h3>Three SEO tools built at Wellows, acquired entirely through organic search</h3>
+        <p>Query Fan-Out Generator, LLM Query Builder, AI Humanizer. Headline figures only, reconciled on the <a href="/tools/">tools page</a>.</p>
+      </div>
+      <div class="mini-case mini-summary reveal d1">
+        <div class="case-pill pill-blue">Content Strategy · Summary</div>
+        <div class="mini-val">8K → 25K monthly sessions</div>
+        <h3>Topic cluster architecture for an affiliate site, six months</h3>
+        <p>Intent-mapped clusters and internal linking, no technical overhaul. Headline figures only; no full write-up on this site.</p>
+      </div>
+      <div class="mini-case mini-summary reveal d2">
+        <div class="case-pill pill-green">AEO / LLM Visibility · Summary</div>
+        <div class="mini-val">{{ live.llm.confidential.multiplier }}× LLM referral traffic, {{ live.llm.confidential.window }}</div>
+        <h3>LLM referral growth for a confidential client</h3>
+        <p>A separate engagement from the Wellows study. {{ live.llm.confidential.source }}; the client and baseline are not published. Headline figure only; no full write-up on this site.</p>
+      </div>
+      <div class="mini-case mini-summary reveal d2">
+        <div class="case-pill pill-green">Product Launch · Summary</div>
+        <div class="mini-val">447 users · 110 paying signups</div>
+        <h3>KIVA launch: #1 U.S. rating on All About AI, all organic</h3>
+        <p>Positioning, launch content, SEO-led distribution and partnerships. Headline figures only; no full write-up on this site.</p>
       </div>
     </div>
     <div class="work-teaser-foot reveal d1">
-      <a href="/work/" class="btn-primary">See all five case studies →</a>
+      <a href="/work/" class="btn-primary">All case studies and the proof behind them →</a>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ TOOLS TEASER ══════════════ -->
-<section id="tools" class="sec-3d" aria-label="Proprietary Tools">
-  <canvas id="tools-3d" aria-hidden="true" class="sec-canvas"></canvas>
-  <div class="sec-bg-orb sec-orb-3" aria-hidden="true"></div>
+<!-- ══════════════ EXPERTISE ══════════════
+     AI search visibility leads and takes the most space; the other three
+     are framed as what makes the citations arrive, not as parallel services. -->
+<section id="expertise" aria-label="Expertise" class="sec-3d">
+  <canvas id="exp-3d" aria-hidden="true" class="sec-canvas"></canvas>
+  <div class="sec-bg-orb sec-orb-1" aria-hidden="true"></div>
   <div class="wrap" style="position: relative; z-index: 1;">
-    <div class="sec-tag reveal">Proprietary Tools</div>
-    <h2 class="sec-h2 reveal d1" style="max-width:620px">Tools I built to bridge search science and AI retrieval</h2>
-    <p class="sec-lead reveal d2">Three instruments grounded in Google patent research, used by 1,647 practitioners worldwide, acquired entirely through organic search — plus <a href="/tools/#open-source" style="color:#93C5FD;text-decoration:none;font-weight:600;">six open-source SEO projects on GitHub</a>.</p>
-    <div class="tools-grid">
-      <div class="tool-card reveal"><div class="tool-badge">Google Patent-Based · Featured in Search Engine Land</div><h3>Query Fan-Out Generator</h3><p>Built on Google's Query Fan-Out patent research, it generates the full semantic expansion of any seed query — 40+ intent-classified variants — so your content covers how search engines and LLMs interpret intent, not just exact-match keywords. 829 active users in my tracking period.</p><a href="/tools/#query-fan-out-generator" class="tool-link">Explore the tool →</a></div>
-      <div class="tool-card reveal d1"><div class="tool-badge">AI Search · 149 Users</div><h3>LLM Query Builder</h3><p>Constructs optimized query structures for LLM-based SEO research and entity mapping. Built for practitioners who need to work with AI retrieval systematically, not ad hoc.</p><a href="/tools/#llm-query-builder" class="tool-link">Explore the tool →</a></div>
-      <div class="tool-card reveal d2"><div class="tool-badge">669 Users · 60–72% Engagement</div><h3>AI Humanizer</h3><p>Transforms AI-generated drafts into content that reads naturally, holds topical depth, and aligns with how LLMs evaluate quality signals. Users work with it, not through it.</p><a href="/tools/#ai-humanizer" class="tool-link">Explore the tool →</a></div>
+    <div class="sec-tag reveal">What I Do</div>
+    <h2 class="sec-h2 reveal d1">AI search visibility, and the SEO that makes it land</h2>
+    <p class="sec-lead reveal d2">Getting a brand cited inside ChatGPT, Gemini, Perplexity and AI Overviews is the job. Semantic SEO, content architecture and automation are what make the citations arrive and keep arriving.</p>
+    <div class="exp-grid exp-grid-lead">
+      <div class="exp-card exp-card-lead reveal">
+        <div class="exp-icon ei-violet"><span class="exp-num">01</span></div>
+        <h3>AI Search Visibility (GEO / AEO)</h3>
+        <p>Entity frameworks built from Google's query fan-out patent and Koray Tuğberk's semantic model, so content is structured the way retrieval systems select and quote it. Grounded versus non-grounded citation experiments that track explicit citations and implicit brand mentions separately, because they move independently. Free tools built as LLM entry points, answers placed where models read (Reddit, Quora, G2), and LLM referral traffic segmented in GA4 so the result is measured, not assumed.</p>
+        <p>The method is public: <a href="/blog/get-cited-by-ai-search/">the retrieval-readiness checklist</a>, <a href="/blog/geo-aeo-vs-seo/">how SEO, AEO and GEO sequence</a>, and <a href="/blog/breaking-my-own-study/">the study I tried to break</a>.</p>
+      </div>
+      <div class="exp-card reveal d1"><div class="exp-icon ei-indigo"><span class="exp-num">02</span></div><h3>Semantic &amp; Technical SEO</h3><p>What gets a page retrieved in the first place: site architecture, crawl and indexation governance, schema, Core Web Vitals, and the semantic coverage that makes a domain the obvious source on its topic.</p></div>
+      <div class="exp-card reveal d2"><div class="exp-icon ei-amber"><span class="exp-num">03</span></div><h3>Content Architecture</h3><p>Topic clusters and intent mapping built for how models interpret authority, so a site earns citations across a topic rather than on one lucky page.</p></div>
+      <div class="exp-card reveal d3"><div class="exp-icon ei-cyan"><span class="exp-num">04</span></div><h3>Measurement &amp; Automation</h3><p>Python, BigQuery and n8n pipelines that pull GA4 and Search Console data, segment LLM referrals, and report without anyone exporting a spreadsheet. Auditable, so a number can be checked.</p></div>
     </div>
   </div>
 </section>
@@ -282,10 +406,10 @@
   <div class="wrap">
     <div class="sec-tag reveal">From the Blog</div>
     <h2 class="sec-h2 reveal d1">Field notes on SEO &amp; AI search</h2>
-    <p class="sec-lead reveal d2">Practical breakdowns on ranking in Google, getting cited by ChatGPT, Gemini, and Perplexity, and the automations that make it repeatable.</p>
+    <p class="sec-lead reveal d2">Practical breakdowns on ranking in Google, getting cited by ChatGPT, Gemini and Perplexity, and the automations that make it repeatable.</p>
     <!-- Auto-updating: shows the 3 newest posts from src/posts/ automatically. -->
     <div class="post-grid">
-      {% for post in collections.posts | limit(3) %}
+      {% for post in collections.posts | limit(2) %}
       <a class="post-card reveal{% if loop.index0 == 1 %} d1{% elif loop.index0 == 2 %} d2{% endif %}" href="{{ post.url }}">
         <div class="post-meta"><span class="post-cat">{{ post.data.category }}</span><span class="post-date">{{ post.data.date | readableDate }} · {{ post.data.readTime }}</span></div>
         <h3>{{ post.data.title }}</h3>
@@ -298,32 +422,16 @@
   </div>
 </section>
 
-<!-- ══════════════ NEWSLETTER ══════════════ -->
-<section class="newsletter" aria-label="Newsletter">
-  <div class="newsletter-glow" aria-hidden="true"></div>
-  <div class="newsletter-inner">
-    <div class="sec-tag reveal" style="justify-content:center;">The Newsletter</div>
-    <h2 class="reveal d1">Field notes on <span class="grad-text">SEO &amp; AI search</span></h2>
-    <p class="reveal d2">Practical breakdowns on ranking in Google and getting cited by ChatGPT, Gemini, and Perplexity — plus the automations that make it repeatable. No fluff, no sales pitch.</p>
-    <form class="newsletter-form reveal d2" id="newsletter-form">
-      <label class="hp-field" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
-      <input type="email" name="email" placeholder="you@company.com" aria-label="Email address" required>
-      <button type="submit">Subscribe →</button>
-    </form>
-    <div class="newsletter-note reveal d3">Join practitioners reading along. Unsubscribe anytime.</div>
-  </div>
-</section>
-
 <!-- ══════════════ CTA ══════════════ -->
-<section class="contact-sec" aria-label="Work together">
+<section class="contact-sec" aria-label="Hire me">
   <div class="contact-glow" aria-hidden="true"></div>
   <div class="contact-inner wrap">
-    <div class="sec-tag reveal" style="justify-content:center;">Work With Me</div>
-    <h2 class="sec-h2 reveal d1" style="font-size:clamp(2rem,4vw,3.25rem);">Let's make your brand<br><span class="grad-text">impossible to ignore.</span></h2>
-    <p class="sec-lead reveal d2">Whether you're hiring an AI Search or SEO lead, or need specialist strategy across SEO, AEO, GEO, and content — tell me what you're building.</p>
+    <div class="sec-tag reveal" style="justify-content:center;">Hiring</div>
+    <h2 class="sec-h2 reveal d1" style="font-size:clamp(2rem,4vw,3.25rem);">Hiring an SEO or<br><span class="grad-text">AI search lead?</span></h2>
+    <p class="sec-lead reveal d2">Full-time or contract, in-house. Tell me about the role and what you're building. I reply within 48 hours with a direct read, not a pitch.</p>
     <div class="hero-btns reveal d2" style="justify-content:center;">
       <a href="/contact/" class="btn-primary">Start a Conversation →</a>
-      <a href="/about/" class="btn-ghost">More About Me</a>
+      <a href="/cv/" class="btn-ghost">Read or download my CV</a>
     </div>
   </div>
 </section>
@@ -335,22 +443,194 @@
   <div class="footer-in">
     <div class="footer-brand">
       <a href="/" class="nav-logo">Khadija Zaman</a>
-      <p>AI Search Manager at Disrupt.com [Wellows] — SEO, AEO, and GEO run as one system: 22× LLM referral traffic, 680K → 3.78M Google impressions, all organic. Karachi, Pakistan · working worldwide.</p>
+      <p>SEO and AI search lead (GEO/AEO), in-house at Wellows. Semantic SEO, content strategy and marketing automation, run as one system. Karachi, Pakistan.</p>
     </div>
     <div class="footer-cols">
-      <div class="footer-col"><h5>Site</h5><a href="/about/">About</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/">Contact</a></div>
+      <div class="footer-col"><h5>Site</h5><a href="/about/">About</a><a href="/cv/">CV</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/">Contact</a></div>
       <div class="footer-col"><h5>Work</h5><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
       <div class="footer-col"><h5>Connect</h5><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a><a href="mailto:hello@khadijazaman.com">Email</a></div>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Khadija Zaman · AI Search Manager · Karachi, Pakistan</div>
+    <div class="footer-copy">© 2026 Khadija Zaman · SEO &amp; AI Search Lead · Karachi, Pakistan</div>
     <div class="footer-copy">Built to be ranked by search engines and cited by answer engines.</div>
   </div>
 </footer>
 
 <script src="/js/site.js" defer></script>
+{#- Data for the hero script: live figures plus a search index of tools, posts, case studies and pages. -#}
+{%- set cgIndex = [] %}
+{%- for p in collections.posts %}{% set _ = cgIndex.push({ "t": p.data.title, "d": p.data.description, "u": p.url, "g": "Blog · " + p.data.category, "k": p.data.category }) %}{% endfor %}
+{%- for c in caseStudies %}{% set _ = cgIndex.push({ "t": c.title, "d": c.description, "u": "/work/" + c.slug + "/", "g": "Case study · " + c.pill, "k": c.pill + " " + (c.client or "") + " results case study proof numbers" }) %}{% endfor %}
+<script id="cg-data" type="application/json">{{ { "live": live, "fmt": { "impressions": live.gsc.impressions | compact, "impressionsBefore": live.gsc.impressionsBefore | compact, "users": (live.tools.queryFanOut + live.tools.llmQueryBuilder + live.tools.aiHumanizer) | number, "queryFanOut": live.tools.queryFanOut | number }, "index": askIndex.concat(cgIndex) } | dump | safe }}</script>
 {% raw %}
+<script>
+/* ── Hero citation graph + question box (self-contained, no CDN) ──
+   CG_ENGINES / CG_STACK draw the graph; each entry carries the prompt shown
+   when the visitor clicks it. Every chip links to a real page, never a claim.
+   The question box matches what the visitor types against the site index
+   emitted in #cg-data (tools, posts, case studies, pages). No model, no
+   network: it is a guide to the site, and says so. */
+(function () {
+  var data = {};
+  try { data = JSON.parse(document.getElementById('cg-data').textContent); } catch (e) {}
+  var LIVE = data.live || {}, FMT = data.fmt || {}, INDEX = data.index || [];
+  var gsc = LIVE.gsc || {}, llm = LIVE.llm || {};
+
+  var CG_ENGINES = [
+    { label: 'Google',       angle: -140, r: 205, prompt: { q: 'What does Search Engine Land recommend for topic clusters? ', chip: 'Search Engine Land guide', href: 'https://searchengineland.com/guide/topic-clusters-for-ai-search', src: 'The guide runs on the Query Fan-Out Generator I built' } },
+    { label: 'ChatGPT',      angle:  -40, r: 205, prompt: { q: 'How do I get my brand cited by ChatGPT? ', chip: 'Read the checklist', href: '/blog/get-cited-by-ai-search/', src: 'The retrieval-readiness checklist I use' } },
+    { label: 'Gemini',       angle:    5, r: 220, prompt: { q: 'Why does ranking #1 not mean Gemini cites you? ', chip: 'SEO vs AEO vs GEO', href: '/blog/geo-aeo-vs-seo/', src: 'Where the three layers diverge, and how to sequence them' } },
+    { label: 'Perplexity',   angle:   45, r: 205, prompt: { q: 'How do you measure citations in Perplexity? ', chip: 'Breaking my own study', href: '/blog/breaking-my-own-study/', src: 'A cross-engine citation study, rebuilt and tested against a null' } },
+    { label: 'AI Overviews', angle:  165, r: 210, prompt: { q: 'Why did clicks fall while rankings recovered? ', chip: 'Core update recovery', href: '/work/core-update-recovery/', src: 'Position 32 back to 8.2, with AI Overview absorption flagged as an inference' } }
+  ];
+  /* nearest: index into CG_ENGINES the faint line runs to */
+  var CG_STACK = [
+    { label: 'GSC',    angle: -100, r: 262, nearest: 0, prompt: { q: 'How do you verify search growth? ', chip: 'Wellows case study', href: '/work/wellows-ai-visibility/', src: 'Search Console · ' + FMT.impressions + ' impressions, ' + (gsc.window || '12 months') + ', avg. position ' + gsc.avgPositionBefore + ' → ' + gsc.avgPosition } },
+    { label: 'GA4',    angle:  -20, r: 275, nearest: 1, prompt: { q: 'How do you track LLM referral traffic? ', chip: (llm.wellows || {}).multiplier + '× in ' + ((llm.wellows || {}).window || '8 months'), href: '/work/wellows-ai-visibility/', src: 'GA4 · Wellows LLM referral sessions from ' + (llm.wellows || {}).baseline + '/month, ' + (llm.wellows || {}).multiplier + '× over ' + ((llm.wellows || {}).window || '8 months') + ', $0 paid' } },
+    { label: 'n8n',    angle:   28, r: 272, nearest: 2, prompt: { q: 'How do you automate SEO reporting? ', chip: 'Marketing automation', href: '/#expertise', src: 'n8n and LLM workflows wired into GA4 reporting, so the numbers arrive without anyone exporting them.' } },
+    { label: 'Ahrefs', angle:  200, r: 262, nearest: 4, prompt: { q: 'How do you audit a site that lost 70% of its clicks? ', chip: 'Five workstreams, one owner', href: '/work/core-update-recovery/', src: 'Technical, semantic, topical authority, internal links, third-party mentions' } },
+    { label: 'Looker', angle:  150, r: 262, nearest: 4, prompt: { q: 'Where do the dashboards live? ', chip: 'GA4 + Looker reporting', href: '/work/wellows-ai-visibility/', src: 'Sources on every case study: GA4, Looker Studio, Search Console' } }
+  ];
+  var CG_PROMPTS = [
+    { q: 'How do I structure topic clusters for AI search? ', chip: 'Search Engine Land guide', href: 'https://searchengineland.com/guide/topic-clusters-for-ai-search', src: 'The guide runs on the Query Fan-Out Generator I built' },
+    { q: 'What is query fan-out and how do I use it? ', chip: 'Query Fan-Out Generator', href: '/tools/#tool-query-fan-out', src: 'Built on Google’s query fan-out patent' + (FMT.queryFanOut ? ' · ' + FMT.queryFanOut + ' active users' : '') },
+    { q: 'How do I research entities for LLM visibility? ', chip: 'LLM Query Builder', href: '/tools/#tool-llm-query-builder', src: 'Built for practitioners who work with AI retrieval systematically' }
+  ];
+
+  var svg = document.getElementById('cg-svg'); if (!svg) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var C = { x: 280, y: 240 };
+  var edges = document.getElementById('cg-edges'), nodes = document.getElementById('cg-nodes');
+
+  function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+  function text(parent, x, y, str, cls) { var t = el('text', { x: x, y: y, 'text-anchor': 'middle', 'dominant-baseline': 'middle' }, parent); if (cls) t.setAttribute('class', cls); t.textContent = str; return t; }
+  function pt(angle, r) { var a = angle * Math.PI / 180; return { x: C.x + Math.cos(a) * r, y: C.y + Math.sin(a) * r }; }
+  var enginePts = CG_ENGINES.map(function (n) { return pt(n.angle, n.r); });
+  var allNodes = [];   /* { g, edges:[], prompt } */
+
+  /* highlight: a node and its lines stay lit, everything else fades */
+  var pinned = null;
+  function highlight(node) {
+    var on = node || pinned;
+    svg.classList.toggle('cg-focus', !!on);
+    allNodes.forEach(function (n) {
+      var hit = n === on;
+      n.g.classList.toggle('on', hit);
+      n.edges.forEach(function (e) { e.classList.toggle('on', hit); });
+    });
+  }
+  function wire(node) {
+    node.g.addEventListener('mouseenter', function () { highlight(node); });
+    node.g.addEventListener('mouseleave', function () { highlight(null); });
+    node.g.addEventListener('click', function () { pinned = (pinned === node) ? null : node; highlight(null); if (pinned) ask.showPrompt(node.prompt, true); else ask.resume(); });
+  }
+
+  CG_ENGINES.forEach(function (n, i) {
+    var p = enginePts[i], own = [];
+    /* dashed line out (the query fanning out), curved line back (the citation returning) */
+    own.push(el('path', { d: 'M' + C.x + ' ' + C.y + ' L' + p.x + ' ' + p.y, 'class': 'cg-out' }, edges));
+    var mid = { x: (C.x + p.x) / 2 + (p.y - C.y) * 0.18, y: (C.y + p.y) / 2 - (p.x - C.x) * 0.18 };
+    var back = el('path', { id: 'cg-back-' + i, d: 'M' + p.x + ' ' + p.y + ' Q' + mid.x + ' ' + mid.y + ' ' + C.x + ' ' + C.y, 'class': 'cg-back' }, edges);
+    own.push(back);
+    if (!reduce) {
+      var dot = el('circle', { r: 3, fill: '#38BDF8' }, edges);
+      var motion = el('animateMotion', { dur: (2.4 + i * 0.35) + 's', repeatCount: 'indefinite', begin: (-i * 0.7) + 's' }, dot);
+      el('mpath', { href: '#' + back.id }, motion);
+    }
+    var w = n.label.length * 8.6 + 44, h = 38;
+    var g = el('g', { 'class': 'cg-node' }, nodes);   /* pointer-only: the SVG is aria-hidden; the question box covers keyboard users */
+    el('title', {}, g).textContent = n.prompt.q.trim();
+    el('rect', { x: p.x - w / 2, y: p.y - h / 2, width: w, height: h, rx: 11 }, g);
+    el('circle', { cx: p.x - w / 2 + 18, cy: p.y, r: 5, fill: '#38BDF8' }, g);
+    text(g, p.x + 9, p.y + 1, n.label);
+    var node = { g: g, edges: own, prompt: n.prompt, label: n.label }; allNodes.push(node); wire(node);
+  });
+
+  CG_STACK.forEach(function (n) {
+    var p = pt(n.angle, n.r), q = enginePts[n.nearest];
+    var faint = el('path', { d: 'M' + q.x + ' ' + q.y + ' L' + p.x + ' ' + p.y, 'class': 'cg-faint' }, edges);
+    var g = el('g', { 'class': 'cg-node cg-hex' }, nodes);
+    el('title', {}, g).textContent = n.prompt.q.trim();
+    var pts = [];
+    for (var k = 0; k < 6; k++) { var a = (60 * k - 30) * Math.PI / 180; pts.push((p.x + Math.cos(a) * 17).toFixed(1) + ',' + (p.y + Math.sin(a) * 17).toFixed(1)); }
+    el('polygon', { points: pts.join(' ') }, g);
+    text(g, p.x, p.y + 1, n.label);
+    var node = { g: g, edges: [faint], prompt: n.prompt, label: n.label }; allNodes.push(node); wire(node);
+  });
+
+  /* ── question box: match the visitor's words to a page on this site ── */
+  var STOP = /^(the|a|an|and|or|of|to|in|on|for|is|are|do|does|did|how|what|why|who|which|where|when|i|my|me|you|your|can|with|about|it|this|that|get|be|by|from|any|some|help|need|want|tell|show|please)$/;
+  function tokens(str) { return String(str || '').toLowerCase().replace(/[^a-z0-9#×\s-]/g, ' ').split(/\s+/).filter(function (w) { return w.length > 1 && !STOP.test(w); }); }
+  function stem(w) { return w.replace(/(ies|ing|ed|s)$/, function (m) { return m === 'ies' ? 'y' : ''; }); }
+  function search(query) {
+    var qs = tokens(query).map(stem); if (!qs.length) return null;
+    var best = null, bestScore = 0;
+    /* engine and stack nodes answer by name */
+    allNodes.forEach(function (n) { var l = n.label.toLowerCase().replace(/\s/g, ''); if (query.toLowerCase().replace(/\s/g, '').indexOf(l) !== -1) { if (4 > bestScore) { bestScore = 4; best = { prompt: n.prompt, node: n }; } } });
+    INDEX.forEach(function (e) {
+      var tt = tokens(e.t).map(stem), kk = tokens(e.k).map(stem), dd = tokens(e.d).map(stem), score = 0;
+      qs.forEach(function (w) { if (tt.indexOf(w) !== -1) score += 3; else if (kk.indexOf(w) !== -1) score += 2; else if (dd.indexOf(w) !== -1) score += 1; });
+      if (score > bestScore) { bestScore = score; best = { entry: e }; }
+    });
+    return bestScore >= 2 ? best : null;
+  }
+
+  var q = document.getElementById('cg-q'), src = document.getElementById('cg-src');
+  var form = document.getElementById('cg-form'), input = document.getElementById('cg-input'), askBtn = document.getElementById('cg-ask'), qwrap = document.getElementById('cg-qwrap');
+  function chip(p) { var a = document.createElement('a'); a.className = 'cg-chip'; a.href = p.href; a.textContent = p.chip; if (p.href.charAt(0) !== '/') { a.target = '_blank'; a.rel = 'noopener'; } return a; }
+  function render(target, srcEl, p) { target.textContent = p.q; target.appendChild(chip(p)); if (srcEl) srcEl.textContent = p.src || ''; }
+  function answerFor(query) {
+    var hit = search(query), trimmed = query.trim().replace(/\?+$/, '');
+    if (hit && hit.prompt) { pinned = hit.node; highlight(null); return { q: trimmed + '? ', chip: hit.prompt.chip, href: hit.prompt.href, src: hit.prompt.src }; }
+    if (hit && hit.entry) { var e = hit.entry; return { q: trimmed + '? ', chip: e.t, href: e.u, src: e.g + ' · ' + e.d }; }
+    return { q: trimmed + '? ', chip: 'Ask me directly', href: '/contact/', src: 'Nothing on this site answers that yet. I reply within 48 hours.' };
+  }
+
+  var ask = { showPrompt: function () {}, resume: function () {} };
+  if (q && form && input) {
+    var i = 0, timer, cycling = true, typing = null;
+    function stop() { clearTimeout(timer); clearTimeout(typing); cycling = false; }
+    function show(p) { render(q, src, p); }
+    function typeThen(p, done) {
+      var n = 0; src.textContent = ''; clearTimeout(typing);
+      (function step() { if (n <= p.q.length) { q.textContent = p.q.slice(0, n); n++; typing = setTimeout(step, reduce ? 0 : 34); } else { show(p); if (done) done(); } })();
+    }
+    function run() { if (!cycling) return; typeThen(CG_PROMPTS[i], function () { timer = setTimeout(function () { i = (i + 1) % CG_PROMPTS.length; run(); }, 4200); }); }
+    ask.showPrompt = function (p) { stop(); input.hidden = true; qwrap.hidden = false; askBtn.textContent = 'Ask your own question'; typeThen(p); };
+    ask.resume = function () { if (cycling || reduce) return; cycling = true; run(); };
+    function openInput() { stop(); pinned = null; highlight(null); qwrap.hidden = true; input.hidden = false; input.value = ''; src.textContent = 'A guide to this site, not an AI. Type a topic, a tool, or an engine name.'; askBtn.textContent = 'Back to examples'; input.focus(); }
+    function closeInput() { input.hidden = true; qwrap.hidden = false; askBtn.textContent = 'Ask your own question'; }
+    askBtn.addEventListener('click', function () { if (input.hidden) openInput(); else { closeInput(); ask.resume(); } });
+    qwrap.addEventListener('click', function (e) { if (e.target.closest('a')) return; openInput(); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (input.hidden) { openInput(); return; }
+      var v = input.value.trim(); if (!v) { input.focus(); return; }
+      closeInput(); askBtn.textContent = 'Ask another question'; typeThen(answerFor(v));
+    });
+    input.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeInput(); ask.resume(); } });
+    /* start cycling after the first prompt has been readable; pause off-screen */
+    var started = false;
+    var io = new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) { if (!started && cycling) { started = true; timer = setTimeout(function () { i = 1; run(); }, 3500); } }
+      else if (started && cycling) { clearTimeout(timer); clearTimeout(typing); started = false; show(CG_PROMPTS[i]); }
+    });
+    if (!reduce) io.observe(q); else cycling = false;
+  }
+
+  /* mobile: same matcher, plain form */
+  var mForm = document.getElementById('cg-m-form'), mInput = document.getElementById('cg-m-input'), mQ = document.getElementById('cg-m-q');
+  if (mForm && mInput && mQ) {
+    mForm.addEventListener('submit', function (e) {
+      e.preventDefault(); var v = mInput.value.trim(); if (!v) return;
+      var p = answerFor(v); render(mQ, null, p);
+      var s = document.createElement('small'); s.style.cssText = 'display:block;margin-top:.3rem;color:#64748B;font:500 .72rem/1.4 Inter,sans-serif'; s.textContent = p.src; mQ.appendChild(s);
+    });
+  }
+})();
+</script>
 <script>
 /* ── Home-only 3D canvas scenes (self-contained, no CDN) ── */
 (function () {
@@ -363,44 +643,6 @@
   function octa(r){return {verts:[[r,0,0],[-r,0,0],[0,r,0],[0,-r,0],[0,0,r],[0,0,-r]],edges:[[0,2],[0,3],[0,4],[0,5],[1,2],[1,3],[1,4],[1,5],[2,4],[2,5],[3,4],[3,5]]};}
   function tetra(r){var a=r*Math.sqrt(8/9),b=r/3,c=r*Math.sqrt(2/3);return {verts:[[0,r,0],[a,-b,0],[-a/2,-b,c],[-a/2,-b,-c]],edges:[[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]]};}
   function cube(r){var h=r*0.7;return {verts:[[-h,-h,-h],[h,-h,-h],[h,h,-h],[-h,h,-h],[-h,-h,h],[h,-h,h],[h,h,h],[-h,h,h]],edges:[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]]};}
-
-  /* Hero scene */
-  (function(){
-    var canvas = document.getElementById('hero-3d'); var hero = document.querySelector('.hero');
-    if(!canvas||!hero) return; var ctx = canvas.getContext('2d'); if(!ctx) return;
-    function resize(){canvas.width=hero.offsetWidth;canvas.height=hero.offsetHeight;} resize();
-    window.addEventListener('resize', resize);
-    var shapes=[
-      {geo:icosa(115),col:'#60A5FA',al:0.52,nx:0.30,ny:-0.15,rx:0,ry:0,rz:0,spd:[0.003,0.005,0.001]},
-      {geo:octa(90),col:'#38BDF8',al:0.48,nx:-0.30,ny:0.10,rx:0,ry:0,rz:0,spd:[-0.004,0.003,0.005]},
-      {geo:tetra(82),col:'#38BDF8',al:0.50,nx:0.14,ny:0.38,rx:0,ry:0,rz:0,spd:[0.005,-0.003,0.004]},
-      {geo:icosa(62),col:'#38BDF8',al:0.42,nx:-0.14,ny:-0.32,rx:0,ry:0,rz:0,spd:[-0.003,0.006,-0.003]},
-      {geo:cube(68),col:'#60A5FA',al:0.40,nx:-0.38,ny:0.22,rx:0,ry:0,rz:0,spd:[0.004,0.003,-0.005]},
-      {geo:tetra(48),col:'#38BDF8',al:0.40,nx:-0.44,ny:-0.18,rx:0,ry:0,rz:0,spd:[0.004,-0.005,0.003]}
-    ];
-    shapes.forEach(function(s){s.bnx=s.nx;s.bny=s.ny;});
-    var pts=Array.from({length:120},function(){return [Math.random(),Math.random(),Math.random()*1.4+0.4];});
-    var mx=0,my=0;
-    document.addEventListener('mousemove',function(e){mx=(e.clientX/window.innerWidth-0.5)*2;my=(e.clientY/window.innerHeight-0.5)*2;});
-    var FOV=650, rafId;
-    function tick(){
-      rafId=requestAnimationFrame(tick); var W=canvas.width,H=canvas.height; ctx.clearRect(0,0,W,H);
-      pts.forEach(function(p){ctx.globalAlpha=0.16+p[2]*0.10;ctx.fillStyle='#60A5FA';ctx.shadowBlur=0;ctx.beginPath();ctx.arc(p[0]*W,p[1]*H,p[2]*0.55,0,Math.PI*2);ctx.fill();});
-      ctx.shadowBlur=0;
-      shapes.forEach(function(s,i){
-        s.rx+=s.spd[0];s.ry+=s.spd[1];s.rz+=s.spd[2];
-        var par=0.038*(1-i*0.08); s.nx=s.bnx+mx*par; s.ny=s.bny+my*par*0.65;
-        var cx=W*0.5+s.nx*W, cy=H*0.5+s.ny*H;
-        var pv=s.geo.verts.map(function(v){v=rX(v,s.rx);v=rY(v,s.ry);v=rZ(v,s.rz);return proj(v,FOV,cx,cy);});
-        ctx.strokeStyle=s.col;ctx.globalAlpha=s.al;ctx.lineWidth=1.6;ctx.shadowBlur=0;
-        s.geo.edges.forEach(function(e){ctx.beginPath();ctx.moveTo(pv[e[0]][0],pv[e[0]][1]);ctx.lineTo(pv[e[1]][0],pv[e[1]][1]);ctx.stroke();});
-        ctx.shadowBlur=0;
-      });
-      ctx.globalAlpha=1;
-    }
-    var obs=new IntersectionObserver(function(en){if(en[0].isIntersecting){if(!rafId)tick();}else{cancelAnimationFrame(rafId);rafId=null;}});
-    obs.observe(hero); tick();
-  })();
 
   /* Section scenes */
   function sectionCanvas(canvasId, sectionId, scene){
@@ -437,11 +679,6 @@
     {geo:icosa(95),col:'#3B82F6',al:0.48,nx:0.25,ny:-0.20,spd:[0.0025,0.0045,0.0015]},
     {geo:icosa(70),col:'#60A5FA',al:0.42,nx:-0.35,ny:0.15,spd:[-0.0035,0.0035,0.0045]},
     {geo:icosa(55),col:'#38BDF8',al:0.38,nx:0.20,ny:0.30,spd:[0.0028,-0.0025,0.0035]}
-  ]);
-  sectionCanvas('tools-3d','tools',[
-    {geo:icosa(80),col:'#38BDF8',al:0.46,nx:0.30,ny:-0.18,spd:[0.0024,0.0042,0.0012]},
-    {geo:icosa(60),col:'#38BDF8',al:0.41,nx:-0.28,ny:0.22,spd:[-0.0032,0.0038,0.0042]},
-    {geo:icosa(48),col:'#60A5FA',al:0.36,nx:0.18,ny:0.32,spd:[0.0030,-0.0028,0.0032]}
   ]);
 })();
 </script>
