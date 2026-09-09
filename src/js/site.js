@@ -464,7 +464,9 @@
       var t = typeof it.t === 'number' ? it.t : 0.05 + i * (0.9 / Math.max(n - 1, 1));
       var p = path.getPointAtLength(L * t);
       var up = typeof it.above === 'boolean' ? it.above : i % 2 === 1;
-      var g = svgEl(it.href ? 'a' : 'g', it.href ? { href: it.href, 'class': 'curve-dot' } : { 'class': 'curve-dot', tabindex: '0' }, svg);
+      /* The SVG is aria-hidden and the cards/timeline below repeat every item, so
+         these are pointer-only: tabindex -1 keeps them out of the keyboard order. */
+      var g = svgEl(it.href ? 'a' : 'g', it.href ? { href: it.href, 'class': 'curve-dot', tabindex: '-1' } : { 'class': 'curve-dot' }, svg);
       if (it.href && it.href.charAt(0) !== '/' && it.href.charAt(0) !== '#') { g.setAttribute('target', '_blank'); g.setAttribute('rel', 'noopener'); }
       var title = svgEl('title', {}, g); title.textContent = it.label + (it.sub ? ' · ' + it.sub : '');
       svgEl('circle', { 'class': 'curve-halo', cx: p.x, cy: p.y, r: 16 }, g);
