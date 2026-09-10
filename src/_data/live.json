@@ -1,7 +1,7 @@
 {
   "updatedAt": "2026-09-09",
   "updatedBy": "GA4 and Search Console",
-  "note": "The homepage hero reads its headline figures from this file. Edit the raw numbers here (the templates format them) and bump updatedAt. llm.wellows is the Wellows case study (9x from 176/month over Jul 2025 - Feb 2026). llm.confidential is a DIFFERENT project (22x over 12 months, GA4, client confidential); never present the two as one metric. Fill wellows.sessionsAfter (monthly LLM sessions at the end of the window) and wellows.shareOfTotal (percentage, e.g. 4.2) when known; the templates print them only when both are set.",
+  "note": "The homepage hero reads its headline figures from this file. Edit the raw numbers here (the templates format them) and bump updatedAt. llm.wellows is the Wellows case study (9x from 176/month over Jul 2025 - Feb 2026). llm.confidential is a DIFFERENT project (22x over 12 months, GA4, client confidential); never present the two as one metric. Fill wellows.sessionsAfter (monthly LLM sessions at the end of the window) and wellows.shareOfTotal (percentage, e.g. 4.2) when known; the templates print them only when both are set. gsc figures are Search Console \"last 3 months vs previous 3 months\" per the screenshot in static/uploads/gsctrafficgrowth.png, not 12 months.",
   "llm": {
     "wellows": {
       "multiplier": 9,
@@ -25,7 +25,8 @@
     "clicks": 7270,
     "avgPositionBefore": 28.9,
     "avgPosition": 17.3,
-    "window": "12 months"
+    "window": "3 months vs the previous 3",
+    "clicksBefore": 2290
   },
   "tools": {
     "queryFanOut": 829,
