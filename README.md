@@ -83,6 +83,15 @@ change it in those two files and grep `src/` for the old value before
 pushing; the /work/ page, About page, tools page, CV and `llms.txt` repeat
 them in prose.
 
+## Freshness dates
+
+`dateModified` on posts and case studies, and `<lastmod>` in the sitemap,
+come from the last git commit that touched the source file (the `gitDate`
+filter in `.eleventy.js`), not from the build time. A page only looks fresh
+when its content changed. The deploy workflow checks out full history
+(`fetch-depth: 0`) so this works in CI; locally, an uncommitted edit keeps
+the previous commit's date until it is committed.
+
 ## Publishing a blog post
 
 **The easy way (no code):** go to `https://khadijazaman.com/admin/`, log in, click **New Blog post**, fill in title / date / category / description / body, and **Publish**. The site rebuilds itself.

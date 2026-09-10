@@ -62,6 +62,31 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
   eleventyConfig.addFilter("rssDate", (d) => new Date(d).toUTCString());
 
+  // Last-commit date of a source file, as YYYY-MM-DD. Used for dateModified
+  // and sitemap lastmod so a page only looks fresh when its content changed,
+  // never because the site was rebuilt. Falls back to the build date when
+  // git is unavailable (or the file is not committed yet). The deploy
+  // workflow checks out full history so this works in CI.
+  const { execSync } = require("child_process");
+  const gitDates = new Map();
+  const gitDate = (file) => {
+    const p = String(file || "").replace(/^\.\//, "");
+    if (!p) return null;
+    if (!gitDates.has(p)) {
+      let d = null;
+      try { d = execSync(`git log -1 --format=%cI -- "${p}"`, { stdio: ["ignore", "pipe", "ignore"] }).toString().trim().slice(0, 10) || null; }
+      catch (e) { d = null; }
+      gitDates.set(p, d);
+    }
+    return gitDates.get(p);
+  };
+  eleventyConfig.addFilter("gitDate", (file, fallback) => gitDate(file) || fallback || new Date().toISOString().slice(0, 10));
+  // Newest of several files' commit dates (index pages that list other content).
+  eleventyConfig.addFilter("gitDateMax", (files, fallback) => {
+    const ds = (files || []).map((f) => gitDate(f)).filter(Boolean).sort();
+    return ds.length ? ds[ds.length - 1] : (fallback || new Date().toISOString().slice(0, 10));
+  });
+
   // Small array helpers for "read next" / "latest posts".
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
   // Live metrics arrive as raw numbers (see src/_data/live.json); these format them.

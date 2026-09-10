@@ -4,24 +4,26 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>{{ site.url }}/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>{{ site.url }}/about/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>{{ site.url }}/cv/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>{{ site.url }}/work/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>{{ site.url }}/blog/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>{{ site.url }}/tools/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>{{ site.url }}/tools/citeability-checker/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>{{ site.url }}/tools/serp-preview/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>{{ site.url }}/tools/query-fan-out/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>{{ site.url }}/tools/schema-generator/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>{{ site.url }}/contact/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>{{ site.url }}/</loc><lastmod>{{ "src/index.njk" | gitDate(buildDate) }}</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>{{ site.url }}/about/</loc><lastmod>{{ "src/about/index.html" | gitDate(buildDate) }}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>{{ site.url }}/cv/</loc><lastmod>{{ "src/cv/index.html" | gitDate(buildDate) }}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>{{ site.url }}/work/</loc><lastmod>{{ "src/work/index.html" | gitDate(buildDate) }}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  {%- set postFiles = [] %}{%- for p in collections.posts %}{% set _ = postFiles.push(p.inputPath) %}{% endfor %}
+  <url><loc>{{ site.url }}/blog/</loc><lastmod>{{ postFiles | gitDateMax(buildDate) }}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>{{ site.url }}/tools/</loc><lastmod>{{ "src/tools/index.html" | gitDate(buildDate) }}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>{{ site.url }}/tools/citeability-checker/</loc><lastmod>{{ "src/tools/citeability-checker/index.html" | gitDate(buildDate) }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>{{ site.url }}/tools/serp-preview/</loc><lastmod>{{ "src/tools/serp-preview/index.html" | gitDate(buildDate) }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>{{ site.url }}/tools/query-fan-out/</loc><lastmod>{{ "src/tools/query-fan-out/index.html" | gitDate(buildDate) }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>{{ site.url }}/tools/schema-generator/</loc><lastmod>{{ "src/tools/schema-generator/index.html" | gitDate(buildDate) }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>{{ site.url }}/contact/</loc><lastmod>{{ "src/contact/index.html" | gitDate(buildDate) }}</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
   {%- for c in collections.categories %}
-  <url><loc>{{ site.url }}/blog/category/{{ c.slug }}/</loc><lastmod>{{ buildDate }}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  {%- set catFiles = [] %}{%- for p in c.posts %}{% set _ = catFiles.push(p.inputPath) %}{% endfor %}
+  <url><loc>{{ site.url }}/blog/category/{{ c.slug }}/</loc><lastmod>{{ catFiles | gitDateMax(buildDate) }}</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>
   {%- endfor %}
   {%- for cs in collections.caseStudy %}
-  <url><loc>{{ site.url }}{{ cs.url }}</loc><lastmod>{{ buildDate }}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>{{ site.url }}{{ cs.url }}</loc><lastmod>{{ "src/_data/caseStudies.js" | gitDate(buildDate) }}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   {%- endfor %}
   {%- for post in collections.posts %}
-  <url><loc>{{ site.url }}{{ post.url }}</loc><lastmod>{{ post.data.date | isoDate }}</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>{{ site.url }}{{ post.url }}</loc><lastmod>{{ post.inputPath | gitDate(post.data.date | isoDate) }}</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
   {%- endfor %}
 </urlset>
