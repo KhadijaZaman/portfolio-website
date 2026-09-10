@@ -143,6 +143,19 @@ eleventyComputed:
     </div>
     {%- endif %}
 
+    {%- set rows = [] %}{%- for f in provenance %}{% if study.slug in f.pages %}{% set _ = rows.push(f) %}{% endif %}{% endfor %}
+    {%- if rows.length %}
+    <div class="cs-sources">
+      <h2>Sources for the numbers above</h2>
+      <ul class="prov-list">
+        {%- for f in rows %}
+        <li><b>{% if f.figure %}{{ f.figure }}{% else %}null{% endif %}</b> · {{ f.claim }} · {{ f.source }}, {{ f.window }} · {% if f.evidence %}<a href="{{ f.evidence }}"{% if f.evidence.indexOf(site.url) != 0 %} target="_blank" rel="noopener"{% endif %}>{{ f.evidenceLabel }}</a> · {% endif %}verified {% if f.verified %}{{ f.verified }}{% else %}null{% endif %} · <span class="prov-status{% if f.status == 'confirmed' %} ok{% endif %}">{{ f.status }}</span></li>
+        {%- endfor %}
+      </ul>
+      <p class="press-scope">Full registry with every figure on the site: <a href="/sources/">/sources/</a> · <a href="/provenance.json">/provenance.json</a></p>
+    </div>
+    {%- endif %}
+
     {%- set others = collections.caseStudy | excludeUrl(page.url) %}
     {%- if others.length %}
     <div class="cs-more">
