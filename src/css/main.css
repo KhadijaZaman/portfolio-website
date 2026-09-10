@@ -1097,3 +1097,25 @@ a.mini-case:hover { border-color: var(--border-a); transform: translateY(-3px); 
   .prov-table td::before { content: attr(data-l); display: block; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); }
   .prov-table .prov-fig { font-size: 1.05rem; }
 }
+
+/* ── Topical map page and layer badges ── */
+.tm-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+.tm-summary > div { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 1rem 1.1rem; }
+.tm-num { font-family: var(--ff-display); font-size: 1.6rem; font-weight: 800; color: #93C5FD; line-height: 1.1; }
+.tm-lbl { font-size: 0.78rem; color: var(--text-3); margin-top: 0.3rem; line-height: 1.4; }
+.tm-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.tm-entity { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 1.4rem 1.5rem; }
+.tm-entity h3 { font-family: var(--ff-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.9rem; }
+.tm-attrs { list-style: none; display: grid; gap: 0.6rem; }
+.tm-attrs li { display: flex; gap: 0.75rem; align-items: flex-start; font-size: 0.88rem; line-height: 1.55; color: var(--text-2); }
+.tm-attrs li a { color: var(--text-1); font-weight: 600; text-decoration: none; }
+.tm-attrs li a:hover { color: var(--accent-3); }
+.tm-attrs .not-built { color: var(--text-3); }
+.tm-note { font-size: 0.76rem; color: var(--text-3); margin-top: 0.15rem; }
+.tm-badge, .layer-badge { display: inline-block; flex-shrink: 0; font-size: 0.64rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.2rem 0.5rem; border-radius: 100px; border: 1px solid var(--border-a); color: var(--text-3); margin-top: 0.2rem; text-decoration: none; }
+.is-built .tm-badge { border-color: rgba(34,197,94,0.4); color: #86EFAC; background: rgba(34,197,94,0.08); }
+.not-built .tm-badge { border-style: dashed; }
+.layer-badge { margin-left: 0.5rem; vertical-align: middle; }
+.layer-core { border-color: rgba(59,130,246,0.45); color: #93C5FD; background: rgba(59,130,246,0.08); }
+.layer-outer { border-color: rgba(245,158,11,0.4); color: #FCD34D; background: rgba(245,158,11,0.08); }
+@media (max-width: 900px) { .tm-summary { grid-template-columns: repeat(2, 1fr); } .tm-grid { grid-template-columns: 1fr; } }

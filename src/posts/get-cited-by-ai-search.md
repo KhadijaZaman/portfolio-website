@@ -7,6 +7,7 @@ description: "Ranking #1 in Google no longer guarantees you appear in an AI answ
 readTime: "5 min"
 answerQ: "How do you get a brand cited by ChatGPT, Gemini and Perplexity?"
 answerA: "Ranking first in Google no longer guarantees a citation, because retrieval systems judge content differently from rankers. The checklist: make the entity unmistakable, give models clean passages to lift, build topical authority the model has already seen, earn mentions on sites the model ingested, keep facts current, and measure LLM referrals separately."
+layer: "core"
 starter: false
 ---
 

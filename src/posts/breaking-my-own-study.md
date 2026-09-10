@@ -7,6 +7,7 @@ description: "How I rebuilt my cross-engine AI citation study from scratch, ran 
 readTime: "9 min"
 answerQ: "Did the cross-engine AI citation study hold up?"
 answerA: "Khadija Zaman rebuilt her cross-engine AI citation overlap study (January to June 2026) from scratch and tested it against a permutation null. Two headline findings did not survive and were retracted; the corrected study is published on the Wellows blog."
+layer: "outer"
 starter: false
 ---
 
