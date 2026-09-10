@@ -19,5 +19,4 @@ npx wrangler login
 npx wrangler deploy
 ```
 
-Then set `"status": "live"` on the `grounded-answer` entry in
-`src/.well-known/agents.json` and push.
+Deployed 10 Sep 2026; `src/.well-known/agents.json` marks it live.

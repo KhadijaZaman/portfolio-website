@@ -108,8 +108,10 @@ curl -s https://khadijazaman.com/about.md | head -5
 - `/answers.json` is written by `scripts/markdown-twins.js` from the
   `#answer` block on each built page, so it can never disagree with the HTML.
 - `answers-worker/` is a Cloudflare Worker that answers `?q=` from
-  `/answers.json` verbatim, or returns null. It is not deployed by CI; see
-  its README. Until it is deployed, agents.json marks it `planned`.
+  `/answers.json` verbatim, or returns null. Deployed by hand with
+  `npx wrangler deploy` (not by CI) at
+  https://khadijazaman-answers.khadijazaman.workers.dev; redeploy after
+  changing `worker.js`.
 
 ## Freshness dates
 
