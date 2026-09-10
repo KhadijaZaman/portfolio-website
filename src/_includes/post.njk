@@ -8,6 +8,7 @@ ogType: article
   "headline": title,
   "description": description,
   "datePublished": (date | isoDate),
+  "dateModified": (page.inputPath | gitDate(date | isoDate)),
   "author": { "@id": site.url + "/#person" },
   "publisher": { "@id": site.url + "/#person" },
   "mainEntityOfPage": site.url + page.url,

@@ -23,6 +23,7 @@ eleventyComputed:
   "headline": study.title,
   "description": study.description,
   "about": study.pill,
+  "dateModified": ("src/_data/caseStudies.js" | gitDate(buildDate)),
   "author": { "@id": site.url + "/#person" },
   "publisher": { "@id": site.url + "/#person" },
   "mainEntityOfPage": site.url + page.url,
