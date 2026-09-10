@@ -55,7 +55,8 @@
         "@id": "https://khadijazaman.com/about/#profilepage",
         "url": "https://khadijazaman.com/about/",
         "name": "About Khadija Zaman",
-        "mainEntity": { "@id": "https://khadijazaman.com/#person" }
+        "mainEntity": { "@id": "https://khadijazaman.com/#person" },
+        "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#answer .answer-q", "#answer .answer-a"] }
       },
       {
         "@type": "FAQPage",
@@ -157,9 +158,9 @@
   <div class="wrap">
     <div class="sec-tag reveal">Quick answers</div>
     <div class="qa-grid">
-      <div class="qa-item reveal">
-        <h3>Who is Khadija Zaman?</h3>
-        <p>AI Search Manager at Wellows, a B2B SaaS company owned by Disrupt.com, based in Karachi, Pakistan. In search since 2019, in agency and in-house roles; since 2023 she has owned the SEO, content and AI-search (GEO/AEO) programs at Wellows.</p>
+      <div class="qa-item reveal" id="answer">
+        <h3 class="answer-q">Who is Khadija Zaman?</h3>
+        <p class="answer-a">AI Search Manager at Wellows, a B2B SaaS company owned by Disrupt.com, based in Karachi, Pakistan. In search since 2019, in agency and in-house roles; since 2023 she has owned the SEO, content and AI-search (GEO/AEO) programs at Wellows.</p>
       </div>
       <div class="qa-item reveal d1">
         <h3>What has she built?</h3>

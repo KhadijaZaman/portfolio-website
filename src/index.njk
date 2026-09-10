@@ -70,7 +70,8 @@
         "@id": "https://khadijazaman.com/#webpage",
         "url": "https://khadijazaman.com/",
         "isPartOf": { "@id": "https://khadijazaman.com/#website" },
-        "about": { "@id": "https://khadijazaman.com/#person" }
+        "about": { "@id": "https://khadijazaman.com/#person" },
+        "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#answer .answer-q", "#answer .answer-a"] }
       }
     ]
   }
@@ -296,6 +297,16 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Direct answer: the question this page answers, answered so it stays true
+     when lifted out of the page. The Speakable selector in the JSON-LD points
+     at exactly these two elements. -->
+<section class="answer-block" id="answer" aria-label="Direct answer">
+  <div class="wrap">
+    <h2 class="answer-q">What does Khadija Zaman do?</h2>
+    <p class="answer-a">Khadija Zaman runs SEO, AEO and GEO as one system at Wellows, so a brand ranks on Google and is cited inside ChatGPT, Gemini, Perplexity and AI Overviews. At Wellows that took LLM referral sessions from 176 a month to roughly nine times that in eight months with no paid spend (GA4, July 2025 to February 2026).</p>
   </div>
 </section>
 

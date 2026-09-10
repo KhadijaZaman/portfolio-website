@@ -24,6 +24,7 @@ eleventyComputed:
   "description": study.description,
   "about": study.pill,
   "dateModified": ("src/_data/caseStudies.js" | gitDate(buildDate)),
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#answer .answer-q", "#answer .answer-a"] },
   "author": { "@id": site.url + "/#person" },
   "publisher": { "@id": site.url + "/#person" },
   "mainEntityOfPage": site.url + page.url,
@@ -53,6 +54,14 @@ eleventyComputed:
     {%- endif %}
   </div>
 </header>
+{%- if study.answer %}
+<section class="answer-block" id="answer" aria-label="Direct answer">
+  <div class="wrap" style="max-width:820px;">
+    <h2 class="answer-q">{{ study.answer.q }}</h2>
+    <p class="answer-a">{{ study.answer.a }}</p>
+  </div>
+</section>
+{%- endif %}
 
 <article aria-label="Case study">
   <div class="wrap" style="max-width:820px;">
