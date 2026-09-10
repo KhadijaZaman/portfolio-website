@@ -50,9 +50,8 @@ AddCharset UTF-8 .md
   RewriteRule ^ /%1/index.md [L]
 </IfModule>
 <IfModule mod_headers.c>
-  <FilesMatch "\.(html|md)$">
-    Header append Vary "Accept"
-  </FilesMatch>
+  # Vary: Accept is set per page by the generated per-directory .htaccess
+  # files ("Header append" was not honoured by the host; "set" is).
   <FilesMatch "\.md$">
     Header set Cache-Control "public, max-age=0, must-revalidate"
   </FilesMatch>
