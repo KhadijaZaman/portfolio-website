@@ -13,6 +13,15 @@ permalink: /blog/index.html
 } | dump | safe }}</script>
 <script type="application/ld+json">{{ {
   "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": site.url + "/blog/#webpage",
+  "url": site.url + "/blog/",
+  "isPartOf": { "@id": site.url + "/#website" },
+  "about": { "@id": site.url + "/#person" },
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#answer .answer-q", "#answer .answer-a"] }
+} | dump | safe }}</script>
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
@@ -28,6 +37,16 @@ permalink: /blog/index.html
     <p class="lead reveal d2">Practical breakdowns on ranking in Google, getting cited by ChatGPT, Gemini, and Perplexity, and the automations that make it repeatable.</p>
   </div>
 </header>
+
+<!-- Direct answer: the question this page answers, answered so it stays true
+     when lifted out of the page. The Speakable selector in the JSON-LD points
+     at exactly these two elements. -->
+<section class="answer-block" id="answer" aria-label="Direct answer">
+  <div class="wrap">
+    <h2 class="answer-q">What does Khadija Zaman write about?</h2>
+    <p class="answer-a">Khadija Zaman writes field notes on SEO, AI search visibility (GEO and AEO), semantic content strategy and marketing automation, drawn from in-house work at Wellows. Four posts are published, including one that re-tests her own citation study against a permutation null and retracts two findings.</p>
+  </div>
+</section>
 
 <section aria-label="Articles">
   <div class="wrap">

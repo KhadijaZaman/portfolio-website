@@ -5,6 +5,8 @@ date: 2026-06-18
 category: "AI Search"
 description: "SEO, AEO, and GEO are layers, not rivals. A working definition of each, where they genuinely diverge, and the order to build them so the work compounds."
 readTime: "5 min"
+answerQ: "What is the difference between SEO, AEO and GEO?"
+answerA: "SEO makes a page crawlable, understandable and authoritative enough to rank in a search engine's results; AEO makes it the source a system quotes when it answers a question directly, in featured snippets, People Also Ask and AI Overviews; GEO gets a brand named inside a generated answer from ChatGPT, Gemini, Claude or Perplexity. They are layers built in that order, not rivals."
 starter: false
 ---
 

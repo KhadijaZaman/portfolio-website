@@ -1066,3 +1066,12 @@ a.mini-case:hover { border-color: var(--border-a); transform: translateY(-3px); 
 /* seven work cards: the odd one out spans the row instead of dangling */
 .mini-grid > .mini-case:last-child:nth-child(3n+1) { grid-column: 1 / -1; }
 .results-strip { grid-template-columns: repeat(2, 1fr); }
+
+/* ── Direct-answer block: the question a page answers, then a two-sentence
+   answer that stays true out of context. Speakable points at these two. ── */
+.answer-block { padding: 0 6% 0; margin-top: -1.25rem; margin-bottom: 2.5rem; }
+.answer-block .wrap { border-left: 3px solid var(--accent); padding: 0.9rem 1.25rem; background: rgba(59,130,246,0.05); border-radius: 0 var(--r-md) var(--r-md) 0; }
+.answer-q { font-family: var(--ff-display); font-size: 1.05rem; font-weight: 700; margin: 0 0 0.4rem; color: var(--text-1); }
+.answer-a { font-size: 0.95rem; color: var(--text-2); line-height: 1.7; margin: 0; }
+.qa-item .answer-q { font-size: 1rem; }
+@media (max-width: 768px) { .answer-block { padding: 0 5%; margin-top: -0.5rem; } }

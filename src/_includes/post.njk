@@ -9,6 +9,7 @@ ogType: article
   "description": description,
   "datePublished": (date | isoDate),
   "dateModified": (page.inputPath | gitDate(date | isoDate)),
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#answer .answer-q", "#answer .answer-a"] },
   "author": { "@id": site.url + "/#person" },
   "publisher": { "@id": site.url + "/#person" },
   "mainEntityOfPage": site.url + page.url,
@@ -32,6 +33,14 @@ ogType: article
     <h1 class="reveal d1">{{ title }}</h1>
   </div>
 </header>
+{%- if answerQ and answerA %}
+<section class="answer-block" id="answer" aria-label="Direct answer">
+  <div class="wrap" style="max-width:760px;">
+    <h2 class="answer-q">{{ answerQ }}</h2>
+    <p class="answer-a">{{ answerA }}</p>
+  </div>
+</section>
+{%- endif %}
 
 {% set toc = content | tocFromHtml %}
 <article aria-label="Article">

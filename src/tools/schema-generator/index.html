@@ -26,6 +26,17 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap"></noscript>
   <link rel="stylesheet" href="/css/main.css">
   <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://khadijazaman.com/tools/schema-generator/#webpage",
+    "url": "https://khadijazaman.com/tools/schema-generator/",
+    "isPartOf": { "@id": "https://khadijazaman.com/#website" },
+    "about": { "@id": "https://khadijazaman.com/#person" },
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#answer .answer-q", "#answer .answer-a"] }
+  }
+  </script>
+  <script type="application/ld+json">
   { "@context": "https://schema.org", "@type": "WebApplication", "name": "Schema JSON-LD Generator", "applicationCategory": "DeveloperApplication", "operatingSystem": "Web", "url": "https://khadijazaman.com/tools/schema-generator/", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "creator": { "@type": "Person", "name": "Khadija Zaman", "url": "https://khadijazaman.com/" } }
   </script>
   <script type="application/ld+json">
@@ -59,6 +70,16 @@
     <p class="lead reveal d2">Structured data is how you tell Google and AI answer engines what your entities <em>are</em>. Fill in the fields and copy ready-to-paste JSON-LD for Article, FAQ, or Person markup.</p>
   </div>
 </header>
+
+<!-- Direct answer: the question this page answers, answered so it stays true
+     when lifted out of the page. The Speakable selector in the JSON-LD points
+     at exactly these two elements. -->
+<section class="answer-block" id="answer" aria-label="Direct answer">
+  <div class="wrap">
+    <h2 class="answer-q">What does the Schema JSON-LD Generator do?</h2>
+    <p class="answer-a">The Schema JSON-LD Generator turns a short form into paste-ready Article, FAQ or Person structured data for a web page. It runs in the browser on khadijazaman.com with no sign-up.</p>
+  </div>
+</section>
 
 <section aria-label="Schema Generator">
   <div class="wrap" style="max-width: 820px;">

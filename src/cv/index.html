@@ -55,6 +55,7 @@
         "url": "https://khadijazaman.com/cv/",
         "name": "CV · Khadija Zaman",
         "mainEntity": { "@id": "https://khadijazaman.com/#person" },
+        "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#answer .answer-q", "#answer .answer-a"] },
         "hasPart": { "@type": "DigitalDocument", "name": "Khadija Zaman CV (PDF)", "url": "https://khadijazaman.com/static/Khadija-Zaman-CV.pdf", "encodingFormat": "application/pdf" }
       }
     ]
@@ -189,6 +190,16 @@
     </div>
   </div>
 </header>
+
+<!-- Direct answer: the question this page answers, answered so it stays true
+     when lifted out of the page. The Speakable selector in the JSON-LD points
+     at exactly these two elements. -->
+<section class="answer-block" id="answer" aria-label="Direct answer">
+  <div class="wrap">
+    <h2 class="answer-q">What is Khadija Zaman's experience?</h2>
+    <p class="answer-a">Khadija Zaman has worked in search since 2019: SEO Executive at Digitonics, SEO Specialist at Intersys, SEO and Content Lead at webAffinity, and since 2023 AI Search Manager at Wellows, a Disrupt.com company. Her CV lists each result with its source and measurement window and is downloadable as a PDF.</p>
+  </div>
+</section>
 
 <section aria-label="Curriculum vitae" style="padding-top:1rem;">
   <div class="wrap cv-wrap">
