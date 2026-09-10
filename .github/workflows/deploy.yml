@@ -29,8 +29,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build with Eleventy
-        run: npx @11ty/eleventy
+      - name: Build with Eleventy, then write the markdown twins
+        run: npm run build
 
       - name: Publish _site to the deploy branch
         run: |

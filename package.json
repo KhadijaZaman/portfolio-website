@@ -4,11 +4,12 @@
   "description": "Personal-brand website for Khadija Zaman — AI Search Manager: SEO, AEO, GEO, and marketing automation.",
   "private": true,
   "scripts": {
-    "build": "eleventy",
+    "build": "eleventy && node scripts/markdown-twins.js",
     "serve": "eleventy --serve",
     "dev": "eleventy --serve"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^2.0.1",
+    "turndown": "^7.2.0"
   }
 }
