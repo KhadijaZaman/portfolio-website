@@ -44,7 +44,7 @@ eleventyComputed:
   <div class="page-hero-orb" aria-hidden="true"></div>
   <div class="wrap" style="max-width:820px;">
     <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/work/">Work</a> <span>/</span> Case study</nav>
-    <div class="case-pill {{ study.pillClass }} reveal" style="margin-bottom:1rem;">{{ study.pill }}</div>
+    <div class="case-pill {{ study.pillClass }} reveal" style="margin-bottom:1rem;">{{ study.pill }}</div>{% if study.layer %} <a class="layer-badge layer-{{ study.layer }} reveal" href="/topical-map/" title="Where this sits on the site's topical map">{{ study.layer }} layer</a>{% endif %}
     <h1 class="reveal d1">{{ study.title }}</h1>
     <p class="case-meta reveal d2" style="margin-top:1rem;">
       {{ study.client }}{% if study.sector %} · {{ study.sector }}{% endif %}{% if study.window %} · {{ study.window }}{% endif %}{% if study.sources %} · Source: {{ study.sources }}{% endif %}

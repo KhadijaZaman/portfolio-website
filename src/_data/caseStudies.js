@@ -25,6 +25,7 @@
 module.exports = [
   {
     slug: "wellows-ai-visibility",
+    layer: "core",
     answer: { q: "How did Wellows grow LLM referral traffic 9× with no paid spend?", a: "Wellows grew LLM referral sessions from 176 a month to roughly nine times that between July 2025 and February 2026 with no paid spend, measured in GA4. The work was an AEO framework built on Koray Tuğberk's semantic model and Google's query fan-out patent, grounded-versus-non-grounded citation experiments, three free tools built as LLM entry points, and answers placed on Reddit, Quora and G2." },
     order: 1,
     pill: "AEO / LLM Visibility",
@@ -136,6 +137,7 @@ module.exports = [
 
   {
     slug: "core-update-recovery",
+    layer: "core",
     answer: { q: "How did the publisher recover from a core update?", a: "A high-volume AI content publisher lost 70% of organic clicks in four months after a core update and recovered from an average position of 32 to 8.2 over the 12 months to May 2026 (Search Console). Five workstreams, technical and on-page SEO, semantic optimisation, topical authority, internal linking and third-party mentions, were run together by one owner instead of being split across vendors." },
     order: 2,
     pill: "SEO Management",
@@ -230,6 +232,7 @@ module.exports = [
 
   {
     slug: "ranking-breakthrough",
+    layer: "core",
     answer: { q: "How did a property stuck at position 55 move into the 20s?", a: "A property flat near position 55 from July to early September 2025 moved into the 20s within days of a mid-September step change and held there for eleven weeks, reading 28.8 on 29 November 2025 (Search Console). Holding for eleven weeks is what separates a re-rating from volatility." },
     order: 3,
     pill: "Content Strategy",

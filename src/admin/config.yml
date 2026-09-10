@@ -47,5 +47,11 @@ collections:
       - { label: "Read time", name: "readTime", widget: "string", default: "6 min", hint: "e.g. 7 min" }
       - { label: "Direct answer: the question this post answers", name: "answerQ", widget: "string", required: false, hint: "Shown under the title and marked Speakable" }
       - { label: "Direct answer: two sentences that stay true on their own", name: "answerA", widget: "text", required: false }
+      - label: "Topical map layer"
+        name: "layer"
+        widget: "select"
+        options: ["core", "outer"]
+        default: "core"
+        hint: "core = a result, method or tool a hirer judges; outer = definition, study, correction or context. Add the post to src/_data/topicalMap.js too."
       - { label: "Show the amber 'starter draft' banner", name: "starter", widget: "boolean", default: false }
       - { label: "Body", name: "body", widget: "markdown" }

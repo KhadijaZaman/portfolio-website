@@ -1,0 +1,95 @@
+---
+layout: base.njk
+section: blog
+title: "Topical map"
+metaTitle: "Topical Map · What This Site Covers, and What It Does Not Yet — Khadija Zaman"
+description: "The central entity of khadijazaman.com, AI search visibility, decomposed into entity and attribute pairs, split between a commercial core and a trust-building outer section, with each node marked built or not yet."
+permalink: /topical-map/index.html
+---
+{%- set coreN = 0 %}{%- set outerN = 0 %}{%- set builtN = 0 %}
+{%- for sec in topicalMap.sections %}{% for e in sec.entities %}{% for a in e.attributes %}
+  {%- if sec.key == "core" %}{% set coreN = coreN + 1 %}{% else %}{% set outerN = outerN + 1 %}{% endif %}
+  {%- if a.built %}{% set builtN = builtN + 1 %}{% endif %}
+{%- endfor %}{% endfor %}{% endfor %}
+{%- set totalN = coreN + outerN %}
+{%- set corePct = ((coreN / totalN) * 100) | round %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": site.url + "/topical-map/#webpage",
+  "url": site.url + "/topical-map/",
+  "isPartOf": { "@id": site.url + "/#website" },
+  "about": { "@id": site.url + "/#person" },
+  "dateModified": ("src/_data/topicalMap.js" | gitDate(buildDate)),
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#answer .answer-q", "#answer .answer-a"] }
+} | dump | safe }}</script>
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
+    { "@type": "ListItem", "position": 2, "name": "Topical map", "item": site.url + "/topical-map/" }
+  ]
+} | dump | safe }}</script>
+
+<header class="page-hero">
+  <div class="page-hero-orb" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> Topical map</nav>
+    <h1 class="reveal d1">What this site covers, and what it does not yet</h1>
+    <p class="lead reveal d2">One central entity, <strong>{{ topicalMap.centralEntity }}</strong>, decomposed into entity and attribute pairs. The core is the commercial half a hiring manager judges; the outer section is the trust that makes the core checkable. Every node says whether a page exists. The unbuilt ones are the roadmap.</p>
+  </div>
+</header>
+
+<section class="answer-block" id="answer" aria-label="Direct answer">
+  <div class="wrap">
+    <h2 class="answer-q">What is the central entity of khadijazaman.com?</h2>
+    <p class="answer-a">The central entity of khadijazaman.com is AI search visibility: getting a brand found on Google and cited inside ChatGPT, Gemini, Perplexity and AI Overviews, run with SEO, content architecture and measurement as one system. The site covers {{ totalN }} entity-attribute pairs, {{ builtN }} of them with a page behind them, split {{ corePct }}% commercial core to {{ 100 - corePct }}% trust-building outer section.</p>
+  </div>
+</section>
+
+<section aria-label="Map summary" style="padding-top:0;">
+  <div class="wrap">
+    <div class="tm-summary reveal">
+      <div><div class="tm-num">{{ totalN }}</div><div class="tm-lbl">entity-attribute pairs</div></div>
+      <div><div class="tm-num">{{ builtN }}</div><div class="tm-lbl">built, with a page behind them</div></div>
+      <div><div class="tm-num">{{ totalN - builtN }}</div><div class="tm-lbl">not built yet, listed on purpose</div></div>
+      <div><div class="tm-num">{{ corePct }} / {{ 100 - corePct }}</div><div class="tm-lbl">core / outer split (target {{ topicalMap.targetSplit.core }} / {{ topicalMap.targetSplit.outer }})</div></div>
+    </div>
+    <p class="num-note reveal"><strong>Source context.</strong> {{ topicalMap.sourceContext }} <strong>Definition.</strong> {{ topicalMap.definition }}</p>
+  </div>
+</section>
+
+{%- for sec in topicalMap.sections %}
+<section aria-label="{{ sec.title }}" {% if sec.key == "outer" %}style="background: var(--bg-1);"{% endif %}>
+  <div class="wrap">
+    <div class="sec-tag reveal">{{ sec.key | upper }} · {% if sec.key == "core" %}{{ coreN }}{% else %}{{ outerN }}{% endif %} pairs</div>
+    <h2 class="sec-h2 reveal d1">{{ sec.title }}</h2>
+    <p class="sec-lead reveal d2">{{ sec.lead }}</p>
+    <div class="tm-grid">
+      {%- for e in sec.entities %}
+      <div class="tm-entity reveal">
+        <h3>{{ e.entity }}</h3>
+        <ul class="tm-attrs">
+          {%- for a in e.attributes %}
+          <li class="{% if a.built %}is-built{% else %}not-built{% endif %}">
+            <span class="tm-badge">{% if a.built %}built{% else %}not yet{% endif %}</span>
+            <div>
+              {% if a.url %}<a href="{{ a.url }}"{% if a.url.indexOf('http') == 0 %} target="_blank" rel="noopener"{% endif %}>{{ a.attr }}</a>{% else %}{{ a.attr }}{% endif %}
+              {%- if a.note %}<div class="tm-note">{{ a.note }}</div>{% endif %}
+            </div>
+          </li>
+          {%- endfor %}
+        </ul>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endfor %}
+
+<section aria-label="How to read this" style="padding-top:0;">
+  <div class="wrap">
+    <p class="press-scope">Every post and case study on this site carries a <em>core</em> or <em>outer</em> badge that matches this map. The map is a data file in the site's source, so a new page is added here in the same commit that creates it. Machine-readable interfaces, including this site's <a href="/answers.json">answer index</a> and <a href="/provenance.json">provenance registry</a>, are declared at <a href="/.well-known/agents.json">/.well-known/agents.json</a>.</p>
+  </div>
+</section>
