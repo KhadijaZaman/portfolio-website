@@ -1075,3 +1075,25 @@ a.mini-case:hover { border-color: var(--border-a); transform: translateY(-3px); 
 .answer-a { font-size: 0.95rem; color: var(--text-2); line-height: 1.7; margin: 0; }
 .qa-item .answer-q { font-size: 1rem; }
 @media (max-width: 768px) { .answer-block { padding: 0 5%; margin-top: -0.5rem; } }
+
+/* ── Provenance table and case-study source footnotes ── */
+.prov-table td, .prov-table th { vertical-align: top; font-size: 0.82rem; }
+.prov-table .prov-fig { font-family: var(--ff-display); font-weight: 700; color: #93C5FD; white-space: nowrap; }
+.prov-note { font-size: 0.74rem; color: var(--text-3); margin-top: 0.25rem; line-height: 1.5; }
+.prov-null { color: var(--text-3); font-style: italic; }
+.prov-status { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 100px; border: 1px solid rgba(245,158,11,0.4); color: #FCD34D; background: rgba(245,158,11,0.08); white-space: nowrap; }
+.prov-status.ok { border-color: rgba(34,197,94,0.4); color: #86EFAC; background: rgba(34,197,94,0.08); }
+.prov-table a, .prov-list a { color: var(--accent-3); }
+.cs-sources { margin-top: 3rem; }
+.cs-sources h2 { font-family: var(--ff-display); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; }
+.prov-list { list-style: none; display: grid; gap: 0.5rem; }
+.prov-list li { font-size: 0.82rem; color: var(--text-2); line-height: 1.6; padding: 0.6rem 0.8rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md); }
+.prov-list b { color: #93C5FD; }
+@media (max-width: 768px) {
+  .prov-table thead { display: none; }
+  .prov-table, .prov-table tbody { display: block; }
+  .prov-table tr { display: block; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-md); padding: 0.75rem 0.9rem; margin-bottom: 0.75rem; }
+  .prov-table td { display: block; border: 0 !important; padding: 0.25rem 0 !important; text-align: left !important; white-space: normal; }
+  .prov-table td::before { content: attr(data-l); display: block; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); }
+  .prov-table .prov-fig { font-size: 1.05rem; }
+}

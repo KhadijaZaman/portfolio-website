@@ -1,0 +1,5 @@
+---
+permalink: /provenance.json
+eleventyExcludeFromCollections: true
+---
+{{ { "site": site.url, "generated": buildDate, "about": "Provenance for every number published on khadijazaman.com. method: measured (read by Khadija from the named property), reported (a third party published it), cited (from a published document). evidence is a URL that shows the figure or null. verified is the date the figure was last checked against its source, or null. status is 'confirmed' only when both exist.", "human_readable": site.url + "/sources/", "figures": provenance } | dump(2) | safe }}
