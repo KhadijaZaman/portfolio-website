@@ -32,5 +32,31 @@ ErrorDocument 404 /404.html
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 </IfModule>
 
+# ── Markdown twins (content negotiation) ────────────────────
+# Every page has a markdown twin at <url>index.md, written at build time
+# from the rendered page (scripts/markdown-twins.js). A request carrying
+# "Accept: text/markdown" is rewritten to the twin internally, no redirect,
+# so it cannot loop behind the CDN. /about.md also resolves to /about/index.md.
+AddType text/markdown .md
+AddCharset UTF-8 .md
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_ACCEPT} text/markdown [NC]
+  RewriteCond %{REQUEST_URI} ^(.*/)$
+  RewriteCond %{DOCUMENT_ROOT}%1index.md -f
+  RewriteRule ^ %1index.md [L]
+  RewriteCond %{REQUEST_URI} ^/([a-z0-9/_-]+)\.md$
+  RewriteCond %{DOCUMENT_ROOT}/%1/index.md -f
+  RewriteRule ^ /%1/index.md [L]
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|md)$">
+    Header append Vary "Accept"
+  </FilesMatch>
+  <FilesMatch "\.md$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
 # Note: HTTPS and www->non-www redirects are handled by Hostinger + CDN,
-# so no RewriteRule here (a duplicate rule can loop behind the CDN).
+# so no redirect rules here (a duplicate rule can loop behind the CDN).

@@ -1,0 +1,7 @@
+# Grounded answer endpoint. Deploy with: npx wrangler deploy
+# Result URL: https://khadijazaman-answers.khadijazaman.workers.dev
+# After deploying, change "status": "planned" to "live" for the
+# grounded-answer entry in src/.well-known/agents.json.
+name = "khadijazaman-answers"
+main = "worker.js"
+compatibility_date = "2026-09-01"

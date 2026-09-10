@@ -83,6 +83,34 @@ change it in those two files and grep `src/` for the old value before
 pushing; the /work/ page, About page, tools page, CV and `llms.txt` repeat
 them in prose.
 
+## Markdown twins and content negotiation
+
+`npm run build` runs Eleventy and then `scripts/markdown-twins.js`, which
+writes an `index.md` beside every `index.html` in `_site/`, converted from the
+rendered `<main>` so it can never drift from the page. `src/.htaccess` serves
+the twin on `Accept: text/markdown` (internal rewrite, `Vary: Accept`) and at
+`/<path>.md`; each directory gets a generated `.htaccess` that sets the
+`X-Markdown-Twin` header (mechanism plus bytes saved), a canonical `Link` back
+to the HTML, and `noindex` on the twin. `_site/markdown-twins.json` is the
+before/after byte report. Verify on the live host with:
+
+```bash
+curl -sI https://khadijazaman.com/about/ | grep -i "vary\|x-markdown\|link"
+curl -s -H "Accept: text/markdown" https://khadijazaman.com/about/ | head -5
+curl -s https://khadijazaman.com/about.md | head -5
+```
+
+## Machine layer
+
+- `/.well-known/agents.json` (from `src/.well-known/`) declares every
+  machine-readable interface: llms.txt, markdown twins, `/answers.json`,
+  `/provenance.json`, sitemap, feed, and the grounded answer endpoint.
+- `/answers.json` is written by `scripts/markdown-twins.js` from the
+  `#answer` block on each built page, so it can never disagree with the HTML.
+- `answers-worker/` is a Cloudflare Worker that answers `?q=` from
+  `/answers.json` verbatim, or returns null. It is not deployed by CI; see
+  its README. Until it is deployed, agents.json marks it `planned`.
+
 ## Freshness dates
 
 `dateModified` on posts and case studies, and `<lastmod>` in the sitemap,
