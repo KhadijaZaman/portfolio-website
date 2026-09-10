@@ -11,7 +11,7 @@
 */
 const SITE = "https://khadijazaman.com";
 const INDEX = SITE + "/answers.json";
-const THRESHOLD = 0.18;
+const THRESHOLD = 0.34;
 const STOP = new Set("the a an and or of to in on for is are do does did how what why who which where when i my me you your can with about it this that get be by from any some help need want tell show please her she his he does khadija zaman".split(" "));
 const stem = (w) => w.replace(/(ies|ing|ed|s)$/, (m) => (m === "ies" ? "y" : ""));
 const tokens = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9×\s-]/g, " ").split(/\s+/).filter((w) => w.length > 1 && !STOP.has(w)).map(stem);
@@ -24,11 +24,18 @@ async function index() {
   cache = { at: Date.now(), data: await r.json() };
   return cache.data;
 }
+const norm = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
 function score(q, entry) {
-  const qs = new Set(tokens(q)); if (!qs.size) return 0;
+  const qs = new Set(tokens(q));
+  // A question made only of stop words ("who is khadija zaman") is matched on
+  // the whole phrase against the page's own question instead.
+  if (!qs.size) { const nq = norm(q), ne = norm(entry.question); return nq && (ne.includes(nq) || nq.includes(ne)) ? 1 : 0; }
   const qt = new Set(tokens(entry.question)), at = new Set(tokens(entry.answer + " " + entry.title));
   let hitQ = 0, hitA = 0;
   for (const w of qs) { if (qt.has(w)) hitQ++; else if (at.has(w)) hitA++; }
+  // One shared word in the answer body is not grounding: require a hit on the
+  // page's question, or at least two on its answer.
+  if (hitQ < 1 && hitA < 2) return 0;
   return (hitQ * 1.0 + hitA * 0.5) / qs.size;   // share of the visitor's words the page's question and answer account for
 }
 const json = (body, status = 200) => new Response(JSON.stringify(body, null, 2), { status, headers: { "content-type": "application/json; charset=utf-8", "access-control-allow-origin": "*", "cache-control": "public, max-age=300", "x-grounding": "verbatim-from-answers.json; no-model" } });
