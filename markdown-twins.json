@@ -1,0 +1,160 @@
+{
+  "generated": "2026-09-11",
+  "mechanism": "Accept: text/markdown → <url>index.md (also at /<path>.md); generated from the rendered page",
+  "pages": [
+    {
+      "url": "/",
+      "htmlBytes": 62721,
+      "mdBytes": 7899,
+      "saved": 54822,
+      "pct": 87
+    },
+    {
+      "url": "/work/",
+      "htmlBytes": 28317,
+      "mdBytes": 11664,
+      "saved": 16653,
+      "pct": 59
+    },
+    {
+      "url": "/blog/breaking-my-own-study/",
+      "htmlBytes": 25742,
+      "mdBytes": 13138,
+      "saved": 12604,
+      "pct": 49
+    },
+    {
+      "url": "/about/",
+      "htmlBytes": 24828,
+      "mdBytes": 7408,
+      "saved": 17420,
+      "pct": 70
+    },
+    {
+      "url": "/cv/",
+      "htmlBytes": 23745,
+      "mdBytes": 7638,
+      "saved": 16107,
+      "pct": 68
+    },
+    {
+      "url": "/tools/",
+      "htmlBytes": 22049,
+      "mdBytes": 9850,
+      "saved": 12199,
+      "pct": 55
+    },
+    {
+      "url": "/blog/get-cited-by-ai-search/",
+      "htmlBytes": 20258,
+      "mdBytes": 8134,
+      "saved": 12124,
+      "pct": 60
+    },
+    {
+      "url": "/blog/topic-cluster-architecture/",
+      "htmlBytes": 19264,
+      "mdBytes": 7442,
+      "saved": 11822,
+      "pct": 61
+    },
+    {
+      "url": "/topical-map/",
+      "htmlBytes": 19235,
+      "mdBytes": 5875,
+      "saved": 13360,
+      "pct": 69
+    },
+    {
+      "url": "/blog/geo-aeo-vs-seo/",
+      "htmlBytes": 19155,
+      "mdBytes": 7433,
+      "saved": 11722,
+      "pct": 61
+    },
+    {
+      "url": "/work/wellows-ai-visibility/",
+      "htmlBytes": 17295,
+      "mdBytes": 4210,
+      "saved": 13085,
+      "pct": 76
+    },
+    {
+      "url": "/work/core-update-recovery/",
+      "htmlBytes": 16708,
+      "mdBytes": 4008,
+      "saved": 12700,
+      "pct": 76
+    },
+    {
+      "url": "/tools/citeability-checker/",
+      "htmlBytes": 16257,
+      "mdBytes": 1269,
+      "saved": 14988,
+      "pct": 92
+    },
+    {
+      "url": "/blog/",
+      "htmlBytes": 13735,
+      "mdBytes": 2391,
+      "saved": 11344,
+      "pct": 83
+    },
+    {
+      "url": "/work/ranking-breakthrough/",
+      "htmlBytes": 13087,
+      "mdBytes": 2813,
+      "saved": 10274,
+      "pct": 79
+    },
+    {
+      "url": "/tools/schema-generator/",
+      "htmlBytes": 12327,
+      "mdBytes": 1176,
+      "saved": 11151,
+      "pct": 90
+    },
+    {
+      "url": "/tools/serp-preview/",
+      "htmlBytes": 11932,
+      "mdBytes": 1262,
+      "saved": 10670,
+      "pct": 89
+    },
+    {
+      "url": "/tools/query-fan-out/",
+      "htmlBytes": 11597,
+      "mdBytes": 1728,
+      "saved": 9869,
+      "pct": 85
+    },
+    {
+      "url": "/contact/",
+      "htmlBytes": 8733,
+      "mdBytes": 1142,
+      "saved": 7591,
+      "pct": 87
+    },
+    {
+      "url": "/blog/category/ai-search/",
+      "htmlBytes": 8723,
+      "mdBytes": 1124,
+      "saved": 7599,
+      "pct": 87
+    },
+    {
+      "url": "/blog/category/content-strategy/",
+      "htmlBytes": 8294,
+      "mdBytes": 866,
+      "saved": 7428,
+      "pct": 90
+    },
+    {
+      "url": "/blog/category/geo-aeo/",
+      "htmlBytes": 8168,
+      "mdBytes": 800,
+      "saved": 7368,
+      "pct": 90
+    }
+  ]
+}

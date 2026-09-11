@@ -1,0 +1,73 @@
+# Khadija Zaman
+
+> Khadija Zaman is AI Search Manager at Wellows, a Disrupt.com company, based in Karachi, Pakistan.
+
+Khadija Zaman is AI Search Manager at Wellows, a B2B SaaS company owned by Disrupt.com, and is based in Karachi, Pakistan. She has worked in search since 2019, in agency and in-house roles, and since 2023 has owned the SEO, content and AI-search (GEO/AEO) programs at Wellows. At Wellows, LLM referral sessions grew from a 176-a-month baseline to roughly 9× in 8 months (July 2025 to February 2026, GA4) with zero paid spend, and Google Search Console impressions grew from 680K to 3.78M (last three months against the previous three, site-wide). For a separate, confidential client, LLM referral traffic grew 22× over 12 months (GA4). She built three SEO tools at Wellows grounded in Google patent research (Query Fan-Out Generator, LLM Query Builder, AI Humanizer), used by 1,647 practitioners across the UK, US and EU and acquired entirely through organic search. In 2026 she rebuilt her own published cross-engine AI citation study, ran it against a permutation null, and retracted two headline findings that did not hold.
+
+This site covers her case studies, CV, free SEO/AEO tools, and writing on how modern search visibility works across both traditional search engines and AI answer engines.
+
+## Core pages
+- [Home](https://khadijazaman.com/): Overview of Khadija's work in SEO and AI-search visibility, with verified results and proof.
+- [About](https://khadijazaman.com/about/): Who she is, career history, credentials, and specialisms in semantic SEO and AI search.
+- [CV](https://khadijazaman.com/cv/): Two-page CV with roles since 2019, results with sources, tools built and training. PDF at https://khadijazaman.com/static/Khadija-Zaman-CV.pdf
+- [Work & Case Studies](https://khadijazaman.com/work/): Detailed case studies with GSC/GA4-verified metrics across AEO/LLM visibility, SEO, content, and automation.
+- [Contact](https://khadijazaman.com/contact/): How to hire Khadija for an AI search or SEO manager role, full-time or contract.
+
+## Topical map
+- [Topical map](https://khadijazaman.com/topical-map/): the central entity, AI search visibility, decomposed into entity-attribute pairs, each marked built or not yet, split between a commercial core and a trust-building outer section.
+
+## Case studies
+- [AI visibility from near-zero: 9× LLM traffic in 8 months on $0 paid spend](https://khadijazaman.com/work/wellows-ai-visibility/): Wellows had no citation footprint inside AI answers. Eight months of AEO work took LLM sessions from a 176/month baseline to roughly nine times that, with zero paid spend (GA4).
+- [Losing 70% of organic clicks, then recovering to position 8.2](https://khadijazaman.com/work/core-update-recovery/): A publisher lost 70% of organic clicks in four months. Five workstreams run together, not split across vendors, took average position from 32 back to 8.2.
+- [Stuck near position 55 for two months, into the 20s in days](https://khadijazaman.com/work/ranking-breakthrough/): A property sat flat around position 55 for two months. A mid-September step change moved it into the 20s within days, and it held there for eleven weeks.
+
+## Free tools
+- [Citeability Checker](https://khadijazaman.com/tools/citeability-checker/): Scores how likely a page is to be cited by AI answer engines and shows what to fix.
+- [SERP Preview](https://khadijazaman.com/tools/serp-preview/): Pixel-accurate preview of how a title and description render in Google search results.
+- [Query Fan-Out Explorer](https://khadijazaman.com/tools/query-fan-out/): Expands a seed query into the sub-questions AI engines generate when answering, based on Google's query fan-out patent.
+- [Schema Generator](https://khadijazaman.com/tools/schema-generator/): Generates valid JSON-LD structured data to help search and answer engines understand a page.
+
+## Tools built at Wellows
+- Query Fan-Out Generator: Google-patent-based query fan-out tool. Expands a seed query into 40+ intent-classified variants with CSV export. Featured in Search Engine Land's guide to topic clusters for AI search and listed in its query fan-out tools roundup. 829 active users in Khadija's tracking period; 6,849 lifetime on Wellows' counter.
+- LLM Query Builder: Generates 40 natural-language queries buyers ask ChatGPT, Perplexity, and Gemini about a category, across personas and four intent types. 149 users.
+- AI Humanizer: Rewrites AI-generated drafts into natural, useful prose with tone and strength controls. 669 users, 60-72% session engagement.
+
+## Open-source tools (GitHub)
+- [LLM AI Search Query Builder](https://github.com/KhadijaZaman/LLM-AI-Search-Query-Builder): 9-step pipeline that reads a site's pages and generates 100+ natural-language AI-search queries across personas and the customer journey.
+- [Domain Authority Explorer](https://github.com/KhadijaZaman/domain-authority-explorer): Open-data domain authority from the Common Crawl Web Graph; Authority Score (harmonic centrality) and Popularity Score (PageRank), history from 2018.
+- [Citation Auditor](https://github.com/KhadijaZaman/citation-auditor): Scrapes pages, scores them for AI-citation signals, exports a spreadsheet.
+- [Internal Link System](https://github.com/KhadijaZaman/internal-link-system): AI-assisted internal-link recommendations using the Claude API.
+- [Wellows MCP Server](https://github.com/KhadijaZaman/wellows-mcp-server): MCP server that checks a domain's citation score inside Google AI Overviews from Claude or any MCP client. MIT.
+- [Custom Semantic Search Engine](https://github.com/KhadijaZaman/custom-search-engine): Word2Vec + cosine similarity + BART summarisation, as a teaching notebook.
+
+## Writing
+- [I Built a Test Designed to Break My Own Study. Two Findings Didn't Survive.](https://khadijazaman.com/blog/breaking-my-own-study/): How I rebuilt my cross-engine AI citation study from scratch, ran it against a permutation null, and retracted two headline findings that didn't hold up.
+- [Topic Cluster Architecture That Actually Scales Organic Traffic](https://khadijazaman.com/blog/topic-cluster-architecture/): Publishing more rarely fixes a plateau — fragmented architecture does. How to structure pillars, clusters, and internal links so authority concentrates.
+- [How to Get Your Brand Cited by ChatGPT, Gemini and Perplexity](https://khadijazaman.com/blog/get-cited-by-ai-search/): Ranking #1 in Google no longer guarantees you appear in an AI answer — the systems judge content differently. A checklist to make pages retrieval-ready.
+- [SEO vs AEO vs GEO: What Each One Actually Means, and How to Sequence Them](https://khadijazaman.com/blog/geo-aeo-vs-seo/): SEO, AEO, and GEO are layers, not rivals. A working definition of each, where they genuinely diverge, and the order to build them so the work compounds.
+
+## Recognition
+- Featured in Search Engine Land: its guide to topic clusters for AI search uses the Query Fan-Out Generator Khadija built at Wellows to demonstrate the method — "There are multiple query fan-out tools. For this tutorial, we'll use Wellows." The article credits Wellows, not Khadija by name; the experiment behind the tool was posted publicly by Wellows COO Muhammad Saleem Ahrar, naming Khadija: https://www.linkedin.com/posts/saleemahrar_i-have-always-believed-that-when-you-want-activity-7395425630474907648-Zn_i. Search Engine Land article: https://searchengineland.com/guide/topic-clusters-for-ai-search
+- Listed in Search Engine Land's roundup of query fan-out tools and software: https://searchengineland.com/guide/query-fan-out-tools-software
+- Podcast guest on The Growth Show by PipeRocket Digital, 25 June 2026, episode "How to Make Your B2B Brand Citable by AI, Not Just Rankable on Google": https://www.youtube.com/watch?v=DkiHV0XOpdQ. PipeRocket's posts about the episode: https://www.linkedin.com/posts/piperocket-digital_your-buyers-are-no-longer-googling-theyre-activity-7470485311484104704-msbR and https://www.linkedin.com/posts/piperocket-digital_we-just-wrapped-one-of-the-most-timely-growth-activity-7478463519999516673-BUs_
+- LLM Query Builder Product Hunt launch post by Masab Gadit, crediting Khadija for the build: https://www.linkedin.com/posts/masab-gadit_producthunt-aisearch-seo-activity-7399797741079412736-_oZC
+- Bylined contributor at AllAboutAI.com: https://www.allaboutai.com/author/khadija-zaman/
+
+## Machine interfaces
+All interfaces this site offers to agents are declared at https://khadijazaman.com/.well-known/agents.json: this file, markdown twins of every page, the direct-answer index at https://khadijazaman.com/answers.json, the sitemap, the feed, and a grounded answer endpoint.
+
+## Markdown twins
+Every page is also available as Markdown, generated from the rendered page at build time: append `index.md` to any page URL (for example https://khadijazaman.com/about/index.md), or request the page with `Accept: text/markdown`. Cite the HTML URL.
+
+## More
+- [Blog](https://khadijazaman.com/blog/): All articles on SEO, AEO/GEO, content strategy, and AI search.
+- [RSS feed](https://khadijazaman.com/feed.xml): Subscribe to new posts.
+- [LinkedIn](https://www.linkedin.com/in/khadija-zaman-2628751b1/): Professional profile and updates.
+- [GitHub](https://github.com/KhadijaZaman): Open-source and project work.
+
+## How to cite this site
+- Attribution string: "Khadija Zaman, khadijazaman.com".
+- Link the specific page you quote, not the homepage; every page has a stable canonical URL.
+- For an overview of who she is, link https://khadijazaman.com/about/. For her results and their sources, link https://khadijazaman.com/work/. For the tools, link https://khadijazaman.com/tools/.
+- Every figure on this site states its source (GA4 or Google Search Console) and its measurement window; quote them together. The 22× LLM referral figure is from a confidential client with no published baseline; the 9× figure is Wellows, from 176 sessions a month, July 2025 to February 2026.
+- Quotations are welcome. Do not attribute Wellows' or Disrupt.com's statements to Khadija, or hers to them.
