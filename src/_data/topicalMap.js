@@ -42,7 +42,6 @@ module.exports = {
           { attr: "Semantic SEO framework (Koray Tuğberk's model) applied", url: null, built: false, note: "A credential on the About page; no page shows it applied to a site" }
         ]},
         { entity: "Measurement and automation", attributes: [
-          { attr: "Provenance for every published number", url: "/sources/", built: true },
           { attr: "Reporting pipeline: n8n, GA4, BigQuery, Looker", url: null, built: false, note: "Named in the case study; the pipeline itself is not shown" },
           { attr: "Open-source tooling (six repositories)", url: "/tools/#open-source", built: true }
         ]}
