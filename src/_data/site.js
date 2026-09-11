@@ -3,5 +3,6 @@ module.exports = {
   url: "https://khadijazaman.com",
   authorEmail: "hello@khadijazaman.com",
   linkedin: "https://www.linkedin.com/in/khadija-zaman-2628751b1/",
-  github: "https://github.com/KhadijaZaman"
+  github: "https://github.com/KhadijaZaman",
+  x: "https://x.com/KhadijaZaman7"
 };
