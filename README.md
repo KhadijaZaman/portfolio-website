@@ -104,7 +104,7 @@ curl -s https://khadijazaman.com/about.md | head -5
 
 - `/.well-known/agents.json` (from `src/.well-known/`) declares every
   machine-readable interface: llms.txt, markdown twins, `/answers.json`,
-  `/provenance.json`, sitemap, feed, and the grounded answer endpoint.
+  sitemap, feed, and the grounded answer endpoint.
 - `/answers.json` is written by `scripts/markdown-twins.js` from the
   `#answer` block on each built page, so it can never disagree with the HTML.
 - `answers-worker/` is a Cloudflare Worker that answers `?q=` from
