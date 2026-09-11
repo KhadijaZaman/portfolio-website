@@ -2,6 +2,18 @@
 
 # ── Custom 404 (built from src/404.njk) ─────────────────────
 ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html
+
+# ── Spam URL patterns: answer 410 Gone ──────────────────────
+# In May–June 2026 the server was injected with several hundred
+# /x12345678901234.html and /items/R123456789/ pages. They are deleted;
+# 410 tells Google to drop them faster than 404 and fails closed if the
+# pattern is ever re-injected.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^[a-z][0-9]{14}\.html$ - [G,L]
+  RewriteRule ^items/R[0-9]+/?$ - [G,L]
+</IfModule>
 
 # ── Compression ──────────────────────────────────────────────
 <IfModule mod_deflate.c>
