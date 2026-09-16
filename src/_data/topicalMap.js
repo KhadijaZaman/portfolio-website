@@ -58,7 +58,7 @@ module.exports = {
           { attr: "Glossary of AI search terms (citation, grounding, entity, retrieval)", url: null, built: false }
         ]},
         { entity: "Studies and corrections", attributes: [
-          { attr: "Cross-engine citation study, re-tested against a permutation null", url: "/blog/breaking-my-own-study/", built: true, note: "Two findings retracted" },
+          { attr: "Cross-engine citation study, re-tested against a permutation null", url: "/blog/breaking-my-own-study/", built: true, note: "Two findings revised" },
           { attr: "The original citation overlap study", url: "https://wellows.com/blog/ai-citation-overlap-study/", built: true, note: "On the Wellows blog" },
           { attr: "The 94-day query fan-out experiment", url: "/work/#press", built: true, note: "Posted publicly by Wellows' COO" }
         ]},
