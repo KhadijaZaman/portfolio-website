@@ -7,6 +7,8 @@ description: "BERAP probes AI engines with repeated prompts and grades answers a
 readTime: "7 min"
 image: "/static/uploads/berap-fig2-six-scores.png"
 imageAlt: "Sketch-note grid of six gauges labelled Recall Rate, Association Accuracy, Evidence Recall, Stability, Attribute Penetration and Source Dependency"
+answerQ: "What is the BERAP Map?"
+answerA: "BERAP (Brand Entity Recall & Association Probing) is the instrument inside the R2A Content Framework that measures what AI engines say about a brand, whether the answer came from retrieval or from training. It runs repeated prompts across five engines in two directions, grades each answer against a dated attribute table, and reports six scores: Recall Rate, Association Accuracy, Evidence Recall, Stability, Attribute Penetration and Source Dependency."
 layer: "core"
 starter: false
 ---
@@ -65,7 +67,7 @@ If that sounds like an entity-attribute-value record, it is one. Koray Tuğberk 
 <figure>
   <picture>
     <source srcset="/static/uploads/berap-fig3-association-grading.webp" type="image/webp">
-    <img src="/static/uploads/berap-fig3-association-grading.png" alt="Sketch-note diagram for a made-up brand called Tallybird: an owned attribute table dated 1 September 2026 lists category invoicing software, free plan retired, starting plan Starter, integrations Xero and QuickBooks; three speech bubbles from a robot are graded, invoicing software correct with a green check, free plan for 3 users outdated and counted wrong with a red cross, integrates with Xero correct with a green check; a box reads Association Accuracy equals 2 over 3" width="1600" height="940" loading="lazy">
+    <img src="/static/uploads/berap-fig3-association-grading.png" alt="Sketch-note diagram for a made-up brand called Tallybird: an owned attribute table dated 1 August 2026 lists category invoicing software, free plan retired, starting plan Starter, integrations Xero and QuickBooks; three speech bubbles from a robot are graded, invoicing software correct with a green check, free plan for 3 users outdated and counted wrong with a red cross, integrates with Xero correct with a green check; a box reads Association Accuracy equals 2 over 3" width="1600" height="940" loading="lazy">
   </picture>
   <figcaption>Figure 3. Grading one illustrative response. The free-plan claim was true once, so it's outdated, and outdated counts as wrong.</figcaption>
 </figure>

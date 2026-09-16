@@ -7,6 +7,8 @@ description: "A practitioner framework for scoring whether AI systems can retrie
 readTime: "8 min"
 image: "/static/uploads/r2a-fig2-layer-structure.png"
 imageAlt: "Sketch-note diagram of the R2A Content Framework: six independent layers sitting on an Eligibility gate, all resting on a Measurement base layer"
+answerQ: "What is the R2A Content Framework?"
+answerA: "R2A (Retrieval-to-Action) is Khadija Zaman's practitioner framework for scoring whether AI systems can retrieve, select, cite and act on a page. It has eight layers: Measurement as the base, Eligibility as the only hard gate, and six independently scored layers, with every recommendation carrying one of five evidence grades."
 layer: "core"
 starter: false
 ---
