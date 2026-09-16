@@ -42,9 +42,11 @@ collections:
         name: "category"
         widget: "select"
         default: "SEO"
-        options: ["AI Search", "GEO / AEO", "SEO", "Content Strategy", "Automation"]
+        options: ["AI Search", "GEO / AEO", "SEO", "Content Strategy", "Automation", "Frameworks"]
       - { label: "Short description (used for the card blurb + SEO meta)", name: "description", widget: "text" }
       - { label: "Read time", name: "readTime", widget: "string", default: "6 min", hint: "e.g. 7 min" }
+      - { label: "Featured image (used for social previews and the article's structured data)", name: "image", widget: "image", required: false }
+      - { label: "Featured image alt text", name: "imageAlt", widget: "string", required: false }
       - { label: "Direct answer: the question this post answers", name: "answerQ", widget: "string", required: false, hint: "Shown under the title and marked Speakable" }
       - { label: "Direct answer: two sentences that stay true on their own", name: "answerA", widget: "text", required: false }
       - label: "Topical map layer"
