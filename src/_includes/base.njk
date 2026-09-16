@@ -50,19 +50,30 @@
       The hand-built HTML pages carry an identical copy in their own head. -#}
   <script type="application/ld+json">{{ {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": site.url + "/#person",
-    "name": "Khadija Zaman",
-    "url": site.url + "/",
-    "image": site.url + "/apple-touch-icon.png",
-    "description": "Khadija Zaman is AI Search Manager at Wellows, a Disrupt.com company, based in Karachi, Pakistan.",
-    "disambiguatingDescription": "In search since 2018, she has owned SEO, content and AI-search (GEO/AEO) programs in-house at Wellows since 2024 and builds SEO tooling grounded in Google patent research used by 1,647 practitioners.",
-    "jobTitle": "AI Search Manager",
-    "worksFor": { "@type": "Organization", "name": "Wellows", "url": "https://wellows.com/", "parentOrganization": { "@type": "Organization", "name": "Disrupt.com", "url": "https://disrupt.com/" } },
-    "address": { "@type": "PostalAddress", "addressLocality": "Karachi", "addressCountry": "PK" },
-    "email": "mailto:" + site.authorEmail,
-    "sameAs": [site.linkedin, site.github, site.x, "https://www.allaboutai.com/author/khadija-zaman/"],
-    "knowsAbout": ["Search Engine Optimization", "Generative Engine Optimization", "Answer Engine Optimization", "Semantic SEO", "Query Fan-Out", "Content Strategy", "Marketing Automation"]
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": site.url + "/#person",
+        "name": "Khadija Zaman",
+        "url": site.url + "/",
+        "image": site.url + "/apple-touch-icon.png",
+        "description": "Khadija Zaman is AI Search Manager at Wellows, a Disrupt.com company, based in Karachi, Pakistan.",
+        "disambiguatingDescription": "In search since 2018, she has owned SEO, content and AI-search (GEO/AEO) programs in-house at Wellows since 2024 and builds SEO tooling grounded in Google patent research used by 1,647 practitioners.",
+        "jobTitle": "AI Search Manager",
+        "worksFor": { "@type": "Organization", "name": "Wellows", "url": "https://wellows.com/", "parentOrganization": { "@type": "Organization", "name": "Disrupt.com", "url": "https://disrupt.com/" } },
+        "address": { "@type": "PostalAddress", "addressLocality": "Karachi", "addressCountry": "PK" },
+        "email": "mailto:" + site.authorEmail,
+        "sameAs": [site.linkedin, site.github, site.x, "https://www.allaboutai.com/author/khadija-zaman/"],
+        "knowsAbout": ["Search Engine Optimization", "Generative Engine Optimization", "Answer Engine Optimization", "Semantic SEO", "Query Fan-Out", "Content Strategy", "Marketing Automation"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": site.url + "/#website",
+        "name": "Khadija Zaman",
+        "url": site.url + "/",
+        "publisher": { "@id": site.url + "/#person" }
+      }
+    ]
   } | dump | safe }}</script>
 </head>
 <body>

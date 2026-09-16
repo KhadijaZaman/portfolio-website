@@ -132,7 +132,7 @@ the previous commit's date until it is committed.
 ---
 title: "My post title"
 date: 2026-08-01
-category: "SEO"          # AI Search | GEO / AEO | SEO | Content Strategy | Automation
+category: "SEO"          # AI Search | GEO / AEO | SEO | Content Strategy | Automation | Frameworks
 description: "One-line summary for the card + search snippet."
 readTime: "6 min"
 starter: false           # true shows the amber 'starter draft' banner
@@ -171,7 +171,7 @@ CMS login goes through the Cloudflare Worker in `oauth-worker/`, configured in
 
 ## Content status
 
-All four published posts are real (`starter: false`); the `starter` flag remains available for drafts. The contact and newsletter forms post to **Web3Forms** (key in `src/js/site.js`), falling back to `mailto:` if the key is cleared. The three Wellows tools on `/tools/` are described but deliberately not linked to wellows.com; the open-source section links to the public GitHub repos.
+All seven published posts are real (`starter: false`); the `starter` flag remains available for drafts. The contact and newsletter forms post to **Web3Forms** (key in `src/js/site.js`), falling back to `mailto:` if the key is cleared. The three Wellows tools on `/tools/` are described but deliberately not linked to wellows.com; the open-source section links to the public GitHub repos.
 
 ## Links
 - LinkedIn: https://www.linkedin.com/in/khadija-zaman-2628751b1/
