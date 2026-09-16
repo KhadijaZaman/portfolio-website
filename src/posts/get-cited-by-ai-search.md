@@ -77,6 +77,8 @@ Citations are harder to track than rankings, but not impossible, and the trackin
 - Track referral traffic from AI sources in your analytics as those referrers grow.
 - Watch brand-mention and AI-visibility monitoring tools that report citation presence over time.
 
+If you want to score a page against these conditions before you measure, the [R2A Content Framework](/blog/r2a-content-framework/) is the checklist I use, and the [BERAP Map](/blog/berap-map/) grades what the models say back.
+
 Treat all of it as a trend line. What matters isn't whether you got cited on a given Tuesday — it's whether your presence in generated answers is climbing quarter over quarter, and whether the way you're described is getting sharper.
 
 That's the real target. Not ranking, not even a single citation, but becoming a source these systems reach for by default. It's slower than chasing a keyword. It's also a lot harder for a competitor to undo once you've earned it.

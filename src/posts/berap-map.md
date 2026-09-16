@@ -96,13 +96,13 @@ Recall Rate across four weekly windows comes in at 62%, 48%, 70% and 55%, so Sta
 
 In one run, a response makes three gradable claims. It gets the category right and the Xero integration right, and it describes a free plan for three users that Tallybird retired. Association Accuracy for that response is 2 out of 3. The starting plan never came up, so it isn't graded, but it does show up in Attribute Penetration: across five runs, the answers surface 3, 2, 3, 1 and 2 of the table's 4 attributes, and the median gives a penetration of 2 out of 4.
 
-Across the Category to Brand family, 40 responses mention Tallybird. 30 of them carry a supporting citation, and 8 cite Tallybird's own site, so Evidence Recall is 75% for any citation and 20% for own-site citations. Of the 20 citations to other sites, 11 point to the same review directory, a Source Dependency of 55%.
+Across the Category to Brand family, 40 responses mention Tallybird. 30 of them carry a supporting citation, and 8 cite Tallybird's own site, so Evidence Recall is 75% for any citation and 20% for own-site citations. Of the 22 citations to other sites, 11 point to the same review directory, a Source Dependency of 50%.
 
 Read together, that's one story. The review directory still lists the free plan, it's carrying most of the outside citations, and the outdated association keeps coming back. On the R2A side that's a Web Corroboration failure. BERAP is what shows it's also shaping answers.
 
 ## Where BERAP isn't the right tool
 
-For a brand too new to appear in training data, Recall Rate will sit near zero and there's little to grade. The retrieval layers in R2A are the better place to start.
+For a brand too new to appear in training data, Recall Rate will sit near zero and there's little to grade. The [retrieval layers in R2A](/blog/get-cited-by-ai-search/) are the better place to start.
 
 Personalised and logged-in answers are also out of reach. A panel run from clean sessions measures the default answer, not the one a returning user with history might get.
 

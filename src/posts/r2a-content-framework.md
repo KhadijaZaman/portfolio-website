@@ -55,8 +55,8 @@ The framework has eight layers. An earlier draft ran them as a strict sequence, 
 
 | Layer | What it checks |
 |---|---|
-| 2. Entity Integrity | The brand, its products and its people are described consistently, completely and authentically, and can't be confused with anything else sharing the name |
-| 3. Information Extractability | Semantic HTML, structured data, clear headings, definitions and real tables and lists carry the facts |
+| 2. [Entity Integrity](/blog/central-entity/) | The brand, its products and its people are described consistently, completely and authentically, and can't be confused with anything else sharing the name |
+| 3. Information Extractability | Semantic HTML, [structured data, clear headings](/blog/get-cited-by-ai-search/), definitions and real tables and lists carry the facts |
 | 4. Retrieval Efficiency | The meaning is cheap to fetch: small payload, sensible caching, and alternate representations served through content negotiation |
 | 5. Source Fitness | Expertise, experience, authority, trust and evidence stand behind the page's claims |
 | 6. Web Corroboration | Independent mentions, citations, reviews and references say the same thing the page says |
