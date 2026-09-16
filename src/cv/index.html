@@ -51,6 +51,13 @@
         "knowsAbout": ["Search Engine Optimization", "Generative Engine Optimization", "Answer Engine Optimization", "Semantic SEO", "Query Fan-Out", "Content Strategy", "Marketing Automation"]
       },
       {
+        "@type": "WebSite",
+        "@id": "https://khadijazaman.com/#website",
+        "name": "Khadija Zaman",
+        "url": "https://khadijazaman.com/",
+        "publisher": { "@id": "https://khadijazaman.com/#person" }
+      },
+      {
         "@type": "ProfilePage",
         "@id": "https://khadijazaman.com/cv/#profilepage",
         "url": "https://khadijazaman.com/cv/",
@@ -115,11 +122,11 @@
 
     /* ── Print / PDF: white page, no chrome, A4 with sane margins. The PDF in
        /static/ is generated from this same page (see README). ── */
-    @page { size: A4; margin: 12mm 13mm 12mm; }
+    @page { size: A4; margin: 10mm 12mm 10mm; }
     @media print {
-      html { font-size: 13.5px; }
+      html { font-size: 12.5px; }
       html, body { background: #fff !important; color: #111 !important; }
-      body::before, body::after, .scroll-progress, .skip-nav, nav, footer, .cv-actions, .page-hero-orb, .crumbs { display: none !important; }
+      body::before, body::after, .scroll-progress, .skip-nav, nav, footer, .cv-actions, .page-hero-orb, .crumbs, .answer-block { display: none !important; }
       main { padding: 0 !important; }
       .page-hero, section { padding: 0 !important; background: none !important; }
       .cv-wrap { max-width: none; }
@@ -286,7 +293,7 @@
           <li><b>The Growth Show, PipeRocket Digital</b> · podcast guest, 25 June 2026: &ldquo;How to Make Your B2B Brand Citable by AI, Not Just Rankable on Google&rdquo;. <a href="https://www.youtube.com/watch?v=DkiHV0XOpdQ" target="_blank" rel="noopener">Episode</a> · <a href="https://www.linkedin.com/posts/piperocket-digital_we-just-wrapped-one-of-the-most-timely-growth-activity-7478463519999516673-BUs_" target="_blank" rel="noopener">PipeRocket&rsquo;s recap post</a></li>
           <li><b>Open source</b> · six SEO and AI-search projects on <a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a>, including the engine behind the LLM Query Builder and an MCP server for AI Overview citation checks. <a href="https://khadijazaman.com/tools/#open-source">List</a></li>
           <li><b>LLM Query Builder on Product Hunt</b> · <a href="https://www.linkedin.com/posts/masab-gadit_producthunt-aisearch-seo-activity-7399797741079412736-_oZC" target="_blank" rel="noopener">launch post by Masab Gadit</a> credits me for the build.</li>
-          <li><b>Cross-engine AI citation overlap study</b> · published on the Wellows blog, Jan – Jun 2026, then <a href="https://khadijazaman.com/blog/breaking-my-own-study/">re-tested against a permutation null with two findings revised</a>.</li>
+          <li><b>Cross-engine AI citation overlap study</b> · January – June 2026 data, published on the Wellows blog in July 2026, then <a href="https://khadijazaman.com/blog/breaking-my-own-study/">re-tested against a permutation null with two findings revised</a>.</li>
           <li><b>AllAboutAI.com</b> · <a href="https://www.allaboutai.com/author/khadija-zaman/" target="_blank" rel="noopener">bylined contributor</a> on SEO and AI search; author pages grew 10.7K → 23.6K clicks year over year (Search Console, 2025 vs 2024).</li>
           <li><b>khadijazaman.com/blog</b> · field notes on GEO/AEO, semantic SEO and automation.</li>
         </ul>

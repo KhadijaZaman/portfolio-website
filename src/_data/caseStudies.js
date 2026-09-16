@@ -29,8 +29,8 @@ module.exports = [
     answer: { q: "How did Wellows grow LLM referral traffic 9× with no paid spend?", a: "Wellows grew LLM referral sessions from 176 a month to roughly nine times that between July 2025 and February 2026 with no paid spend, measured in GA4. The work was an AEO framework built on Koray Tuğberk's semantic model and Google's query fan-out patent, grounded-versus-non-grounded citation experiments, three free tools built as LLM entry points, and answers placed on Reddit, Quora and G2." },
     order: 1,
     pill: "AEO / LLM Visibility",
-    pillClass: "pill-blue",
-    barClass: "bar-blue",
+    pillClass: "pill-green",
+    barClass: "bar-green",
 
     /* 9× over Jul 2025 – Feb 2026 from a 176/month baseline. The 22× figure
        elsewhere on the site is a DIFFERENT, confidential project; it must
