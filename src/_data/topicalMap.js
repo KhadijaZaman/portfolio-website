@@ -39,7 +39,7 @@ module.exports = {
         { entity: "Content architecture", attributes: [
           { attr: "Topic cluster architecture", url: "/blog/topic-cluster-architecture/", built: true },
           { attr: "Ranking step change that held", url: "/work/ranking-breakthrough/", built: true, note: "Position 55 → 20s, held 11 weeks" },
-          { attr: "Semantic SEO framework (Koray Tuğberk's model) applied", url: null, built: false, note: "A credential on the About page; no page shows it applied to a site" }
+          { attr: "Semantic SEO framework (Koray Tuğberk's model) applied", url: "/blog/central-entity/", built: true, note: "Choosing one central entity for a site, read against Google's topical entities patent" }
         ]},
         { entity: "Measurement and automation", attributes: [
           { attr: "Reporting pipeline: n8n, GA4, BigQuery, Looker", url: null, built: false, note: "Named in the case study; the pipeline itself is not shown" },
