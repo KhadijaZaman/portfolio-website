@@ -3,10 +3,10 @@ title: "I Built a Test Designed to Break My Own Study. Two Findings Didn't Survi
 metaTitle: "I Tried to Break My Own AI Study. 2 Findings Failed."
 date: 2026-08-03
 category: "AI Search"
-description: "How I rebuilt my cross-engine AI citation study from scratch, ran it against a permutation null, and retracted two headline findings that didn't hold up."
+description: "How I rebuilt my cross-engine AI citation study from scratch, ran it against a permutation null, and revised two headline findings that didn't hold up."
 readTime: "9 min"
 answerQ: "Did the cross-engine AI citation study hold up?"
-answerA: "Khadija Zaman rebuilt her cross-engine AI citation overlap study (January to June 2026) from scratch and tested it against a permutation null. Two headline findings did not survive and were retracted; the corrected study is published on the Wellows blog."
+answerA: "Khadija Zaman rebuilt her cross-engine AI citation overlap study (January to June 2026) from scratch and tested it against a permutation null. Two headline findings did not survive and were revised; the corrected study is published on the Wellows blog."
 layer: "outer"
 starter: false
 ---
@@ -15,7 +15,7 @@ starter: false
 
 The study this is about: [Cross-engine AI citation overlap study](https://wellows.com/blog/ai-citation-overlap-study/), published on the Wellows blog.
 
-The study went live on 29 July 2026. By 3 August I had rewritten it twelve times, retracted two of its headline findings, corrected a false claim about where the data came from, and published all of it on the same page as the original numbers.
+The study went live on 29 July 2026. By 3 August I had rewritten it twelve times, revised two of its headline findings, corrected a false claim about where the data came from, and published all of it on the same page as the original numbers.
 
 This is the record of how that happened and what the process was.
 
@@ -29,7 +29,7 @@ The headline: 79.61% of cited websites appeared on one engine only. The full dis
 
 Two other findings sat underneath it. Brands co-occurred across engines 4.5 times more often than pages did, so brand looked like the durable layer. And the two Google surfaces agreed 3.4 times more than cross-company pairs, so shared infrastructure looked like the driver.
 
-Both of those are now retracted. The 79.6% still stands.
+Both of those have now been revised. The 79.6% still stands.
 
 ## Why verification became the project
 
@@ -57,7 +57,7 @@ The same pass found something worse. The post said every question was collected 
 
 **Pass 3. Attack it.** Build a null model and see whether the finding survives contact with it.
 
-This is the pass most research in my field skips, and it is where both retractions came from. Detail below.
+This is the pass most research in my field skips, and it is where both revisions came from. Detail below.
 
 **Pass 4. Run it backwards.** The title claim was that 89% of what ChatGPT cites, Perplexity never touches. Directional claims have a mirror image, and if the mirror looks very different, the claim is an artefact of which engine you put first.
 
@@ -123,7 +123,7 @@ Still open, and stated as open on the published page rather than papered over: t
 
 A finding is worth what it is worth against a null model, and you do not know that number until you build the null model and run it against your own work.
 
-Two of mine did not survive. The page stayed up, the retractions went on it, and the study is more defensible now than when every number in it was still standing.
+Two of mine did not survive. The page stayed up, the revisions went on it, and the study is more defensible now than when every number in it was still standing.
 
 ---
 
