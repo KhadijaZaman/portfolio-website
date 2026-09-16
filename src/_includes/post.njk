@@ -13,7 +13,7 @@ ogType: article
   "author": { "@id": site.url + "/#person" },
   "publisher": { "@id": site.url + "/#person" },
   "mainEntityOfPage": site.url + page.url,
-  "image": site.url + "/web-app-manifest-512x512.png"
+  "image": site.url + (image or "/web-app-manifest-512x512.png")
 } | dump | safe }}</script>
 <script type="application/ld+json">{{ {
   "@context": "https://schema.org",

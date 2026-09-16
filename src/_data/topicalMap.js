@@ -24,6 +24,8 @@ module.exports = {
         { entity: "AI search visibility", attributes: [
           { attr: "LLM referral growth, measured", url: "/work/wellows-ai-visibility/", built: true, note: "9× in 8 months from 176/month, GA4" },
           { attr: "Retrieval-ready content checklist", url: "/blog/get-cited-by-ai-search/", built: true },
+          { attr: "R2A Content Framework: scoring a page from retrieval to action", url: "/blog/r2a-content-framework/", built: true, note: "Eight layers, one hard gate, every claim carries an evidence grade" },
+          { attr: "BERAP Map: probing what AI models recall about a brand", url: "/blog/berap-map/", built: true, note: "Six scores graded against a dated attribute table" },
           { attr: "Query fan-out as the expansion model", url: "/tools/query-fan-out/", built: true, note: "Free explorer, plus the Wellows generator used by Search Engine Land" },
           { attr: "Tools as LLM entry points", url: "/tools/", built: true },
           { attr: "Grounded vs non-grounded citation experiments, the method", url: null, built: false, note: "Described inside the Wellows case study; needs its own write-up with the protocol" },
