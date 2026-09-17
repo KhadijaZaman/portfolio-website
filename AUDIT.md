@@ -429,6 +429,59 @@ order. The wrapper is now a labelled `role="group"`.
 | `src/tools/index.html` | Curve `role="group"` |
 | `src/css/main.css` | `.footer-col h2`, `.qa-item h2`, `.post-card h2` |
 
+## Round 4 — agentchecker.ai follow-up (17 September 2026)
+
+agentchecker.ai scored the live site 78%: Discoverability 100%, Understanding 80%, Operability
+75%, Trust & Security 63%. Its per-check list was not available from this environment, so this
+round fixed the things a Trust & Security and Operability pillar can be expected to score and
+that the source showed were missing. Each is verified locally; the live headers still need a
+check after deploy (see "Verifying this yourself").
+
+### 27. No `Content-Security-Policy` — **FIXED**
+
+Only the four classic headers were set. A CSP is the one header agent-readiness and security
+scanners most consistently look for. Every page carries inline scripts (the `.js` flag, the home
+canvases, each tool), so `scripts/csp.js` now runs last in `npm run build`, hashes every inline
+script and inline handler in the built HTML, and writes a policy into `_site/.htaccess` that
+allows exactly those plus Google Fonts, the Cloudflare beacon and Web3Forms. No
+`'unsafe-inline'` for scripts. Verified in headless Chromium: zero `securitypolicyviolation`
+events on all 27 pages with every tool exercised and both forms submitted.
+
+### 28. HSTS was six months with no subdomains — **FIXED**
+
+Scanners want at least a year. Now `max-age=31536000; includeSubDomains`.
+
+### 29. No `security.txt` — **FIXED**
+
+`src/.well-known/security.txt` per RFC 9116: contact, expiry (one year), canonical URL.
+**Renew the `Expires` line before 17 September 2027.**
+
+### 30. Contact and newsletter forms did nothing without JavaScript — **FIXED**
+
+Both forms had no `action` or `method`; `site.js` posted them to Web3Forms with `fetch`. An
+agent or a no-JS client submitting the form got a page reload and nothing sent. The forms now
+carry `action`/`method` and hidden `access_key` and `subject` inputs, so a plain POST works;
+the JS path is unchanged (it still intercepts, and no longer duplicates the key).
+
+### Not changed, on purpose
+
+- **WebMCP / `navigator.modelContext`**: agentchecker flags sites that register no tools.
+  `agents.json` already states this is declined until the spec settles.
+- **Web Bot Auth signature verification**: needs CDN support; nothing to do in this repo.
+- **Understanding 80%**: no source-level gap found; needs the failing check's name.
+
+## What changed — round 4
+
+| File | Change |
+|---|---|
+| `scripts/csp.js` | New: hashes inline scripts and handlers, writes the CSP into `_site/.htaccess` |
+| `package.json` | `build` runs `csp.js` after the markdown twins |
+| `src/.htaccess` | HSTS one year + subdomains; CSP placeholder line |
+| `src/.well-known/security.txt` | New |
+| `src/_includes/base.njk`, `src/tools/index.html`, `src/contact/index.html` | Forms post to Web3Forms without JS |
+| `src/js/site.js` | Web3Forms helper does not duplicate hidden fields |
+| `README.md` | CSP and security.txt documented |
+
 ## Corrections to this audit
 
 Four findings were wrong as first written and are corrected in place above. Recording them
@@ -475,6 +528,13 @@ for f in glob.glob('_site/**/*.html', recursive=True):
         try: json.loads(m.group(1))
         except Exception as e: print('INVALID', f, e)
 PY
+```
+
+Check the live headers after a deploy (all six should be present, CSP first):
+
+```bash
+curl -sI https://khadijazaman.com/ | grep -iE 'content-security-policy|strict-transport|x-frame|x-content-type|referrer-policy|permissions-policy'
+curl -s https://khadijazaman.com/.well-known/security.txt
 ```
 
 Then serve `_site/` and tab through the homepage — the focus ring should be visible on every

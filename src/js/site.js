@@ -47,8 +47,10 @@
   /* POST a form to Web3Forms. Returns a promise. */
   function submitWeb3Forms(form, extra) {
     var data = new FormData(form);
-    data.append('access_key', WEB3FORMS_KEY);
-    Object.keys(extra || {}).forEach(function (k) { data.append(k, extra[k]); });
+    // The form carries access_key and subject as hidden inputs so it also
+    // works as a plain POST without JavaScript; here only fill what is missing.
+    if (!data.has('access_key')) data.append('access_key', WEB3FORMS_KEY);
+    Object.keys(extra || {}).forEach(function (k) { data.set(k, extra[k]); });
     return fetch('https://api.web3forms.com/submit', {
       method: 'POST', headers: { 'Accept': 'application/json' }, body: data
     }).then(function (r) { return r.json(); });

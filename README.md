@@ -155,7 +155,12 @@ push to main  →  .github/workflows/deploy.yml  →  npx @11ty/eleventy
 
 So the live site always serves built HTML, never source. `src/.htaccess` ships with the build
 and supplies compression, cache headers, and the security headers (HSTS, `X-Frame-Options`,
-`Referrer-Policy`, `Permissions-Policy`).
+`Referrer-Policy`, `Permissions-Policy`, and a `Content-Security-Policy`). The CSP is written by
+`scripts/csp.js`, the last step of `npm run build`: it hashes every inline `<script>` and inline
+event handler in the built HTML and allows exactly those, plus Google Fonts, the Cloudflare
+analytics beacon and Web3Forms. Anything inline that is new is picked up on the next build, so
+there is nothing to maintain by hand; `_site/.htaccess` carries the finished header.
+`src/.well-known/security.txt` (RFC 9116) names the security contact.
 
 CMS login goes through the Cloudflare Worker in `oauth-worker/`, configured in
 `src/admin/config.yml` via `base_url`.
