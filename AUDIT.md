@@ -377,6 +377,58 @@ supply the year to any templated page. Rolls into finding 18.
 | `oauth-worker/README.md` | No longer describes itself as optional or points at the deleted file |
 | `AUDIT.md` | Corrections, finding 20, status flips |
 
+## Round 3 — accessibility-tree pass (17 September 2026)
+
+Agents read a page three ways: the DOM, a visual pass, and the accessibility tree. This round
+ran axe-core (WCAG 2.2 AA plus best-practice rules) in headless Chromium over all 27 public
+pages of the built site, with the scroll-reveal transition disabled so mid-fade colours were not
+scored. Six real findings, all fixed; zero violations on every page afterwards.
+
+### 21. Footer column headings were `h5` under an `h2` — **FIXED**
+
+Every page's outline jumped from the newsletter `h2` to `h5` ("Site", "Work", "Connect"). Now
+`h2`, with the one CSS rule repointed so nothing changes visually.
+
+### 22. About page quick answers were `h3` directly under the `h1` — **FIXED**
+
+The three `.qa-item` headings, including the `#answer` block the FAQPage and `speakable`
+markup point at, are now `h2`. Class names and the JSON-LD selectors are unchanged.
+
+### 23. Category pages listed posts as `h3` directly under the `h1` — **FIXED**
+
+`src/blog-category.njk` cards now use `h2`; `.post-card h2` shares the `h3` rule. The
+"← All posts" link in the lead also lost its `text-decoration: none`, since a link inside a
+paragraph that is distinguishable only by colour fails WCAG 1.4.1.
+
+### 24. Blog category filter announced itself as a `tablist` with no tabs — **FIXED**
+
+`#chip-row` had `role="tablist"` but its children are plain buttons, so screen readers and
+agents saw an empty tab list (axe: critical). It is now a `role="group"` of toggle buttons with
+`aria-pressed`, kept in sync by `site.js` on click and on "clear filters".
+
+### 25. Carousel dots were `aria-hidden` but focusable — **FIXED**
+
+`#pc-dots` on `/work/` hid its slide buttons from assistive tech while leaving them in the tab
+order. The wrapper is now a labelled `role="group"`.
+
+### 26. The About and Tools "curve" figures carried `aria-label` on a plain `div` — **FIXED**
+
+`aria-label` is prohibited on a generic `div`, so the description was dropped. Both now use
+`role="group"`, which keeps the label and does not conflict with the SVG's own links.
+
+## What changed — round 3
+
+| File | Change |
+|---|---|
+| `src/_includes/base.njk`, `src/index.njk`, and 9 hand-built pages | Footer `h5` → `h2` |
+| `src/about/index.html` | Quick-answer `h3` → `h2`; curve `role="group"` |
+| `src/blog-category.njk` | Card `h3` → `h2`; underlined "All posts" link |
+| `src/blog.njk` | Filter chips: `role="group"` + `aria-pressed` |
+| `src/js/site.js` | Chip clicks and clear keep `aria-pressed` in sync |
+| `src/work/index.html` | Carousel dots no longer `aria-hidden` |
+| `src/tools/index.html` | Curve `role="group"` |
+| `src/css/main.css` | `.footer-col h2`, `.qa-item h2`, `.post-card h2` |
+
 ## Corrections to this audit
 
 Four findings were wrong as first written and are corrected in place above. Recording them

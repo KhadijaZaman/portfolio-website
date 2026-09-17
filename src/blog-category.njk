@@ -22,7 +22,7 @@ eleventyComputed:
   <div class="wrap">
     <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a> <span>/</span> {{ cat.title }}</nav>
     <h1 class="reveal d1">{{ cat.title }}</h1>
-    <p class="lead reveal d2">{{ cat.posts.length }} article{% if cat.posts.length != 1 %}s{% endif %} on {{ cat.title }}. <a href="/blog/" style="color:#93C5FD;text-decoration:none;">← All posts</a></p>
+    <p class="lead reveal d2">{{ cat.posts.length }} article{% if cat.posts.length != 1 %}s{% endif %} on {{ cat.title }}. <a href="/blog/" style="color:#93C5FD;text-decoration:underline;text-underline-offset:3px;">← All posts</a></p>
   </div>
 </header>
 
@@ -32,7 +32,7 @@ eleventyComputed:
     {% for post in cat.posts %}
       <a class="post-card reveal{% if loop.index0 % 2 == 1 %} d1{% endif %}" href="{{ post.url }}">
         <div class="post-meta"><span class="post-cat">{{ post.data.category }}</span><span class="post-date">{{ post.data.date | readableDate }} · {{ post.data.readTime }}</span></div>
-        <h3>{{ post.data.title }}</h3>
+        <h2>{{ post.data.title }}</h2>
         <p>{{ post.data.description }}</p>
         <span class="post-more">Read the post →</span>
       </a>
