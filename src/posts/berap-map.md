@@ -9,7 +9,6 @@ image: "/static/uploads/berap-fig2-six-scores.png"
 imageAlt: "Sketch-note grid of six gauges labelled Recall Rate, Association Accuracy, Evidence Recall, Stability, Attribute Penetration and Source Dependency"
 answerQ: "What is the BERAP Map?"
 answerA: "BERAP (Brand Entity Recall & Association Probing) is the instrument inside the R2A Content Framework that measures what AI engines say about a brand, whether the answer came from retrieval or from training. It runs repeated prompts across five engines in two directions, grades each answer against a dated attribute table, and reports six scores: Recall Rate, Association Accuracy, Evidence Recall, Stability, Attribute Penetration and Source Dependency."
-layer: "core"
 starter: false
 ---
 

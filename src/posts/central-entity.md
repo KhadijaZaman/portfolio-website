@@ -7,7 +7,6 @@ description: "How Google’s Identifying Topical Entities patent application con
 readTime: "14 min"
 answerQ: "What is a central entity in SEO?"
 answerA: "A central entity is the entity a page, or a whole content network, is mainly about. In Google’s “Identifying Topical Entities” patent application, a system cuts a page’s entities down to the well-connected ones, scores them, then checks rankings, query logs, and the title and URL to confirm one predominant topic. Koray Tuğberk GÜBÜR’s topical map framework applies the same idea at site scale: one central entity runs through every page, and a root page covers it broadly."
-layer: "core"
 starter: false
 ---
 
@@ -142,7 +141,7 @@ The root document, as I build it, is the page every related page links to, and i
 
 Nothing in the patent mentions topical maps, and nothing in Koray’s framework depends on this patent. I read them side by side because they share a principle: one center, entities that genuinely connect to it, and whatever doesn’t connect trimmed away.
 
-That link is my practitioner lens, not a documented Google process. This site runs on the same idea, and I publish its own [topical map](/topical-map/), central entity included, with the gaps still to fill.
+That link is my practitioner lens, not a documented Google process. This site runs on the same idea, with AI visibility as its own central entity.
 
 | Term | In the patent (one page) | In a topical map (whole site) |
 | --- | --- | --- |
