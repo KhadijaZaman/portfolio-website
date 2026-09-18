@@ -28,6 +28,14 @@ eleventyComputed:
 
 <section aria-label="Articles in {{ cat.title }}">
   <div class="wrap">
+    <div class="blog-filter reveal">
+      <div class="chip-row" role="group" aria-label="Browse by category">
+        <a class="chip" href="/blog/" data-cat="all">All</a>
+        {% for c in collections.categories %}
+        <a class="chip{% if c.slug == cat.slug %} active{% endif %}" href="/blog/category/{{ c.slug }}/"{% if c.slug == cat.slug %} aria-current="page"{% endif %}>{{ c.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
     <div class="post-grid">
     {% for post in cat.posts %}
       <a class="post-card reveal{% if loop.index0 % 2 == 1 %} d1{% endif %}" href="{{ post.url }}">

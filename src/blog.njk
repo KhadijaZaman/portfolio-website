@@ -67,9 +67,9 @@ permalink: /blog/index.html
         <input type="search" id="blog-search" placeholder="Search posts…" aria-label="Search posts" autocomplete="off">
       </div>
       <div class="chip-row" id="chip-row" role="group" aria-label="Filter by category">
-        <button class="chip active" type="button" data-cat="all" aria-pressed="true">All</button>
+        <a class="chip active" href="/blog/" data-cat="all" aria-current="page">All</a>
         {% for c in collections.categories %}
-        <button class="chip" type="button" data-cat="{{ c.title }}" aria-pressed="false">{{ c.title }}</button>
+        <a class="chip" href="/blog/category/{{ c.slug }}/" data-cat="{{ c.title }}">{{ c.title }}</a>
         {% endfor %}
       </div>
     </div>

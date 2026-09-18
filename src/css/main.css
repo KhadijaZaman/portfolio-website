@@ -269,6 +269,8 @@ section { padding: 108px 6%; }
   font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
   background: rgba(59,130,246,0.1); color: #93C5FD; border: 1px solid rgba(59,130,246,0.25);
 }
+a.post-cat { text-decoration: none; transition: border-color 0.2s, background 0.2s; }
+a.post-cat:hover { border-color: rgba(59,130,246,0.6); background: rgba(59,130,246,0.18); }
 .post-date { font-size: 0.74rem; color: var(--text-3); }
 .post-card h3, .post-card h2 {
   font-family: var(--ff-display); font-size: 1.2rem; font-weight: 700;
@@ -953,6 +955,7 @@ footer { border-top: 1px solid var(--border); padding: 2.75rem 6%; }
   font-family: var(--ff-body); font-size: 0.8rem; font-weight: 600; cursor: pointer;
   transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
+a.chip { text-decoration: none; display: inline-block; }
 .chip:hover { color: var(--text-1); border-color: var(--border-a); }
 .chip.active { color: var(--on-accent); background: var(--accent); border-color: var(--accent); }
 .blog-empty { text-align: center; color: var(--text-2); padding: 2rem 0; }

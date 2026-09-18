@@ -423,19 +423,27 @@
       if (empty) empty.hidden = (shown !== 0);
     }
     if (search) search.addEventListener('input', function () { q = search.value.toLowerCase().trim(); apply(); });
+    // The chips are real links to /blog/category/<slug>/ so the category pages are
+    // reachable (and crawlable) without JS. With JS they filter in place instead.
+    function setActive(cat) {
+      chips.forEach(function (c) {
+        var on = c.getAttribute('data-cat') === cat;
+        c.classList.toggle('active', on);
+        if (on) c.setAttribute('aria-current', 'page'); else c.removeAttribute('aria-current');
+      });
+    }
     chips.forEach(function (chip) {
-      chip.addEventListener('click', function () {
-        chips.forEach(function (c) { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
-        chip.classList.add('active');
-        chip.setAttribute('aria-pressed', 'true');
+      chip.addEventListener('click', function (e) {
+        e.preventDefault();
         activeCat = chip.getAttribute('data-cat');
+        setActive(activeCat);
         apply();
       });
     });
     if (clearBtn) clearBtn.addEventListener('click', function () {
       activeCat = 'all'; q = '';
       if (search) search.value = '';
-      chips.forEach(function (c) { var on = c.getAttribute('data-cat') === 'all'; c.classList.toggle('active', on); c.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      setActive('all');
       apply();
     });
   })();
