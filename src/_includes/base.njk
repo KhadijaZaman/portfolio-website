@@ -106,7 +106,9 @@
     <div class="sec-tag reveal" style="justify-content:center;">The Newsletter</div>
     <h2 class="reveal d1">New posts, straight to your inbox</h2>
     <p class="reveal d2">Practical notes on SEO and AI search, delivered when each post goes live. No fluff, no sales pitch.</p>
-    <form class="newsletter-form reveal d2" id="newsletter-form">
+    <form class="newsletter-form reveal d2" id="newsletter-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="0ca2b384-dbcd-4977-a41a-5f2d1a6c2abb">
+      <input type="hidden" name="subject" value="Newsletter subscribe from khadijazaman.com">
       <label class="hp-field" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
       <input type="email" name="email" placeholder="you@company.com" aria-label="Email address" required>
       <button type="submit">Subscribe →</button>
@@ -119,9 +121,9 @@
   <div class="footer-in">
     <div class="footer-brand"><a href="/" class="nav-logo">Khadija Zaman</a><p>AI Search Manager at Wellows, a Disrupt.com company. Semantic SEO, content strategy and marketing automation, run as one system. Karachi, Pakistan.</p></div>
     <div class="footer-cols">
-      <div class="footer-col"><h5>Site</h5><a href="/about/">About</a><a href="/cv/">CV</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/topical-map/">Topical map</a><a href="/contact/">Contact</a></div>
-      <div class="footer-col"><h5>Work</h5><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
-      <div class="footer-col"><h5>Connect</h5><a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a><a href="{{ site.github }}" target="_blank" rel="noopener">GitHub</a><a href="mailto:{{ site.authorEmail }}">Email</a></div>
+      <div class="footer-col"><h2>Site</h2><a href="/about/">About</a><a href="/cv/">CV</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/topical-map/">Topical map</a><a href="/contact/">Contact</a></div>
+      <div class="footer-col"><h2>Work</h2><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
+      <div class="footer-col"><h2>Connect</h2><a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a><a href="{{ site.github }}" target="_blank" rel="noopener">GitHub</a><a href="mailto:{{ site.authorEmail }}">Email</a></div>
     </div>
   </div>
   <div class="footer-bottom">

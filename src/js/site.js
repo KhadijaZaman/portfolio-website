@@ -47,8 +47,10 @@
   /* POST a form to Web3Forms. Returns a promise. */
   function submitWeb3Forms(form, extra) {
     var data = new FormData(form);
-    data.append('access_key', WEB3FORMS_KEY);
-    Object.keys(extra || {}).forEach(function (k) { data.append(k, extra[k]); });
+    // The form carries access_key and subject as hidden inputs so it also
+    // works as a plain POST without JavaScript; here only fill what is missing.
+    if (!data.has('access_key')) data.append('access_key', WEB3FORMS_KEY);
+    Object.keys(extra || {}).forEach(function (k) { data.set(k, extra[k]); });
     return fetch('https://api.web3forms.com/submit', {
       method: 'POST', headers: { 'Accept': 'application/json' }, body: data
     }).then(function (r) { return r.json(); });
@@ -423,8 +425,9 @@
     if (search) search.addEventListener('input', function () { q = search.value.toLowerCase().trim(); apply(); });
     chips.forEach(function (chip) {
       chip.addEventListener('click', function () {
-        chips.forEach(function (c) { c.classList.remove('active'); });
+        chips.forEach(function (c) { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
         chip.classList.add('active');
+        chip.setAttribute('aria-pressed', 'true');
         activeCat = chip.getAttribute('data-cat');
         apply();
       });
@@ -432,7 +435,7 @@
     if (clearBtn) clearBtn.addEventListener('click', function () {
       activeCat = 'all'; q = '';
       if (search) search.value = '';
-      chips.forEach(function (c) { c.classList.toggle('active', c.getAttribute('data-cat') === 'all'); });
+      chips.forEach(function (c) { var on = c.getAttribute('data-cat') === 'all'; c.classList.toggle('active', on); c.setAttribute('aria-pressed', on ? 'true' : 'false'); });
       apply();
     });
   })();

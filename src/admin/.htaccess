@@ -1,0 +1,8 @@
+# The CMS (Sveltia, loaded from unpkg.com, talking to api.github.com and the
+# OAuth worker) is not covered by the site-wide Content-Security-Policy that
+# scripts/csp.js writes into the root .htaccess. Lift it here only; every
+# other security header from the root still applies. Sveltia is pinned to a
+# version in index.html, which is the control for this directory.
+<IfModule mod_headers.c>
+  Header unset Content-Security-Policy
+</IfModule>

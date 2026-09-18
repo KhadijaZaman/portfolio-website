@@ -124,7 +124,7 @@
          Wellows ones on the right carry the user counts. Drawn by site.js from
          the JSON below, so a new tool is one more entry. Hidden under 640px,
          where the cards below carry the same content. -->
-    <div class="curve reveal" aria-label="Seven tools on one curve: four free tools on this site, then the three Wellows tools with their user counts">
+    <div class="curve reveal" role="group" aria-label="Seven tools on one curve: four free tools on this site, then the three Wellows tools with their user counts">
       <svg viewBox="0 0 1060 400" role="img" aria-hidden="true" focusable="false"></svg>
       <script type="application/json">
       {
@@ -266,7 +266,9 @@
     <div class="sec-tag reveal" style="justify-content:center;">The Newsletter</div>
     <h2 class="reveal d1">Get new tools and teardowns first</h2>
     <p class="reveal d2">I share new instruments, use cases, and the research behind them with the list before anywhere else.</p>
-    <form class="newsletter-form reveal d2" id="newsletter-form">
+    <form class="newsletter-form reveal d2" id="newsletter-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="0ca2b384-dbcd-4977-a41a-5f2d1a6c2abb">
+      <input type="hidden" name="subject" value="Newsletter subscribe from khadijazaman.com">
       <label class="hp-field" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
       <input type="email" name="email" placeholder="you@company.com" aria-label="Email address" required>
       <button type="submit">Subscribe →</button>
@@ -281,9 +283,9 @@
   <div class="footer-in">
     <div class="footer-brand"><a href="/" class="nav-logo">Khadija Zaman</a><p>AI Search Manager at Wellows, a Disrupt.com company. Semantic SEO, content strategy and marketing automation, run as one system. Karachi, Pakistan.</p></div>
     <div class="footer-cols">
-      <div class="footer-col"><h5>Site</h5><a href="/about/">About</a><a href="/cv/">CV</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/topical-map/">Topical map</a><a href="/contact/">Contact</a></div>
-      <div class="footer-col"><h5>Work</h5><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
-      <div class="footer-col"><h5>Connect</h5><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a><a href="mailto:hello@khadijazaman.com">Email</a></div>
+      <div class="footer-col"><h2>Site</h2><a href="/about/">About</a><a href="/cv/">CV</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/topical-map/">Topical map</a><a href="/contact/">Contact</a></div>
+      <div class="footer-col"><h2>Work</h2><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
+      <div class="footer-col"><h2>Connect</h2><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a><a href="mailto:hello@khadijazaman.com">Email</a></div>
     </div>
   </div>
   <div class="footer-bottom">

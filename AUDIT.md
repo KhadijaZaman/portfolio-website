@@ -377,6 +377,114 @@ supply the year to any templated page. Rolls into finding 18.
 | `oauth-worker/README.md` | No longer describes itself as optional or points at the deleted file |
 | `AUDIT.md` | Corrections, finding 20, status flips |
 
+## Round 3 — accessibility-tree pass (17 September 2026)
+
+Agents read a page three ways: the DOM, a visual pass, and the accessibility tree. This round
+ran axe-core (WCAG 2.2 AA plus best-practice rules) in headless Chromium over all 27 public
+pages of the built site, with the scroll-reveal transition disabled so mid-fade colours were not
+scored. Six real findings, all fixed; zero violations on every page afterwards.
+
+### 21. Footer column headings were `h5` under an `h2` — **FIXED**
+
+Every page's outline jumped from the newsletter `h2` to `h5` ("Site", "Work", "Connect"). Now
+`h2`, with the one CSS rule repointed so nothing changes visually.
+
+### 22. About page quick answers were `h3` directly under the `h1` — **FIXED**
+
+The three `.qa-item` headings, including the `#answer` block the FAQPage and `speakable`
+markup point at, are now `h2`. Class names and the JSON-LD selectors are unchanged.
+
+### 23. Category pages listed posts as `h3` directly under the `h1` — **FIXED**
+
+`src/blog-category.njk` cards now use `h2`; `.post-card h2` shares the `h3` rule. The
+"← All posts" link in the lead also lost its `text-decoration: none`, since a link inside a
+paragraph that is distinguishable only by colour fails WCAG 1.4.1.
+
+### 24. Blog category filter announced itself as a `tablist` with no tabs — **FIXED**
+
+`#chip-row` had `role="tablist"` but its children are plain buttons, so screen readers and
+agents saw an empty tab list (axe: critical). It is now a `role="group"` of toggle buttons with
+`aria-pressed`, kept in sync by `site.js` on click and on "clear filters".
+
+### 25. Carousel dots were `aria-hidden` but focusable — **FIXED**
+
+`#pc-dots` on `/work/` hid its slide buttons from assistive tech while leaving them in the tab
+order. The wrapper is now a labelled `role="group"`.
+
+### 26. The About and Tools "curve" figures carried `aria-label` on a plain `div` — **FIXED**
+
+`aria-label` is prohibited on a generic `div`, so the description was dropped. Both now use
+`role="group"`, which keeps the label and does not conflict with the SVG's own links.
+
+## What changed — round 3
+
+| File | Change |
+|---|---|
+| `src/_includes/base.njk`, `src/index.njk`, and 9 hand-built pages | Footer `h5` → `h2` |
+| `src/about/index.html` | Quick-answer `h3` → `h2`; curve `role="group"` |
+| `src/blog-category.njk` | Card `h3` → `h2`; underlined "All posts" link |
+| `src/blog.njk` | Filter chips: `role="group"` + `aria-pressed` |
+| `src/js/site.js` | Chip clicks and clear keep `aria-pressed` in sync |
+| `src/work/index.html` | Carousel dots no longer `aria-hidden` |
+| `src/tools/index.html` | Curve `role="group"` |
+| `src/css/main.css` | `.footer-col h2`, `.qa-item h2`, `.post-card h2` |
+
+## Round 4 — agentchecker.ai follow-up (17 September 2026)
+
+agentchecker.ai scored the live site 78%: Discoverability 100%, Understanding 80%, Operability
+75%, Trust & Security 63%. Its per-check list was not available from this environment, so this
+round fixed the things a Trust & Security and Operability pillar can be expected to score and
+that the source showed were missing. Each is verified locally; the live headers still need a
+check after deploy (see "Verifying this yourself").
+
+### 27. No `Content-Security-Policy` — **FIXED**
+
+Only the four classic headers were set. A CSP is the one header agent-readiness and security
+scanners most consistently look for. Every page carries inline scripts (the `.js` flag, the home
+canvases, each tool), so `scripts/csp.js` now runs last in `npm run build`, hashes every inline
+script and inline handler in the built HTML, and writes a policy into `_site/.htaccess` that
+allows exactly those plus Google Fonts, the Cloudflare beacon and Web3Forms. No
+`'unsafe-inline'` for scripts. Verified in headless Chromium: zero `securitypolicyviolation`
+events on all 27 pages with every tool exercised and both forms submitted. `/admin/` (the
+CMS, loaded from unpkg.com) lifts the policy in its own `.htaccess`; the pinned CMS version in
+`src/admin/index.html` remains the control there.
+
+### 28. HSTS was six months with no subdomains — **FIXED**
+
+Scanners want at least a year. Now `max-age=31536000; includeSubDomains`.
+
+### 29. No `security.txt` — **FIXED**
+
+`src/.well-known/security.txt` per RFC 9116: contact, expiry (one year), canonical URL.
+**Renew the `Expires` line before 17 September 2027.**
+
+### 30. Contact and newsletter forms did nothing without JavaScript — **FIXED**
+
+Both forms had no `action` or `method`; `site.js` posted them to Web3Forms with `fetch`. An
+agent or a no-JS client submitting the form got a page reload and nothing sent. The forms now
+carry `action`/`method` and hidden `access_key` and `subject` inputs, so a plain POST works;
+the JS path is unchanged (it still intercepts, and no longer duplicates the key).
+
+### Not changed, on purpose
+
+- **WebMCP / `navigator.modelContext`**: agentchecker flags sites that register no tools.
+  `agents.json` already states this is declined until the spec settles.
+- **Web Bot Auth signature verification**: needs CDN support; nothing to do in this repo.
+- **Understanding 80%**: no source-level gap found; needs the failing check's name.
+
+## What changed — round 4
+
+| File | Change |
+|---|---|
+| `scripts/csp.js` | New: hashes inline scripts and handlers, writes the CSP into `_site/.htaccess` |
+| `package.json` | `build` runs `csp.js` after the markdown twins |
+| `src/.htaccess` | HSTS one year + subdomains; CSP placeholder line |
+| `src/.well-known/security.txt` | New |
+| `src/admin/.htaccess` | New: lifts the CSP for the CMS only |
+| `src/_includes/base.njk`, `src/tools/index.html`, `src/contact/index.html` | Forms post to Web3Forms without JS |
+| `src/js/site.js` | Web3Forms helper does not duplicate hidden fields |
+| `README.md` | CSP and security.txt documented |
+
 ## Corrections to this audit
 
 Four findings were wrong as first written and are corrected in place above. Recording them
@@ -423,6 +531,13 @@ for f in glob.glob('_site/**/*.html', recursive=True):
         try: json.loads(m.group(1))
         except Exception as e: print('INVALID', f, e)
 PY
+```
+
+Check the live headers after a deploy (all six should be present, CSP first):
+
+```bash
+curl -sI https://khadijazaman.com/ | grep -iE 'content-security-policy|strict-transport|x-frame|x-content-type|referrer-policy|permissions-policy'
+curl -s https://khadijazaman.com/.well-known/security.txt
 ```
 
 Then serve `_site/` and tab through the homepage — the focus ring should be visible on every
