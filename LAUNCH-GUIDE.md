@@ -51,7 +51,7 @@ and push:
 title: "Your Post Title"
 metaTitle: "Shorter Title For Search & Social"   # optional
 date: 2026-08-05
-category: "SEO"          # AI Search | GEO / AEO | SEO | Content Strategy | Automation | Frameworks
+category: "Optimization" # Engines | Optimization | Foundations (defined in src/_data/categories.js)
 description: "One sentence for the card and the SEO meta description."
 readTime: "6 min"
 starter: false           # true shows the amber 'starter draft' banner

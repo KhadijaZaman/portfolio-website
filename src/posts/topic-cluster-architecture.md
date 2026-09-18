@@ -2,12 +2,11 @@
 title: "Topic Cluster Architecture That Actually Scales Organic Traffic"
 metaTitle: "Topic Cluster Architecture That Scales Organic Traffic"
 date: 2026-07-14
-category: "Content Strategy"
+category: "Foundations"
 description: "Publishing more rarely fixes a plateau — fragmented architecture does. How to structure pillars, clusters, and internal links so authority concentrates."
 readTime: "5 min"
 answerQ: "Why does publishing more content not fix an organic traffic plateau?"
 answerA: "A plateau is usually a fragmentation problem, not a volume problem: thirty loosely overlapping posts split authority thinner with every addition. Topic cluster architecture, a pillar page with clusters linked deliberately, concentrates authority so it pools in one place instead of scattering."
-layer: "core"
 starter: false
 ---
 
@@ -33,7 +32,7 @@ The pillar earns broad authority. The clusters earn depth across the long tail. 
 
 ## Map clusters from a central entity
 
-Start from the thing your site is actually about — a central entity, a core topic, a product category — and work outward from there. Ask what a person genuinely needs to understand around that subject, then group those needs by intent.
+Start from the thing your site is actually about — a [central entity](/blog/central-entity/), a core topic, a product category — and work outward from there. Ask what a person genuinely needs to understand around that subject, then group those needs by intent. The [Query Fan-Out Explorer](/tools/query-fan-out/) lists the sub-questions an AI engine generates for a seed query, which is a good first draft of that list.
 
 Each pillar should map to a broad, high-intent topic. Each cluster page beneath it should map to one specific search intent: a definition, a comparison, a how-to, a decision. One page, one intent. That constraint is doing more work than it looks like.
 

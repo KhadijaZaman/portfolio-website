@@ -2,12 +2,11 @@
 title: "Central Entity in SEO: What Google’s “Identifying Topical Entities” Patent Actually Describes"
 metaTitle: "Central Entity in SEO: What Google’s Patent Describes"
 date: 2026-08-12
-category: "Content Strategy"
+category: "Foundations"
 description: "How Google’s Identifying Topical Entities patent application confirms a page’s main topic, and how a central entity anchors a topical map."
 readTime: "14 min"
 answerQ: "What is a central entity in SEO?"
 answerA: "A central entity is the entity a page, or a whole content network, is mainly about. In Google’s “Identifying Topical Entities” patent application, a system cuts a page’s entities down to the well-connected ones, scores them, then checks rankings, query logs, and the title and URL to confirm one predominant topic. Koray Tuğberk GÜBÜR’s topical map framework applies the same idea at site scale: one central entity runs through every page, and a root page covers it broadly."
-layer: "core"
 starter: false
 ---
 
@@ -116,7 +115,7 @@ The fixes are practical, and I’d use any of them: drop the entity, append anot
 
 This ambiguity check is the part of the patent closest to what I’m working on now. I’m setting up a study on how often AI answers get a brand’s name, products, or prices wrong, and which source caused each error.
 
-There are no results to share yet. When there are, they’ll go through the same checks I used to [break my own citation study](/blog/breaking-my-own-study/).
+There are no results to share yet. When there are, they’ll go through the same checks I used to [break my own citation study](/research/citation-study-retest/).
 
 ## Five shorthand readings, checked against the text
 
@@ -142,7 +141,7 @@ The root document, as I build it, is the page every related page links to, and i
 
 Nothing in the patent mentions topical maps, and nothing in Koray’s framework depends on this patent. I read them side by side because they share a principle: one center, entities that genuinely connect to it, and whatever doesn’t connect trimmed away.
 
-That link is my practitioner lens, not a documented Google process. This site runs on the same idea, and I publish its own [topical map](/topical-map/), central entity included, with the gaps still to fill.
+That link is my practitioner lens, not a documented Google process. This site runs on the same idea, with AI visibility as its own central entity.
 
 | Term | In the patent (one page) | In a topical map (whole site) |
 | --- | --- | --- |
@@ -169,7 +168,7 @@ I didn’t get the phrase AI visibility from a keyword tool. It came from the wa
 
 ### Filtering the map before writing anything
 
-My topical map started as a keyword list: generative engine optimization, AI search optimization, AI visibility tools, tracking, score, audit and monitoring, AI brand visibility, AI citation optimization, AI mention tracking, AI reputation management, entity SEO strategy, and similar terms.
+My topical map started as a keyword list (the [Query Fan-Out Explorer](/tools/query-fan-out/) is the fastest way to draft one): generative engine optimization, AI search optimization, AI visibility tools, tracking, score, audit and monitoring, AI brand visibility, AI citation optimization, AI mention tracking, AI reputation management, entity SEO strategy, and similar terms.
 
 Before planning a single post, I filtered that list against a full sitemap export of the site, with Search Console, GA4, Bing, and AI citation columns on every URL. Keywords the site already covered came off the list. For the rest, the filter surfaced the existing or nearest page so an internal link could go in.
 

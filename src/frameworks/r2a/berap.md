@@ -2,20 +2,19 @@
 title: "The BERAP Map: measuring what AI models remember about your brand"
 metaTitle: "BERAP Map: Brand Entity Recall & Association Probing"
 date: 2026-08-27
-category: "Frameworks"
 description: "BERAP probes AI engines with repeated prompts and grades answers against a dated attribute table, producing six scores for brand recall and accuracy."
 readTime: "7 min"
 image: "/static/uploads/berap-fig2-six-scores.png"
 imageAlt: "Sketch-note grid of six gauges labelled Recall Rate, Association Accuracy, Evidence Recall, Stability, Attribute Penetration and Source Dependency"
 answerQ: "What is the BERAP Map?"
 answerA: "BERAP (Brand Entity Recall & Association Probing) is the instrument inside the R2A Content Framework that measures what AI engines say about a brand, whether the answer came from retrieval or from training. It runs repeated prompts across five engines in two directions, grades each answer against a dated attribute table, and reports six scores: Recall Rate, Association Accuracy, Evidence Recall, Stability, Attribute Penetration and Source Dependency."
-layer: "core"
-starter: false
+kind: "Instrument"
+parent: { label: "R2A Framework", url: "/frameworks/r2a/" }
 ---
 
 A model can tell a buyer your pricing without retrieving a single page of yours. It answers from what it already absorbed, and if what it absorbed is a year old, the buyer gets a year-old answer delivered with full confidence.
 
-Page-level audits can't see that, because nothing on your site was involved. The BERAP Map is the instrument I use for it inside the [R2A Content Framework](/blog/r2a-content-framework/). BERAP stands for Brand Entity Recall & Association Probing: ask engines about a brand many times, in a controlled way, then grade what comes back. Some of those answers come from retrieval and some from what the model already absorbed, and BERAP grades the answer either way.
+Page-level audits can't see that, because nothing on your site was involved. The BERAP Map is the instrument I use for it inside the [R2A Content Framework](/frameworks/r2a/). BERAP stands for Brand Entity Recall & Association Probing: ask engines about a brand many times, in a controlled way, then grade what comes back. Some of those answers come from retrieval and some from what the model already absorbed, and BERAP grades the answer either way.
 
 ## A probe run is a panel, not a prompt
 
@@ -33,7 +32,7 @@ Prompts run in two directions. Brand to Category asks what the brand is ("What i
 
 Each direction is its own probe family. The starting panel is 5 engines × 10 prompts per family × 5 runs, which is 250 responses per direction and 500 across both. Results are reported per family rather than blended, because the two directions can disagree, and the framework treats the association holding both ways as critical. An engine that answers "What is Tallybird?" correctly but never names Tallybird when asked for invoicing tools knows the brand exists and still leaves it out of the set buyers choose from. Probing one direction only would never show that.
 
-The whole panel is graded Experimental on the R2A evidence continuum. It's a starting design, and the panel size is one of the things being tested.
+The whole panel is graded Experimental on the R2A evidence continuum. It's a starting design, and the panel size is one of the things being tested. The same discipline, applied to my own citation study, is written up in the [citation study re-test](/research/citation-study-retest/).
 
 ## Six scores, each answering a different question
 

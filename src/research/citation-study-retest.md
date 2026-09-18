@@ -2,13 +2,11 @@
 title: "I Built a Test Designed to Break My Own Study. Two Findings Didn't Survive."
 metaTitle: "I Tried to Break My Own AI Study. 2 Findings Failed."
 date: 2026-08-03
-category: "AI Search"
 description: "How I rebuilt my cross-engine AI citation study from scratch, ran it against a permutation null, and revised two headline findings that didn't hold up."
 readTime: "9 min"
 answerQ: "Did the cross-engine AI citation study hold up?"
 answerA: "Khadija Zaman rebuilt her cross-engine AI citation overlap study (January to June 2026) from scratch and tested it against a permutation null. Two headline findings did not survive and were revised; the corrected study is published on the Wellows blog."
-layer: "outer"
-starter: false
+kind: "Study"
 ---
 
 **Case study — Cross-engine AI citation research, January to June 2026**
@@ -127,4 +125,4 @@ Two of mine did not survive. The page stayed up, the revisions went on it, and t
 
 ---
 
-*The full study, including the corrections described here, is published at [wellows.com/blog/ai-citation-overlap-study](https://wellows.com/blog/ai-citation-overlap-study/).*
+*The full study, including the corrections described here, is published at [wellows.com/blog/ai-citation-overlap-study](https://wellows.com/blog/ai-citation-overlap-study/). The instrument I built after it, the [BERAP Map](/frameworks/r2a/berap/), grades brand recall the same way: against a null, not against a feeling.*

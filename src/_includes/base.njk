@@ -89,6 +89,8 @@
     {%- set nav = section or "blog" %}
     <li><a href="/about/"{% if nav == "about" %} class="active"{% endif %}>About</a></li>
     <li><a href="/work/"{% if nav == "work" %} class="active"{% endif %}>Work</a></li>
+    <li><a href="/frameworks/"{% if nav == "frameworks" %} class="active"{% endif %}>Frameworks</a></li>
+    <li><a href="/research/"{% if nav == "research" %} class="active"{% endif %}>Research</a></li>
     <li><a href="/blog/"{% if nav == "blog" %} class="active"{% endif %}>Blog</a></li>
     <li><a href="/tools/"{% if nav == "tools" %} class="active"{% endif %}>Tools</a></li><li><a href="/cv/"{% if nav == "cv" %} class="active"{% endif %}>CV</a></li>
     <li><a href="/contact/" class="nav-cta">Work Together →</a></li>
@@ -121,8 +123,8 @@
   <div class="footer-in">
     <div class="footer-brand"><a href="/" class="nav-logo">Khadija Zaman</a><p>AI Search Manager at Wellows, a Disrupt.com company. Semantic SEO, content strategy and marketing automation, run as one system. Karachi, Pakistan.</p></div>
     <div class="footer-cols">
-      <div class="footer-col"><h2>Site</h2><a href="/about/">About</a><a href="/cv/">CV</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/topical-map/">Topical map</a><a href="/contact/">Contact</a></div>
-      <div class="footer-col"><h2>Work</h2><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
+      <div class="footer-col"><h2>Site</h2><a href="/about/">About</a><a href="/cv/">CV</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/">Contact</a></div>
+      <div class="footer-col"><h2>Work</h2><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/frameworks/">Frameworks</a><a href="/research/">Research</a><a href="/tools/">Proprietary Tools</a></div>
       <div class="footer-col"><h2>Connect</h2><a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a><a href="{{ site.github }}" target="_blank" rel="noopener">GitHub</a><a href="mailto:{{ site.authorEmail }}">Email</a></div>
     </div>
   </div>

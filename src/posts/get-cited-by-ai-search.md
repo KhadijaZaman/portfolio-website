@@ -2,12 +2,11 @@
 title: "How to Get Your Brand Cited by ChatGPT, Gemini and Perplexity"
 metaTitle: "How to Get Cited by ChatGPT, Gemini & Perplexity"
 date: 2026-06-30
-category: "GEO / AEO"
+category: "Optimization"
 description: "Ranking #1 in Google no longer guarantees you appear in an AI answer — the systems judge content differently. A checklist to make pages retrieval-ready."
 readTime: "5 min"
 answerQ: "How do you get a brand cited by ChatGPT, Gemini and Perplexity?"
 answerA: "Ranking first in Google no longer guarantees a citation, because retrieval systems judge content differently from rankers. The checklist: make the entity unmistakable, give models clean passages to lift, build topical authority the model has already seen, earn mentions on sites the model ingested, keep facts current, and measure LLM referrals separately."
-layer: "core"
 starter: false
 ---
 
@@ -32,7 +31,7 @@ Tighten the signal:
 - Use one consistent name, description, and category everywhere your brand appears.
 - Keep an accurate About page and real author bios that state who you are and what you're known for.
 - Align the facts on your own site with the facts on external profiles, so nothing contradicts.
-- Add Organization and Person structured data so the identity is machine-readable, not just inferred.
+- Add Organization and Person structured data so the identity is machine-readable, not just inferred. The [Schema JSON-LD Generator](/tools/schema-generator/) writes both.
 
 None of this is exotic. It's schema.org markup and basic consistency discipline. But entity clarity is what lets a model move from "this brand exists" to "I can name this brand with confidence," and those are very different states.
 
@@ -47,7 +46,7 @@ Write for that test.
 - Phrase headings the way people actually ask the question, not as clever labels.
 - Add Article and FAQ structured data where it genuinely fits the content — not stuffed in everywhere, but where the page really is answering discrete questions.
 
-A useful mental model here is Google's query fan-out approach, where a single question gets expanded into many sub-queries behind the scenes. If your page cleanly answers one of those sub-questions in a self-contained passage, it becomes retrievable for far more than the exact phrase you were targeting. Front-loading the answer isn't a copywriting preference. It's how you become extractable.
+A useful mental model here is Google's query fan-out approach, where a single question gets expanded into many sub-queries behind the scenes. The [Query Fan-Out Explorer](/tools/query-fan-out/) shows those sub-queries for any seed query. If your page cleanly answers one of those sub-questions in a self-contained passage, it becomes retrievable for far more than the exact phrase you were targeting. Front-loading the answer isn't a copywriting preference. It's how you become extractable.
 
 ## Build the topical authority the model has already seen
 
@@ -77,7 +76,7 @@ Citations are harder to track than rankings, but not impossible, and the trackin
 - Track referral traffic from AI sources in your analytics as those referrers grow.
 - Watch brand-mention and AI-visibility monitoring tools that report citation presence over time.
 
-If you want to score a page against these conditions before you measure, the [R2A Content Framework](/blog/r2a-content-framework/) is the checklist I use, and the [BERAP Map](/blog/berap-map/) grades what the models say back.
+If you want to score a page against these conditions before you measure, the [R2A Content Framework](/frameworks/r2a/) is the checklist I use, and the [BERAP Map](/frameworks/r2a/berap/) grades what the models say back. For a single page, the [AEO Citeability Checker](/tools/citeability-checker/) runs a lightweight version of the same checks in your browser.
 
 Treat all of it as a trend line. What matters isn't whether you got cited on a given Tuesday — it's whether your presence in generated answers is climbing quarter over quarter, and whether the way you're described is getting sharper.
 

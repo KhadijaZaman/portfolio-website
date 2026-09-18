@@ -2,12 +2,11 @@
 title: "SEO vs AEO vs GEO: What Each One Actually Means, and How to Sequence Them"
 metaTitle: "SEO vs AEO vs GEO: What Each Means & How to Sequence"
 date: 2026-06-18
-category: "AI Search"
+category: "Foundations"
 description: "SEO, AEO, and GEO are layers, not rivals. A working definition of each, where they genuinely diverge, and the order to build them so the work compounds."
 readTime: "5 min"
 answerQ: "What is the difference between SEO, AEO and GEO?"
 answerA: "SEO makes a page crawlable, understandable and authoritative enough to rank in a search engine's results; AEO makes it the source a system quotes when it answers a question directly, in featured snippets, People Also Ask and AI Overviews; GEO gets a brand named inside a generated answer from ChatGPT, Gemini, Claude or Perplexity. They are layers built in that order, not rivals."
-layer: "outer"
 starter: false
 ---
 
@@ -53,11 +52,11 @@ These are layers, not rivals, and the order matters more than the labels. Here's
 
 **Start with SEO.** Fix crawlability, architecture, and intent-matched content first. This is the base every other layer stands on. Skip it and you're optimizing for citations on a site engines can't reliably read — polishing the roof before there's a foundation.
 
-**Layer AEO on top.** Take your best-performing pages and restructure them so answers are extractable. Definitions up top. Clean, descriptive headings. Complete schema so a machine doesn't have to infer what your page is. Most of this work also happens to make the page better for human skimmers, which is a good sign you're doing it right.
+**Layer AEO on top.** Take your best-performing pages and restructure them so answers are extractable; the [AEO Citeability Checker](/tools/citeability-checker/) scores a page on exactly this. Definitions up top. Clean, descriptive headings. Complete schema so a machine doesn't have to infer what your page is. Most of this work also happens to make the page better for human skimmers, which is a good sign you're doing it right.
 
 **Extend into GEO.** Build entity consistency across your own site and the places you show up off it. Deepen topical authority so a model has seen you cover the surrounding questions, not just the money one. Format passages so they hold up when retrieved out of context. This is the slowest layer and the one that compounds hardest.
 
-Done in that order, each layer reinforces the last. The schema you added for AEO also helps a model understand your entity for GEO. The topical depth you built for GEO also strengthens your rankings for SEO. The work loops back on itself instead of pulling in three directions.
+Done in that order, each layer reinforces the last. The schema you added for AEO (the [Schema JSON-LD Generator](/tools/schema-generator/) covers the common types) also helps a model understand your entity for GEO, which is what the [BERAP Map](/frameworks/r2a/berap/) measures. The topical depth you built for GEO also strengthens your rankings for SEO. The work loops back on itself instead of pulling in three directions.
 
 ## The mistake I see most
 

@@ -1,0 +1,10 @@
+{
+  "layout": "core.njk",
+  "tags": ["frameworks"],
+  "sectionTag": "frameworks",
+  "section": "Frameworks",
+  "sectionUrl": "/frameworks/",
+  "kind": "Framework",
+  "schemaType": "CreativeWork",
+  "nav": "frameworks"
+}

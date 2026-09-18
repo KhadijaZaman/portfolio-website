@@ -2,22 +2,20 @@
 title: "The R2A Content Framework: what a page has to get through before anyone acts on it"
 metaTitle: "R2A Content Framework: Retrieval-to-Action for AI Search"
 date: 2026-08-20
-category: "Frameworks"
 description: "A practitioner framework for scoring whether AI systems can retrieve, select, cite and act on a page. Eight layers, one hard gate, graded evidence."
 readTime: "8 min"
 image: "/static/uploads/r2a-fig2-layer-structure.png"
 imageAlt: "Sketch-note diagram of the R2A Content Framework: six independent layers sitting on an Eligibility gate, all resting on a Measurement base layer"
 answerQ: "What is the R2A Content Framework?"
 answerA: "R2A (Retrieval-to-Action) is Khadija Zaman's practitioner framework for scoring whether AI systems can retrieve, select, cite and act on a page. It has eight layers: Measurement as the base, Eligibility as the only hard gate, and six independently scored layers, with every recommendation carrying one of five evidence grades."
-layer: "core"
-starter: false
+kind: "Framework"
 ---
 
 A page can be crawlable, indexed and ranking on page one, and still never show up in an AI answer for the query it ranks for. A standard SEO audit has no column for that gap, because it was built for a results page of ten links, not one assembled response.
 
 The R2A Content Framework is how I score that gap. R2A stands for Retrieval-to-Action. It covers what has to be true about a page between the moment a system finds it and the moment someone (a person or an agent) does something with what it said.
 
-It's a practitioner lens, built from working on AI visibility day to day. It isn't an official model from any search engine or AI company, and every recommendation in it carries an evidence grade so you can see how sure I am.
+It's a practitioner lens, built from working on AI visibility day to day. It isn't an official model from any search engine or AI company, and every recommendation in it carries an evidence grade so you can see how sure I am. The studies behind the grades are indexed under [research](/research/).
 
 ## The journey stops at action, and the outcomes sit outside it
 
@@ -33,7 +31,7 @@ R2A models five stages: Discovery, Retrieval, Selection, Citation and Action. A 
 
 Ranking, Citation, Recommendation, Conversion and Agent Action are treated as outcomes, and they sit outside the framework on purpose. Yes, Citation appears twice. As a stage, it means the page is in a condition to be credited. As an outcome, it means a specific engine credited it on a specific day, which also depends on who else was in the candidate set, how the engine was behaving that week and what the person actually asked.
 
-If a framework scores outcomes, you end up grading yourself on your competitors' pages. R2A scores the page, and you watch the outcomes to see whether the scoring holds up.
+If a framework scores outcomes, you end up grading yourself on your competitors' pages. R2A scores the page (the [AEO Citeability Checker](/tools/citeability-checker/) runs a lightweight version of that scoring in the browser), and you watch the outcomes to see whether the scoring holds up.
 
 ## Eight layers, and only one of them is a gate
 
@@ -62,7 +60,7 @@ The framework has eight layers. An earlier draft ran them as a strict sequence, 
 | 6. Web Corroboration | Independent mentions, citations, reviews and references say the same thing the page says |
 | 7. Agent Operability | APIs or MCP, clear actions, stated permissions and tool-readiness let an agent complete the next step |
 
-The reason they aren't a sequence is practical. Fixing a price table that's an image (Layer 3) has no dependency on cleaning up schema naming (Layer 2), so a strict order would hold back fixes that are ready to ship.
+The reason they aren't a sequence is practical. Fixing a price table that's an image (Layer 3) has no dependency on cleaning up schema naming (Layer 2, where the [Schema JSON-LD Generator](/tools/schema-generator/) gives you a clean baseline), so a strict order would hold back fixes that are ready to ship.
 
 If you're reading this with one of your own pages open in another tab, score Layer 1 first. The rest can wait until that one passes.
 
@@ -116,7 +114,7 @@ Layer 6 is where it gets expensive. Tallybird retired its free plan, but two rev
 
 Order of fixes: turn the price table into HTML, align the plan name across page copy and schema, then work on the review listings. The first two are an afternoon of work. The third depends on other people updating their sites, so it can take weeks, and you don't control when.
 
-That Layer 6 failure is exactly what the [BERAP Map](/blog/berap-map/) was built to catch from the model side, because a model can repeat the old free plan even when it never retrieves the review page.
+That Layer 6 failure is exactly what the [BERAP Map](/frameworks/r2a/berap/) was built to catch from the model side, because a model can repeat the old free plan even when it never retrieves the review page.
 
 ## Where R2A doesn't fit
 

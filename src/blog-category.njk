@@ -7,7 +7,7 @@ permalink: "/blog/category/{{ cat.slug }}/index.html"
 layout: base.njk
 eleventyComputed:
   title: "{{ cat.title }} — Blog"
-  description: "Articles on {{ cat.title }} by Khadija Zaman — SEO, AI search visibility (GEO/AEO), and marketing automation."
+  description: "{{ cat.intro }}"
 ---
 <script type="application/ld+json">{{ {
   "@context": "https://schema.org",
@@ -22,12 +22,21 @@ eleventyComputed:
   <div class="wrap">
     <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/blog/">Blog</a> <span>/</span> {{ cat.title }}</nav>
     <h1 class="reveal d1">{{ cat.title }}</h1>
-    <p class="lead reveal d2">{{ cat.posts.length }} article{% if cat.posts.length != 1 %}s{% endif %} on {{ cat.title }}. <a href="/blog/" style="color:#93C5FD;text-decoration:underline;text-underline-offset:3px;">← All posts</a></p>
+    <p class="lead reveal d2">{{ cat.intro }}</p>
+    <p class="num-note reveal d2">{{ cat.posts.length }} article{% if cat.posts.length != 1 %}s{% endif %}. <a href="/blog/" style="color:#93C5FD;text-decoration:underline;text-underline-offset:3px;">← All posts</a></p>
   </div>
 </header>
 
 <section aria-label="Articles in {{ cat.title }}">
   <div class="wrap">
+    <div class="blog-filter reveal">
+      <div class="chip-row" role="group" aria-label="Browse by category">
+        <a class="chip" href="/blog/" data-cat="all">All</a>
+        {% for c in collections.categories %}
+        <a class="chip{% if c.slug == cat.slug %} active{% endif %}" href="/blog/category/{{ c.slug }}/"{% if c.slug == cat.slug %} aria-current="page"{% endif %}>{{ c.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
     <div class="post-grid">
     {% for post in cat.posts %}
       <a class="post-card reveal{% if loop.index0 % 2 == 1 %} d1{% endif %}" href="{{ post.url }}">

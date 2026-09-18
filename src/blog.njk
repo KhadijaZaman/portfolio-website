@@ -44,12 +44,11 @@ permalink: /blog/index.html
 <section class="answer-block" id="answer" aria-label="Direct answer">
   <div class="wrap">
     <h2 class="answer-q">What does Khadija Zaman write about?</h2>
-    <p class="answer-a">Khadija Zaman writes field notes on SEO, AI search visibility (GEO and AEO), semantic content strategy and marketing automation, drawn from in-house work at Wellows. {{ collections.posts.length }} posts are published, including one that re-tests her own citation study against a permutation null and revises two findings.</p>
+    <p class="answer-a">Khadija Zaman writes field notes on SEO, AI search visibility (GEO and AEO), semantic content strategy and marketing automation, drawn from in-house work at Wellows. {{ collections.posts.length }} posts are published, grouped into three categories: engines, optimization and foundations. Her <a href="/frameworks/">frameworks</a> and <a href="/research/">research</a> studies live in their own sections.</p>
   </div>
 </section>
 
 <section aria-label="Articles" style="padding-top:0;">
-  <div class="wrap"><p class="num-note reveal">Each post is badged <em>core</em> or <em>outer</em> to match the <a href="/topical-map/">topical map</a>, which also lists what this site does not cover yet.</p></div>
   <div class="wrap">
     <h2 class="sr-only">Articles</h2>
     {% set hasStarter = false %}
@@ -67,9 +66,9 @@ permalink: /blog/index.html
         <input type="search" id="blog-search" placeholder="Search posts…" aria-label="Search posts" autocomplete="off">
       </div>
       <div class="chip-row" id="chip-row" role="group" aria-label="Filter by category">
-        <button class="chip active" type="button" data-cat="all" aria-pressed="true">All</button>
+        <a class="chip active" href="/blog/" data-cat="all" aria-current="page">All</a>
         {% for c in collections.categories %}
-        <button class="chip" type="button" data-cat="{{ c.title }}" aria-pressed="false">{{ c.title }}</button>
+        <a class="chip" href="/blog/category/{{ c.slug }}/" data-cat="{{ c.title }}">{{ c.title }}</a>
         {% endfor %}
       </div>
     </div>
