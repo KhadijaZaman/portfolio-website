@@ -445,7 +445,9 @@ canvases, each tool), so `scripts/csp.js` now runs last in `npm run build`, hash
 script and inline handler in the built HTML, and writes a policy into `_site/.htaccess` that
 allows exactly those plus Google Fonts, the Cloudflare beacon and Web3Forms. No
 `'unsafe-inline'` for scripts. Verified in headless Chromium: zero `securitypolicyviolation`
-events on all 27 pages with every tool exercised and both forms submitted.
+events on all 27 pages with every tool exercised and both forms submitted. `/admin/` (the
+CMS, loaded from unpkg.com) lifts the policy in its own `.htaccess`; the pinned CMS version in
+`src/admin/index.html` remains the control there.
 
 ### 28. HSTS was six months with no subdomains — **FIXED**
 
@@ -478,6 +480,7 @@ the JS path is unchanged (it still intercepts, and no longer duplicates the key)
 | `package.json` | `build` runs `csp.js` after the markdown twins |
 | `src/.htaccess` | HSTS one year + subdomains; CSP placeholder line |
 | `src/.well-known/security.txt` | New |
+| `src/admin/.htaccess` | New: lifts the CSP for the CMS only |
 | `src/_includes/base.njk`, `src/tools/index.html`, `src/contact/index.html` | Forms post to Web3Forms without JS |
 | `src/js/site.js` | Web3Forms helper does not duplicate hidden fields |
 | `README.md` | CSP and security.txt documented |
