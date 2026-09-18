@@ -125,4 +125,4 @@ Two of mine did not survive. The page stayed up, the revisions went on it, and t
 
 ---
 
-*The full study, including the corrections described here, is published at [wellows.com/blog/ai-citation-overlap-study](https://wellows.com/blog/ai-citation-overlap-study/).*
+*The full study, including the corrections described here, is published at [wellows.com/blog/ai-citation-overlap-study](https://wellows.com/blog/ai-citation-overlap-study/). The instrument I built after it, the [BERAP Map](/frameworks/r2a/berap/), grades brand recall the same way: against a null, not against a feeling.*

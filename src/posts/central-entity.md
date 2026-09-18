@@ -168,7 +168,7 @@ I didn’t get the phrase AI visibility from a keyword tool. It came from the wa
 
 ### Filtering the map before writing anything
 
-My topical map started as a keyword list: generative engine optimization, AI search optimization, AI visibility tools, tracking, score, audit and monitoring, AI brand visibility, AI citation optimization, AI mention tracking, AI reputation management, entity SEO strategy, and similar terms.
+My topical map started as a keyword list (the [Query Fan-Out Explorer](/tools/query-fan-out/) is the fastest way to draft one): generative engine optimization, AI search optimization, AI visibility tools, tracking, score, audit and monitoring, AI brand visibility, AI citation optimization, AI mention tracking, AI reputation management, entity SEO strategy, and similar terms.
 
 Before planning a single post, I filtered that list against a full sitemap export of the site, with Search Console, GA4, Bing, and AI citation columns on every URL. Keywords the site already covered came off the list. For the rest, the filter surfaced the existing or nearest page so an internal link could go in.
 

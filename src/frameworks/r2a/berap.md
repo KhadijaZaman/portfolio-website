@@ -32,7 +32,7 @@ Prompts run in two directions. Brand to Category asks what the brand is ("What i
 
 Each direction is its own probe family. The starting panel is 5 engines × 10 prompts per family × 5 runs, which is 250 responses per direction and 500 across both. Results are reported per family rather than blended, because the two directions can disagree, and the framework treats the association holding both ways as critical. An engine that answers "What is Tallybird?" correctly but never names Tallybird when asked for invoicing tools knows the brand exists and still leaves it out of the set buyers choose from. Probing one direction only would never show that.
 
-The whole panel is graded Experimental on the R2A evidence continuum. It's a starting design, and the panel size is one of the things being tested.
+The whole panel is graded Experimental on the R2A evidence continuum. It's a starting design, and the panel size is one of the things being tested. The same discipline, applied to my own citation study, is written up in the [citation study re-test](/research/citation-study-retest/).
 
 ## Six scores, each answering a different question
 
