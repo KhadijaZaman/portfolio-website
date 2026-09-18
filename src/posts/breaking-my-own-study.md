@@ -21,7 +21,7 @@ This is the record of how that happened and what the process was.
 
 ## The starting point
 
-The study measured how often five AI engines cite the same source when answering the same question. ChatGPT, Gemini, Perplexity, Google AI Overviews and Google AI Mode, six months of data, drawn from Wellows' internal citation dataset.
+The study measured how often five AI engines cite the same source when answering the same question. (The practical side of that question, what makes a page citable at all, is in [how to get your brand cited by ChatGPT, Gemini and Perplexity](/blog/get-cited-by-ai-search/).) ChatGPT, Gemini, Perplexity, Google AI Overviews and Google AI Mode, six months of data, drawn from Wellows' internal citation dataset.
 
 The raw pool was 22,749,707 citations across 1,146,483 questions and 441,946 websites. After dropping blank-domain rows and keeping only questions all five engines answered, the analysis base came to 531,889 questions, 13,037,251 citations, 280,245 websites and 8,729,964 engine-pair comparisons.
 
@@ -57,7 +57,7 @@ The same pass found something worse. The post said every question was collected 
 
 **Pass 3. Attack it.** Build a null model and see whether the finding survives contact with it.
 
-This is the pass most research in my field skips, and it is where both revisions came from. Detail below.
+This is the pass most research in my field skips, and it is where both revisions came from. Detail below. The same rule now sits inside the [BERAP Map](/blog/berap-map/), which grades AI answers against a dated attribute table across repeated prompts rather than trusting one run.
 
 **Pass 4. Run it backwards.** The title claim was that 89% of what ChatGPT cites, Perplexity never touches. Directional claims have a mirror image, and if the mirror looks very different, the claim is an artefact of which engine you put first.
 
@@ -121,7 +121,7 @@ Still open, and stated as open on the published page rather than papered over: t
 
 ## The rule I took from it
 
-A finding is worth what it is worth against a null model, and you do not know that number until you build the null model and run it against your own work.
+A finding is worth what it is worth against a null model, and you do not know that number until you build the null model and run it against your own work. It is also why the [R2A framework](/blog/r2a-content-framework/) grades its evidence instead of asserting it.
 
 Two of mine did not survive. The page stayed up, the revisions went on it, and the study is more defensible now than when every number in it was still standing.
 

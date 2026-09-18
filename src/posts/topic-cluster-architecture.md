@@ -33,15 +33,15 @@ The pillar earns broad authority. The clusters earn depth across the long tail. 
 
 ## Map clusters from a central entity
 
-Start from the thing your site is actually about — a central entity, a core topic, a product category — and work outward from there. Ask what a person genuinely needs to understand around that subject, then group those needs by intent.
+Start from the thing your site is actually about — a [central entity](/blog/central-entity/), a core topic, a product category — and work outward from there. Ask what a person genuinely needs to understand around that subject, then group those needs by intent.
 
 Each pillar should map to a broad, high-intent topic. Each cluster page beneath it should map to one specific search intent: a definition, a comparison, a how-to, a decision. One page, one intent. That constraint is doing more work than it looks like.
 
-Map before you write. A cluster planned on a spreadsheet exposes gaps and overlaps you'd never catch drafting article by article — the two pages secretly targeting the same intent, the obvious subtopic nobody covered. Publishing without a map is how you end up back at thirty posts and no authority. The structure isn't overhead. It's the thing that makes the content compound instead of pile up.
+Map before you write. A cluster planned on a spreadsheet exposes gaps and overlaps you'd never catch drafting article by article — the two pages secretly targeting the same intent, the obvious subtopic nobody covered. Publishing without a map is how you end up back at thirty posts and no authority. The structure isn't overhead. It's the thing that makes the content compound instead of pile up. The [topical map for this site](/topical-map/) is the same exercise run on my own writing, with the gaps listed on purpose.
 
 ## Link with intent, not by reflex
 
-Internal linking is where clusters either work or quietly fall apart. Links pass authority and tell search engines how your pages relate, so they're structural, not decorative. Treat them that way:
+Internal linking is where clusters either work or quietly fall apart. Links pass authority and tell search engines how your pages relate, so they're structural, not decorative. In the [core update recovery](/work/core-update-recovery/) it was one of five workstreams, run alongside topical authority rather than as a separate task. Treat links that way:
 
 - Link every cluster page back to its pillar, using descriptive anchor text that names the topic — not "click here," not "read more."
 - Link the pillar out to each of its cluster pages, so the whole set is discoverable from one hub.
@@ -67,7 +67,7 @@ Clusters take time to mature, so watch the right signals instead of refreshing r
 
 The pillar page should climb for its broad head term over a few months. Cluster pages should start picking up long-tail queries and funneling users toward the pillar and toward conversion. Cannibalization should ease as each intent consolidates onto its one intended page — that's often the earliest sign the structure is taking hold, before the traffic line moves.
 
-The signal I trust most is combined: the cluster's total traffic and the range of queries it ranks for, both trending up together. That's authority concentrating where you designed it to concentrate, instead of leaking across thirty pages that were quietly competing the whole time. When both move in the same direction, the architecture is doing the job that publishing more never could.
+The signal I trust most is combined: the cluster's total traffic and the range of queries it ranks for, both trending up together. That's authority concentrating where you designed it to concentrate, instead of leaking across thirty pages that were quietly competing the whole time. The same concentration is what makes a site citable in AI answers, which is the subject of [how to get your brand cited by ChatGPT, Gemini and Perplexity](/blog/get-cited-by-ai-search/). When both move in the same direction, the architecture is doing the job that publishing more never could.
 
 ---
 

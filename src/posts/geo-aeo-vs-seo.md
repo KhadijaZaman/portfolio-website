@@ -17,7 +17,7 @@ Here's how I define each, and the order I build them in.
 
 ## SEO: earning the ranking
 
-Search Engine Optimization is still the foundation, and I mean that structurally, not sentimentally. It's the practice of making a page crawlable, understandable, and authoritative enough that a search engine ranks it for a query. Technical health, site architecture, internal linking, content that matches intent — none of that has gone anywhere.
+Search Engine Optimization is still the foundation, and I mean that structurally, not sentimentally. It's the practice of making a page crawlable, understandable, and authoritative enough that a search engine ranks it for a query. Technical health, site architecture, internal linking, content that matches intent — none of that has gone anywhere. If architecture is the weak point, [topic cluster architecture](/blog/topic-cluster-architecture/) is where I start.
 
 The reason it still matters isn't nostalgia. Everything downstream depends on it. If a crawler can't reach and render your page, it can't be indexed, retrieved, or quoted by anything built on top of that index. AI answer surfaces don't bypass the web; most of them lean on it. So SEO is the price of entry. It's just no longer the whole game.
 
@@ -35,7 +35,7 @@ Generative Engine Optimization is the newest layer, and the most misunderstood. 
 
 That's a genuinely different surface. Often there's no ranked list at all. There's one generated response, assembled from passages the system retrieved and weighed, and either your brand is named in it or it isn't. There's no position 4 to settle for.
 
-GEO leans on things classic SEO treats as secondary: entity clarity, consistent brand signals across the whole web rather than just your own site, retrieval-ready formatting, and topical depth the model has encountered enough times to treat you as a reference point. Retrieval-augmented generation is doing a lot of the work here — the model grounds its answer in passages it pulled at query time, so how quotable and self-contained your passages are matters more than it ever did for ranking.
+GEO leans on things classic SEO treats as secondary: entity clarity (one [central entity](/blog/central-entity/), described the same way everywhere), consistent brand signals across the whole web rather than just your own site, retrieval-ready formatting, and topical depth the model has encountered enough times to treat you as a reference point. Retrieval-augmented generation is doing a lot of the work here — the model grounds its answer in passages it pulled at query time, so how quotable and self-contained your passages are matters more than it ever did for ranking.
 
 ## Where they actually diverge
 
@@ -55,9 +55,9 @@ These are layers, not rivals, and the order matters more than the labels. Here's
 
 **Layer AEO on top.** Take your best-performing pages and restructure them so answers are extractable. Definitions up top. Clean, descriptive headings. Complete schema so a machine doesn't have to infer what your page is. Most of this work also happens to make the page better for human skimmers, which is a good sign you're doing it right.
 
-**Extend into GEO.** Build entity consistency across your own site and the places you show up off it. Deepen topical authority so a model has seen you cover the surrounding questions, not just the money one. Format passages so they hold up when retrieved out of context. This is the slowest layer and the one that compounds hardest.
+**Extend into GEO.** Build entity consistency across your own site and the places you show up off it. Deepen topical authority so a model has seen you cover the surrounding questions, not just the money one. Format passages so they hold up when retrieved out of context. The page-level checklist is in [how to get your brand cited by ChatGPT, Gemini and Perplexity](/blog/get-cited-by-ai-search/). This is the slowest layer and the one that compounds hardest.
 
-Done in that order, each layer reinforces the last. The schema you added for AEO also helps a model understand your entity for GEO. The topical depth you built for GEO also strengthens your rankings for SEO. The work loops back on itself instead of pulling in three directions.
+Done in that order, each layer reinforces the last. The schema you added for AEO also helps a model understand your entity for GEO. The topical depth you built for GEO also strengthens your rankings for SEO. The work loops back on itself instead of pulling in three directions. That sequence is the one behind the [Wellows AI-visibility case study](/work/wellows-ai-visibility/), where LLM referral sessions grew 9× in eight months with no paid spend.
 
 ## The mistake I see most
 
