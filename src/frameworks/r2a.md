@@ -2,14 +2,13 @@
 title: "The R2A Content Framework: what a page has to get through before anyone acts on it"
 metaTitle: "R2A Content Framework: Retrieval-to-Action for AI Search"
 date: 2026-08-20
-category: "Frameworks"
 description: "A practitioner framework for scoring whether AI systems can retrieve, select, cite and act on a page. Eight layers, one hard gate, graded evidence."
 readTime: "8 min"
 image: "/static/uploads/r2a-fig2-layer-structure.png"
 imageAlt: "Sketch-note diagram of the R2A Content Framework: six independent layers sitting on an Eligibility gate, all resting on a Measurement base layer"
 answerQ: "What is the R2A Content Framework?"
 answerA: "R2A (Retrieval-to-Action) is Khadija Zaman's practitioner framework for scoring whether AI systems can retrieve, select, cite and act on a page. It has eight layers: Measurement as the base, Eligibility as the only hard gate, and six independently scored layers, with every recommendation carrying one of five evidence grades."
-starter: false
+kind: "Framework"
 ---
 
 A page can be crawlable, indexed and ranking on page one, and still never show up in an AI answer for the query it ranks for. A standard SEO audit has no column for that gap, because it was built for a results page of ten links, not one assembled response.
@@ -115,7 +114,7 @@ Layer 6 is where it gets expensive. Tallybird retired its free plan, but two rev
 
 Order of fixes: turn the price table into HTML, align the plan name across page copy and schema, then work on the review listings. The first two are an afternoon of work. The third depends on other people updating their sites, so it can take weeks, and you don't control when.
 
-That Layer 6 failure is exactly what the [BERAP Map](/blog/berap-map/) was built to catch from the model side, because a model can repeat the old free plan even when it never retrieves the review page.
+That Layer 6 failure is exactly what the [BERAP Map](/frameworks/r2a/berap/) was built to catch from the model side, because a model can repeat the old free plan even when it never retrieves the review page.
 
 ## Where R2A doesn't fit
 

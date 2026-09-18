@@ -115,6 +115,9 @@ module.exports = function (eleventyConfig) {
   );
 
   // Distinct categories with their posts (for /blog/category/<slug>/ pages).
+  // Titles, slugs and intros come from src/_data/categories.js, in that order;
+  // a category listed there only gets a page once a post uses it.
+  const CATEGORIES = require("./src/_data/categories.js");
   eleventyConfig.addCollection("categories", (api) => {
     const posts = api.getFilteredByGlob("src/posts/*.md");
     const map = new Map();
@@ -123,10 +126,14 @@ module.exports = function (eleventyConfig) {
       if (!map.has(c)) map.set(c, []);
       map.get(c).push(p);
     });
-    return Array.from(map, ([title, items]) => ({
-      title,
-      slug: slug(title),
-      posts: items.sort((a, b) => b.date - a.date)
+    const known = CATEGORIES.filter((c) => map.has(c.title));
+    const unknown = Array.from(map.keys()).filter((t) => !CATEGORIES.some((c) => c.title === t));
+    if (unknown.length) throw new Error("Unknown blog category (add it to src/_data/categories.js): " + unknown.join(", "));
+    return known.map((c) => ({
+      title: c.title,
+      slug: c.slug,
+      intro: c.intro,
+      posts: map.get(c.title).sort((a, b) => b.date - a.date)
     }));
   });
 

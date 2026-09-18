@@ -41,8 +41,9 @@ collections:
       - label: "Category"
         name: "category"
         widget: "select"
-        default: "SEO"
-        options: ["AI Search", "GEO / AEO", "SEO", "Content Strategy", "Automation", "Frameworks"]
+        default: "Optimization"
+        options: ["Engines", "Optimization", "Foundations"]
+        hint: "Engines = how one AI engine retrieves and cites. Optimization = what to change on a site. Foundations = the SEO layer underneath."
       - { label: "Short description (used for the card blurb + SEO meta)", name: "description", widget: "text" }
       - { label: "Read time", name: "readTime", widget: "string", default: "6 min", hint: "e.g. 7 min" }
       - { label: "Featured image (used for social previews and the article's structured data)", name: "image", widget: "image", required: false }
@@ -50,4 +51,74 @@ collections:
       - { label: "Direct answer: the question this post answers", name: "answerQ", widget: "string", required: false, hint: "Shown under the title and marked Speakable" }
       - { label: "Direct answer: two sentences that stay true on their own", name: "answerA", widget: "text", required: false }
       - { label: "Show the amber 'starter draft' banner", name: "starter", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "frameworks"
+    label: "Frameworks"
+    label_singular: "Framework"
+    description: "Framework pages under /frameworks/. The R2A instruments live in the R2A instruments collection."
+    folder: "src/frameworks"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "frameworks/{{slug}}"
+    sort_field: "date"
+    summary: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Meta title", name: "metaTitle", widget: "string", required: false }
+      - { label: "Publish date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Kind (badge)", name: "kind", widget: "string", default: "Framework" }
+      - { label: "Short description (card blurb + SEO meta)", name: "description", widget: "text" }
+      - { label: "Read time", name: "readTime", widget: "string", default: "8 min" }
+      - { label: "Featured image", name: "image", widget: "image", required: false }
+      - { label: "Featured image alt text", name: "imageAlt", widget: "string", required: false }
+      - { label: "Direct answer: the question this page answers", name: "answerQ", widget: "string", required: false }
+      - { label: "Direct answer: two sentences that stay true on their own", name: "answerA", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "r2a"
+    label: "R2A instruments"
+    label_singular: "R2A instrument"
+    description: "Instrument pages under /frameworks/r2a/: BERAP, the Retrieval Unit Map, the Representation Parity Map."
+    folder: "src/frameworks/r2a"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "frameworks/r2a/{{slug}}"
+    sort_field: "date"
+    summary: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Meta title", name: "metaTitle", widget: "string", required: false }
+      - { label: "Publish date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Kind (badge)", name: "kind", widget: "string", default: "Instrument" }
+      - { label: "Parent", name: "parent", widget: "object", fields: [ { label: "Label", name: "label", widget: "string", default: "R2A Framework" }, { label: "URL", name: "url", widget: "string", default: "/frameworks/r2a/" } ] }
+      - { label: "Short description (card blurb + SEO meta)", name: "description", widget: "text" }
+      - { label: "Read time", name: "readTime", widget: "string", default: "7 min" }
+      - { label: "Featured image", name: "image", widget: "image", required: false }
+      - { label: "Featured image alt text", name: "imageAlt", widget: "string", required: false }
+      - { label: "Direct answer: the question this page answers", name: "answerQ", widget: "string", required: false }
+      - { label: "Direct answer: two sentences that stay true on their own", name: "answerA", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "research"
+    label: "Research"
+    label_singular: "Study"
+    description: "Study pages under /research/. Studies published on the Wellows blog are linked from the hub, not copied here."
+    folder: "src/research"
+    create: true
+    slug: "{{slug}}"
+    preview_path: "research/{{slug}}"
+    sort_field: "date"
+    summary: "{{title}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Meta title", name: "metaTitle", widget: "string", required: false }
+      - { label: "Publish date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Kind (badge)", name: "kind", widget: "string", default: "Study" }
+      - { label: "Short description (card blurb + SEO meta)", name: "description", widget: "text" }
+      - { label: "Read time", name: "readTime", widget: "string", default: "9 min" }
+      - { label: "Featured image", name: "image", widget: "image", required: false }
+      - { label: "Featured image alt text", name: "imageAlt", widget: "string", required: false }
+      - { label: "Direct answer: the question this page answers", name: "answerQ", widget: "string", required: false }
+      - { label: "Direct answer: two sentences that stay true on their own", name: "answerA", widget: "text", required: false }
       - { label: "Body", name: "body", widget: "markdown" }

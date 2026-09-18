@@ -253,7 +253,7 @@
       <p class="hero-press reveal d3">
         <span class="hero-press-tag">Method</span>
         I ran a permutation null against my own published citation study and revised two headline findings that failed it.
-        <a href="/blog/breaking-my-own-study/">How I tried to break my own study →</a>
+        <a href="/research/citation-study-retest/">How I tried to break my own study →</a>
       </p>
       <p class="hero-press reveal d3">
         <span class="hero-press-tag">Featured in</span>
@@ -328,7 +328,7 @@
       <div class="impact-num-lbl">LLM referral sessions at Wellows, {{ live.llm.wellows.window }}, from {{ live.llm.wellows.baseline }}/month, $0 paid ({{ live.llm.wellows.source }}). A separate {{ live.llm.confidential.multiplier }}× over {{ live.llm.confidential.window }} for a {{ live.llm.confidential.client }} is listed on the work page.</div>
     </a>
     <div class="impact-divider" aria-hidden="true"></div>
-    <a class="impact-num impact-link reveal d1" href="/blog/breaking-my-own-study/">
+    <a class="impact-num impact-link reveal d1" href="/research/citation-study-retest/">
       <div class="impact-num-val">2 revised</div>
       <div class="impact-num-lbl">Headline findings I corrected in my own published citation study after a permutation-null test</div>
     </a>
@@ -416,7 +416,7 @@
         <div class="exp-icon ei-violet"><span class="exp-num">01</span></div>
         <h3>AI Search Visibility (GEO / AEO)</h3>
         <p>Entity frameworks built from Google's query fan-out patent and Koray Tuğberk's semantic model, so content is structured the way retrieval systems select and quote it. Grounded versus non-grounded citation experiments that track explicit citations and implicit brand mentions separately, because they move independently. Free tools built as LLM entry points, answers placed where models read (Reddit, Quora, G2), and LLM referral traffic segmented in GA4 so the result is measured, not assumed.</p>
-        <p>The method is public: <a href="/blog/get-cited-by-ai-search/">the retrieval-readiness checklist</a>, <a href="/blog/geo-aeo-vs-seo/">how SEO, AEO and GEO sequence</a>, and <a href="/blog/breaking-my-own-study/">the study I tried to break</a>.</p>
+        <p>The method is public: <a href="/blog/get-cited-by-ai-search/">the retrieval-readiness checklist</a>, <a href="/blog/geo-aeo-vs-seo/">how SEO, AEO and GEO sequence</a>, and <a href="/research/citation-study-retest/">the study I tried to break</a>.</p>
       </div>
       <div class="exp-card reveal d1"><div class="exp-icon ei-indigo"><span class="exp-num">02</span></div><h3>Semantic &amp; Technical SEO</h3><p>What gets a page retrieved in the first place: site architecture, crawl and indexation governance, schema, Core Web Vitals, and the semantic coverage that makes a domain the obvious source on its topic.</p></div>
       <div class="exp-card reveal d2"><div class="exp-icon ei-amber"><span class="exp-num">03</span></div><h3>Content Architecture</h3><p>Topic clusters and intent mapping built for how models interpret authority, so a site earns citations across a topic rather than on one lucky page.</p></div>
@@ -471,7 +471,7 @@
     </div>
     <div class="footer-cols">
       <div class="footer-col"><h2>Site</h2><a href="/about/">About</a><a href="/cv/">CV</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/">Contact</a></div>
-      <div class="footer-col"><h2>Work</h2><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/tools/">Proprietary Tools</a></div>
+      <div class="footer-col"><h2>Work</h2><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/frameworks/">Frameworks</a><a href="/research/">Research</a><a href="/tools/">Proprietary Tools</a></div>
       <div class="footer-col"><h2>Connect</h2><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a><a href="mailto:hello@khadijazaman.com">Email</a></div>
     </div>
   </div>
@@ -485,6 +485,8 @@
 {#- Data for the hero script: live figures plus a search index of tools, posts, case studies and pages. -#}
 {%- set cgIndex = [] %}
 {%- for p in collections.posts %}{% set _ = cgIndex.push({ "t": p.data.title, "d": p.data.description, "u": p.url, "g": "Blog · " + p.data.category, "k": p.data.category }) %}{% endfor %}
+{%- for p in collections.frameworks %}{% set _ = cgIndex.push({ "t": p.data.title, "d": p.data.description, "u": p.url, "g": "Framework · " + p.data.kind, "k": "framework r2a berap instrument" }) %}{% endfor %}
+{%- for p in collections.research %}{% set _ = cgIndex.push({ "t": p.data.title, "d": p.data.description, "u": p.url, "g": "Research · " + p.data.kind, "k": "research study citation" }) %}{% endfor %}
 {%- for c in caseStudies %}{% set _ = cgIndex.push({ "t": c.title, "d": c.description, "u": "/work/" + c.slug + "/", "g": "Case study · " + c.pill, "k": c.pill + " " + (c.client or "") + " results case study proof numbers" }) %}{% endfor %}
 <script id="cg-data" type="application/json">{{ { "live": live, "fmt": { "impressions": live.gsc.impressions | compact, "impressionsBefore": live.gsc.impressionsBefore | compact, "users": (live.tools.queryFanOut + live.tools.llmQueryBuilder + live.tools.aiHumanizer) | number, "queryFanOut": live.tools.queryFanOut | number }, "index": askIndex.concat(cgIndex) } | dump | safe }}</script>
 {% raw %}
@@ -505,7 +507,7 @@
     { label: 'Google',       angle: -140, r: 205, prompt: { q: 'What does Search Engine Land recommend for topic clusters? ', chip: 'Search Engine Land guide', href: 'https://searchengineland.com/guide/topic-clusters-for-ai-search', src: 'The guide runs on the Query Fan-Out Generator I built' } },
     { label: 'ChatGPT',      angle:  -40, r: 205, prompt: { q: 'How do I get my brand cited by ChatGPT? ', chip: 'Read the checklist', href: '/blog/get-cited-by-ai-search/', src: 'The retrieval-readiness checklist I use' } },
     { label: 'Gemini',       angle:    5, r: 220, prompt: { q: 'Why does ranking #1 not mean Gemini cites you? ', chip: 'SEO vs AEO vs GEO', href: '/blog/geo-aeo-vs-seo/', src: 'Where the three layers diverge, and how to sequence them' } },
-    { label: 'Perplexity',   angle:   45, r: 205, prompt: { q: 'How do you measure citations in Perplexity? ', chip: 'Breaking my own study', href: '/blog/breaking-my-own-study/', src: 'A cross-engine citation study, rebuilt and tested against a null' } },
+    { label: 'Perplexity',   angle:   45, r: 205, prompt: { q: 'How do you measure citations in Perplexity? ', chip: 'Breaking my own study', href: '/research/citation-study-retest/', src: 'A cross-engine citation study, rebuilt and tested against a null' } },
     { label: 'AI Overviews', angle:  165, r: 210, prompt: { q: 'Why did clicks fall while rankings recovered? ', chip: 'Core update recovery', href: '/work/core-update-recovery/', src: 'Position 32 back to 8.2, with AI Overview absorption flagged as an inference' } }
   ];
   /* nearest: index into CG_ENGINES the faint line runs to */

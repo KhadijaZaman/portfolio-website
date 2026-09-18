@@ -2,7 +2,7 @@
 title: "SEO vs AEO vs GEO: What Each One Actually Means, and How to Sequence Them"
 metaTitle: "SEO vs AEO vs GEO: What Each Means & How to Sequence"
 date: 2026-06-18
-category: "AI Search"
+category: "Foundations"
 description: "SEO, AEO, and GEO are layers, not rivals. A working definition of each, where they genuinely diverge, and the order to build them so the work compounds."
 readTime: "5 min"
 answerQ: "What is the difference between SEO, AEO and GEO?"

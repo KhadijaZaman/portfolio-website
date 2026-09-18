@@ -1,0 +1,70 @@
+---
+layout: base.njk
+eleventyExcludeFromCollections: true
+tags: []
+nav: research
+title: "Research"
+metaTitle: "AI Citation Research — Studies by Khadija Zaman"
+description: "Index of Khadija Zaman's AI citation research: the cross-engine citation overlap study, its re-test against a permutation null, and the 94-day query fan-out experiment, each with a summary and a link to the full write-up."
+---
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Research",
+  "url": site.url + "/research/",
+  "description": description,
+  "about": { "@id": site.url + "/#person" },
+  "isPartOf": { "@id": site.url + "/#website" },
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#answer .answer-q", "#answer .answer-a"] }
+} | dump | safe }}</script>
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
+    { "@type": "ListItem", "position": 2, "name": "Research", "item": site.url + "/research/" }
+  ]
+} | dump | safe }}</script>
+
+<header class="page-hero">
+  <div class="page-hero-orb" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> Research</nav>
+    <h1 class="reveal d1">AI citation research</h1>
+    <p class="lead reveal d2">Studies I have run on how AI engines choose what to cite, listed only once they are live, with a short summary and a link to the full write-up. Studies published on the Wellows blog link there.</p>
+  </div>
+</header>
+
+<section class="answer-block" id="answer" aria-label="Direct answer">
+  <div class="wrap">
+    <h2 class="answer-q">What AI citation research has Khadija Zaman published?</h2>
+    <p class="answer-a">Khadija Zaman has published a cross-engine AI citation overlap study on the Wellows blog covering January to June 2026, a re-test of that study against a permutation null that revised two of its headline findings, and a 94-day query fan-out experiment whose results were posted publicly by Wellows' COO. Each study states its data window and source.</p>
+  </div>
+</section>
+
+<section aria-label="Studies" style="padding-top:0;">
+  <div class="wrap">
+    <div class="post-grid">
+      {%- for p in collections.research %}
+      <a class="post-card reveal" href="{{ p.url }}">
+        <div class="post-meta"><span class="post-cat">{{ p.data.kind }} · on this site</span><span class="post-date">{{ p.data.date | readableDate }} · {{ p.data.readTime }}</span></div>
+        <h2 style="font-size:1.15rem;">{{ p.data.title }}</h2>
+        <p>{{ p.data.description }}</p>
+        <span class="post-more">Read the re-test →</span>
+      </a>
+      {%- endfor %}
+      <a class="post-card reveal d1" href="https://wellows.com/blog/ai-citation-overlap-study/" target="_blank" rel="noopener">
+        <div class="post-meta"><span class="post-cat">Study · Wellows blog</span><span class="post-date">Jul 2026 · Jan–Jun 2026 data</span></div>
+        <h2 style="font-size:1.15rem;">Cross-engine AI citation overlap study</h2>
+        <p>Which sources ChatGPT, Gemini, Perplexity and Google's AI surfaces cite for the same queries, and how much the engines agree. The original study the re-test on this site examines.</p>
+        <span class="post-more">Read on wellows.com →</span>
+      </a>
+      <a class="post-card reveal" href="/work/#press">
+        <div class="post-meta"><span class="post-cat">Experiment · posted by Wellows</span><span class="post-date">94 days</span></div>
+        <h2 style="font-size:1.15rem;">The 94-day query fan-out experiment</h2>
+        <p>The experiment behind the Query Fan-Out Generator, posted publicly by Wellows' COO. Search Engine Land later used the tool to demonstrate topic clusters for AI search.</p>
+        <span class="post-more">See the post →</span>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,10 @@
+{
+  "layout": "core.njk",
+  "tags": ["research"],
+  "sectionTag": "research",
+  "section": "Research",
+  "sectionUrl": "/research/",
+  "kind": "Study",
+  "schemaType": "Article",
+  "nav": "research"
+}

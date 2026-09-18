@@ -2,7 +2,7 @@
 title: "How to Get Your Brand Cited by ChatGPT, Gemini and Perplexity"
 metaTitle: "How to Get Cited by ChatGPT, Gemini & Perplexity"
 date: 2026-06-30
-category: "GEO / AEO"
+category: "Optimization"
 description: "Ranking #1 in Google no longer guarantees you appear in an AI answer — the systems judge content differently. A checklist to make pages retrieval-ready."
 readTime: "5 min"
 answerQ: "How do you get a brand cited by ChatGPT, Gemini and Perplexity?"
@@ -76,7 +76,7 @@ Citations are harder to track than rankings, but not impossible, and the trackin
 - Track referral traffic from AI sources in your analytics as those referrers grow.
 - Watch brand-mention and AI-visibility monitoring tools that report citation presence over time.
 
-If you want to score a page against these conditions before you measure, the [R2A Content Framework](/blog/r2a-content-framework/) is the checklist I use, and the [BERAP Map](/blog/berap-map/) grades what the models say back.
+If you want to score a page against these conditions before you measure, the [R2A Content Framework](/frameworks/r2a/) is the checklist I use, and the [BERAP Map](/frameworks/r2a/berap/) grades what the models say back.
 
 Treat all of it as a trend line. What matters isn't whether you got cited on a given Tuesday — it's whether your presence in generated answers is climbing quarter over quarter, and whether the way you're described is getting sharper.
 

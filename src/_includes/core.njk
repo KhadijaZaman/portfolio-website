@@ -1,0 +1,106 @@
+---
+layout: base.njk
+ogType: article
+---
+{#- Core page: a framework, an instrument or a study. Same reading layout as a
+    post, but it sits in a root-level section, not the blog. Front matter (set
+    per directory in frameworks.json / research.json, overridable per file):
+      section, sectionUrl  the hub this page belongs to
+      parent               optional { label, url } one level up (an instrument's framework)
+      kind                 the badge text: Framework, Instrument, Study
+      schemaType           JSON-LD @type, CreativeWork for frameworks, Article for studies -#}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": schemaType or "Article",
+  "headline": title,
+  "name": title,
+  "description": description,
+  "datePublished": (date | isoDate),
+  "dateModified": (page.inputPath | gitDate(date | isoDate)),
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#answer .answer-q", "#answer .answer-a"] },
+  "author": { "@id": site.url + "/#person" },
+  "creator": { "@id": site.url + "/#person" },
+  "publisher": { "@id": site.url + "/#person" },
+  "isPartOf": { "@type": "WebPage", "url": site.url + (parent.url if parent else sectionUrl) },
+  "mainEntityOfPage": site.url + page.url,
+  "image": site.url + (image or "/web-app-manifest-512x512.png")
+} | dump | safe }}</script>
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": ([
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
+    { "@type": "ListItem", "position": 2, "name": section, "item": site.url + sectionUrl }
+  ].concat([{ "@type": "ListItem", "position": 3, "name": parent.label, "item": site.url + parent.url }] if parent else [])
+   .concat([{ "@type": "ListItem", "position": (4 if parent else 3), "name": title, "item": site.url + page.url }]))
+} | dump | safe }}</script>
+
+<header class="page-hero">
+  <div class="page-hero-orb" aria-hidden="true"></div>
+  <div class="wrap" style="max-width:760px;">
+    <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="{{ sectionUrl }}">{{ section }}</a>{% if parent %} <span>/</span> <a href="{{ parent.url }}">{{ parent.label }}</a>{% endif %} <span>/</span> {{ title }}</nav>
+    <div class="post-meta reveal"><a class="post-cat" href="{{ parent.url if parent else sectionUrl }}" title="{{ 'Back to ' + (parent.label if parent else section) }}">{{ kind }}</a><span class="post-date">{{ date | readableDate }} · {{ readTime }} read · by Khadija Zaman</span></div>
+    <h1 class="reveal d1">{{ title }}</h1>
+  </div>
+</header>
+{%- if answerQ and answerA %}
+<section class="answer-block" id="answer" aria-label="Direct answer">
+  <div class="wrap" style="max-width:760px;">
+    <h2 class="answer-q">{{ answerQ }}</h2>
+    <p class="answer-a">{{ answerA }}</p>
+  </div>
+</section>
+{%- endif %}
+
+{% set toc = content | tocFromHtml %}
+<article aria-label="Article">
+  <div class="wrap post-layout{% if toc.length < 2 %} post-layout--no-toc{% endif %}">
+    {%- if toc.length > 1 %}
+    <aside class="toc" id="toc" aria-label="Table of contents">
+      <div class="toc-title">In this article</div>
+      <ul id="toc-list">
+        {%- for h in toc %}
+        <li><a href="#{{ h.id }}">{{ h.text }}</a></li>
+        {%- endfor %}
+      </ul>
+    </aside>
+    {%- endif %}
+
+    <div class="prose">
+      {{ content | safe }}
+
+      <!-- Author bio -->
+      <div class="author-box">
+        <img class="author-avatar" src="/static/img/khadija-avatar.webp" alt="Khadija Zaman" width="72" height="72" loading="lazy">
+        <div class="author-meta">
+          <div class="author-name">Khadija Zaman</div>
+          <p>AI Search Manager at Wellows — I get brands ranked on Google and cited by ChatGPT, Gemini, and Perplexity, then automate the execution.</p>
+          <div class="author-links">
+            <a href="/about/">More about me →</a>
+            <a href="{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="{{ site.github }}" target="_blank" rel="noopener">GitHub</a>
+            <a href="/contact/">Work together</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {#- Siblings in the same section, the hub's own list order -#}
+  {% set siblings = collections[sectionTag] | excludeUrl(page.url) %}
+  {% if siblings.length %}
+  <div class="wrap read-next">
+    <h2 class="read-next-title">More in {{ section }}</h2>
+    <div class="post-grid">
+      {% for p in siblings | limit(2) %}
+      <a class="post-card" href="{{ p.url }}">
+        <div class="post-meta"><span class="post-cat">{{ p.data.kind }}</span><span class="post-date">{{ p.data.date | readableDate }} · {{ p.data.readTime }}</span></div>
+        <h3>{{ p.data.title }}</h3>
+        <p>{{ p.data.description }}</p>
+        <span class="post-more">Read on →</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</article>

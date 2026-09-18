@@ -1,0 +1,60 @@
+---
+layout: base.njk
+eleventyExcludeFromCollections: true
+tags: []
+nav: frameworks
+title: "Frameworks"
+metaTitle: "Frameworks for AI Search Visibility — Khadija Zaman"
+description: "The frameworks Khadija Zaman uses to score and measure AI search visibility: the R2A Content Framework and its instruments, BERAP, the Retrieval Unit Map and the Representation Parity Map."
+---
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Frameworks",
+  "url": site.url + "/frameworks/",
+  "description": description,
+  "about": { "@id": site.url + "/#person" },
+  "isPartOf": { "@id": site.url + "/#website" },
+  "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["#answer .answer-q", "#answer .answer-a"] },
+  "hasPart": [{ "@type": "CreativeWork", "name": "R2A Content Framework", "url": site.url + "/frameworks/r2a/" }, { "@type": "CreativeWork", "name": "BERAP Map", "url": site.url + "/frameworks/r2a/berap/" }]
+} | dump | safe }}</script>
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": site.url + "/" },
+    { "@type": "ListItem", "position": 2, "name": "Frameworks", "item": site.url + "/frameworks/" }
+  ]
+} | dump | safe }}</script>
+
+<header class="page-hero">
+  <div class="page-hero-orb" aria-hidden="true"></div>
+  <div class="wrap">
+    <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> Frameworks</nav>
+    <h1 class="reveal d1">Frameworks for AI search visibility</h1>
+    <p class="lead reveal d2">The scoring models I use to find out why a page ranks but never gets cited, and what an AI model already believes about a brand before it retrieves anything.</p>
+  </div>
+</header>
+
+<section class="answer-block" id="answer" aria-label="Direct answer">
+  <div class="wrap">
+    <h2 class="answer-q">What frameworks does Khadija Zaman use for AI search visibility?</h2>
+    <p class="answer-a">Khadija Zaman uses the R2A Content Framework, an eight-layer model that scores a page from retrieval to action, and its instruments: the BERAP Map for what AI models recall about a brand, the Retrieval Unit Map and the Representation Parity Map. Each is a practitioner model with an evidence grade on every recommendation, not an official model from any search engine.</p>
+  </div>
+</section>
+
+<section aria-label="Frameworks" style="padding-top:0;">
+  <div class="wrap">
+    <div class="post-grid">
+      {%- for p in collections.frameworks %}
+      <a class="post-card reveal{% if loop.index0 % 2 == 1 %} d1{% endif %}" href="{{ p.url }}">
+        <div class="post-meta"><span class="post-cat">{{ p.data.kind }}</span><span class="post-date">{{ p.data.date | readableDate }} · {{ p.data.readTime }}</span></div>
+        <h2 style="font-size:1.15rem;">{{ p.data.title }}</h2>
+        <p>{{ p.data.description }}</p>
+        <span class="post-more">Read on →</span>
+      </a>
+      {%- endfor %}
+    </div>
+    <p class="num-note reveal" style="margin-top:1.5rem;">Two more R2A instruments are written up next: the <strong>Retrieval Unit Map</strong>, which sizes and structures the passages a retrieval system can lift from a page, and the <strong>Representation Parity Map</strong>, which measures the gap between what a page says and what an engine repeats. Both publish in January 2027.</p>
+  </div>
+</section>

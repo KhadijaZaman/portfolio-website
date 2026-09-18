@@ -15,6 +15,21 @@ ErrorDocument 410 /404.html
   RewriteRule ^items/R[0-9]+/?$ - [G,L]
 </IfModule>
 
+# ── Moved pages: permanent redirects ────────────────────────
+# Sep 2026 restructure: frameworks and research left the blog, and the four
+# old blog categories became three. Each rule also covers the page's
+# markdown twin (index.md) so Accept: text/markdown clients land right.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^blog/r2a-content-framework/?(index\.md)?$ /frameworks/r2a/$1 [R=301,L]
+  RewriteRule ^blog/berap-map/?(index\.md)?$ /frameworks/r2a/berap/$1 [R=301,L]
+  RewriteRule ^blog/breaking-my-own-study/?(index\.md)?$ /research/citation-study-retest/$1 [R=301,L]
+  RewriteRule ^blog/category/ai-search/?$ /blog/category/foundations/ [R=301,L]
+  RewriteRule ^blog/category/geo-aeo/?$ /blog/category/optimization/ [R=301,L]
+  RewriteRule ^blog/category/content-strategy/?$ /blog/category/foundations/ [R=301,L]
+  RewriteRule ^blog/category/frameworks/?$ /frameworks/ [R=301,L]
+</IfModule>
+
 # ── Compression ──────────────────────────────────────────────
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml \

@@ -2,7 +2,7 @@
 title: "Central Entity in SEO: What Google’s “Identifying Topical Entities” Patent Actually Describes"
 metaTitle: "Central Entity in SEO: What Google’s Patent Describes"
 date: 2026-08-12
-category: "Content Strategy"
+category: "Foundations"
 description: "How Google’s Identifying Topical Entities patent application confirms a page’s main topic, and how a central entity anchors a topical map."
 readTime: "14 min"
 answerQ: "What is a central entity in SEO?"
@@ -115,7 +115,7 @@ The fixes are practical, and I’d use any of them: drop the entity, append anot
 
 This ambiguity check is the part of the patent closest to what I’m working on now. I’m setting up a study on how often AI answers get a brand’s name, products, or prices wrong, and which source caused each error.
 
-There are no results to share yet. When there are, they’ll go through the same checks I used to [break my own citation study](/blog/breaking-my-own-study/).
+There are no results to share yet. When there are, they’ll go through the same checks I used to [break my own citation study](/research/citation-study-retest/).
 
 ## Five shorthand readings, checked against the text
 
