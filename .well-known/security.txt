@@ -1,0 +1,6 @@
+# Security contact for khadijazaman.com (RFC 9116)
+Contact: mailto:hello@khadijazaman.com
+Expires: 2027-09-17T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://khadijazaman.com/.well-known/security.txt
+Policy: https://khadijazaman.com/contact/

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R2A Content Framework: Retrieval-to-Action for AI Search</title>
+  <meta name="description" content="A practitioner framework for scoring whether AI systems can retrieve, select, cite and act on a page. Eight layers, one hard gate, graded evidence.">
+  <link rel="canonical" href="https://khadijazaman.com/frameworks/r2a/">
+  <link rel="alternate" type="text/markdown" href="https://khadijazaman.com/frameworks/r2a/index.md">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Khadija Zaman">
+  <meta property="og:title" content="R2A Content Framework: Retrieval-to-Action for AI Search">
+  <meta property="og:description" content="A practitioner framework for scoring whether AI systems can retrieve, select, cite and act on a page. Eight layers, one hard gate, graded evidence.">
+  <meta property="og:url" content="https://khadijazaman.com/frameworks/r2a/">
+  <meta property="og:image" content="https://khadijazaman.com/static/uploads/r2a-fig2-layer-structure.png">
+  <meta property="og:image:alt" content="Sketch-note diagram of the R2A Content Framework: six independent layers sitting on an Eligibility gate, all resting on a Measurement base layer">
+  <meta name="twitter:image" content="https://khadijazaman.com/static/uploads/r2a-fig2-layer-structure.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="R2A Content Framework: Retrieval-to-Action for AI Search">
+  <meta name="twitter:description" content="A practitioner framework for scoring whether AI systems can retrieve, select, cite and act on a page. Eight layers, one hard gate, graded evidence.">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="Khadija Zaman — Blog" href="/feed.xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..60,400;12..60,500;12..60,600;12..60,700;12..60,800&display=swap"></noscript>
+  <link rel="stylesheet" href="/css/main.css"><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://khadijazaman.com/#person","name":"Khadija Zaman","url":"https://khadijazaman.com/","image":"https://khadijazaman.com/apple-touch-icon.png","description":"Khadija Zaman is AI Search Manager at Wellows, a Disrupt.com company, based in Karachi, Pakistan.","disambiguatingDescription":"In search since 2018, she has owned SEO, content and AI-search (GEO/AEO) programs in-house at Wellows since 2024 and builds SEO tooling grounded in Google patent research used by 1,647 practitioners.","jobTitle":"AI Search Manager","worksFor":{"@type":"Organization","name":"Wellows","url":"https://wellows.com/","parentOrganization":{"@type":"Organization","name":"Disrupt.com","url":"https://disrupt.com/"}},"address":{"@type":"PostalAddress","addressLocality":"Karachi","addressCountry":"PK"},"email":"mailto:hello@khadijazaman.com","sameAs":["https://www.linkedin.com/in/khadija-zaman-2628751b1/","https://github.com/KhadijaZaman","https://x.com/KhadijaZaman7","https://www.allaboutai.com/author/khadija-zaman/"],"knowsAbout":["Search Engine Optimization","Generative Engine Optimization","Answer Engine Optimization","Semantic SEO","Query Fan-Out","Content Strategy","Marketing Automation"]},{"@type":"WebSite","@id":"https://khadijazaman.com/#website","name":"Khadija Zaman","url":"https://khadijazaman.com/","publisher":{"@id":"https://khadijazaman.com/#person"}}]}</script>
+</head>
+<body>
+
+<a class="skip-nav" href="#main-content">Skip to main content</a>
+
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-logo">Khadija Zaman</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/about/">About</a></li>
+    <li><a href="/work/">Work</a></li>
+    <li><a href="/frameworks/">Frameworks</a></li>
+    <li><a href="/research/">Research</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/tools/">Tools</a></li><li><a href="/cv/">CV</a></li>
+    <li><a href="/contact/" class="nav-cta">Work Together →</a></li>
+  </ul>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+</nav>
+
+<main id="main-content">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","headline":"The R2A Content Framework: what a page has to get through before anyone acts on it","name":"The R2A Content Framework: what a page has to get through before anyone acts on it","description":"A practitioner framework for scoring whether AI systems can retrieve, select, cite and act on a page. Eight layers, one hard gate, graded evidence.","datePublished":"2026-08-20","dateModified":"2026-09-18","speakable":{"@type":"SpeakableSpecification","cssSelector":["#answer .answer-q","#answer .answer-a"]},"author":{"@id":"https://khadijazaman.com/#person"},"creator":{"@id":"https://khadijazaman.com/#person"},"publisher":{"@id":"https://khadijazaman.com/#person"},"isPartOf":{"@type":"WebPage","url":"https://khadijazaman.com/frameworks/"},"mainEntityOfPage":"https://khadijazaman.com/frameworks/r2a/","image":"https://khadijazaman.com/static/uploads/r2a-fig2-layer-structure.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://khadijazaman.com/"},{"@type":"ListItem","position":2,"name":"Frameworks","item":"https://khadijazaman.com/frameworks/"},{"@type":"ListItem","position":3,"name":"The R2A Content Framework: what a page has to get through before anyone acts on it","item":"https://khadijazaman.com/frameworks/r2a/"}]}</script>
+
+<header class="page-hero">
+  <div class="page-hero-orb" aria-hidden="true"></div>
+  <div class="wrap" style="max-width:760px;">
+    <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/">Home</a> <span>/</span> <a href="/frameworks/">Frameworks</a> <span>/</span> The R2A Content Framework: what a page has to get through before anyone acts on it</nav>
+    <div class="post-meta reveal"><a class="post-cat" href="/frameworks/" title="Back to Frameworks">Framework</a><span class="post-date">20 Aug 2026 · 8 min read · by Khadija Zaman</span></div>
+    <h1 class="reveal d1">The R2A Content Framework: what a page has to get through before anyone acts on it</h1>
+  </div>
+</header>
+<section class="answer-block" id="answer" aria-label="Direct answer">
+  <div class="wrap" style="max-width:760px;">
+    <h2 class="answer-q">What is the R2A Content Framework?</h2>
+    <p class="answer-a">R2A (Retrieval-to-Action) is Khadija Zaman&#39;s practitioner framework for scoring whether AI systems can retrieve, select, cite and act on a page. It has eight layers: Measurement as the base, Eligibility as the only hard gate, and six independently scored layers, with every recommendation carrying one of five evidence grades.</p>
+  </div>
+</section>
+
+
+<article aria-label="Article">
+  <div class="wrap post-layout">
+    <aside class="toc" id="toc" aria-label="Table of contents">
+      <div class="toc-title">In this article</div>
+      <ul id="toc-list">
+        <li><a href="#the-journey-stops-at-action-and-the-outcomes-sit-outside-it">The journey stops at action, and the outcomes sit outside it</a></li>
+        <li><a href="#eight-layers-and-only-one-of-them-is-a-gate">Eight layers, and only one of them is a gate</a></li>
+        <li><a href="#every-claim-gets-an-evidence-grade">Every claim gets an evidence grade</a></li>
+        <li><a href="#the-loop-that-moves-a-grade">The loop that moves a grade</a></li>
+        <li><a href="#worked-example-one-pricing-page-layer-by-layer">Worked example: one pricing page, layer by layer</a></li>
+        <li><a href="#where-r2a-doesn-t-fit">Where R2A doesn&#39;t fit</a></li>
+      </ul>
+    </aside>
+
+    <div class="prose">
+      <p>A page can be crawlable, indexed and ranking on page one, and still never show up in an AI answer for the query it ranks for. A standard SEO audit has no column for that gap, because it was built for a results page of ten links, not one assembled response.</p>
+<p>The R2A Content Framework is how I score that gap. R2A stands for Retrieval-to-Action. It covers what has to be true about a page between the moment a system finds it and the moment someone (a person or an agent) does something with what it said.</p>
+<p>It's a practitioner lens, built from working on AI visibility day to day. It isn't an official model from any search engine or AI company, and every recommendation in it carries an evidence grade so you can see how sure I am. The studies behind the grades are indexed under <a href="/research/">research</a>.</p>
+<h2 id="the-journey-stops-at-action-and-the-outcomes-sit-outside-it">The journey stops at action, and the outcomes sit outside it</h2>
+<p>R2A models five stages: Discovery, Retrieval, Selection, Citation and Action. A crawler or agent finds the URL. A system pulls passages from it into a candidate set. A model picks which candidates to use. The source gets credited. Someone acts.</p>
+<figure>
+  <picture>
+    <source srcset="/static/uploads/r2a-fig1-journey-vs-outcomes.webp" type="image/webp">
+    <img src="/static/uploads/r2a-fig1-journey-vs-outcomes.png" alt="Sketch-note diagram: five boxes labelled Discovery, Retrieval, Selection, Citation and Action connected by arrows inside a dashed boundary, with five outcome pills below it labelled Ranking, Citation, Recommendation, Conversion and Agent Action" width="1600" height="900" loading="eager">
+  </picture>
+  <figcaption>Figure 1. The five R2A stages sit inside the framework. Ranking, Citation, Recommendation, Conversion and Agent Action are outcomes, observed but not scored.</figcaption>
+</figure>
+<p>Ranking, Citation, Recommendation, Conversion and Agent Action are treated as outcomes, and they sit outside the framework on purpose. Yes, Citation appears twice. As a stage, it means the page is in a condition to be credited. As an outcome, it means a specific engine credited it on a specific day, which also depends on who else was in the candidate set, how the engine was behaving that week and what the person actually asked.</p>
+<p>If a framework scores outcomes, you end up grading yourself on your competitors' pages. R2A scores the page (the <a href="/tools/citeability-checker/">AEO Citeability Checker</a> runs a lightweight version of that scoring in the browser), and you watch the outcomes to see whether the scoring holds up.</p>
+<h2 id="eight-layers-and-only-one-of-them-is-a-gate">Eight layers, and only one of them is a gate</h2>
+<p>The framework has eight layers. An earlier draft ran them as a strict sequence, with Control &amp; Observability sitting last. The current version is a hybrid: measurement moved to the bottom, one layer acts as a gate, and the rest are scored independently.</p>
+<figure>
+  <picture>
+    <source srcset="/static/uploads/r2a-fig2-layer-structure.webp" type="image/webp">
+    <img src="/static/uploads/r2a-fig2-layer-structure.png" alt="Sketch-note diagram: six boxes for layers 2 to 7 with empty checkboxes, arrows rising from a fenced gate labelled Layer 1 Eligibility, a green check reading pass score layers 2 to 7, a red cross reading fail nothing else counts yet, and a hatched base bar labelled Layer 0 Measurement" width="1600" height="1000" loading="lazy">
+  </picture>
+  <figcaption>Figure 2. Measurement is the base, Eligibility is the only hard gate, and layers 2 to 7 are scored independently.</figcaption>
+</figure>
+<p><strong>Layer 0: Measurement (Control &amp; Observability).</strong> Logs and signals, attribution, feedback loops and iteration: the prompt set you monitor, what crawlers actually did in your logs, and the baseline you compare every change against. It moved to the bottom because a score with no baseline can't tell you whether anything improved.</p>
+<p><strong>Layer 1: Eligibility.</strong> Can the system reach and use the page at all? That covers crawlability, indexability, technical accessibility and rendering, meaning whether the content that matters loads for a client that doesn't run a full browser. Crawl rules follow the Robots Exclusion Protocol, which the IETF published as <a href="https://www.rfc-editor.org/rfc/rfc9309">RFC 9309</a> in September 2022, and the standard says those rules are not a form of access authorization. Crawlers are asked to honor them, not forced to. This is the only layer that works as a gate. If it fails, the other scores describe a page nobody can use.</p>
+<p><strong>Layers 2 to 7</strong> are scored as independent checks, in any order:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>What it checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2. <a href="/blog/central-entity/">Entity Integrity</a></td>
+<td>The brand, its products and its people are described consistently, completely and authentically, and can't be confused with anything else sharing the name</td>
+</tr>
+<tr>
+<td>3. Information Extractability</td>
+<td>Semantic HTML, <a href="/blog/get-cited-by-ai-search/">structured data, clear headings</a>, definitions and real tables and lists carry the facts</td>
+</tr>
+<tr>
+<td>4. Retrieval Efficiency</td>
+<td>The meaning is cheap to fetch: small payload, sensible caching, and alternate representations served through content negotiation</td>
+</tr>
+<tr>
+<td>5. Source Fitness</td>
+<td>Expertise, experience, authority, trust and evidence stand behind the page's claims</td>
+</tr>
+<tr>
+<td>6. Web Corroboration</td>
+<td>Independent mentions, citations, reviews and references say the same thing the page says</td>
+</tr>
+<tr>
+<td>7. Agent Operability</td>
+<td>APIs or MCP, clear actions, stated permissions and tool-readiness let an agent complete the next step</td>
+</tr>
+</tbody>
+</table>
+<p>The reason they aren't a sequence is practical. Fixing a price table that's an image (Layer 3) has no dependency on cleaning up schema naming (Layer 2, where the <a href="/tools/schema-generator/">Schema JSON-LD Generator</a> gives you a clean baseline), so a strict order would hold back fixes that are ready to ship.</p>
+<p>If you're reading this with one of your own pages open in another tab, score Layer 1 first. The rest can wait until that one passes.</p>
+<h2 id="every-claim-gets-an-evidence-grade">Every claim gets an evidence grade</h2>
+<p>AI search advice has a sourcing problem. A lot of it mixes documented platform behaviour, one person's test and pure hypothesis into the same confident tone. R2A tags every recommendation with one of five grades.</p>
+<figure>
+  <picture>
+    <source srcset="/static/uploads/r2a-fig3-evidence-continuum.webp" type="image/webp">
+    <img src="/static/uploads/r2a-fig3-evidence-continuum.png" alt="Sketch-note scale with five points from left to right: Established means official docs, standards or replicated studies; Observed means seen in the real world but needing more validation; Emerging means early signals and examples; Experimental means actively testing with no causation assumed; Speculative means a hypothesis or informed guess. Green text reads safe to act on, red text reads test before you act" width="1600" height="830" loading="lazy">
+  </picture>
+  <figcaption>Figure 3. The five-level evidence continuum. The line gets thinner as the evidence does.</figcaption>
+</figure>
+<p>Established means strong evidence from official documentation, standards or replicated studies. Observed means seen in the real world, but still in need of more validation. Emerging means early signals and examples that look promising. Experimental means it's being actively tested, and causation isn't assumed. Speculative means a hypothesis or an informed guess.</p>
+<p>The grade describes the evidence, not the idea, and it sets how a claim gets worded. An Observed pattern gets described as something seen in data, not as how a system works.</p>
+<h2 id="the-loop-that-moves-a-grade">The loop that moves a grade</h2>
+<p>Grades change through the KZ Web Lab loop: hypothesis, experiment, data, analysis, publish, refine.</p>
+<figure>
+  <picture>
+    <source srcset="/static/uploads/r2a-fig4-web-lab-loop.webp" type="image/webp">
+    <img src="/static/uploads/r2a-fig4-web-lab-loop.png" alt="Sketch-note cycle of six rounded boxes connected by curved arrows: hypothesis, experiment, data, analysis, publish and refine, with a cartoon brain holding a magnifying glass in the centre" width="1600" height="900" loading="lazy">
+  </picture>
+  <figcaption>Figure 4. The KZ Web Lab loop. Publishing sits inside the cycle, followed by refine.</figcaption>
+</figure>
+<p>Publish comes before refine, so a published finding stays open to revision. A grade can move up after more runs, and it can move back down.</p>
+<h2 id="worked-example-one-pricing-page-layer-by-layer">Worked example: one pricing page, layer by layer</h2>
+<p>The example below is illustrative. Tallybird is a made-up invoicing tool, and none of this comes from a client.</p>
+<figure>
+  <picture>
+    <source srcset="/static/uploads/r2a-fig5-worked-example.webp" type="image/webp">
+    <img src="/static/uploads/r2a-fig5-worked-example.png" alt="Sketch-note clipboard scoring an illustrative pricing page: Measurement, Eligibility, Retrieval Efficiency (server-rendered, light, cached) and Source Fitness (named owner, last-updated date) have green checks; Entity Integrity, Extractability, Web Corroboration and Agent Operability have red crosses; a confused robot asks whether the price is in a picture" width="1600" height="1000" loading="lazy">
+  </picture>
+  <figcaption>Figure 5. An illustrative R2A pass on a pricing page. The gate passes, so layers 2 to 7 are scored.</figcaption>
+</figure>
+<p>Tallybird tracks a fixed prompt set and has crawler logs, so Layer 0 has a baseline. The pricing page is crawlable and indexable, so it clears the gate.</p>
+<p>Then it starts failing in places that no ranking report would flag. The page calls the entry plan &quot;Tallybird Starter&quot;, while the Organization and Product markup calls it &quot;Basic&quot; (Layer 2). The price table is a PNG, so the figures a model needs aren't in the text at all (Layer 3). The page itself is server-rendered, light and cached, so it's cheap to fetch (Layer 4), even if the one fact people want from it sits in that image. It names the team that owns pricing and shows a last-updated date, which is the accountability Layer 5 looks for.</p>
+<p>Layer 6 is where it gets expensive. Tallybird retired its free plan, but two review sites still list it. So when a model answers from those sources, it tells buyers about a plan that no longer exists. And the only way to start a trial is a &quot;talk to sales&quot; form, which an agent can't finish on a user's behalf (Layer 7).</p>
+<p>Order of fixes: turn the price table into HTML, align the plan name across page copy and schema, then work on the review listings. The first two are an afternoon of work. The third depends on other people updating their sites, so it can take weeks, and you don't control when.</p>
+<p>That Layer 6 failure is exactly what the <a href="/frameworks/r2a/berap/">BERAP Map</a> was built to catch from the model side, because a model can repeat the old free plan even when it never retrieves the review page.</p>
+<h2 id="where-r2a-doesn-t-fit">Where R2A doesn't fit</h2>
+<p>R2A scores pages, and a page only shapes an answer when something retrieves it. When a model answers from what it learned in training, layers 3 and 4 have little to act on for that answer. BERAP covers that gap, because it grades what engines say about a brand whether the answer came from retrieval or not.</p>
+<p>It also isn't much use for pages where no action is the point, like a legal notice or an archived press release. You can score them, but a failing Layer 7 there tells you nothing worth fixing.</p>
+<p>And it won't explain a traffic drop on its own. A page can pass every layer and still lose citations because a competitor published something better, which is why the outcomes stay outside the score.</p>
+<p>The BERAP instrument is graded Experimental for now, and its panel results will decide whether that grade moves.</p>
+
+
+      <!-- Author bio -->
+      <div class="author-box">
+        <img class="author-avatar" src="/static/img/khadija-avatar.webp" alt="Khadija Zaman" width="72" height="72" loading="lazy">
+        <div class="author-meta">
+          <div class="author-name">Khadija Zaman</div>
+          <p>AI Search Manager at Wellows — I get brands ranked on Google and cited by ChatGPT, Gemini, and Perplexity, then automate the execution.</p>
+          <div class="author-links">
+            <a href="/about/">More about me →</a>
+            <a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a>
+            <a href="/contact/">Work together</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="wrap read-next">
+    <h2 class="read-next-title">More in Frameworks</h2>
+    <div class="post-grid">
+      
+      <a class="post-card" href="/frameworks/r2a/berap/">
+        <div class="post-meta"><span class="post-cat">Instrument</span><span class="post-date">27 Aug 2026 · 7 min</span></div>
+        <h3>The BERAP Map: measuring what AI models remember about your brand</h3>
+        <p>BERAP probes AI engines with repeated prompts and grades answers against a dated attribute table, producing six scores for brand recall and accuracy.</p>
+        <span class="post-more">Read on →</span>
+      </a>
+      
+    </div>
+  </div>
+  
+</article>
+
+</main>
+
+<section class="newsletter" aria-label="Newsletter">
+  <div class="newsletter-glow" aria-hidden="true"></div>
+  <div class="newsletter-inner">
+    <div class="sec-tag reveal" style="justify-content:center;">The Newsletter</div>
+    <h2 class="reveal d1">New posts, straight to your inbox</h2>
+    <p class="reveal d2">Practical notes on SEO and AI search, delivered when each post goes live. No fluff, no sales pitch.</p>
+    <form class="newsletter-form reveal d2" id="newsletter-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="0ca2b384-dbcd-4977-a41a-5f2d1a6c2abb">
+      <input type="hidden" name="subject" value="Newsletter subscribe from khadijazaman.com">
+      <label class="hp-field" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
+      <input type="email" name="email" placeholder="you@company.com" aria-label="Email address" required>
+      <button type="submit">Subscribe →</button>
+    </form>
+    <div class="newsletter-note reveal d3">Unsubscribe anytime.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-in">
+    <div class="footer-brand"><a href="/" class="nav-logo">Khadija Zaman</a><p>AI Search Manager at Wellows, a Disrupt.com company. Semantic SEO, content strategy and marketing automation, run as one system. Karachi, Pakistan.</p></div>
+    <div class="footer-cols">
+      <div class="footer-col"><h2>Site</h2><a href="/about/">About</a><a href="/cv/">CV</a><a href="/blog/">Blog</a><a href="/tools/">Tools</a><a href="/contact/">Contact</a></div>
+      <div class="footer-col"><h2>Work</h2><a href="/#expertise">Expertise</a><a href="/work/">Case Studies</a><a href="/frameworks/">Frameworks</a><a href="/research/">Research</a><a href="/tools/">Proprietary Tools</a></div>
+      <div class="footer-col"><h2>Connect</h2><a href="https://www.linkedin.com/in/khadija-zaman-2628751b1/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/KhadijaZaman" target="_blank" rel="noopener">GitHub</a><a href="mailto:hello@khadijazaman.com">Email</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Khadija Zaman · AI Search Manager · Karachi, Pakistan</div>
+    <div class="footer-copy">Built to be ranked by search engines and cited by answer engines.</div>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+</body>
+</html>

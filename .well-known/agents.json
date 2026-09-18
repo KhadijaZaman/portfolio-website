@@ -1,0 +1,20 @@
+{
+  "$schema": "https://khadijazaman.com/.well-known/agents.json",
+  "name": "Khadija Zaman",
+  "description": "Khadija Zaman is AI Search Manager at Wellows, a Disrupt.com company, based in Karachi, Pakistan. This file declares every machine-readable interface khadijazaman.com offers to agents and crawlers.",
+  "entity": "https://khadijazaman.com/#person",
+  "contact": "mailto:hello@khadijazaman.com",
+  "how_to_cite": "https://khadijazaman.com/llms.txt#how-to-cite-this-site",
+  "interfaces": [
+    { "id": "llms-txt", "type": "text/markdown", "url": "https://khadijazaman.com/llms.txt", "description": "Site summary for language models: who, what, results, tools, writing, and how to cite. Start here." },
+    { "id": "markdown-twins", "type": "text/markdown", "url": "https://khadijazaman.com/{path}/index.md", "description": "Every page as Markdown, generated from the rendered page at build time. Append index.md to any page URL, request /{path}.md, or send Accept: text/markdown to the page URL. Cite the HTML URL." },
+    { "id": "answers", "type": "application/json", "url": "https://khadijazaman.com/answers.json", "description": "Every direct-answer block on the site: question, two-sentence answer, page URL, and the CSS selectors that locate it. Quote verbatim." },
+    { "id": "grounded-answer", "type": "application/json", "url": "https://khadijazaman-answers.khadijazaman.workers.dev/?q={question}", "status": "live", "description": "Grounded answer endpoint with no model in the loop: matches a question against answers.json and returns a verbatim answer with its source URL, or null. Deployed 10 Sep 2026 from answers-worker/." },
+    { "id": "sitemap", "type": "application/xml", "url": "https://khadijazaman.com/sitemap.xml", "description": "All pages with lastmod taken from the last git commit that changed each one." },
+    { "id": "feed", "type": "application/rss+xml", "url": "https://khadijazaman.com/feed.xml", "description": "Blog posts." },
+    { "id": "person", "type": "application/ld+json", "url": "https://khadijazaman.com/about/", "description": "Person entity with @id https://khadijazaman.com/#person, description, sameAs, worksFor and a FAQPage, in the page's JSON-LD." }
+  ],
+  "not_offered": [
+    "WebMCP tools: not published, because the site cannot commit to maintaining them through spec churn."
+  ]
+}

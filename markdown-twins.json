@@ -1,0 +1,181 @@
+{
+  "generated": "2026-09-18",
+  "mechanism": "Accept: text/markdown → <url>index.md (also at /<path>.md); generated from the rendered page",
+  "pages": [
+    {
+      "url": "/",
+      "htmlBytes": 63945,
+      "mdBytes": 8069,
+      "saved": 55876,
+      "pct": 87
+    },
+    {
+      "url": "/blog/central-entity/",
+      "htmlBytes": 38710,
+      "mdBytes": 23618,
+      "saved": 15092,
+      "pct": 39
+    },
+    {
+      "url": "/work/",
+      "htmlBytes": 28607,
+      "mdBytes": 11663,
+      "saved": 16944,
+      "pct": 59
+    },
+    {
+      "url": "/about/",
+      "htmlBytes": 25646,
+      "mdBytes": 7830,
+      "saved": 17816,
+      "pct": 69
+    },
+    {
+      "url": "/research/citation-study-retest/",
+      "htmlBytes": 25369,
+      "mdBytes": 13252,
+      "saved": 12117,
+      "pct": 48
+    },
+    {
+      "url": "/frameworks/r2a/",
+      "htmlBytes": 25150,
+      "mdBytes": 11508,
+      "saved": 13642,
+      "pct": 54
+    },
+    {
+      "url": "/cv/",
+      "htmlBytes": 24912,
+      "mdBytes": 8362,
+      "saved": 16550,
+      "pct": 66
+    },
+    {
+      "url": "/tools/",
+      "htmlBytes": 24103,
+      "mdBytes": 9850,
+      "saved": 14253,
+      "pct": 59
+    },
+    {
+      "url": "/frameworks/r2a/berap/",
+      "htmlBytes": 23946,
+      "mdBytes": 10465,
+      "saved": 13481,
+      "pct": 56
+    },
+    {
+      "url": "/blog/get-cited-by-ai-search/",
+      "htmlBytes": 21350,
+      "mdBytes": 8655,
+      "saved": 12695,
+      "pct": 59
+    },
+    {
+      "url": "/blog/topic-cluster-architecture/",
+      "htmlBytes": 19972,
+      "mdBytes": 7609,
+      "saved": 12363,
+      "pct": 62
+    },
+    {
+      "url": "/blog/geo-aeo-vs-seo/",
+      "htmlBytes": 19923,
+      "mdBytes": 7659,
+      "saved": 12264,
+      "pct": 62
+    },
+    {
+      "url": "/tools/citeability-checker/",
+      "htmlBytes": 19186,
+      "mdBytes": 1798,
+      "saved": 17388,
+      "pct": 91
+    },
+    {
+      "url": "/work/wellows-ai-visibility/",
+      "htmlBytes": 17726,
+      "mdBytes": 4137,
+      "saved": 13589,
+      "pct": 77
+    },
+    {
+      "url": "/work/core-update-recovery/",
+      "htmlBytes": 17139,
+      "mdBytes": 3935,
+      "saved": 13204,
+      "pct": 77
+    },
+    {
+      "url": "/tools/schema-generator/",
+      "htmlBytes": 15222,
+      "mdBytes": 1678,
+      "saved": 13544,
+      "pct": 89
+    },
+    {
+      "url": "/tools/serp-preview/",
+      "htmlBytes": 14653,
+      "mdBytes": 1647,
+      "saved": 13006,
+      "pct": 89
+    },
+    {
+      "url": "/tools/query-fan-out/",
+      "htmlBytes": 14511,
+      "mdBytes": 2242,
+      "saved": 12269,
+      "pct": 85
+    },
+    {
+      "url": "/blog/",
+      "htmlBytes": 14101,
+      "mdBytes": 2421,
+      "saved": 11680,
+      "pct": 83
+    },
+    {
+      "url": "/work/ranking-breakthrough/",
+      "htmlBytes": 13518,
+      "mdBytes": 2740,
+      "saved": 10778,
+      "pct": 80
+    },
+    {
+      "url": "/frameworks/",
+      "htmlBytes": 11654,
+      "mdBytes": 2238,
+      "saved": 9416,
+      "pct": 81
+    },
+    {
+      "url": "/research/",
+      "htmlBytes": 11579,
+      "mdBytes": 2120,
+      "saved": 9459,
+      "pct": 82
+    },
+    {
+      "url": "/blog/category/foundations/",
+      "htmlBytes": 10964,
+      "mdBytes": 1936,
+      "saved": 9028,
+      "pct": 82
+    },
+    {
+      "url": "/contact/",
+      "htmlBytes": 10555,
+      "mdBytes": 1142,
+      "saved": 9413,
+      "pct": 89
+    },
+    {
+      "url": "/blog/category/optimization/",
+      "htmlBytes": 10133,
+      "mdBytes": 1418,
+      "saved": 8715,
+      "pct": 86
+    }
+  ]
+}
